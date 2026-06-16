@@ -549,4 +549,36 @@ li {
   flex: 0 0 85%;
   scroll-snap-align: start;
 }
+
+  /* FOOTER MOBILE */
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .footer-logo {
+    width: 100px;
+    margin-bottom: 18px;
+  }
+
+  .footer h4 {
+    margin-bottom: 6px;
+  }
+
+  .footer p,
+  .footer a {
+    margin-bottom: 4px;
+  }
+
+  .privacy {
+    margin-top: 8px;
+  }
+
+  .copyright {
+    position: static;
+    margin-top: 18px;
+  }
+
 }
