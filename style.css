@@ -289,8 +289,8 @@ li {
   background-image: url("images/background.jpg");
   background-size: cover;
   background-position: center;
-  margin: 0 -90px 30px;
-  padding: 30px 90px;
+  margin: 0 0 30px;
+  padding: 30 90px;
   border-radius: 0;
 }
 
