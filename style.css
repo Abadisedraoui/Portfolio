@@ -538,6 +538,15 @@ li {
   }
 
   .project-links {
-    grid-template-columns: 1fr;
-  }
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 18px;
+}
+
+.project-links article {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+}
 }
