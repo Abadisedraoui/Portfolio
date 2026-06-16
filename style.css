@@ -284,9 +284,10 @@ li {
 }
 
 .project-page {
+  width: calc(100% - 180px);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 90px 48px;
+  padding: 0 0 48px;
 }
 
 .project-intro {
@@ -334,6 +335,7 @@ li {
 
 .project-overview {
   margin-bottom: 30px;
+  padding: 0 90px;
 }
 
 .project-overview h4 {
