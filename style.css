@@ -572,9 +572,17 @@ li {
   }
 
   .project-intro {
-    margin: 0 -24px 30px;
+    margin: 0 0px 30px;
     padding: 30px 24px;
   }
+
+  .project-overview,
+.project-links,
+.table-contents,
+.article-section {
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
   .project-title-row {
     display: block;
