@@ -545,10 +545,14 @@ li {
     font-size: 13px;
   }
 
-  .main,
-  .project-page {
-    padding: 0 24px 40px;
-  }
+.main {
+  padding: 0 24px 40px;
+}
+
+.project-page {
+  width: calc(100% - 32px);
+  padding: 0 0 40px;
+}
 
   .privacy-page {
     padding: 30px 24px 80px;
