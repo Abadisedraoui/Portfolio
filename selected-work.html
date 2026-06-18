@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+<body class="project-body">
 
 <header class="header">
   <a href="index.html" class="logo-link">
@@ -25,36 +25,42 @@
   </nav>
 </header>
 
-<main class="main">
+<main class="main project-page">
 
-  <section class="experience">
-    <h2>Selected Work</h2>
+  <section class="project-intro">
+    <div class="project-title-row">
+      <h1>Selected Work</h1>
+      <span>Case studies</span>
+    </div>
+
+    <h4>Overview</h4>
 
     <p>
       A selection of projects focused on research, information architecture,
-      accessibility, and design systems.
+      accessibility, design systems, and product thinking.
     </p>
   </section>
 
-  <section class="more">
-    <div class="columns">
+  <section class="selected-work-list">
 
-      <article>
-        <h3>Reorganising a Complex Educational Platform</h3>
+    <article class="selected-work-card">
+      <h3>Reorganising a Complex Educational Platform</h3>
 
-        <p>
-          Analysing 600+ user sessions, 31 teacher interviews,
-          information architecture, card sorting, and platform
-          ecosystems to redesign how educational resources were
-          organised and discovered.
-        </p>
+      <p class="selected-work-tags">
+        Research · Information Architecture · UX Strategy · Prototyping
+      </p>
 
-        <a href="educational-platform.html">
-          Read case study →
-        </a>
-      </article>
+      <p>
+        Analysing 600+ user sessions, 31 teacher interviews,
+        information architecture, card sorting, and platform ecosystems
+        to redesign how educational resources were organised and discovered.
+      </p>
 
-    </div>
+      <a href="educational-platform.html" class="button">
+        Read case study →
+      </a>
+    </article>
+
   </section>
 
 </main>
