@@ -425,7 +425,7 @@ li {
 }
 
 .work-card {
-  max-width: 900px;
+  max-width: 760px;
   background: white;
   border-radius: 28px;
   overflow: hidden;
@@ -440,14 +440,14 @@ li {
 
 .work-card-image {
   width: 100%;
-  height: 260px;
+  height: 220px;
   object-fit: cover;
   display: block;
   background: #e7e5e8;
 }
 
 .work-card-content {
-  padding: 32px;
+  padding: 24px;
 }
 
 .work-tags {
@@ -466,22 +466,23 @@ li {
   font-weight: 700;
   line-height: 1;
   color: #28232f;
+ letter-spacing: 0.2px;
 }
 
 .tag-research {
-  background: #dfe2e3;
+  background: #D8E8E3;
 }
 
 .tag-ia {
-  background: #e3e0e5;
+  background: #E3DDF0;
 }
 
 .tag-strategy {
-  background: #e6e2dd;
+  background: #E3DDF0;
 }
 
 .tag-prototype {
-  background: #dde4e7;
+  background: #D9E6F2;
 }
 
 .work-card h3 {
@@ -697,7 +698,7 @@ li {
   }
 
   .work-card-image {
-    height: 180px;
+    height: 160px;
   }
 
   .work-card-content {
