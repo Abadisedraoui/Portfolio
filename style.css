@@ -425,7 +425,7 @@ li {
 }
 
 .work-card {
-  max-width: 760px;
+  max-width: 48%;
   background: white;
   border-radius: 28px;
   overflow: hidden;
@@ -688,6 +688,10 @@ li {
     padding-bottom: 18px;
   }
 
+  .work-card {
+  width: 100%;
+}
+  
   .project-links article {
     flex: 0 0 85%;
     scroll-snap-align: start;
