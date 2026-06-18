@@ -556,6 +556,20 @@ li {
     grid-template-columns: 1fr 1fr;
   }
 
+  .selected-work-list {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  padding-bottom: 12px;
+}
+
+.work-card {
+  flex: 0 0 70%;
+  scroll-snap-align: start;
+}
+  
   .work-card-image {
     height: 220px;
   }
@@ -690,8 +704,8 @@ li {
     padding-bottom: 18px;
   }
 
-  .work-card {
-  width: 100%;
+ .work-card {
+  flex: 0 0 85%;
 }
   
   .project-links article {
