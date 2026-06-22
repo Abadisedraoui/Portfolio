@@ -421,8 +421,14 @@ li {
 /* Selected work */
 
 .selected-work-list {
-  width: 50%;
+  display: flex;
+  gap: 32px;
+  width: 100%;
   margin: 30px 0 60px;
+}
+
+.work-card {
+  flex: 0 0 calc(50% - 16px);
 }
 
 .work-card {
@@ -704,8 +710,17 @@ li {
     padding-bottom: 18px;
   }
 
- .work-card {
+.selected-work-list {
+  display: flex;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 18px;
+}
+
+.work-card {
   flex: 0 0 85%;
+  scroll-snap-align: start;
 }
   
   .project-links article {
@@ -733,6 +748,22 @@ li {
     font-size: 22px;
   }
 
+  .tag-design-system {
+  background: #cfe6ff;
+}
+
+.tag-accessibility {
+  background: #d3f0d9;
+}
+
+.tag-rebranding {
+  background: #ffe4b8;
+}
+
+.tag-implementation {
+  background: #e6d5ff;
+}
+  
   .footer {
     grid-template-columns: 1fr;
     gap: 24px;
