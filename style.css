@@ -493,6 +493,18 @@ li {
   background: #D9E6F2;
 }
 
+.tag-design-system {
+  background: #E7D2ED;
+}
+
+.tag-rebranding {
+  background: #FFE6F2;
+}
+
+.tag-handoff {
+  background: #D1CCE9;
+}
+
 .work-card h3 {
   font-size: 24px;
   line-height: 1.2;
