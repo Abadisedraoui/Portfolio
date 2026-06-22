@@ -1,4 +1,29 @@
-<!-- Pega aquí el mismo header de tu página anterior -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building an Educational Design System | Zainab Abadi</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="project-body">
+
+<header class="header">
+  <a href="index.html" class="logo-link">
+    <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
+  </a>
+
+  <button class="menu-toggle" aria-label="Open menu">
+    ☰
+  </button>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-link">About me</a>
+    <a href="selected-work.html" class="nav-link active">Selected work</a>
+    <a href="portfolio-project.html" class="nav-link">Portfolio project</a>
+  </nav>
+</header>
 
 <main class="main project-page">
 
@@ -80,12 +105,6 @@
     </p>
 
     <p>
-      Similar experiences behaved differently. Resource organisation varied between products.
-      Navigation patterns were not always consistent. The same content could often be accessed
-      through different paths.
-    </p>
-
-    <p>
       At the same time, the platform was going through a rebranding process and there was a
       long-term objective of bringing the experience closer to HUB, Oxford’s UK platform.
     </p>
@@ -137,17 +156,9 @@
     </p>
 
     <p>
-      I mapped:
+      I mapped products, services, resource structures, navigation patterns,
+      relationships between sections, existing journeys and platform dependencies.
     </p>
-
-    <ul>
-      <li>Products and services</li>
-      <li>Resource structures</li>
-      <li>Navigation patterns</li>
-      <li>Relationships between sections</li>
-      <li>Existing journeys</li>
-      <li>Platform dependencies</li>
-    </ul>
 
     <p>
       The maps quickly became quite large.
@@ -220,25 +231,15 @@
     </p>
 
     <p>
-      The work involved:
+      The work involved understanding HUB’s visual and interaction principles,
+      identifying opportunities for alignment, exploring new visual directions,
+      adapting interaction patterns where appropriate and balancing consistency
+      with local product needs.
     </p>
-
-    <ul>
-      <li>Understanding HUB’s visual and interaction principles</li>
-      <li>Identifying opportunities for alignment</li>
-      <li>Exploring new visual directions</li>
-      <li>Adapting interaction patterns where appropriate</li>
-      <li>Balancing consistency with local product needs</li>
-    </ul>
 
     <p>
       Throughout the project, I regularly presented and validated proposals with leadership
       and the UK team.
-    </p>
-
-    <p>
-      The goal was to create a more coherent experience across the ecosystem without
-      ignoring the specific complexity of Oxford Premium.
     </p>
   </section>
 
@@ -271,11 +272,6 @@
       Rather than asking teachers to understand how the platform was organised internally,
       the experience was reorganised around what they were trying to achieve.
     </p>
-
-    <p>
-      This affected the structure, the layout, the entry points and the way users moved
-      between resources and product areas.
-    </p>
   </section>
 
   <section class="article-section" id="system">
@@ -306,14 +302,8 @@
     </p>
 
     <p>
-      The design system helped standardise recurring decisions across the platform:
-      how components looked, how they behaved, how they adapted to different devices
-      and how they should be implemented.
-    </p>
-
-    <p>
-      It also made the redesign more scalable. Instead of treating each screen as an isolated
-      solution, the system created a shared language for future product work.
+      Instead of treating each screen as an isolated solution, the system created a shared
+      language for future product work.
     </p>
   </section>
 
@@ -325,25 +315,13 @@
     </p>
 
     <p>
-      I worked closely with developers to:
+      I worked closely with developers to clarify behaviours, produce documentation,
+      review implementations, support handoff and iterate on solutions.
     </p>
-
-    <ul>
-      <li>Clarify behaviours</li>
-      <li>Produce documentation</li>
-      <li>Review implementations</li>
-      <li>Support handoff</li>
-      <li>Iterate on solutions</li>
-    </ul>
 
     <p>
       Because the project touched almost every area of the platform, maintaining alignment
       between design and development became just as important as the design work itself.
-    </p>
-
-    <p>
-      Documentation helped reduce ambiguity and made implementation decisions easier
-      to follow over time.
     </p>
   </section>
 
@@ -368,11 +346,6 @@
       More importantly, it helped reduce complexity in a platform that had grown faster
       than its structure.
     </p>
-
-    <p>
-      The project shifted the focus from individual screens to the system underneath them:
-      structure, navigation, behaviours, components and long-term consistency.
-    </p>
   </section>
 
   <section class="article-section" id="reflection">
@@ -389,12 +362,47 @@
 
     <p>
       This project was not really about redesigning screens.
-    </p>
-
-    <p>
       It was about reducing complexity and helping people spend less time understanding
       the platform and more time using it.
     </p>
   </section>
 
 </main>
+
+<footer class="footer">
+  <div>
+    <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
+    <a href="privacy-page.html" class="privacy">Privacy Policy</a>
+  </div>
+
+  <div>
+    <h4>CONTACT</h4>
+    <p>+34627892634</p>
+    <p>zainab.abadi.s@gmail.com</p>
+  </div>
+
+  <div>
+    <h4>LOCATION</h4>
+    <p>Madrid, Spain</p>
+  </div>
+
+  <div>
+    <h4>SOCIAL</h4>
+    <a href="https://www.behance.net/az119" target="_blank" rel="noopener noreferrer">Behance</a>
+    <a href="https://www.linkedin.com/in/zainab-abadi-7878951b0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+  </div>
+
+  <p class="copyright">© 2026 by Zainab Abadi.</p>
+</footer>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuButton.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+</script>
+
+</body>
+</html>
