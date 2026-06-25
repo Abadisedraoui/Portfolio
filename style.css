@@ -599,6 +599,35 @@ li {
   transform: translateY(-2px);
 }
 
+/* Pokemon section */
+
+.pokemon-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin: 120px 0;
+}
+
+.pokemon-fan {
+  position: relative;
+  height: 440px;
+}
+
+.pokemon-info {
+  max-width: 480px;
+}
+
+.pokemon-info h2 {
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.pokemon-info p {
+  margin: 0;
+  line-height: 1.7;
+}
+
 /* Tablet */
 
 @media (max-width: 900px) {
@@ -844,4 +873,23 @@ li {
     bottom: 16px;
     font-size: 20px;
   }
+
+  /* Pokemon */
+
+  @media (max-width: 900px) {
+  .pokemon-section {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .pokemon-fan {
+    order: 2;
+    height: 380px;
+  }
+
+  .pokemon-info {
+    order: 1;
+    max-width: 100%;
+  }
+}
 }
