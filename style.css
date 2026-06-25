@@ -528,15 +528,15 @@ li {
 
 /* Cards without images */
 
-.work-card.no-image .work-card-content {
+.work-card.text-card .work-card-content {
   padding: 32px 24px;
 }
 
-.work-card.no-image h3 {
+.work-card.text-card h3 {
   margin-top: 0;
 }
 
-.work-card.no-image {
+.work-card.text-card {
   min-height: 320px;
 }
 
@@ -804,7 +804,7 @@ li {
     font-size: 22px;
   }
 
-  .work-card.no-image {
+.work-card.text-card {
   min-height: 280px;
 }
 
