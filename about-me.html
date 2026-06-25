@@ -45,88 +45,48 @@
     </div>
   </section>
 
-  <section class="about-cards">
+ <section class="pokemon-section">
 
-    <div class="about-text">
-      <h2>A few things about me</h2>
+  <div class="pokemon-fan">
 
-      <p>
-        Design is only one of the things that shapes how I see the world.
-        Outside work, I spend a lot of time exploring creative hobbies and
-        learning new skills. Theatre, painting, photography, games, travelling,
-        and research constantly influence the way I think, solve problems, and
-        approach design.
-      </p>
+    <article class="pokemon-card card-blue position-1">
+      <img src="images/card1.jpg" alt="">
+      <h3>Case studies</h3>
+      <p>Research and systems thinking.</p>
+    </article>
 
-      <p>
-        Click on the cards to bring them to the front.
-      </p>
-    </div>
+    <article class="pokemon-card card-purple position-2">
+      <img src="images/card2.jpg" alt="">
+      <h3>Writing</h3>
+      <p>Articles and reflections.</p>
+    </article>
 
-    <div class="card-stack">
+    <article class="pokemon-card card-green position-3">
+      <img src="images/card3.jpg" alt="">
+      <h3>Behance</h3>
+      <p>Conceptual explorations.</p>
+    </article>
 
-      <article class="fun-card">
-        <img src="images/card-theatre.jpg" alt="Theatre" />
+    <article class="pokemon-card card-orange position-4">
+      <img src="images/card4.jpg" alt="">
+      <h3>Creative work</h3>
+      <p>Painting and visual storytelling.</p>
+    </article>
 
-        <div class="fun-card-content">
-          <h3>Theatre</h3>
-          <p class="card-type">Type: Creativity</p>
+  </div>
 
-          <p>
-            A place to experiment, improvise and step into different perspectives.
-            It has taught me empathy, communication and the importance of embracing
-            uncertainty.
-          </p>
-        </div>
-      </article>
+  <div class="pokemon-info">
+    <h2>Writing</h2>
 
-      <article class="fun-card">
-        <img src="images/card-painting.jpg" alt="Painting" />
+    <p>
+      Articles exploring design systems, health technologies,
+      creativity and systems thinking through personal experiences,
+      research and curiosity-driven writing.
+    </p>
+  </div>
 
-        <div class="fun-card-content">
-          <h3>Painting</h3>
-          <p class="card-type">Type: Calm</p>
-
-          <p>
-            Painting helps me slow down and pay attention to colour, composition,
-            and emotions. It reminds me that creativity doesn't always need a
-            purpose.
-          </p>
-        </div>
-      </article>
-
-      <article class="fun-card">
-        <img src="images/card-photography.jpg" alt="Photography" />
-
-        <div class="fun-card-content">
-          <h3>Photography</h3>
-          <p class="card-type">Type: Observation</p>
-
-          <p>
-            An excuse to notice small details, patterns and unexpected moments.
-            It has changed the way I look at people and environments.
-          </p>
-        </div>
-      </article>
-
-      <article class="fun-card">
-        <img src="images/card-games.jpg" alt="Games" />
-
-        <div class="fun-card-content">
-          <h3>Games</h3>
-          <p class="card-type">Type: Systems</p>
-
-          <p>
-            From tabletop RPGs to videogames, I enjoy understanding mechanics,
-            narratives and how people interact with complex systems.
-          </p>
-        </div>
-      </article>
-
-    </div>
-
-  </section>
-
+</section>
+  
   <section class="experience">
     <h2>Work experience</h2>
 
@@ -300,6 +260,48 @@
       card.style.zIndex = highest + 1;
     });
   });
+</script>
+
+  <script>
+const cards = document.querySelectorAll('.pokemon-card');
+
+function updatePositions() {
+  cards.forEach((card, index) => {
+    card.classList.remove(
+      'position-1',
+      'position-2',
+      'position-3',
+      'position-4'
+    );
+
+    card.classList.add(`position-${index + 1}`);
+  });
+}
+
+cards.forEach(card => {
+  card.addEventListener('click', () => {
+    const parent = card.parentElement;
+
+    // mueve la carta clicada al final del contenedor
+    parent.appendChild(card);
+
+    // vuelve a leer el nuevo orden
+    const newCards = parent.querySelectorAll('.pokemon-card');
+
+    newCards.forEach((card, index) => {
+      card.classList.remove(
+        'position-1',
+        'position-2',
+        'position-3',
+        'position-4'
+      );
+
+      card.classList.add(`position-${index + 1}`);
+    });
+  });
+});
+
+updatePositions();
 </script>
 
 </body>
