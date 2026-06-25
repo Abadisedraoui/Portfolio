@@ -526,6 +526,20 @@ li {
   align-self: flex-start;
 }
 
+/* Cards without images */
+
+.work-card.no-image .work-card-content {
+  padding: 32px 24px;
+}
+
+.work-card.no-image h3 {
+  margin-top: 0;
+}
+
+.work-card.no-image {
+  min-height: 320px;
+}
+
 /* Privacy page */
 
 .privacy-page {
@@ -789,6 +803,10 @@ li {
   .work-card h3 {
     font-size: 22px;
   }
+
+  .work-card.no-image {
+  min-height: 280px;
+}
 
   .footer {
     grid-template-columns: 1fr;
