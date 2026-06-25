@@ -246,63 +246,33 @@
     });
   });
 
-  const cards = document.querySelectorAll(".fun-card");
+  / * JS Cartas */
+  
+<script>
+  const pokemonFans = document.querySelectorAll(".pokemon-fan");
 
-  cards.forEach(card => {
-    card.addEventListener("click", () => {
-      let highest = 1;
+  pokemonFans.forEach((fan) => {
+    const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
 
-      cards.forEach(c => {
-        const z = parseInt(window.getComputedStyle(c).zIndex) || 1;
-        if (z > highest) highest = z;
+    function updatePositions() {
+      const updatedCards = Array.from(fan.querySelectorAll(".pokemon-card"));
+
+      updatedCards.forEach((card, index) => {
+        card.classList.remove("position-1", "position-2", "position-3", "position-4");
+        card.classList.add(`position-${index + 1}`);
       });
+    }
 
-      card.style.zIndex = highest + 1;
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        fan.appendChild(card);
+        updatePositions();
+      });
     });
+
+    updatePositions();
   });
 </script>
-
-  <script>
-const cards = document.querySelectorAll('.pokemon-card');
-
-function updatePositions() {
-  cards.forEach((card, index) => {
-    card.classList.remove(
-      'position-1',
-      'position-2',
-      'position-3',
-      'position-4'
-    );
-
-    card.classList.add(`position-${index + 1}`);
-  });
-}
-
-cards.forEach(card => {
-  card.addEventListener('click', () => {
-    const parent = card.parentElement;
-
-    // mueve la carta clicada al final del contenedor
-    parent.appendChild(card);
-
-    // vuelve a leer el nuevo orden
-    const newCards = parent.querySelectorAll('.pokemon-card');
-
-    newCards.forEach((card, index) => {
-      card.classList.remove(
-        'position-1',
-        'position-2',
-        'position-3',
-        'position-4'
-      );
-
-      card.classList.add(`position-${index + 1}`);
-    });
-  });
-});
-
-updatePositions();
-</script>
-
+  
 </body>
 </html>
