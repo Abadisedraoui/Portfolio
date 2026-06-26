@@ -1,3 +1,7 @@
+/* =========================================================
+   RESET
+========================================================= */
+
 * {
   box-sizing: border-box;
 }
@@ -18,7 +22,9 @@ a {
   color: inherit;
 }
 
-/* Header */
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header {
   width: calc(100% - 180px);
@@ -80,7 +86,9 @@ a {
   color: white;
 }
 
-/* Global layout */
+/* =========================================================
+   LAYOUT GENERAL
+========================================================= */
 
 .main {
   max-width: 1200px;
@@ -89,7 +97,9 @@ a {
   flex: 1;
 }
 
-/* Typography */
+/* =========================================================
+   TIPOGRAFÍA
+========================================================= */
 
 h1,
 h2,
@@ -129,25 +139,18 @@ p {
   margin: 0 0 14px;
 }
 
-/* Hero */
-
-.hero {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 56px;
-  align-items: stretch;
-  margin-bottom: 56px;
+ul {
+  padding-left: 18px;
+  margin: 0;
 }
 
-.hero h1 {
-  font-size: 34px;
-  line-height: 1.1;
-  margin: 0 0 24px;
+li {
+  margin-bottom: 6px;
 }
 
-.hero p {
-  max-width: 460px;
-}
+/* =========================================================
+   BOTONES
+========================================================= */
 
 .button {
   display: inline-block;
@@ -177,10 +180,26 @@ p {
   outline-offset: 3px;
 }
 
-.button.disabled,
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+  margin-bottom: 56px;
+}
+
+.hero h1 {
+  font-size: 34px;
+  line-height: 1.1;
+  margin: 0 0 24px;
+}
+
+.hero p {
+  max-width: 460px;
 }
 
 .hero-image {
@@ -194,7 +213,9 @@ p {
   object-fit: cover;
 }
 
-/* Home sections */
+/* =========================================================
+   HOME / ABOUT SECTIONS
+========================================================= */
 
 .experience,
 .more {
@@ -213,68 +234,128 @@ p {
   margin-bottom: 14px;
 }
 
-ul {
-  padding-left: 18px;
-  margin: 0;
-}
-
-li {
-  margin-bottom: 6px;
-}
-
 .values {
   text-align: right;
   margin-top: 40px;
   font-size: 14px;
 }
 
-/* Footer */
+/* =========================================================
+   POKÉMON CARDS SECTION
+========================================================= */
 
-.footer {
-  background: #77757c;
-  color: white;
-  padding: 48px 90px 28px;
-  display: grid;
-  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+.pokemon-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 56px;
+  margin: 56px 0;
+}
+
+.pokemon-fan {
   position: relative;
-  margin-top: auto;
+  flex: 0 0 500px;
+  width: 500px;
+  height: 340px;
+  overflow: visible;
 }
 
-.footer-logo {
-  width: 150px;
-  display: block;
-  margin-bottom: 48px;
+.pokemon-info {
+  flex: 1;
+  max-width: 420px;
+  padding: 0;
 }
 
-.footer h4 {
-  margin: 0 0 14px;
-  font-size: 16px;
-  line-height: 1.5;
-  color: white;
+.pokemon-info h2 {
+  text-align: left;
+  margin: 0 0 24px;
 }
 
-.footer p,
-.footer a {
-  display: block;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 8px;
-  color: white;
+.pokemon-info p {
+  margin: 0;
+  line-height: 1.7;
 }
 
-.privacy {
-  margin-top: 24px;
-}
-
-.copyright {
+.pokemon-card {
   position: absolute;
-  right: 90px;
-  bottom: 18px;
-  font-size: 11px;
+  width: 230px;
+  min-height: 310px;
+  padding: 14px;
+  border-radius: 28px;
+  box-shadow: 0 16px 36px rgba(40, 35, 47, .16);
+  cursor: pointer;
+  transition: all .45s ease;
+  overflow: hidden;
 }
 
-/* Portfolio project page */
+.pokemon-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.pokemon-card h3 {
+  font-size: 22px;
+  line-height: 1.2;
+  margin: 0 0 10px;
+}
+
+.pokemon-card p {
+  font-size: 14px;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.card-blue {
+  background: #e8f3ff;
+}
+
+.card-purple {
+  background: #efe7ff;
+}
+
+.card-green {
+  background: #e8f5e9;
+}
+
+.card-orange {
+  background: #fff0df;
+}
+
+.pokemon-card.position-1 {
+  left: 0;
+  top: 55px;
+  transform: rotate(-18deg);
+  z-index: 1;
+}
+
+.pokemon-card.position-2 {
+  left: 90px;
+  top: 25px;
+  transform: rotate(-8deg);
+  z-index: 2;
+}
+
+.pokemon-card.position-3 {
+  left: 180px;
+  top: 25px;
+  transform: rotate(8deg);
+  z-index: 3;
+}
+
+.pokemon-card.position-4 {
+  left: 270px;
+  top: 55px;
+  transform: rotate(18deg);
+  z-index: 4;
+}
+
+/* =========================================================
+   PROJECT / ARTICLE PAGES
+========================================================= */
 
 .project-body .header {
   margin-bottom: 0;
@@ -418,7 +499,9 @@ li {
   margin-bottom: 18px;
 }
 
-/* Selected work */
+/* =========================================================
+   CASE STUDY CARDS
+========================================================= */
 
 .selected-work-list {
   display: grid;
@@ -461,6 +544,38 @@ li {
   flex: 1;
   padding: 24px;
 }
+
+.work-card h3 {
+  font-size: 24px;
+  line-height: 1.2;
+  margin: 0 0 14px;
+}
+
+.work-card p {
+  max-width: 700px;
+  margin-bottom: 22px;
+}
+
+.work-card .button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.work-card.text-card {
+  min-height: 320px;
+}
+
+.work-card.text-card .work-card-content {
+  padding: 32px 24px;
+}
+
+.work-card.text-card h3 {
+  margin-top: 0;
+}
+
+/* =========================================================
+   TAGS
+========================================================= */
 
 .work-tags {
   display: flex;
@@ -510,147 +625,9 @@ li {
   background: #D1CCE9;
 }
 
-.work-card h3 {
-  font-size: 24px;
-  line-height: 1.2;
-  margin: 0 0 14px;
-}
-
-.work-card p {
-  max-width: 700px;
-  margin-bottom: 22px;
-}
-
-.work-card .button {
-  margin-top: auto;
-  align-self: flex-start;
-}
-
-/* Cards without images */
-
-.work-card.text-card .work-card-content {
-  padding: 32px 24px;
-}
-
-.work-card.text-card h3 {
-  margin-top: 0;
-}
-
-.work-card.text-card {
-  min-height: 320px;
-}
-
- /* Pokemon */
-
-/* Pokemon section */
-
-.pokemon-section {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: 140px;
-  align-items: center;
-  margin: 120px 0;
-}
-
-.pokemon-fan {
-  position: relative;
-  width: 560px;
-  height: 440px;
-}
-
-.pokemon-card {
-  position: absolute;
-  width: 230px;
-  min-height: 330px;
-  padding: 14px;
-  border-radius: 28px;
-  box-shadow: 0 16px 36px rgba(40, 35, 47, .18);
-  cursor: pointer;
-  transition: all .45s ease;
-}
-
-.pokemon-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 18px;
-  display: block;
-  margin-bottom: 18px;
-}
-
-.pokemon-card h3 {
-  font-size: 22px;
-  line-height: 1.2;
-  margin: 0 0 10px;
-}
-
-.pokemon-card p {
-  font-size: 14px;
-  line-height: 1.45;
-  margin: 0;
-}
-
-.card-blue {
-  background: #e8f3ff;
-}
-
-.card-purple {
-  background: #efe7ff;
-}
-
-.card-green {
-  background: #e8f5e9;
-}
-
-.card-orange {
-  background: #fff0df;
-}
-
-.pokemon-card.position-1 {
-  left: 0;
-  top: 90px;
-  transform: rotate(-18deg);
-  z-index: 1;
-}
-
-.pokemon-card.position-2 {
-  left: 105px;
-  top: 55px;
-  transform: rotate(-8deg);
-  z-index: 2;
-}
-
-.pokemon-card.position-3 {
-  left: 220px;
-  top: 55px;
-  transform: rotate(8deg);
-  z-index: 3;
-}
-
-.pokemon-card.position-4 {
-  left: 330px;
-  top: 90px;
-  transform: rotate(18deg);
-  z-index: 4;
-}
-
-.pokemon-info {
-  max-width: 420px;
-  align-self: start;
-  padding-top: 80px;
-}
-
-.pokemon-info h2 {
-  text-align: left;
-  margin-bottom: 24px;
-}
-
-.pokemon-info p {
-  margin: 0;
-  line-height: 1.7;
-}
-
-/* Privacy page */
+/* =========================================================
+   PRIVACY PAGE
+========================================================= */
 
 .privacy-page {
   padding: 30px 90px 80px;
@@ -673,7 +650,9 @@ li {
   margin-bottom: 18px;
 }
 
-/* Back to top button */
+/* =========================================================
+   BACK TO TOP
+========================================================= */
 
 .back-to-top {
   position: fixed;
@@ -709,7 +688,9 @@ li {
   transform: translateY(-2px);
 }
 
-/* Tablet */
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
 
 @media (max-width: 900px) {
   .main,
@@ -750,18 +731,22 @@ li {
   }
 
   .pokemon-section {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 50px;
-  }
-
-  .pokemon-fan {
-    order: 2;
-    height: 400px;
+    gap: 56px;
+    margin: 56px 0;
   }
 
   .pokemon-info {
     order: 1;
     max-width: 100%;
+  }
+
+  .pokemon-fan {
+    order: 2;
+    width: 500px;
+    height: 340px;
+    margin: 0 auto;
   }
 
   .footer {
@@ -775,7 +760,9 @@ li {
   }
 }
 
-/* Mobile */
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
   .header {
@@ -934,9 +921,10 @@ li {
   }
 
   .pokemon-section {
+    display: grid;
     grid-template-columns: 1fr;
-    gap: 40px;
-    margin: 80px 0;
+    gap: 32px;
+    margin: 56px 0;
   }
 
   .pokemon-info {
@@ -946,13 +934,50 @@ li {
 
   .pokemon-fan {
     order: 2;
-    height: 360px;
-    transform: scale(.78);
-    transform-origin: left top;
+    width: 320px;
+    height: 270px;
+    margin: 0 auto;
   }
 
-  .pokemon-info h2 {
-    font-size: 26px;
+  .pokemon-card {
+    width: 150px;
+    min-height: 230px;
+    padding: 10px;
+    border-radius: 20px;
+  }
+
+  .pokemon-card img {
+    height: 90px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+  }
+
+  .pokemon-card h3 {
+    font-size: 17px;
+  }
+
+  .pokemon-card p {
+    font-size: 12px;
+  }
+
+  .pokemon-card.position-1 {
+    left: 0;
+    top: 42px;
+  }
+
+  .pokemon-card.position-2 {
+    left: 55px;
+    top: 20px;
+  }
+
+  .pokemon-card.position-3 {
+    left: 110px;
+    top: 20px;
+  }
+
+  .pokemon-card.position-4 {
+    left: 165px;
+    top: 42px;
   }
 
   .footer {
