@@ -30,8 +30,8 @@
 
   <!-- INTRO -->
   <section class="hero">
-    <div class="hero-text">
-      <h1>About me</h1>
+<div class="hero-text" id="heroText">
+  <h1>About me</h1>
 
       <p>
         I’m a UX/UI Designer based in Madrid, working across product design,
@@ -48,7 +48,11 @@
     </div>
 
     <div class="hero-image">
-      <img src="images/profile.jpg" alt="Portrait of Zainab Abadi" />
+     <img
+  id="heroPhoto"
+  src="images/profile.jpg"
+  alt="Portrait of Zainab Abadi"
+/>
     </div>
   </section>
 
@@ -275,6 +279,22 @@
 
     updatePositions();
   });
+
+  /* java de la imagen hero */
+
+  function resizeHeroImage() {
+
+    const text = document.getElementById("heroText");
+    const photo = document.getElementById("heroPhoto");
+
+    if(!text || !photo) return;
+
+    photo.style.height = text.offsetHeight + "px";
+}
+
+window.addEventListener("load", resizeHeroImage);
+window.addEventListener("resize", resizeHeroImage);
+  
 </script>
 
 </body>
