@@ -45,48 +45,44 @@
     </div>
   </section>
 
- <section class="pokemon-section">
+  <section class="pokemon-section">
+    <div class="pokemon-fan">
+      <article class="pokemon-card card-blue position-1">
+        <img src="images/card1.jpg" alt="">
+        <h3>Case studies</h3>
+        <p>Research and systems thinking.</p>
+      </article>
 
-  <div class="pokemon-fan">
+      <article class="pokemon-card card-purple position-2">
+        <img src="images/card2.jpg" alt="">
+        <h3>Writing</h3>
+        <p>Articles and reflections.</p>
+      </article>
 
-    <article class="pokemon-card card-blue position-1">
-      <img src="images/card1.jpg" alt="">
-      <h3>Case studies</h3>
-      <p>Research and systems thinking.</p>
-    </article>
+      <article class="pokemon-card card-green position-3">
+        <img src="images/card3.jpg" alt="">
+        <h3>Behance</h3>
+        <p>Conceptual explorations.</p>
+      </article>
 
-    <article class="pokemon-card card-purple position-2">
-      <img src="images/card2.jpg" alt="">
-      <h3>Writing</h3>
-      <p>Articles and reflections.</p>
-    </article>
+      <article class="pokemon-card card-orange position-4">
+        <img src="images/card4.jpg" alt="">
+        <h3>Creative work</h3>
+        <p>Painting and visual storytelling.</p>
+      </article>
+    </div>
 
-    <article class="pokemon-card card-green position-3">
-      <img src="images/card3.jpg" alt="">
-      <h3>Behance</h3>
-      <p>Conceptual explorations.</p>
-    </article>
+    <div class="pokemon-info">
+      <h2>Writing</h2>
 
-    <article class="pokemon-card card-orange position-4">
-      <img src="images/card4.jpg" alt="">
-      <h3>Creative work</h3>
-      <p>Painting and visual storytelling.</p>
-    </article>
+      <p>
+        Articles exploring design systems, health technologies,
+        creativity and systems thinking through personal experiences,
+        research and curiosity-driven writing.
+      </p>
+    </div>
+  </section>
 
-  </div>
-
-  <div class="pokemon-info">
-    <h2>Writing</h2>
-
-    <p>
-      Articles exploring design systems, health technologies,
-      creativity and systems thinking through personal experiences,
-      research and curiosity-driven writing.
-    </p>
-  </div>
-
-</section>
-  
   <section class="experience">
     <h2>Work experience</h2>
 
@@ -204,7 +200,6 @@
 
   <div>
     <h4>SOCIAL</h4>
-
     <a href="https://www.behance.net/az119" target="_blank" rel="noopener noreferrer">
       Behance
     </a>
@@ -225,43 +220,44 @@
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
 
-  menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+  }
 
   const backToTop = document.querySelector(".back-to-top");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 300) {
-      backToTop.classList.add("show");
-    } else {
-      backToTop.classList.remove("show");
-    }
-  });
-
-  backToTop.addEventListener("click", () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 300) {
+        backToTop.classList.add("show");
+      } else {
+        backToTop.classList.remove("show");
+      }
     });
-  });
 
-  / * JS Cartas */
-  
-<script>
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    });
+  }
+
   const pokemonFans = document.querySelectorAll(".pokemon-fan");
 
   pokemonFans.forEach((fan) => {
-    const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
-
     function updatePositions() {
-      const updatedCards = Array.from(fan.querySelectorAll(".pokemon-card"));
+      const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
 
-      updatedCards.forEach((card, index) => {
+      cards.forEach((card, index) => {
         card.classList.remove("position-1", "position-2", "position-3", "position-4");
         card.classList.add(`position-${index + 1}`);
       });
     }
+
+    const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
 
     cards.forEach((card) => {
       card.addEventListener("click", () => {
@@ -273,6 +269,6 @@
     updatePositions();
   });
 </script>
-  
+
 </body>
 </html>
