@@ -315,6 +315,69 @@ window.addEventListener("resize", resizeHeroImage);
   </button>
     
 </div>
+
+/* jv */
+
+  const expandCardsButton = document.querySelector(".expand-cards-button");
+const cardsModal = document.getElementById("cardsModal");
+const cardsModalCard = document.getElementById("cardsModalCard");
+const cardsModalDots = document.getElementById("cardsModalDots");
+const closeCardsModal = document.querySelector(".cards-modal-close");
+const nextCardButton = document.querySelector(".cards-modal-arrow.next");
+const prevCardButton = document.querySelector(".cards-modal-arrow.prev");
+
+const cardsForModal = Array.from(document.querySelectorAll(".pokemon-card"));
+let activeCardIndex = 0;
+
+function renderModalCard() {
+  cardsModalCard.innerHTML = "";
+  cardsModalDots.innerHTML = "";
+
+  const cardClone = cardsForModal[activeCardIndex].cloneNode(true);
+
+  cardClone.classList.remove("position-1", "position-2", "position-3", "position-4");
+
+  cardsModalCard.appendChild(cardClone);
+
+  cardsForModal.forEach((_, index) => {
+    const dot = document.createElement("span");
+    dot.classList.add("cards-modal-dot");
+
+    if (index === activeCardIndex) {
+      dot.classList.add("active");
+    }
+
+    cardsModalDots.appendChild(dot);
+  });
+}
+
+expandCardsButton.addEventListener("click", () => {
+  activeCardIndex = 0;
+  renderModalCard();
+  cardsModal.classList.add("open");
+});
+
+closeCardsModal.addEventListener("click", () => {
+  cardsModal.classList.remove("open");
+});
+
+nextCardButton.addEventListener("click", () => {
+  activeCardIndex = (activeCardIndex + 1) % cardsForModal.length;
+  renderModalCard();
+});
+
+prevCardButton.addEventListener("click", () => {
+  activeCardIndex =
+    (activeCardIndex - 1 + cardsForModal.length) % cardsForModal.length;
+  renderModalCard();
+});
+
+cardsModal.addEventListener("click", (event) => {
+  if (event.target === cardsModal) {
+    cardsModal.classList.remove("open");
+  }
+});
+  
 </script>
 
 </body>
