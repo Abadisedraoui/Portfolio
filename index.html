@@ -27,8 +27,8 @@
 <main class="main">
 
   <section class="hero">
-    <div class="hero-text">
-      <h1>Zainab Abadi</h1>
+<div class="hero-text" id="heroText">
+  <h1>Zainab Abadi</h1>
 
       <h4>UX/UI DESIGNER</h4>
       <p>
@@ -50,7 +50,7 @@
     </div>
 
     <div class="hero-image">
-      <img src="images/profile.jpg" alt="Portrait of Zainab Abadi" />
+<img id="heroPhoto" src="images/profile.jpg" alt="Portrait of Zainab Abadi" />
     </div>
   </section>
 
@@ -275,6 +275,25 @@ backToTop.addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
+  /* javascript */
+
+  function resizeHeroImage() {
+  const text = document.getElementById("heroText");
+  const photo = document.getElementById("heroPhoto");
+
+  if (!text || !photo) return;
+
+  if (window.innerWidth > 900) {
+    photo.style.height = text.offsetHeight + "px";
+  } else {
+    photo.style.height = "auto";
+  }
+}
+
+window.addEventListener("load", resizeHeroImage);
+window.addEventListener("resize", resizeHeroImage);
+  
 </script>
 
 </body>
