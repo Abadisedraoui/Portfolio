@@ -1085,4 +1085,26 @@ li {
     bottom: 16px;
     font-size: 20px;
   }
+
+   /* confidentiality note */
+
+   .confidentiality-note{
+  margin-top:56px;
+  padding:24px;
+  background:#F7F9FC;
+  border:1px solid #D8E2F0;
+  border-left:4px solid #3F6FB5;
+  border-radius:16px;
+}
+
+.confidentiality-note strong{
+  display:block;
+  margin-bottom:12px;
+  color:#3F6FB5;
+}
+
+.confidentiality-note p{
+  margin:0;
+}
+   
 }
