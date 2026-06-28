@@ -639,6 +639,14 @@
   ↑
 </button>
 
+  <div class="image-modal" id="imageModal">
+  <button class="image-modal-close" type="button" aria-label="Close image">
+    ×
+  </button>
+
+  <img id="imageModalImg" src="" alt="" />
+</div>
+
 <script>
 const backToTop = document.querySelector('.back-to-top');
 
@@ -657,41 +665,42 @@ backToTop.addEventListener('click', () => {
   });
 });
 
+  /* ------- zoom picture article ------- */ 
+   
   const zoomableImages = document.querySelectorAll(".zoomable-image");
 const imageModal = document.getElementById("imageModal");
 const imageModalImg = document.getElementById("imageModalImg");
 const imageModalClose = document.querySelector(".image-modal-close");
 
-zoomableImages.forEach((figure) => {
-  const image = figure.querySelector("img");
-  const button = figure.querySelector(".image-zoom-button");
+if (imageModal && imageModalImg && imageModalClose) {
 
-  button.addEventListener("click", () => {
-    imageModalImg.src = image.src;
-    imageModalImg.alt = image.alt;
-    imageModal.classList.add("open");
+  zoomableImages.forEach((figure) => {
+    const image = figure.querySelector("img");
+    const button = figure.querySelector(".image-zoom-button");
+
+    if (image && button) {
+      button.addEventListener("click", () => {
+        imageModalImg.src = image.src;
+        imageModalImg.alt = image.alt;
+        imageModal.classList.add("open");
+      });
+    }
   });
-});
 
-imageModalClose.addEventListener("click", () => {
-  imageModal.classList.remove("open");
-});
-
-imageModal.addEventListener("click", (event) => {
-  if (event.target === imageModal) {
+  imageModalClose.addEventListener("click", () => {
     imageModal.classList.remove("open");
-  }
-});
+  });
+
+  imageModal.addEventListener("click", (event) => {
+    if (event.target === imageModal) {
+      imageModal.classList.remove("open");
+    }
+  });
+
+}
   
 </script>
 
-  <div class="image-modal" id="imageModal">
-  <button class="image-modal-close" type="button" aria-label="Close image">
-    ×
-  </button>
-
-  <img id="imageModalImg" src="" alt="" />
-</div>
 
 </body>
 </html>
