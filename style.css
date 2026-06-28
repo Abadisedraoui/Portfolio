@@ -87,7 +87,7 @@ a {
 }
 
 /* =========================================================
-   LAYOUT GENERAL
+   GLOBAL LAYOUT
 ========================================================= */
 
 .main {
@@ -98,7 +98,7 @@ a {
 }
 
 /* =========================================================
-   TIPOGRAFÍA
+   TYPOGRAPHY
 ========================================================= */
 
 h1,
@@ -149,7 +149,7 @@ li {
 }
 
 /* =========================================================
-   BOTONES
+   BUTTONS
 ========================================================= */
 
 .button {
@@ -189,7 +189,7 @@ li {
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   align-items: start;
-  margin-bottom: 56px;
+  margin-bottom: 72px;
 }
 
 .hero h1 {
@@ -202,8 +202,15 @@ li {
   max-width: 460px;
 }
 
+.hero-image {
+  width: 100%;
+  height: auto;
+}
+
 .hero-image img {
   width: 100%;
+  max-height: 520px;
+  height: auto;
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -237,7 +244,7 @@ li {
 }
 
 /* =========================================================
-   POKÉMON CARDS SECTION
+   POKEMON CARDS SECTION
 ========================================================= */
 
 .pokemon-section {
@@ -479,7 +486,7 @@ li {
 }
 
 /* =========================================================
-   CASE STUDY CARDS
+   CARDS
 ========================================================= */
 
 .selected-work-list {
@@ -546,10 +553,6 @@ li {
 
 .work-card.text-card .work-card-content {
   padding: 32px 24px;
-}
-
-.work-card.text-card h3 {
-  margin-top: 0;
 }
 
 /* =========================================================
@@ -630,6 +633,54 @@ li {
 }
 
 /* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  background: #77757c;
+  color: white;
+  padding: 48px 90px 28px;
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 56px;
+  position: relative;
+  margin-top: auto;
+}
+
+.footer-logo {
+  width: 150px;
+  display: block;
+  margin-bottom: 48px;
+}
+
+.footer h4 {
+  margin: 0 0 14px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: white;
+}
+
+.footer p,
+.footer a {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  color: white;
+}
+
+.privacy {
+  margin-top: 24px;
+}
+
+.copyright {
+  position: absolute;
+  right: 90px;
+  bottom: 18px;
+  font-size: 11px;
+}
+
+/* =========================================================
    BACK TO TOP
 ========================================================= */
 
@@ -668,7 +719,7 @@ li {
 }
 
 /* =========================================================
-   RESPONSIVE - TABLET
+   TABLET
 ========================================================= */
 
 @media (max-width: 900px) {
@@ -683,11 +734,18 @@ li {
 
   .hero {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: 40px;
+    margin-bottom: 72px;
   }
 
   .hero-image {
-    height: 360px;
+    height: auto;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: auto !important;
+    max-height: none;
   }
 
   .columns {
@@ -763,7 +821,7 @@ li {
 }
 
 /* =========================================================
-   RESPONSIVE - MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
@@ -807,7 +865,6 @@ li {
     flex-direction: column;
     gap: 12px;
     z-index: 10;
-    transform-origin: top right;
   }
 
   .nav.open {
@@ -835,18 +892,26 @@ li {
   .hero {
     grid-template-columns: 1fr;
     gap: 32px;
+    margin-bottom: 72px;
   }
 
   .hero h1 {
     font-size: 32px;
   }
 
-  h2 {
-    font-size: 26px;
+  .hero-image {
+    height: auto;
   }
 
-  .hero-image {
-    height: 320px;
+  .hero-image img {
+    width: 100%;
+    height: auto !important;
+    max-height: none;
+    display: block;
+  }
+
+  h2 {
+    font-size: 26px;
   }
 
   .project-intro {
