@@ -202,16 +202,10 @@ li {
   max-width: 460px;
 }
 
-.hero-image {
-  display: flex;
-  align-items: flex-start;
-}
-
 .hero-image img {
   width: 100%;
-  height: auto;
-  max-height: 520px;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
