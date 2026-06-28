@@ -739,6 +739,34 @@ li {
   transform: translateY(-2px);
 }
 
+
+   /* ------------------------ confidentiality note ------------------------ */
+
+ .confidentiality-note{
+    margin-top:56px;
+    padding:24px 28px;
+
+    background:#F7F9FC;
+    border:1px solid #E4EAF3;
+    border-left:5px solid #3E6FB3;
+    border-radius:16px;
+}
+
+.confidentiality-note strong{
+    display:block;
+    margin-bottom:16px;
+    color:#234D8D;
+    font-size:18px;
+}
+
+.confidentiality-note p{
+    margin:0;
+}
+
+.confidentiality-note p + p{
+    margin-top:16px;
+}
+
 /* =========================================================
    TABLET
 ========================================================= */
@@ -1085,32 +1113,5 @@ li {
     bottom: 16px;
     font-size: 20px;
   }
-
-   /* confidentiality note */
-
- .confidentiality-note{
-    margin-top:56px;
-    padding:24px 28px;
-
-    background:#F7F9FC;
-    border:1px solid #E4EAF3;
-    border-left:5px solid #3E6FB3;
-    border-radius:16px;
-}
-
-.confidentiality-note strong{
-    display:block;
-    margin-bottom:16px;
-    color:#234D8D;
-    font-size:18px;
-}
-
-.confidentiality-note p{
-    margin:0;
-}
-
-.confidentiality-note p + p{
-    margin-top:16px;
-}
    
 }
