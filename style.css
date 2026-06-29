@@ -788,13 +788,13 @@ li {
 
    /* ------------------------ confidentiality note ------------------------ */
 
- .confidentiality-note{
+.confidentiality-note{
     margin-top:56px;
     padding:24px 28px;
 
-    background:#F7F9FC;
-    border:1px solid #E4EAF3;
-    border-left:5px solid #3E6FB3;
+    background:#EEF4FF;
+    border:2px solid #A9C4EE;
+    border-left:6px solid #3E6FB3;
     border-radius:16px;
 }
 
@@ -812,6 +812,7 @@ li {
 .confidentiality-note p + p{
     margin-top:16px;
 }
+
 /* =========================================================
    ARTICLE IMAGE
 ========================================================= */
