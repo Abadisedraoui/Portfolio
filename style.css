@@ -385,6 +385,7 @@ li {
     margin:6px 0 14px;
     font-size:14px;
     line-height:1.5;
+    font-weight:600;
     color:#66758C;
 }
 
@@ -393,7 +394,7 @@ li {
 .date{
     margin-bottom:16px;
     font-size:15px;
-    font-weight:500;
+    font-weight:600;
     color:#8B96A8;
 }
 
