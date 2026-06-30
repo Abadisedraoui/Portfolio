@@ -668,6 +668,28 @@
   ↑
 </button>
 
+  const deviceCarousels = document.querySelectorAll(".device-carousel");
+
+deviceCarousels.forEach((carousel) => {
+  const track = carousel.querySelector(".device-carousel-track");
+  const prev = carousel.querySelector(".carousel-prev");
+  const next = carousel.querySelector(".carousel-next");
+
+  prev.addEventListener("click", () => {
+    track.scrollBy({
+      left: -track.clientWidth,
+      behavior: "smooth"
+    });
+  });
+
+  next.addEventListener("click", () => {
+    track.scrollBy({
+      left: track.clientWidth,
+      behavior: "smooth"
+    });
+  });
+});
+
 <script>
 const backToTop = document.querySelector('.back-to-top');
 
