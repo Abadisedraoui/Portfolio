@@ -394,6 +394,11 @@ li {
 
 /* ---------- Company ---------- */
 
+.experience h4{
+    min-height:48px;
+    margin:18px 0 8px;
+}
+
 .experience h4 a{
     color:#234D8D;
     text-decoration:underline;
@@ -411,6 +416,7 @@ li {
 
 .company-description{
     margin:6px 0 14px;
+    min-height:112px;
     font-size:14px;
     line-height:1.5;
     font-weight:600;
@@ -420,10 +426,17 @@ li {
 /* ---------- Date ---------- */
 
 .date{
-    margin-bottom:16px;
+    min-height:24px;
+    margin-bottom:18px;
     font-size:15px;
     font-weight:600;
     color:#8B96A8;
+}
+
+.experience ul{
+    margin-top:20px;
+    padding-top:20px;
+    border-top:2px solid rgba(35,77,141,.20);
 }
 
 /* =========================================================
