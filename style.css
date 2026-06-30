@@ -361,6 +361,34 @@ li {
 }
 
 /* =========================================================
+   STATS HOME
+========================================================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin: 0 0 72px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 38px;
+  line-height: 1;
+  color: #234D8D;
+  margin-bottom: 10px;
+}
+
+.stat span {
+  display: block;
+  font-size: 18px;
+  line-height: 1.3;
+  font-weight: 700;
+  color: #28232f;
+}
+
+/* =========================================================
    WORK EXPERIENCE - DESCRIPTION
 ========================================================= */
 
@@ -1238,5 +1266,19 @@ box-shadow:
     bottom: 16px;
     font-size: 20px;
   }
+
+   .stats {
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-bottom: 64px;
+}
+
+.stat strong {
+  font-size: 34px;
+}
+
+.stat span {
+  font-size: 17px;
+}
    
 }
