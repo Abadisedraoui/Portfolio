@@ -814,85 +814,66 @@ li {
 }
 
 /* =========================================================
-   DEVICE SHOWCASE CAROUSELS
+   RESPONSIVE GALLERY
 ========================================================= */
 
-.device-showcase {
-  margin: 56px 0;
+.responsive-gallery{
+    margin:64px 0 56px;
 }
 
-.device-showcase h2 {
-  text-align: left;
-  margin-bottom: 24px;
+.responsive-gallery h2{
+    text-align:left;
+    margin-bottom:32px;
 }
 
-.device-showcase-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 32px;
+.responsive-gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
 }
 
-.device-carousel-block h3 {
-  font-size: 18px;
-  margin: 0 0 14px;
+.device-block h3{
+    margin:0 0 16px;
+    font-size:18px;
+    line-height:1.3;
 }
 
-.device-carousel {
-  display: flex;
-  gap: 18px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: 4px 4px 18px;
+.device-carousel{
+
+    display:flex;
+    overflow-x:auto;
+
+    gap:16px;
+
+    scroll-snap-type:x mandatory;
+
+    scrollbar-width:thin;
+
+    padding-bottom:8px;
 }
 
-.device-carousel img {
-  flex: 0 0 72%;
-  max-width: 72%;
-  height: 220px;
-  object-fit: contain;
-  object-position: center;
-  scroll-snap-align: start;
+.device-carousel img{
 
-  background: white;
-  border: 1px solid rgba(40, 35, 47, .12);
-  border-radius: 20px;
-  box-shadow: 0 8px 20px rgba(40, 35, 47, .08);
-  padding: 12px;
-}
+    flex:0 0 100%;
 
-/* Desktop: three images visible */
-@media (min-width: 901px) {
-  .device-carousel {
-    overflow-x: visible;
-  }
+    scroll-snap-align:start;
 
-  .device-carousel img {
-    flex: 1;
-    max-width: none;
-  }
-}
+    width:100%;
 
-/* Tablet */
-@media (max-width: 900px) {
-  .device-carousel img {
-    flex: 0 0 78%;
-    max-width: 78%;
-    height: 200px;
-  }
-}
+    height:260px;
 
-/* Mobile */
-@media (max-width: 600px) {
-  .device-showcase {
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+    object-fit:contain;
 
-  .device-carousel img {
-    flex: 0 0 88%;
-    max-width: 88%;
-    height: 180px;
-  }
+    background:white;
+
+    border-radius:18px;
+
+    border:1px solid rgba(40,35,47,.10);
+
+    box-shadow:
+        0 6px 18px rgba(40,35,47,.08);
+
+    padding:14px;
 }
 
    /* ------------------------ confidentiality note ------------------------ */
@@ -1101,6 +1082,10 @@ box-shadow:
     position: static;
     margin-top: 24px;
   }
+}
+
+.responsive-gallery-grid{
+    grid-template-columns:repeat(2,1fr);
 }
 
 /* =========================================================
@@ -1360,6 +1345,14 @@ box-shadow:
 
 .stat span {
   font-size: 17px;
+}
+
+   .responsive-gallery-grid{
+    grid-template-columns:1fr;
+}
+
+.device-carousel img{
+    height:220px;
 }
    
 }
