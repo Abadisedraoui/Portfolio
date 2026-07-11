@@ -109,16 +109,32 @@ p {
   color: #28232f;
 }
 
+/* Grupo Títulos. Misma familia, peso y line-height para todos los h1/h2/h3
+   que funcionan como título. */
+h1,
+h2,
+h3,
+.hero h1,
+.project-title-row h1,
+.privacy-content h1,
+.work-card h3,
+.pokemon-card h3,
+.experience h3,
+.more h3,
+.device-block h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 h2 {
   font-size: 28px;
-  line-height: 1.2;
   text-align: center;
   margin: 0 0 36px;
 }
 
 h3 {
   font-size: 18px;
-  line-height: 1.2;
   margin: 0 0 8px;
 }
 
@@ -129,9 +145,27 @@ h4 {
   font-weight: 700;
 }
 
+/* Grupo Cuerpo de texto . */
 p,
-li {
+li,
+.hero p,
+.work-card p,
+.article-section p,
+.project-intro p,
+.project-overview p,
+.privacy-content p,
+.experience li,
+.more li,
+.table-contents li,
+.table-contents a,
+.footer p,
+.footer a,
+.confidentiality-note p,
+.values,
+.pokemon-card p {
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
+  font-weight: 400;
   line-height: 1.5;
 }
 
@@ -146,6 +180,20 @@ ul {
 
 li {
   margin-bottom: 6px;
+}
+
+/* Grupo Cuerpo de texto en negrita  */
+.hero h4,
+.project-intro h4,
+.project-overview h4,
+.table-contents h4,
+.footer h4,
+.company-description,
+.date {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 
 /* =========================================================
@@ -231,16 +279,9 @@ li {
   gap: 56px;
 }
 
-.date {
-  font-size: 16px;
-  line-height: 1.5;
-  margin-bottom: 14px;
-}
-
 .values {
   text-align: right;
   margin-top: 40px;
-  font-size: 14px;
 }
 
 /* =========================================================
@@ -306,13 +347,10 @@ li {
 
 .pokemon-card h3 {
   font-size: 22px;
-  line-height: 1.2;
   margin: 0 0 10px;
 }
 
 .pokemon-card p {
-  font-size: 14px;
-  line-height: 1.45;
   margin: 0;
 }
 
@@ -417,9 +455,6 @@ li {
 .company-description{
     margin:6px 0 14px;
     min-height:112px;
-    font-size:14px;
-    line-height:1.5;
-    font-weight:600;
     color:#66758C;
 }
 
@@ -428,8 +463,6 @@ li {
 .date{
     min-height:24px;
     margin-bottom:18px;
-    font-size:15px;
-    font-weight:600;
     color:#8B96A8;
 }
 
@@ -487,16 +520,11 @@ li {
 
 .project-intro h4 {
   margin: 0 0 8px;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 700;
 }
 
 .project-intro p {
   max-width: 850px;
   margin: 0 0 18px;
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 .project-overview {
@@ -506,16 +534,11 @@ li {
 
 .project-overview h4 {
   margin: 30px 0 8px;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 700;
 }
 
 .project-overview p {
   max-width: 900px;
   margin-bottom: 18px;
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 .project-links {
@@ -551,20 +574,11 @@ li {
 }
 
 .table-contents h4 {
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: 700;
   margin-bottom: 8px;
 }
 
 .table-contents ol {
   padding-left: 20px;
-}
-
-.table-contents li,
-.table-contents a {
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 .article-section {
@@ -574,14 +588,11 @@ li {
 .article-section h2 {
   text-align: left;
   font-size: 28px;
-  line-height: 1.2;
   margin-bottom: 18px;
 }
 
 .article-section p {
   max-width: 900px;
-  font-size: 16px;
-  line-height: 1.5;
   margin-bottom: 18px;
 }
 
@@ -633,7 +644,6 @@ li {
 
 .work-card h3 {
   font-size: 24px;
-  line-height: 1.2;
   margin: 0 0 14px;
 }
 
@@ -735,8 +745,6 @@ li {
 }
 
 .privacy-content p {
-  font-size: 16px;
-  line-height: 1.5;
   margin-bottom: 18px;
 }
 
@@ -763,16 +771,12 @@ li {
 
 .footer h4 {
   margin: 0 0 14px;
-  font-size: 16px;
-  line-height: 1.5;
   color: white;
 }
 
 .footer p,
 .footer a {
   display: block;
-  font-size: 14px;
-  line-height: 1.5;
   margin-bottom: 8px;
   color: white;
 }
@@ -853,7 +857,6 @@ li {
 .device-block h3 {
   margin: 0 0 14px;
   font-size: 18px;
-  line-height: 1.3;
   text-align: center;
 }
 
@@ -1309,53 +1312,54 @@ box-shadow:
     min-height: 280px;
   }
 
+  /* ---- Pokemon cards: carrusel horizontal en mobile ----
+     Sustituye el abanico con position:absolute + rotate por
+     un scroll horizontal con snap, igual criterio que
+     .device-carousel / .selected-work-list en mobile. */
+
   .pokemon-section {
     margin: 56px 0 80px;
   }
 
   .pokemon-fan {
-    width: 340px;
-    height: 280px;
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
+    display: flex;
+    gap: 16px;
+    padding: 8px 24px 16px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
   }
 
-  .pokemon-card {
-    width: 145px;
-    min-height: 225px;
-    padding: 12px;
+  .pokemon-fan::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pokemon-card,
+  .pokemon-card.position-1,
+  .pokemon-card.position-2,
+  .pokemon-card.position-3,
+  .pokemon-card.position-4 {
+    position: static;
+    flex: 0 0 78%;
+    width: auto;
+    min-height: 260px;
+    transform: none;
+    scroll-snap-align: start;
   }
 
   .pokemon-card img {
-    height: 88px;
-    border-radius: 14px;
-    margin-bottom: 14px;
+    height: 130px;
   }
 
   .pokemon-card h3 {
-    font-size: 18px;
+    font-size: 20px;
   }
 
   .pokemon-card p {
-    font-size: 12px;
-  }
-
-  .pokemon-card.position-1 {
-    left: 0;
-    top: 56px;
-  }
-
-  .pokemon-card.position-2 {
-    left: 65px;
-    top: 28px;
-  }
-
-  .pokemon-card.position-3 {
-    left: 130px;
-    top: 28px;
-  }
-
-  .pokemon-card.position-4 {
-    left: 195px;
-    top: 56px;
+    font-size: 14px;
   }
 
   .footer {
@@ -1408,5 +1412,5 @@ box-shadow:
 .stat span {
   font-size: 17px;
 }
-   
+
 }
