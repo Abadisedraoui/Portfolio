@@ -273,29 +273,30 @@
     });
   }
 
-  const pokemonFans = document.querySelectorAll(".pokemon-fan");
+ const pokemonFans = document.querySelectorAll(".pokemon-fan");
 
-  pokemonFans.forEach((fan) => {
-    function updatePositions() {
-      const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
-
-      cards.forEach((card, index) => {
-        card.classList.remove("position-1", "position-2", "position-3", "position-4");
-        card.classList.add(`position-${index + 1}`);
-      });
-    }
-
+pokemonFans.forEach((fan) => {
+  function updatePositions() {
     const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
 
-    cards.forEach((card) => {
-      card.addEventListener("click", () => {
-        fan.appendChild(card);
-        updatePositions();
-      });
+    cards.forEach((card, index) => {
+      card.classList.remove("position-1", "position-2", "position-3", "position-4");
+      card.classList.add(`position-${index + 1}`);
     });
+  }
 
-    updatePositions();
+  const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      if (window.innerWidth <= 600) return; // mobile = carrusel, sin interacción
+      fan.appendChild(card);
+      updatePositions();
+    });
   });
+
+  updatePositions();
+});
 
   /* java de la imagen hero */
 
