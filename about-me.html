@@ -78,6 +78,10 @@
       </article>
 
     </div>
+
+    <button class="pokemon-expand-button" type="button" aria-label="Expand cards" id="pokemonExpandButton">
+      ⤢
+    </button>
   </section>
 
   <!-- WORK EXPERIENCE -->
@@ -243,6 +247,45 @@
   ↑
 </button>
 
+<!-- POKEMON CARDS MODAL / CAROUSEL -->
+<div class="pokemon-modal" id="pokemonModal">
+  <button class="pokemon-modal-close" type="button" aria-label="Close">
+    ×
+  </button>
+
+  <div class="pokemon-modal-carousel">
+    <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous card">‹</button>
+
+    <div class="pokemon-modal-track">
+      <article class="pokemon-modal-card card-blue">
+        <img src="images/card1.jpg" alt="">
+        <h3>Community</h3>
+        <p>Sharing knowledge through accessibility, neuroscience, and emotional wellbeing.</p>
+      </article>
+
+      <article class="pokemon-modal-card card-purple">
+        <img src="images/card2.jpg" alt="">
+        <h3>Facilitation</h3>
+        <p>Designing and facilitating workshops on emotional regulation, fascia work, and Theatre of the Oppressed for mixed and neurodivergent communities.</p>
+      </article>
+
+      <article class="pokemon-modal-card card-green">
+        <img src="images/card3.jpg" alt="">
+        <h3>Participatory Arts</h3>
+        <p>Collaborative art projects bringing together writing, painting, theatre, and performance.</p>
+      </article>
+
+      <article class="pokemon-modal-card card-orange">
+        <img src="images/card4.jpg" alt="">
+        <h3>Games & Storytelling</h3>
+        <p>Passionate about LARP, D&D, board games, and video games.</p>
+      </article>
+    </div>
+
+    <button class="carousel-arrow carousel-next" type="button" aria-label="Next card">›</button>
+  </div>
+</div>
+
 <!-- JAVASCRIPT -->
 <script>
   const menuButton = document.querySelector(".menu-toggle");
@@ -273,30 +316,30 @@
     });
   }
 
- const pokemonFans = document.querySelectorAll(".pokemon-fan");
+  const pokemonFans = document.querySelectorAll(".pokemon-fan");
 
-pokemonFans.forEach((fan) => {
-  function updatePositions() {
+  pokemonFans.forEach((fan) => {
+    function updatePositions() {
+      const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
+
+      cards.forEach((card, index) => {
+        card.classList.remove("position-1", "position-2", "position-3", "position-4");
+        card.classList.add(`position-${index + 1}`);
+      });
+    }
+
     const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
 
-    cards.forEach((card, index) => {
-      card.classList.remove("position-1", "position-2", "position-3", "position-4");
-      card.classList.add(`position-${index + 1}`);
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        if (window.innerWidth <= 600) return; // mobile = carrusel, sin interacción
+        fan.appendChild(card);
+        updatePositions();
+      });
     });
-  }
 
-  const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
-
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      if (window.innerWidth <= 600) return; // mobile = carrusel, sin interacción
-      fan.appendChild(card);
-      updatePositions();
-    });
+    updatePositions();
   });
-
-  updatePositions();
-});
 
   /* java de la imagen hero */
 
@@ -313,6 +356,50 @@ pokemonFans.forEach((fan) => {
 window.addEventListener("load", resizeHeroImage);
 window.addEventListener("resize", resizeHeroImage);
 
+  /* ---- Pokemon cards: modal con carrusel horizontal ---- */
+
+  const pokemonExpandButton = document.getElementById("pokemonExpandButton");
+  const pokemonModal = document.getElementById("pokemonModal");
+  const pokemonModalClose = document.querySelector(".pokemon-modal-close");
+  const pokemonTrack = document.querySelector(".pokemon-modal-track");
+  const pokemonPrev = document.querySelector(".pokemon-modal-carousel .carousel-prev");
+  const pokemonNext = document.querySelector(".pokemon-modal-carousel .carousel-next");
+
+  if (pokemonExpandButton && pokemonModal) {
+    pokemonExpandButton.addEventListener("click", () => {
+      pokemonModal.classList.add("open");
+    });
+  }
+
+  if (pokemonModalClose && pokemonModal) {
+    pokemonModalClose.addEventListener("click", () => {
+      pokemonModal.classList.remove("open");
+    });
+  }
+
+  if (pokemonModal) {
+    pokemonModal.addEventListener("click", (event) => {
+      if (event.target === pokemonModal) {
+        pokemonModal.classList.remove("open");
+      }
+    });
+  }
+
+  if (pokemonPrev && pokemonNext && pokemonTrack) {
+    pokemonPrev.addEventListener("click", () => {
+      pokemonTrack.scrollBy({ left: -pokemonTrack.clientWidth, behavior: "smooth" });
+    });
+
+    pokemonNext.addEventListener("click", () => {
+      pokemonTrack.scrollBy({ left: pokemonTrack.clientWidth, behavior: "smooth" });
+    });
+  }
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && pokemonModal) {
+      pokemonModal.classList.remove("open");
+    }
+  });
   
 </script>
 
