@@ -91,9 +91,10 @@ a {
 ========================================================= */
 
 .main {
+  width: calc(100% - 180px);
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 90px 48px;
+  padding: 0 0 48px;
   flex: 1;
 }
 
@@ -1400,7 +1401,8 @@ li {
   }
 
   .main {
-    padding: 0 24px 40px;
+    width: calc(100% - 32px);
+    padding: 0 0 40px;
   }
 
   .project-page {
