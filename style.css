@@ -238,8 +238,7 @@ li {
 
 .cv-buttons {
   display: flex;
-  justify-content: space-between;
-  gap: 14px;
+  gap: 6%;
   flex-wrap: wrap;
   margin-top: 18px;
   width: 100%;
