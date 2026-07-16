@@ -695,40 +695,40 @@ li {
 }
 
 .tag-research {
-  background: #D8E8E3;
+  background: #D3ECE6;
 }
 
 .tag-ia {
-  background: #F0E7DD;
+  background: #D6E6F5;
 }
 
 .tag-strategy,
 .tag-ux-strategy {
-  background: #EDF0DD;
+  background: #DBDFF3;
 }
 
 .tag-prototype {
-  background: #D9E6F2;
+  background: #E2DAF0;
 }
 
 .tag-design-system {
-  background: #E7D2ED;
+  background: #E9D3EC;
 }
 
 .tag-rebranding {
-  background: #FFE6F2;
+  background: #F5D7E7;
 }
 
 .tag-handoff {
-  background: #D1CCE9;
+  background: #F6DED1;
 }
 
 .tag-testing {
-  background: #E6DFF5;
+  background: #F3E4C4;
 }
 
 .tag-documentation {
-  background: #F2E8C9;
+  background: #F1EEC6;
 }
 
 /* =========================================================
@@ -994,7 +994,7 @@ li {
 
 .article-image img {
   width: 100%;
-  height: 70px;
+  height: 40px;
   display: block;
   object-fit: cover;
   object-position: top;
@@ -1011,7 +1011,7 @@ li {
   display: flex;
   align-items: center;
   padding: 0 16px;
-  background: rgba(255, 255, 255, .92);
+  background: #ffffff;
   border: 1px solid rgba(40, 35, 47, .18);
   pointer-events: none;
 }
