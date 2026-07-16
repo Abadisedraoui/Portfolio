@@ -423,17 +423,18 @@ li {
 
 .pokemon-expand-button {
   position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 42px;
-  height: 42px;
+  bottom: 16px;
+  right: 16px;
+  width: 48px;
+  height: 48px;
   border: none;
   border-radius: 50%;
   background: #28232f;
   color: white;
-  font-size: 20px;
+  font-size: 22px;
   cursor: pointer;
   z-index: 5;
+  box-shadow: 0 4px 16px rgba(40, 35, 47, .18);
   transition: transform .2s ease, background .2s ease;
 }
 
@@ -448,15 +449,21 @@ li {
   position: fixed;
   inset: 0;
   display: none;
+  visibility: hidden;
+  opacity: 0;
   align-items: center;
   justify-content: center;
   padding: 40px;
   background: rgba(40, 35, 47, 0.72);
   z-index: 9999;
+  pointer-events: none;
 }
 
 .pokemon-modal.open {
   display: flex;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .pokemon-modal-close {
