@@ -234,6 +234,19 @@ li {
   outline-offset: 3px;
 }
 
+/* ---- CV buttons (hero) ---- */
+
+.cv-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.cv-buttons .button {
+  margin-top: 0;
+}
+
 /* =========================================================
    HERO
 ========================================================= */
@@ -1258,6 +1271,15 @@ li {
 
   .hero h1 {
     font-size: 32px;
+  }
+
+  .cv-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cv-buttons .button {
+    text-align: center;
   }
 
   .hero-image {
