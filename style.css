@@ -994,7 +994,7 @@ li {
 
 .article-image img {
   width: 100%;
-  height: 160px;
+  height: 70px;
   display: block;
   object-fit: cover;
   object-position: top;
@@ -1002,9 +1002,9 @@ li {
 }
 
 /* Overlay de texto que cubre toda la miniatura: fondo blanco
-   opaco, contorno gris, texto oscuro. No aparece en el modal
-   ampliado, solo sobre el thumbnail. Frase personalizable en
-   cada <p>. */
+   al 70% de opacidad (deja intuir la imagen detrás), contorno
+   gris, texto oscuro. No aparece en el modal ampliado, solo
+   sobre el thumbnail. Frase personalizable en cada <p>. */
 .article-image-overlay {
   position: absolute;
   inset: 0;
