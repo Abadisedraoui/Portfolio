@@ -3,19 +3,19 @@
     var wrap = document.createElement("span");
     wrap.className = "logo-signature";
 
-    ["b", "a", "d", "i"].forEach(function (ch) {
+    ["W", "e", "l", "c", "o", "m", "e", " ", "h", "e", "r", "e"].forEach(function (ch) {
       var s = document.createElement("span");
       s.className = "letter";
-      s.textContent = ch;
+      s.textContent = ch === " " ? "\u00A0" : ch;
       wrap.appendChild(s);
     });
 
     var svgNS = "http://www.w3.org/2000/svg";
     var svg = document.createElementNS(svgNS, "svg");
     svg.setAttribute("class", "logo-fire-svg");
-    svg.setAttribute("width", "60");
-    svg.setAttribute("height", "70");
-    svg.setAttribute("viewBox", "0 0 60 70");
+    svg.setAttribute("width", "36");
+    svg.setAttribute("height", "30");
+    svg.setAttribute("viewBox", "0 0 36 30");
 
     var g = document.createElementNS(svgNS, "g");
     g.setAttribute("class", "logo-fire-group");
@@ -23,17 +23,17 @@
 
     var lines = document.createElementNS(svgNS, "g");
     lines.setAttribute("stroke", "#9a9a9a");
-    lines.setAttribute("stroke-width", "2");
+    lines.setAttribute("stroke-width", "1.6");
     lines.setAttribute("stroke-linecap", "round");
 
     var angles = [-70, -40, -15, 10, 35, 60];
     angles.forEach(function (deg) {
       var rad = (deg * Math.PI) / 180;
-      var x2 = 15 + Math.cos(rad) * 20;
-      var y2 = 35 + Math.sin(rad) * 20;
+      var x2 = 9 + Math.cos(rad) * 12;
+      var y2 = 15 + Math.sin(rad) * 12;
       var line = document.createElementNS(svgNS, "line");
-      line.setAttribute("x1", 15);
-      line.setAttribute("y1", 35);
+      line.setAttribute("x1", 9);
+      line.setAttribute("y1", 15);
       line.setAttribute("x2", x2);
       line.setAttribute("y2", y2);
       lines.appendChild(line);
@@ -52,7 +52,7 @@
 
     var letters = signature.querySelectorAll(".letter");
     var fireGroup = signature.querySelector(".logo-fire-group");
-    var stagger = 260;
+    var stagger = 90;
     var timers = [];
 
     function clearTimers() {
@@ -77,7 +77,7 @@
       fireGroup.style.transition = "none";
       fireGroup.style.opacity = "0";
       fireGroup.style.transform = "scale(0.3)";
-      fireGroup.style.transformOrigin = "15px 35px";
+      fireGroup.style.transformOrigin = "9px 15px";
 
       void signature.offsetWidth;
 
