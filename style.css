@@ -71,10 +71,10 @@ a {
 .logo-signature {
   position: absolute;
   left: 100%;
-  bottom: 4px;
+  bottom: 0;
   margin-left: 6px;
   display: inline-flex;
-  align-items: baseline;
+  align-items: flex-end;
   font-family: 'Caveat', cursive;
   font-weight: 700;
   font-size: 26px;
