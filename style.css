@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+
 /* =========================================================
    RESET
 ========================================================= */
@@ -58,6 +60,40 @@ a {
 
 .logo-link.active {
   opacity: 1;
+}
+
+/* ---- Firma "badi" al hover del logo (se inyecta con JS) ---- */
+
+.logo-link {
+  position: relative;
+}
+
+.logo-signature {
+  position: absolute;
+  left: 100%;
+  bottom: 4px;
+  margin-left: 6px;
+  display: inline-flex;
+  align-items: baseline;
+  font-family: 'Caveat', cursive;
+  font-weight: 700;
+  font-size: 26px;
+  color: #000;
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 5;
+}
+
+.logo-signature .letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(4px) rotate(-3deg);
+}
+
+.logo-fire-svg {
+  margin-left: -8px;
+  align-self: center;
+  overflow: visible;
 }
 
 .menu-toggle {
