@@ -1475,6 +1475,7 @@ li {
   .cv-buttons {
     flex-direction: column;
     align-items: stretch;
+    gap: 14px;
   }
 
   .cv-buttons .button {
