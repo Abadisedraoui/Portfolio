@@ -894,6 +894,18 @@ li {
   background: #DCEBD1;
 }
 
+.tag-frontend {
+  background: #CFEAF2;
+}
+
+.tag-personal-project {
+  background: #EDE0D8;
+}
+
+.tag-ai-workflow {
+  background: #D8E0EC;
+}
+
 /* =========================================================
    PRIVACY PAGE
 ========================================================= */
