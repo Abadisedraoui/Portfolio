@@ -119,6 +119,7 @@ a {
    está calculado para igualar el grosor visual de la letra en
    negrita. Reactividad clara en hover (se desplaza y aclara de
    color) y en click/active (se oscurece y se "hunde" un poco). */
+
 .nav-link-back {
   display: inline-flex;
   align-items: center;
@@ -262,6 +263,7 @@ li {
 /* ---- Grupo Cuerpo de texto en negrita (marrón en las notas) ----
    Misma base que el cuerpo (16px / 1.5) pero en negrita.
    Cada elemento conserva su propio color. */
+
 .hero h4,
 .project-intro h4,
 .project-overview h4,
@@ -350,7 +352,7 @@ li {
 
 .hero-image img {
   width: 100%;
-  max-height: 520px;
+  max-height: 600px;
   height: auto;
   object-fit: cover;
   object-position: center top;
