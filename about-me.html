@@ -5,6 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About me | Zainab Abadi</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+
+    .click-here-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      margin-left: 8px;
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1;
+      color: #9a9a9a;
+      transform: rotate(-4deg) translateY(-3px);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+
+    .click-here-note svg {
+      width: 34px;
+      height: 22px;
+      color: #9a9a9a;
+    }
+
+    .chulapa-line {
+      text-align: right;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.3;
+      color: #234D8D;
+      margin-top: 20px !important;
+    }
+  </style>
 </head>
 
 <body>
@@ -39,6 +75,8 @@
       </p>
 
   <p> Painting, poetry, theatre, and violin have been part of my life since childhood, while practices such as aikido, yoga, and meditation continue to influence how I approach attention, empathy, resilience, and learning. Together, they shape both my perspective on design and the way I engage with people and complex problems. </p>
+
+  <p class="chulapa-line">I am an adopted chulapa living in Madrid!</p>
     </div>
 
     <div class="hero-image">
@@ -97,6 +135,13 @@
   <a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">
     Oxford University Press
   </a>
+  <span class="click-here-note" aria-hidden="true">
+    click here!
+    <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M36,4 C24,8 12,14 5,18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M5,18 L12,11 M5,18 L14,20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </span>
 </h4>
 
 <p class="company-description">
@@ -122,6 +167,13 @@
   <a href="https://www.plytix.com/" target="_blank" rel="noopener noreferrer">
     Plytix
   </a>
+  <span class="click-here-note" aria-hidden="true">
+    click here!
+    <svg viewBox="0 0 40 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M36,4 C24,8 12,14 5,18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      <path d="M5,18 L12,11 M5,18 L14,20" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </span>
 </h4>
 
 <p class="company-description">
@@ -351,7 +403,7 @@
 
     if(!text || !photo) return;
 
-    photo.style.height = (text.offsetHeight * 1.12) + "px";
+    photo.style.height = text.offsetHeight + "px";
 }
 
 window.addEventListener("load", resizeHeroImage);
