@@ -351,7 +351,7 @@
 
     if(!text || !photo) return;
 
-    photo.style.height = text.offsetHeight + "px";
+    photo.style.height = (text.offsetHeight * 1.12) + "px";
 }
 
 window.addEventListener("load", resizeHeroImage);
