@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
-
 /* =========================================================
    RESET
 ========================================================= */
@@ -62,37 +60,25 @@ a {
   opacity: 1;
 }
 
-/* ---- Firma "badi" al hover del logo (se inyecta con JS) ---- */
+/* ---- Media corona de rama de olivo al hover del logo (se inyecta con JS) ---- */
 
 .logo-link {
   position: relative;
 }
 
-.logo-signature {
+.logo-branch-wrap {
   position: absolute;
   left: 100%;
-  bottom: 0;
-  margin-left: 6px;
+  bottom: -4px;
+  margin-left: 4px;
   display: inline-flex;
   align-items: flex-end;
-  font-family: 'Caveat', cursive;
-  font-weight: 700;
-  font-size: 26px;
-  color: #6a6a6a;
   pointer-events: none;
-  white-space: nowrap;
   z-index: 5;
 }
 
-.logo-signature .letter {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(4px) rotate(-3deg);
-}
-
-.logo-fire-svg {
-  margin-left: -4px;
-  align-self: flex-end;
+.logo-branch-svg {
+  display: block;
   overflow: visible;
 }
 
@@ -102,6 +88,7 @@ a {
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 28px;
   font-size: 13px;
 }
@@ -120,6 +107,55 @@ a {
 .nav-link.active {
   background-color: #28232f;
   color: white;
+}
+
+/* ---- "Volver al inicio" (a la puerta SALAM) ----
+   Misma familia tipográfica que Home / About me (Arial/Helvetica,
+   la del resto del sitio), pero en cursiva y en negrita, sin la
+   forma de pastilla (sin relleno, sin border-radius) y separado
+   del resto del nav por una línea vertical, como si fuera una
+   firma o una inscripción aparte y no una pestaña más de
+   navegación. El grosor del trazo de la flecha (stroke-width)
+   está calculado para igualar el grosor visual de la letra en
+   negrita. Reactividad clara en hover (se desplaza y aclara de
+   color) y en click/active (se oscurece y se "hunde" un poco). */
+.nav-link-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  padding: 4px 18px 4px 0;
+  margin-right: 14px;
+  border-right: 1px solid rgba(40, 35, 47, .18);
+  border-radius: 0;
+  background-color: transparent;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-weight: 700;
+  font-size: 14px;
+  color: #234D8D;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
+}
+
+.nav-link-back .arrow-icon {
+  flex-shrink: 0;
+  overflow: visible;
+  color: inherit;
+  transition: color 0.2s ease, transform 0.15s ease;
+}
+
+.nav-link-back:hover {
+  background-color: transparent;
+  color: #3E6FB3;
+  border-color: rgba(35, 77, 141, .4);
+  transform: translateX(-3px);
+}
+
+.nav-link-back:active {
+  background-color: transparent;
+  color: #1c3a69;
+  transform: translateX(-1px) scale(0.96);
 }
 
 /* =========================================================
@@ -972,7 +1008,7 @@ li {
 .footer {
   background: #77757c;
   color: white;
-  padding: 48px 90px 28px;
+  padding: 48px 90px 74px;
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
   gap: 56px;
@@ -999,7 +1035,9 @@ li {
 }
 
 .privacy {
-  margin-top: 24px;
+  position: absolute;
+  left: 90px;
+  bottom: 18px;
 }
 
 .copyright {
@@ -1386,6 +1424,11 @@ li {
     padding: 40px;
   }
 
+  .privacy {
+    position: static;
+    margin-top: 24px;
+  }
+
   .copyright {
     position: static;
     margin-top: 24px;
@@ -1435,6 +1478,7 @@ li {
     border-radius: 24px;
     box-shadow: 0 8px 24px rgba(40, 35, 47, .08);
     flex-direction: column;
+    align-items: stretch;
     gap: 12px;
     z-index: 10;
   }
@@ -1446,6 +1490,14 @@ li {
   .nav-link {
     padding: 8px 10px;
     font-size: 13px;
+  }
+
+  .nav-link-back {
+    justify-content: center;
+    margin-right: 0;
+    padding: 0 0 12px;
+    border-right: none;
+    border-bottom: 1px solid rgba(40, 35, 47, .18);
   }
 
   .main {

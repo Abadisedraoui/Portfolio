@@ -1,413 +1,408 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zainab Abadi | UX/UI Designer</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Zainab Abadi | Portfolio</title>
+<meta name="description" content="Zainab Abadi — UX/UI Designer. Choose Quick Scan for a condensed overview or Deep Dive for the full portfolio." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600&display=swap');
+
+  * { box-sizing: border-box; }
+
+  /* Paleta reutilizada del portfolio: tinta y acento son los mismos
+     tonos que el resto del sitio (texto principal #28232f, secundario
+     #66758C), sobre un gris frío y claro. */
+  :root {
+    --ink: #28232f;
+    --ink-soft: #4b4f5c;
+    --accent: #4a5870;
+    --card-bg-a: #f4f5f7;
+    --card-bg-b: #e6e8eb;
+    --btn-bg: #f8f9f9;
+    --content-w: 358px;
+  }
+
+  html, body {
+    margin: 0;
+    height: 100%;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #eceef0;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+
+  /* ============= HERO: ocupa toda la pantalla, no una tarjeta pequeña ============= */
+
+  .hero {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5vh 2.5vw;
+  }
+
+  .hero-plaque {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(160deg, var(--card-bg-a) 0%, var(--card-bg-b) 100%);
+    clip-path: polygon(
+      2.00% 0.25%, 14.00% 0.95%, 26.00% 0.55%, 38.00% 1.09%, 50.00% 1.14%,
+      62.00% -0.15%, 74.00% -0.27%, 86.00% 1.63%, 98.00% 0.30%,
+      98.87% 2.00%, 98.59% 11.60%, 98.47% 21.20%, 98.13% 30.80%, 98.60% 40.40%,
+      98.18% 50.00%, 99.7% 59.60%, 99.23% 69.20%, 98.13% 78.80%, 98.81% 88.40%,
+      98.23% 98.00%, 98.00% 99.56%, 86.00% 99.95%, 74.00% 98.80%, 62.00% 100.13%,
+      50.00% 99.07%, 38.00% 99.46%, 26.00% 100.17%, 14.00% 99.13%, 2.00% 100.21%,
+      0.76% 98.00%, 0.56% 88.40%, 0.02% 78.80%, 1.69% 69.20%, 0.2% 59.60%,
+      0.86% 50.00%, 1.77% 40.40%, -0.11% 30.80%, 0.97% 21.20%, 1.12% 11.60%, -0.21% 2.00%
+    );
+  }
+
+  /* Grano de piedra en 2 capas: motita fina + variación tonal más grande */
+  .hero-plaque::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.18' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+    background-size: 160px 160px, 70px 70px;
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    opacity: .13;
+    pointer-events: none;
+  }
+
+  .hero-plaque::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+    background-size: 480px 480px;
+    mix-blend-mode: multiply;
+    opacity: .08;
+    pointer-events: none;
+  }
+
+  .plaque-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  /* ============= OJOS: almendra + iris circular completo + pestaña ============= */
+
+  .face {
+    display: flex;
+    gap: 26px;
+    margin-bottom: 22px;
+  }
+
+  .eye {
+    width: 128px;
+    height: 64px;
+  }
+
+  .eye svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .eye-group {
+    transform-box: fill-box;
+    transform-origin: center;
+    transition: transform .09s ease;
+  }
+
+  .eye-group.blink {
+    transform: scaleY(.08);
+  }
+
+  .eyeball {
+    transition: transform .05s linear;
+  }
+
+  /* ============= TEXTO: epigrafía fina, ancho igualado al de los botones ============= */
+
+  .salam-stone {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: var(--content-w);
+    max-width: 100%;
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 500;
+    font-size: 46px;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 12px;
+  }
+
+  .subtitle-stone {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 3.2px;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 34px;
+  }
+
+  /* ============= BOTONES: hexágono alargado (6 lados) con sombreado ============= */
+
+  .cta-row {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: var(--content-w);
+    max-width: 100%;
+  }
+
+  .cta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 10.5px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 8px;
+  }
+
+  .cta-eyebrow::before,
+  .cta-eyebrow::after {
+    content: "";
+    width: 12px;
+    height: 1px;
+    background: var(--accent);
+    opacity: .55;
+  }
+
+  .btn-stone {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 168px;
+    height: 52px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .16s ease;
+  }
+
+  .btn-stone svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transition: filter .16s ease;
+  }
+
+  .btn-stone:hover {
+    transform: translateY(-3px);
+  }
+
+  .btn-stone:active {
+    transform: translateY(1px);
+  }
+
+  .btn-stone:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  .btn-label {
+    position: relative;
+    z-index: 1;
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--ink);
+    pointer-events: none;
+  }
+
+  @media (max-width: 560px) {
+    :root {
+      --content-w: 294px;
+    }
+
+    .face {
+      gap: 16px;
+    }
+
+    .eye {
+      width: 104px;
+      height: 52px;
+    }
+
+    .salam-stone {
+      font-size: 34px;
+    }
+
+    .cta-row {
+      gap: 14px;
+    }
+
+    .btn-stone {
+      width: 140px;
+      height: 48px;
+    }
+  }
+</style>
 </head>
 
 <body>
 
-<header class="header">
-  <a href="index.html" class="logo-link active" aria-label="Go to homepage">
-    <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
-  </a>
+<section class="hero">
+  <div class="hero-plaque">
+    <div class="plaque-content">
+      <div class="face" id="face"></div>
 
-  <button class="menu-toggle" aria-label="Open menu">
-    ☰
-  </button>
+      <h1 class="salam-stone" id="salamText" aria-label="Salam"></h1>
+      <p class="subtitle-stone">Welcome to my portfolio</p>
 
-  <nav class="nav">
-    <a href="index.html" class="nav-link active">Home</a>
-    <a href="about-me.html" class="nav-link">About me</a>
-  </nav>
-</header>
-
-<main class="main">
-
-  <section class="hero">
-<div class="hero-text" id="heroText">
-  <h1>Zainab Abadi</h1>
-
-      <h4>UX/UI DESIGNER</h4>
-      <p>
-        UX/UI Designer with +4 years of experience designing complex digital products,
-        B2B platforms, and scalable systems. I combine research, accessibility, and
-        product thinking to create solutions that work for both users and businesses.
-      </p>
-
-      <h4>HOW I THINK</h4>
-      <p>
-        I approach design through curiosity, systems thinking, and structured
-        problem-solving, connecting user needs, business goals, and technical
-        constraints into meaningful solutions.
-      </p>
-
-      <div class="cv-buttons">
-        <a href="cv.pdf" class="button" target="_blank" rel="noopener noreferrer">
-          🧑 Human CV
-        </a>
-
-        <a href="cv1.pdf" class="button" target="_blank" rel="noopener noreferrer">
-          🤖 Robot CV
-        </a>
-      </div>
+      <nav class="cta-row" id="ctaRow" aria-label="Choose how to explore the portfolio"></nav>
     </div>
-
-    <div class="hero-image">
-<img id="heroPhoto" src="images/profile.jpg" alt="Portrait of Zainab Abadi" />
-    </div>
-  </section>
-
-<section class="stats">
-  <div class="stat">
-    <strong>4+</strong>
-    <span>Years of experience</span>
-  </div>
-
-  <div class="stat">
-    <strong>30+</strong>
-    <span>Product features delivered</span>
-  </div>
-
-  <div class="stat">
-    <strong>8+</strong>
-    <span>Products / platforms worked on</span>
   </div>
 </section>
-  
-  <section class="experience">
-    <h2>Case studies</h2>
-
-    <div class="selected-work-list">
-
-      <article class="work-card">
-        <a href="educational-platform.html" class="work-card-image-link">
-          <img src="images/educational-platform-card.jpg" alt="Preview of the educational platform restructuring case study" class="work-card-image" />
-        </a>
-
-        <div class="work-card-content">
-          <div>
-            <div class="work-tags">
-              <span class="tag tag-research">Research</span>
-              <span class="tag tag-ia">Information Architecture</span>
-              <span class="tag tag-strategy">UX Strategy</span>
-              <span class="tag tag-prototype">Prototyping</span>
-            </div>
-
-            <h3>Reorganising a Complex Educational Platform</h3>
-
-            <p>
-              Analysing 600+ user sessions, 31 teacher interviews, information
-              architecture, card sorting, and platform ecosystems to redesign how
-              educational resources were organised and discovered.
-            </p>
-          </div>
-
-          <a href="educational-platform.html" class="button">
-            Read case study →
-          </a>
-        </div>
-      </article>
-
-      <article class="work-card">
-        <a href="design-system-oxford-premium.html" class="work-card-image-link">
-          <img src="images/design-system-card.jpg" alt="Preview of the design system case study" class="work-card-image" />
-        </a>
-
-        <div class="work-card-content">
-          <div>
-            <div class="work-tags">
-              <span class="tag tag-design-system">Design System</span>
-              <span class="tag tag-rebranding">Rebranding</span>
-              <span class="tag tag-strategy">UX Strategy</span>
-              <span class="tag tag-handoff">Handoff</span>
-            </div>
-
-            <h3>Building a Design System</h3>
-
-            <p>
-              Creating a scalable design foundation for Oxford Premium, supporting
-              a rebranding initiative, visual alignment with HUB, redesigned interaction
-              flows, and progressive implementation with development.
-            </p>
-          </div>
-
-          <a href="design-system-oxford-premium.html" class="button">
-            Read case study →
-          </a>
-        </div>
-      </article>
-
-      <article class="work-card">
-  <a href="accessibility-project.html" class="work-card-image-link">
-    <img
-      src="images/accessibility-card.jpg"
-      alt="Preview of the accessibility case study"
-      class="work-card-image"
-    />
-  </a>
-
-  <div class="work-card-content">
-    <div>
-      <div class="work-tags">
-        <span class="tag tag-accessibility">Accessibility</span>
-        <span class="tag tag-design-system">Design System</span>
-<span class="tag tag-testing">Testing</span>
-<span class="tag tag-documentation">Documentation</span>
-      </div>
-
-      <h3>Accessibility Across a Product Ecosystem</h3>
-
-      <p>
-        Auditing platforms, testing with assistive technologies, updating design
-        system foundations, and creating documentation to make accessibility easier
-        to apply across teams.
-      </p>
-    </div>
-
-    <a href="accessibility-project.html" class="button">
-      Read case study →
-    </a>
-  </div>
-</article>
-
-    </div>
-  </section>
-
-<section class="experience">
-  <h2>Behance</h2>
-
-  <div class="selected-work-list">
-
-    <article class="work-card text-card">
-      <div class="work-card-content">
-        <div>
-          <div class="work-tags">
-            <span class="tag tag-design-system">Design System</span>
-            <span class="tag tag-prototype">Prototype</span>
-            <span class="tag tag-accessibility">Accessibility</span>
-          </div>
-
-          <h3>Building an Immersive Design System</h3>
-
-          <p>
-            A visual case study showing how an immersive concept evolved into a
-            digital experience through accessibility, prototyping, visual language,
-            and design system foundations.
-          </p>
-        </div>
-
-        <a
-          href="https://www.behance.net/gallery/251658619/Building-an-Immersive-Design-System"
-          class="button"
-          target="_blank"
-          rel="noopener noreferrer">
-          View on Behance →
-        </a>
-      </div>
-    </article>
-
-  </div>
-</section>
-
- <section class="experience">
-  <h2>Writing</h2>
-
-  <div class="selected-work-list">
-
-    <article class="work-card text-card">
-      <div class="work-card-content">
-        <div>
-          <div class="work-tags">
-            <span class="tag tag-creative-process">Creative process</span>
-            <span class="tag tag-personal-essay">Personal essay</span>
-          </div>
-
-          <h3>A Painting Story</h3>
-
-          <p>
-            A personal reflection on painting as a space for calm, exploration,
-            cultural memory, vulnerability, and creative presence.
-          </p>
-        </div>
-
-        <a
-          href="https://www.linkedin.com/pulse/painting-story-zainab-abadi-6yqbe/"
-          class="button"
-          target="_blank"
-          rel="noopener noreferrer">
-          Read on LinkedIn →
-        </a>
-      </div>
-    </article>
-
-    <article class="work-card text-card">
-      <div class="work-card-content">
-        <div>
-          <div class="work-tags">
-            <span class="tag tag-strategy">UX Strategy</span>
-            <span class="tag tag-research">Research</span>
-            <span class="tag tag-femtech">Femtech</span>
-          </div>
-
-          <h3>Mapping the Hormonal Health Ecosystem</h3>
-
-          <p>
-            A UX analysis of hormonal health apps, exploring how the category is
-            shifting from simple cycle tracking to interpretive systems.
-          </p>
-        </div>
-
-        <a
-          href="https://www.linkedin.com/pulse/mapping-hormonal-health-ecosystem-zainab-abadi-k0nqe/"
-          class="button"
-          target="_blank"
-          rel="noopener noreferrer">
-          Read on LinkedIn →
-        </a>
-      </div>
-    </article>
-
-    <article class="work-card text-card">
-      <div class="work-card-content">
-        <div>
-          <div class="work-tags">
-            <span class="tag tag-frontend">Frontend</span>
-            <span class="tag tag-design-system">Design System</span>
-            <span class="tag tag-personal-project">Personal Project</span>
-          </div>
-
-          <h3>Building My Portfolio: From No-Code to a Custom Frontend</h3>
-
-          <p>
-            Following the evolution of my portfolio from Wix Studio to a custom
-            frontend, exploring design systems, design-to-development workflows,
-            and how AI tools supported the process.
-          </p>
-        </div>
-
-        <a
-          href="https://www.linkedin.com/pulse/building-my-portfolio-from-no-code-custom-frontend-zainab-abadi-5rase/?trackingId=xO3gOS4kRi%2BT9iT3BFJZiA%3D%3D"
-          class="button"
-          target="_blank"
-          rel="noopener noreferrer">
-          Read on LinkedIn →
-        </a>
-      </div>
-    </article>
-
-    <article class="work-card text-card">
-      <div class="work-card-content">
-        <div>
-          <div class="work-tags">
-            <span class="tag tag-design-system">Design System</span>
-            <span class="tag tag-documentation">Documentation</span>
-            <span class="tag tag-ai-workflow">AI Workflow</span>
-          </div>
-
-          <h3>Building My Portfolio, Part II: The Design System Behind the Code</h3>
-
-          <p>
-            A look at the design system behind the portfolio's code, built directly
-            in HTML and CSS, documented afterwards, and kept consistent with the
-            help of AI tooling.
-          </p>
-        </div>
-
-        <a
-          href="https://www.linkedin.com/pulse/building-my-portfolio-part-ii-design-system-behind-code-zainab-abadi-lrfqe/?trackingId=xO3gOS4kRi%2BT9iT3BFJZiA%3D%3D"
-          class="button"
-          target="_blank"
-          rel="noopener noreferrer">
-          Read on LinkedIn →
-        </a>
-      </div>
-    </article>
-
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <div>
-    <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
-    <a href="privacy-page.html" class="privacy">Privacy Policy</a>
-  </div>
-
-  <div>
-    <h4>CONTACT</h4>
-    <p>+34627892634</p>
-    <p>zainab.abadi.s@gmail.com</p>
-  </div>
-
-  <div>
-    <h4>LOCATION</h4>
-    <p>Madrid, Spain</p>
-  </div>
-
-  <div>
-    <h4>SOCIAL</h4>
-    <a href="https://www.behance.net/az119" target="_blank" rel="noopener noreferrer">Behance</a>
-    <a href="https://www.linkedin.com/in/zainab-abadi-7878951b0/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-  </div>
-
-  <p class="copyright">© 2026 by Zainab Abadi.</p>
-</footer>
 
 <script>
-  const menuButton = document.querySelector(".menu-toggle");
-  const nav = document.querySelector(".nav");
+  // ---- Ojos "mirada griega": almendra con párpado superior más grueso,
+  // anillo de iris completo + pupila (sigue el cursor), y pestaña
+  // esquemática en la esquina exterior.
+  function buildEye(corner, uid) {
+    const mirror = corner === 'left';
+    const tipX = mirror ? 4 : 136;
+    const dir = mirror ? -1 : 1;
+    const lashes = [
+      [tipX, 35, tipX + dir * 7, 29],
+      [tipX, 35, tipX + dir * 9, 35],
+      [tipX, 35, tipX + dir * 7, 41]
+    ].map(([x1, y1, x2, y2]) =>
+      `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"/>`
+    ).join('');
 
-  menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
+    return `
+    <svg viewBox="0 0 140 70">
+      <g class="eye-group">
+        <path d="M4,35 Q70,4 136,35" fill="none" stroke="#28232f" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M4,35 Q70,66 136,35" fill="none" stroke="#28232f" stroke-width="2.2" stroke-linecap="round"/>
+        <g class="eyeball">
+          <circle cx="70" cy="35" r="15" fill="none" stroke="#28232f" stroke-width="2.4"/>
+          <circle cx="70" cy="35" r="7" fill="#28232f"/>
+        </g>
+      </g>
+      ${lashes}
+    </svg>`;
+  }
+
+  let uid = 0;
+  const face = document.getElementById('face');
+  face.innerHTML =
+    `<div class="eye">${buildEye('left', uid++)}</div>` +
+    `<div class="eye">${buildEye('right', uid++)}</div>`;
+
+  const eyes = document.querySelectorAll('.eye');
+
+  document.addEventListener('mousemove', (e) => {
+    eyes.forEach((eye) => {
+      const ball = eye.querySelector('.eyeball');
+      if (!ball) return;
+      const rect = eye.getBoundingClientRect();
+      const cx = rect.left + rect.width / 2;
+      const cy = rect.top + rect.height / 2;
+      const dx = e.clientX - cx;
+      const dy = e.clientY - cy;
+      const angle = Math.atan2(dy, dx);
+      const dist = Math.min(6, Math.hypot(dx, dy) / 18);
+      const ox = Math.cos(angle) * dist;
+      const oy = Math.sin(angle) * dist;
+      ball.style.transform = `translate(${ox}px, ${oy}px)`;
+    });
   });
+
+  function blink() {
+    document.querySelectorAll('.eye-group').forEach((g) => {
+      g.classList.add('blink');
+      setTimeout(() => g.classList.remove('blink'), 160);
+    });
+    setTimeout(blink, 6000 + Math.random() * 4000);
+  }
+  setTimeout(blink, 2500);
+
+  // ---- SALAM: una letra por celda flex, repartidas a todo el ancho
+  // de la fila de botones (space-between) ----
+  document.getElementById('salamText').innerHTML =
+    'SALAM'.split('').map((ch) => `<span>${ch}</span>`).join('');
+
+  // ---- Botones: hexágono alargado (6 lados), con hover (se levanta)
+  // y active (se hunde) ----
+  const HEX_PATHS = {
+    quick: "M14.0,0.0 L57.0,0.26 L100.0,-0.98 L143.0,1.49 L186.0,0.0 L192.19,12.96 L200.0,25.0 L196.59,31.3 L192.54,37.24 L190.3,44.2 L186.0,50.0 L100.0,50.61 L14.0,50.0 L9.91,44.08 L7.54,37.2 L2.7,31.7 L0.0,25.0 L7.9,13.01 Z",
+    deep:  "M14.0,0.0 L57.0,0.84 L100.0,0.46 L143.0,-0.29 L186.0,0.0 L193.58,12.18 L200.0,25.0 L196.01,30.97 L191.69,36.77 L189.7,43.86 L186.0,50.0 L100.0,49.23 L14.0,50.0 L9.2,44.48 L7.08,37.46 L2.67,31.72 L0.0,25.0 L6.99,12.49 Z"
+  };
+
+  function buildButtonSVG(key, uid) {
+    const gradId = `btnGrad-${uid}`;
+    const path = HEX_PATHS[key];
+    return `
+    <svg viewBox="0 0 200 54" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="${gradId}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#fbfcfc"/>
+          <stop offset="100%" stop-color="#e7e9e9"/>
+        </linearGradient>
+      </defs>
+      <g filter="drop-shadow(0 3px 3px rgba(40,35,47,.22))">
+        <path d="${path}" fill="#b9bbbb" transform="translate(0,4)"/>
+        <path d="${path}" fill="url(#${gradId})" stroke="#28232f" stroke-width="1.6"/>
+      </g>
+    </svg>`;
+  }
+
+  const buttons = [
+    { label: 'Quick Scan', eyebrow: 'Recruiter mode', key: 'quick', href: 'quick-scan.html' },
+    { label: 'Deep Dive', eyebrow: 'Tech mode', key: 'deep', href: 'home.html' }
+  ];
+
+  let btnUid = 0;
+  const ctaRow = document.getElementById('ctaRow');
+  ctaRow.innerHTML = buttons.map((b) => `
+    <div class="cta-item">
+      <p class="cta-eyebrow">${b.eyebrow}</p>
+      <a href="${b.href}" class="btn-stone" aria-label="${b.label} — ${b.eyebrow}">
+        ${buildButtonSVG(b.key, btnUid++)}
+        <span class="btn-label">${b.label}</span>
+      </a>
+    </div>
+  `).join('');
 </script>
 
-<button class="back-to-top" aria-label="Back to top">
-  ↑
-</button>
-
-<script>
-const backToTop = document.querySelector('.back-to-top');
-
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 300) {
-    backToTop.classList.add('show');
-  } else {
-    backToTop.classList.remove('show');
-  }
-});
-
-backToTop.addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
-  });
-});
-
-  /* javascript */
-
-  function resizeHeroImage() {
-  const text = document.getElementById("heroText");
-  const photo = document.getElementById("heroPhoto");
-
-  if (!text || !photo) return;
-
-  if (window.innerWidth > 900) {
-    photo.style.height = text.offsetHeight + "px";
-  } else {
-    photo.style.height = "auto";
-  }
-}
-
-window.addEventListener("load", resizeHeroImage);
-window.addEventListener("resize", resizeHeroImage);
-  
-</script>
-
-<script src="logo-animation.js"></script>
 </body>
 </html>
