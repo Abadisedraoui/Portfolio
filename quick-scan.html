@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Quick Scan | Zainab Abadi</title>
+<meta name="description" content="Zainab Abadi — Quick Scan. Coming soon." />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600&display=swap');
+
+  * { box-sizing: border-box; }
+
+  :root {
+    --ink: #28232f;
+    --ink-soft: #4b4f5c;
+    --accent: #4a5870;
+    --card-bg-a: #f4f5f7;
+    --card-bg-b: #e6e8eb;
+  }
+
+  html, body {
+    margin: 0;
+    min-height: 100%;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--ink);
+    line-height: 1.5;
+    min-height: 100vh;
+    background: linear-gradient(160deg, var(--card-bg-a) 0%, var(--card-bg-b) 100%);
+    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='44' viewBox='0 0 100 110'%3E%3Cpath d='M50,5 L65,26 L50,47 L35,26 Z' fill='%233a4658'/%3E%3Cpath d='M28,49 L43,70 L28,91 L13,70 Z' fill='%233a4658'/%3E%3Cpath d='M72,49 L87,70 L72,91 L57,70 Z' fill='%233a4658'/%3E%3C/svg%3E") 20 19, auto;
+  }
+
+  .hero {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 6vw;
+  }
+
+  /* Grano de piedra en 2 capas, igual que en la puerta de entrada */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.18' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+    background-size: 160px 160px, 70px 70px;
+    background-blend-mode: multiply;
+    mix-blend-mode: multiply;
+    opacity: .13;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+    background-size: 480px 480px;
+    mix-blend-mode: multiply;
+    opacity: .08;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 560px;
+  }
+
+  .eyebrow {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', 'Times New Roman', serif;
+    font-weight: 600;
+    font-size: 44px;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-weight: 500;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--ink-soft);
+    margin: 0 0 40px;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    padding-bottom: 3px;
+    border-bottom: 1.5px solid rgba(40, 35, 47, .4);
+    transition: opacity .16s ease, border-color .16s ease;
+  }
+
+  .back-link:hover {
+    opacity: .7;
+    border-color: var(--ink);
+  }
+
+  .back-link svg {
+    width: 15px;
+    height: 11px;
+  }
+
+  @media (max-width: 560px) {
+    h1 {
+      font-size: 32px;
+    }
+
+    .subtitle {
+      font-size: 17px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+  <div class="content">
+    <p class="eyebrow">Recruiter mode</p>
+    <h1>Under construction</h1>
+    <p class="subtitle">Coming soon!</p>
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back
+    </a>
+  </div>
+</section>
+
+</body>
+</html>
