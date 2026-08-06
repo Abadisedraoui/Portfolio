@@ -397,7 +397,7 @@ backToTop.addEventListener('click', () => {
   if (!text || !photo) return;
 
   if (window.innerWidth > 900) {
-    photo.style.height = text.offsetHeight + "px";
+    photo.style.height = (text.offsetHeight * 1.2) + "px";
   } else {
     photo.style.height = "auto";
   }
