@@ -6,20 +6,34 @@
   <title>Zainab Abadi | Quick Scan</title>
   <meta name="description" content="Zainab Abadi — UX/UI Designer. Quick scan: skills, experience highlights, and case studies at a glance." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
+  </style>
 
   <style>
     /* ============= QUICK SCAN — bloques propios de esta página ============= */
 
-    /* mientras solo haya una case study, que no se quede pegada a la izquierda */
-    .experience .selected-work-list {
-      grid-template-columns: repeat(auto-fit, minmax(320px, 460px));
-      justify-content: center;
+    .click-here-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      margin-left: 8px;
+      font-family: 'Caveat', cursive;
+      font-weight: 700;
+      font-size: 22px;
+      line-height: 1;
+      color: #9a9a9a;
+      transform: rotate(-4deg) translateY(-3px);
+      pointer-events: none;
+      user-select: none;
+      white-space: nowrap;
+      vertical-align: middle;
     }
 
     .quick-hero {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
+      align-items: center;
       flex-wrap: wrap;
       gap: 24px;
       margin-bottom: 56px;
@@ -216,13 +230,13 @@
 
     <div class="exp-cards">
       <div class="exp-card">
-        <h4><a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">Oxford University Press</a></h4>
+        <h4><a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">Oxford University Press</a><span class="click-here-note" aria-hidden="true">click here!</span></h4>
         <p class="role-label">UX/UI Designer · Jan 2023 – Oct 2025</p>
         <p class="impact">Improved accessibility and product consistency across a major academic platform through research, WCAG audits, and design system work.</p>
       </div>
 
       <div class="exp-card">
-        <h4><a href="https://www.plytix.com/" target="_blank" rel="noopener noreferrer">Plytix</a></h4>
+        <h4><a href="https://www.plytix.com/" target="_blank" rel="noopener noreferrer">Plytix</a><span class="click-here-note" aria-hidden="true">click here!</span></h4>
         <p class="role-label">UX Designer · Jul 2022 – Sept 2022</p>
         <p class="impact">Optimised SaaS workflows and strengthened product consistency through UX documentation and cross-functional collaboration.</p>
       </div>
