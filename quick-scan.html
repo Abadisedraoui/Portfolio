@@ -1,165 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Quick Scan | Zainab Abadi</title>
-<meta name="description" content="Zainab Abadi — Quick Scan. Coming soon." />
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zainab Abadi | Quick Scan</title>
+  <meta name="description" content="Zainab Abadi — UX/UI Designer. Quick scan: skills, experience highlights, and case studies at a glance." />
+  <link rel="stylesheet" href="style.css" />
 
-  * { box-sizing: border-box; }
+  <style>
+    /* ============= QUICK SCAN — bloques propios de esta página ============= */
 
-  :root {
-    --ink: #28232f;
-    --ink-soft: #4b4f5c;
-    --accent: #4a5870;
-    --card-bg-a: #f4f5f7;
-    --card-bg-b: #e6e8eb;
-  }
-
-  html, body {
-    margin: 0;
-    min-height: 100%;
-  }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--ink);
-    line-height: 1.5;
-    min-height: 100vh;
-    background: linear-gradient(160deg, var(--card-bg-a) 0%, var(--card-bg-b) 100%);
-    cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='28' viewBox='0 0 100 70'%3E%3Cpath d='M50,2 L65,20 L50,38 L35,20 Z' fill='%233a4658'/%3E%3Cpath d='M36,32 L51,50 L36,68 L21,50 Z' fill='%233a4658'/%3E%3Cpath d='M64,32 L79,50 L64,68 L49,50 Z' fill='%233a4658'/%3E%3C/svg%3E") 20 14, auto;
-  }
-
-  .hero {
-    position: relative;
-    z-index: 1;
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 4vh 6vw;
-  }
-
-  /* Grano de piedra en 2 capas, igual que en la puerta de entrada */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.18' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.8 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
-    background-size: 160px 160px, 70px 70px;
-    background-blend-mode: multiply;
-    mix-blend-mode: multiply;
-    opacity: .13;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='480' height='480'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
-    background-size: 480px 480px;
-    mix-blend-mode: multiply;
-    opacity: .08;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 560px;
-  }
-
-  .eyebrow {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 18px;
-  }
-
-  h1 {
-    font-family: 'Playfair Display', 'Times New Roman', serif;
-    font-weight: 600;
-    font-size: 44px;
-    line-height: 1.15;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin: 0 0 18px;
-  }
-
-  .subtitle {
-    font-family: 'Playfair Display', serif;
-    font-weight: 500;
-    font-style: italic;
-    font-size: 20px;
-    color: var(--ink-soft);
-    margin: 0 0 40px;
-  }
-
-  .back-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: .5px;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-    padding-bottom: 3px;
-    border-bottom: 1.5px solid rgba(40, 35, 47, .4);
-    transition: opacity .16s ease, border-color .16s ease;
-  }
-
-  .back-link:hover {
-    opacity: .7;
-    border-color: var(--ink);
-  }
-
-  .back-link svg {
-    width: 15px;
-    height: 11px;
-  }
-
-  @media (max-width: 560px) {
-    h1 {
-      font-size: 32px;
+    .quick-hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 56px;
     }
 
-    .subtitle {
-      font-size: 17px;
+    .quick-hero h1 {
+      font-size: 34px;
+      line-height: 1.1;
+      margin: 0 0 8px;
     }
-  }
-</style>
+
+    .quick-hero .role-line {
+      font-size: 18px;
+      font-weight: 700;
+      color: #66758C;
+      margin: 0;
+    }
+
+    .quick-hero .cv-buttons {
+      margin-top: 0;
+      width: auto;
+    }
+
+    .exp-cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .exp-card {
+      background: white;
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .exp-card h4 {
+      min-height: 0;
+      margin: 0 0 2px;
+    }
+
+    .exp-card h4 a {
+      color: #234D8D;
+      text-decoration: underline;
+      text-decoration-color: rgba(35, 77, 141, .35);
+      text-underline-offset: 3px;
+      transition: .2s ease;
+    }
+
+    .exp-card h4 a:hover {
+      color: #3E6FB3;
+      text-decoration-color: #3E6FB3;
+    }
+
+    .exp-card .role-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #8B96A8;
+      margin: 0 0 14px;
+    }
+
+    .exp-card .impact {
+      color: #28232f;
+      margin: 0;
+    }
+
+    .want-more {
+      background: #234D8D;
+      border-radius: 28px;
+      padding: 40px;
+      text-align: center;
+      margin: 56px 0;
+    }
+
+    .want-more h2 {
+      color: white;
+      margin: 0 0 20px;
+    }
+
+    .linkedin-cute {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      transition: transform .18s ease, background .18s ease;
+    }
+
+    .linkedin-cute:hover {
+      transform: translateY(-2px) scale(1.05);
+      background: #eef2f8;
+    }
+
+    .linkedin-cute svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    @media (max-width: 900px) {
+      .quick-hero {
+        flex-direction: column;
+      }
+
+      .exp-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .want-more {
+        padding: 32px 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<section class="hero">
-  <div class="content">
-    <p class="eyebrow">Recruiter mode</p>
-    <h1>Under construction</h1>
-    <p class="subtitle">Coming soon!</p>
-    <a href="index.html" class="back-link">
-      <svg viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back
-    </a>
-  </div>
-</section>
+<header class="header">
+  <a href="home.html" class="logo-link" aria-label="Go to homepage">
+    <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
+  </a>
 
+  <button class="menu-toggle" aria-label="Open menu">
+    ☰
+  </button>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
+  </nav>
+</header>
+
+<main class="main">
+
+  <section class="quick-hero">
+    <div>
+      <h1>Zainab Abadi</h1>
+      <p class="role-line">UX/UI Designer — 4+ years designing complex digital products</p>
+    </div>
+
+    <div class="cv-buttons">
+      <a href="cv.pdf" class="button" target="_blank" rel="noopener noreferrer">
+        🧑 Human CV
+      </a>
+
+      <a href="cv1.pdf" class="button" target="_blank" rel="noopener noreferrer">
+        🤖 Robot CV
+      </a>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat">
+      <strong>4+</strong>
+      <span>Years of experience</span>
+    </div>
+
+    <div class="stat">
+      <strong>30+</strong>
+      <span>Product features delivered</span>
+    </div>
+
+    <div class="stat">
+      <strong>8+</strong>
+      <span>Products / platforms worked on</span>
+    </div>
+  </section>
+
+  <section class="experience">
+    <h2>Core skills</h2>
+
+    <div class="work-tags">
+      <span class="tag tag-design-system">Design Systems</span>
+      <span class="tag tag-accessibility">Accessibility (WCAG)</span>
+      <span class="tag tag-research">UX Research</span>
+      <span class="tag tag-ia">Figma</span>
+      <span class="tag tag-rebranding">Visual Design</span>
+      <span class="tag tag-handoff">Developer Handoff</span>
+      <span class="tag tag-testing">User Testing</span>
+    </div>
+  </section>
+
+  <section class="experience">
+    <h2>Experience highlights</h2>
+
+    <div class="exp-cards">
+      <div class="exp-card">
+        <h4><a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">Oxford University Press</a></h4>
+        <p class="role-label">UX/UI Designer · Jan 2023 – Oct 2025</p>
+        <p class="impact">Improved accessibility and product consistency across a major academic platform through research, WCAG audits, and design system work.</p>
+      </div>
+
+      <div class="exp-card">
+        <h4><a href="https://www.plytix.com/" target="_blank" rel="noopener noreferrer">Plytix</a></h4>
+        <p class="role-label">UX Designer · Jul 2022 – Sept 2022</p>
+        <p class="impact">Optimised SaaS workflows and strengthened product consistency through UX documentation and cross-functional collaboration.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience">
+    <h2>Case studies</h2>
+
+    <div class="selected-work-list">
+
+      <article class="work-card">
+        <a href="educational-platform.html" class="work-card-image-link">
+          <img src="images/educational-platform-card.jpg" alt="Preview of the educational platform restructuring case study" class="work-card-image" />
+        </a>
+
+        <div class="work-card-content">
+          <div>
+            <div class="work-tags">
+              <span class="tag tag-research">Research</span>
+              <span class="tag tag-ia">Information Architecture</span>
+              <span class="tag tag-strategy">UX Strategy</span>
+              <span class="tag tag-prototype">Prototyping</span>
+            </div>
+
+            <h3>Reorganising a Complex Educational Platform</h3>
+
+            <p>
+              Analysing 600+ user sessions, 31 teacher interviews, information
+              architecture, card sorting, and platform ecosystems to redesign how
+              educational resources were organised and discovered.
+            </p>
+          </div>
+
+          <a href="educational-platform.html" class="button">
+            Read case study →
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <a href="design-system-oxford-premium.html" class="work-card-image-link">
+          <img src="images/design-system-card.jpg" alt="Preview of the design system case study" class="work-card-image" />
+        </a>
+
+        <div class="work-card-content">
+          <div>
+            <div class="work-tags">
+              <span class="tag tag-design-system">Design System</span>
+              <span class="tag tag-rebranding">Rebranding</span>
+              <span class="tag tag-strategy">UX Strategy</span>
+              <span class="tag tag-handoff">Handoff</span>
+            </div>
+
+            <h3>Building a Design System</h3>
+
+            <p>
+              Creating a scalable design foundation for Oxford Premium, supporting
+              a rebranding initiative, visual alignment with HUB, redesigned interaction
+              flows, and progressive implementation with development.
+            </p>
+          </div>
+
+          <a href="design-system-oxford-premium.html" class="button">
+            Read case study →
+          </a>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <a href="accessibility-project.html" class="work-card-image-link">
+          <img
+            src="images/accessibility-card.jpg"
+            alt="Preview of the accessibility case study"
+            class="work-card-image"
+          />
+        </a>
+
+        <div class="work-card-content">
+          <div>
+            <div class="work-tags">
+              <span class="tag tag-accessibility">Accessibility</span>
+              <span class="tag tag-design-system">Design System</span>
+              <span class="tag tag-testing">Testing</span>
+              <span class="tag tag-documentation">Documentation</span>
+            </div>
+
+            <h3>Accessibility Across a Product Ecosystem</h3>
+
+            <p>
+              Auditing platforms, testing with assistive technologies, updating design
+              system foundations, and creating documentation to make accessibility easier
+              to apply across teams.
+            </p>
+          </div>
+
+          <a href="accessibility-project.html" class="button">
+            Read case study →
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="want-more">
+    <h2>Want more?</h2>
+
+    <a href="https://www.linkedin.com/in/REPLACE-WITH-YOUR-LINKEDIN" class="linkedin-cute" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.86 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.11 20.45H3.56V9h3.55v11.45z" fill="#0A66C2"/>
+      </svg>
+    </a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
+    <a href="privacy-page.html" class="privacy">Privacy Policy</a>
+  </div>
+
+  <div>
+    <h4>CONTACT</h4>
+    <p>+34627892634</p>
+    <p>zainab.abadi.s@gmail.com</p>
+  </div>
+
+  <div>
+    <h4>LOCATION</h4>
+    <p>Madrid, Spain</p>
+  </div>
+
+  <div>
+    <h4>FEEDBACK IS WELCOME</h4>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
+  </div>
+
+  <p class="copyright">Vibe Coded with Claude 💫 © 2026 by Zainab Abadi.</p>
+</footer>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuButton.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+</script>
+
+<button class="back-to-top" aria-label="Back to top">
+  ↑
+</button>
+
+<script>
+const backToTop = document.querySelector('.back-to-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+</script>
+
+<script src="logo-animation.js"></script>
 </body>
 </html>
