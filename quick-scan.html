@@ -41,6 +41,13 @@
     .quick-hero .cv-buttons {
       margin-top: 0;
       width: auto;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+      gap: 10px;
+    }
+
+    .skills-tags {
+      justify-content: center;
     }
 
     .exp-cards {
@@ -193,7 +200,7 @@
   <section class="experience">
     <h2>Core skills</h2>
 
-    <div class="work-tags">
+    <div class="work-tags skills-tags">
       <span class="tag tag-design-system">Design Systems</span>
       <span class="tag tag-accessibility">Accessibility (WCAG)</span>
       <span class="tag tag-research">UX Research</span>
