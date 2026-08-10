@@ -30,38 +30,14 @@
       vertical-align: middle;
     }
 
-    .quick-hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 24px;
-      margin-bottom: 56px;
-    }
-
-    .quick-hero .hero-text {
-      max-width: 640px;
-    }
-
-    .quick-hero h1 {
-      font-size: 34px;
-      line-height: 1.1;
-      margin: 0 0 8px;
-    }
-
-    .quick-hero .role-line {
-      font-size: 18px;
+    .chulapa-line {
+      text-align: right;
       font-weight: 700;
-      color: #66758C;
-      margin: 0;
-    }
-
-    .quick-hero .cv-buttons {
-      margin-top: 0;
-      width: auto;
-      flex-wrap: nowrap;
-      flex-shrink: 0;
-      gap: 10px;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 1.3;
+      color: #234D8D;
+      margin-top: 20px !important;
     }
 
     .skills-tags {
@@ -181,20 +157,35 @@
 
 <main class="main">
 
-  <section class="quick-hero">
+  <section class="hero">
     <div class="hero-text">
       <h1>Zainab Abadi</h1>
-      <p class="role-line">UX/UI Product Designer. Experience in B2B end-to-end products, but open to that... and beyond ⚡ (Buzz Lightyear)</p>
+
+      <h4>WHO I AM</h4>
+      <p>UX/UI Product Designer. Experience in B2B end-to-end products, but open to that... and beyond ⚡ (Buzz Lightyear)</p>
+
+      <h4>HOW I THINK</h4>
+      <p>
+        I approach design through curiosity, systems thinking, and structured
+        problem-solving, connecting user needs, business goals, and technical
+        constraints into meaningful solutions.
+      </p>
+
+      <p class="chulapa-line">Psst, I also love Madrid's metro! <span style="font-style: normal;">🚇</span> →</p>
+
+      <div class="cv-buttons">
+        <a href="cv.pdf" class="button" target="_blank" rel="noopener noreferrer">
+          🧑 Human CV
+        </a>
+
+        <a href="cv1.pdf" class="button" target="_blank" rel="noopener noreferrer">
+          🤖 Robot CV
+        </a>
+      </div>
     </div>
 
-    <div class="cv-buttons">
-      <a href="cv.pdf" class="button" target="_blank" rel="noopener noreferrer">
-        🧑 Human CV
-      </a>
-
-      <a href="cv1.pdf" class="button" target="_blank" rel="noopener noreferrer">
-        🤖 Robot CV
-      </a>
+    <div class="hero-image">
+      <img src="images/profile-heart.gif" alt="Portrait of Zainab Abadi" />
     </div>
   </section>
 
