@@ -10,6 +10,21 @@
   <style>
     /* ============= OXFORD PREMIUM WALKTHROUGH — bloques propios ============= */
 
+    .nav-leaf-slot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 12px;
+      cursor: default;
+    }
+
+    .nav-leaf-icon {
+      display: block;
+      width: 40px;
+      height: 30.2px;
+      opacity: 0.85;
+    }
+
     .header {
       position: relative;
       overflow: hidden;
@@ -346,6 +361,7 @@
 
   <nav class="nav">
     <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
+    <span class="nav-leaf-slot" aria-hidden="true"><img src="data:image/png;base64,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" alt="" class="nav-leaf-icon" /></span>
   </nav>
 </header>
 
@@ -355,25 +371,32 @@
     <strong>🔒 A note before you scroll</strong>
 
     <p>
-      The clips on this page come from a screen recording I made while logged into <span class="platform-name">Oxford Premium</span>. What I'm showing matches what you'd see through <span class="platform-name">Oxford Premium</span>'s own demo account, not any real school's or customer's private data. These are the platform's real, live screens, the result of the design work I describe below, not confidential internal files or work in progress. I'm sharing this to show my work as a designer, not internal business information, and I won't be sharing anything further beyond what's on this page.
+      The clips on this page come from a screen recording I made while logged into <span class="platform-name">Oxford Premium</span>. Everything shown matches what is available through <span class="platform-name">Oxford Premium</span>'s own demo account. No real school or customer data is included.
     </p>
 
     <p>
-      I'm not a lawyer, so please don't take this as legal advice. Under Spain's Ley 1/2019 de Secretos Empresariales, information only counts as a trade secret if it isn't generally accessible and if reasonable steps were taken to keep it secret. If you still have concerns about this page, reach out and I'll gladly address them.
+      These are real, live platform screens showing the result of the design work I describe below, not confidential internal files, documentation, or work in progress. I'm sharing them to show my work as a designer, and I won't be sharing any internal material beyond what's shown on this page.
+    </p>
+
+    <p>
+      If you have any concerns about anything shown here, feel free to reach out and I'll gladly address them.
     </p>
   </div>
 
   <section class="walk-intro">
     <h1>Oxford Premium: A Platform Walkthrough</h1>
     <p>
-      <span class="platform-name">Oxford Premium</span> is a complex educational platform, with thousands of resources for
-      teachers and students. I worked there as the sole UX/UI Designer, across several
-      projects. This page focuses on the three I go into the most in <strong>Deep Dive mode</strong>.
+      <span class="platform-name">Oxford Premium</span> is a complex educational platform with thousands of resources for
+      teachers and students. It was the main platform I worked on at OUPE as the sole
+      UX/UI Designer, across several projects.
     </p>
     <p>
-      This page mixes all three together into one short, visual walkthrough of the real
-      platform. I've also worked on several other projects, you can see more of them on
-      my home page.
+      This page focuses on three of the projects I explore in more detail in <strong>Deep Dive mode</strong>,
+      bringing them together into one short, visual walkthrough of the real platform.
+    </p>
+    <p>
+      I also worked on several other projects and internal initiatives at OUPE. You can
+      find more of them on my home page.
     </p>
   </section>
 
@@ -381,19 +404,19 @@
     <div class="project-def-card">
       <span class="flow-step">PROJECT 01</span>
       <h3>Design System</h3>
-      <p>I led the creation of a design system for <span class="platform-name">Oxford Premium</span>, as part of a bigger rebranding and platform redesign. The goal was consistency, better accessibility, and an experience closer to Oxford's UK platform, <span class="platform-name">HUB</span>.</p>
+      <p>I led the creation of a design system for <span class="platform-name">Oxford Premium</span> as part of a wider rebranding and platform redesign. The goal was to improve consistency and accessibility while bringing the experience closer to Oxford's UK platform, <span class="platform-name">HUB</span>.</p>
     </div>
 
     <div class="project-def-card">
       <span class="flow-step">PROJECT 02</span>
       <h3>Reorganising a Complex Educational Platform</h3>
-      <p><span class="platform-name">Oxford Premium</span> had thousands of resources and different ways of organising them. Through research and information architecture work, I helped redefine how teachers could find and use what already existed.</p>
+      <p><span class="platform-name">Oxford Premium</span> had thousands of resources and several ways of organising and accessing them. Through research and information architecture work, I helped redefine how teachers could find and use the content already available to them.</p>
     </div>
 
     <div class="project-def-card">
       <span class="flow-step">PROJECT 03</span>
       <h3>Accessibility Across a Product Ecosystem</h3>
-      <p>I worked on a wider accessibility initiative, across product, content and development. Platform audits, screen reader testing and documentation, so accessibility became part of the process, not a final step.</p>
+      <p>I worked on a wider accessibility initiative spanning product, content and development. I ran platform audits, tested with screen readers and created documentation to help make accessibility part of the process rather than a final step.</p>
     </div>
   </section>
 
@@ -415,7 +438,7 @@
       <div class="flow-card-body">
         <span class="flow-step">01 · ENTRY POINT</span>
         <h3>Login</h3>
-        <p>The entry point I rebuilt using the new design system's components: consistent typography, spacing and colour tied to Oxford's rebranding. I also checked it for keyboard navigation and screen reader support as part of the accessibility audits I ran across the platform.</p>
+        <p>I rebuilt the entry point using components from the new design system, with consistent typography, spacing and colour aligned with Oxford's rebranding. I also checked it for keyboard navigation and screen reader support as part of the accessibility audits I ran across the platform.</p>
       </div>
     </article>
 
@@ -424,25 +447,25 @@
       <div class="flow-card-body">
         <span class="flow-step">02 · ACCOUNT</span>
         <h3>Editing your profile</h3>
-        <p>Profile settings rebuilt with the same component library, replacing patterns that had drifted apart across different parts of the platform. One of many small interfaces that benefited from having a single source of truth to design and build from.</p>
+        <p>Profile settings rebuilt using the same component library, replacing patterns that had drifted apart across different areas of the platform. A good example of how the design system helped bring consistency across the whole product, not just its main flows.</p>
       </div>
     </article>
 
     <article class="flow-card">
-      <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">Adding a product isn't part of the demo account, so I can't show it on this page.</span></div>
+      <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">Adding a product isn't available through the demo account, so I can't show this flow on this page.</span></div>
       <div class="flow-card-body">
         <span class="flow-step">03 · GROWTH</span>
         <h3>Adding a product</h3>
-        <p>One of the interaction flows I redesigned to reduce friction and bring the experience closer to <span class="platform-name">HUB</span>, Oxford's UK platform. Part of the wider rebranding and platform redesign initiative I led.</p>
+        <p>One of the interaction flows I redesigned by adding direct access to a feature that previously required users to search for it, reducing friction and making it easier to find. I also unified the interface design using the new component system, bringing the experience closer to <span class="platform-name">HUB</span>, Oxford's UK platform.</p>
       </div>
     </article>
 
     <article class="flow-card">
-      <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">The full books library isn't part of the demo account either. Structurally, it works just like the <span class="section-name">"Demo library"</span> section shown further down, applied to the complete title catalogue instead of a sample one.</span></div>
+      <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">The full books library isn't available through the demo account either. Structurally, it works like the <span class="section-name">"Demo Library"</span> shown further down, but applied to the complete title catalogue rather than a sample.</span></div>
       <div class="flow-card-body">
         <span class="flow-step">04 · DISCOVERY</span>
         <h3>Books library</h3>
-        <p>Restructured based on behavioural analysis and teacher interviews, not on how the content happened to be organised internally. The question that guided this: not "how should we display resources?" but "how do teachers actually look for them?"</p>
+        <p>We redesigned the structure together with teachers, using direct interviews, Hotjar and Maze to understand how most of them naturally expected resources to be organised. The goal was to bring the platform closer to their own mental models, reducing friction and shortening the learning curve.</p>
       </div>
     </article>
 
@@ -451,7 +474,7 @@
       <div class="flow-card-body">
         <span class="flow-step">05 · DISCOVERY</span>
         <h3>Exploring a title</h3>
-        <p>Related resources surface more clearly here. That's one outcome of the information architecture work, card sorting and prototyping I ran to redefine how educational resources were structured and accessed.</p>
+        <p>Related resources are now easier to find and understand, following the same structure we developed with teachers. We tested and refined it through card sorting and prototyping before applying it across the platform.</p>
       </div>
     </article>
 
@@ -460,8 +483,9 @@
       <div class="flow-card-body">
         <span class="flow-step">06 · DISCOVERY</span>
         <h3>Accessing resources</h3>
-        <p><span class="platform-name">Oxford Premium</span> held thousands of educational resources across multiple navigation paths. This is the clearer path I helped design after analysing 600+ user sessions and 31 teacher interviews.</p>
-        <span class="extra-note">The demo shows guides, answer keys and resource groupings. The full version has more categories on top of these, only visible outside the demo.</span>
+        <p><span class="platform-name">Oxford Premium</span> held thousands of educational resources across different subjects, editorial lines and navigation paths. Finding one structure that worked for most teachers was complex. Their expectations varied depending on what they taught, the language they taught in, and their teaching and socioeconomic context.</p>
+        <p>We used 600+ Hotjar sessions, 31 teacher interviews and Maze testing to find a middle ground that matched how most teachers naturally expected resources to be organised. We then tested whether they could actually understand the categories and find what they needed.</p>
+        <span class="extra-note">The demo shows guides, answer keys and resource groupings. The full platform includes additional categories that aren't visible through the demo account.</span>
       </div>
     </article>
 
@@ -470,7 +494,7 @@
       <div class="flow-card-body">
         <span class="flow-step">07 · CONSISTENCY</span>
         <h3>Demo library</h3>
-        <p>A second library, with its own titles and resources, following the exact same structure. It shows the organisational model holds across different product lines, not just the one it was designed for first.</p>
+        <p>Demo used to sit inside the main Library, which made the distinction between the two less clear. Separating them made each experience easier to understand and gave us more flexibility to offer different profiles independently, such as Demo, Full and Academy.</p>
       </div>
     </article>
 
@@ -478,11 +502,11 @@
 
   <div class="walk-more">
     <h3>The same system, everywhere else</h3>
-    <p>The <span class="section-name">"Professional Development"</span>, <span class="section-name">"Certificate Courses"</span>, <span class="section-name">"New Resources"</span> and <span class="section-name">"News"</span> sections all run on the same components. That was the point of building a design system in the first place: a single source of truth, so nobody has to reinvent a pattern that already exists somewhere else on the platform.</p>
+    <p>The <span class="section-name">"Professional Development"</span>, <span class="section-name">"Certificate Courses"</span>, <span class="section-name">"New Resources"</span> and <span class="section-name">"News"</span> sections all use the same component system. That was the point of building a design system in the first place: one source of truth, so nobody has to reinvent a pattern that already exists somewhere else on the platform.</p>
 
     <div class="walk-more-clips">
-      <div class="flow-note"><span class="flow-note-label">Professional Development</span><span class="flow-note-text">Not in demo. Visible in the full version</span></div>
-      <div class="flow-note"><span class="flow-note-label">Certificate Courses</span><span class="flow-note-text">Not in demo. Visible in the full version</span></div>
+      <div class="flow-note"><span class="flow-note-label">Professional Development</span><span class="flow-note-text">Not available in demo. Visible in the full platform.</span></div>
+      <div class="flow-note"><span class="flow-note-label">Certificate Courses</span><span class="flow-note-text">Not available in demo. Visible in the full platform.</span></div>
       <div class="flow-clip"><video src="videos/Oxford-New-Resources.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-clip"><video src="videos/Oxford-News.mp4" controls playsinline preload="metadata"></video></div>
     </div>
@@ -491,19 +515,19 @@
   <section class="walk-outcome">
     <h2>What it added up to</h2>
     <ul>
-      <li><strong>A validated information architecture</strong>, built around how teachers actually search, not how content was organised internally</li>
-      <li><strong>Clearer navigation through the side menu</strong>, which cut down discovery time and the learning curve, something users had been complaining about a lot</li>
-      <li><strong>A design system used as a single source of truth</strong> by design and development, reducing ambiguity and streamlining collaboration</li>
-      <li><strong>Redesigned interaction flows</strong>, with closer alignment to Oxford's UK platform (<span class="platform-name">HUB</span>)</li>
-      <li><strong>A shared accessibility framework</strong> aligning product, development, editorial, legal and multimedia teams</li>
+      <li><strong>A validated information architecture</strong>, built around how teachers actually search rather than how content was organised internally</li>
+      <li><strong>Clearer navigation through the side menu</strong>, reducing friction around resource discovery and addressing a recurring pain point from users</li>
+      <li><strong>A design system as a shared source of truth</strong> for design and development, reducing ambiguity and making collaboration easier</li>
+      <li><strong>Redesigned interaction flows</strong>, with closer alignment to Oxford's UK platform, <span class="platform-name">HUB</span></li>
+      <li><strong>A shared accessibility framework</strong> across product, development, editorial, legal and multimedia teams</li>
       <li><strong>One consistent organisational model</strong>, applied across different product lines</li>
-      <li><strong>A platform that can keep growing</strong> without losing coherence</li>
-      <li><strong>Tested across devices and screen sizes</strong>. Mobile wasn't the priority, but it still adapted well enough to be comfortable to view and use</li>
-      <li><strong>Built compatible with Bootstrap</strong>, to make handoff and implementation with development easier</li>
-      <li><strong>Built following accessibility requirements</strong> from the start, not added on as an afterthought</li>
+      <li><strong>A platform designed to keep growing</strong> without losing coherence</li>
+      <li><strong>Responsive behaviour across devices and screen sizes</strong>. Mobile wasn't the primary use case, but the platform still adapted to smaller screens</li>
+      <li><strong>Compatibility with Bootstrap</strong>, making handoff and implementation with development easier</li>
+      <li><strong>Accessibility considered from the start</strong>, rather than added as an afterthought</li>
     </ul>
     <p style="margin-top:24px; color:#66758C;">
-      What stayed with me most from this project: complexity like this doesn't resolve itself.
+      What stayed with me most from this work is that complexity like this doesn't resolve itself.
       You have to keep choosing clarity, flow by flow, decision by decision, and trust that it adds up.
     </p>
   </section>
@@ -512,11 +536,15 @@
     <strong>🔒 Confidentiality note</strong>
 
     <p>
-      This project is subject to confidentiality agreements, so some internal deliverables, research artefacts, documentation and design files can't be shared publicly. What's shown here matches <span class="platform-name">Oxford Premium</span>'s own demo account, not any real school's or customer's private data. No internal-only material is shown here.
+      This work is subject to confidentiality agreements, so some internal deliverables, research artefacts, documentation and design files can't be shared publicly.
     </p>
 
     <p>
-      If you'd like to know more about the project, my role, or the decisions behind it, I'd be happy to walk through it in an interview.
+      Everything shown here matches what is available through <span class="platform-name">Oxford Premium</span>'s own demo account. No real school or customer data, or internal only material, is shown.
+    </p>
+
+    <p>
+      If you'd like to know more about the project, my role, or the decisions behind it, I'd be happy to walk through them in an interview.
     </p>
   </div>
 
