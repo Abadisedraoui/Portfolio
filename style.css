@@ -1,11 +1,9 @@
 /* =========================================================
    RESET
 ========================================================= */
-
 * {
   box-sizing: border-box;
 }
-
 body {
   margin: 0;
   min-height: 100vh;
@@ -17,15 +15,12 @@ body {
   font-size: 16px;
   line-height: 1.5;
 }
-
 a {
   color: inherit;
 }
-
 /* =========================================================
    HEADER
 ========================================================= */
-
 .header {
   width: calc(100% - 180px);
   max-width: 1200px;
@@ -38,77 +33,63 @@ a {
   align-items: center;
   box-shadow: 0 0 0 1px rgba(40, 35, 47, .08);
 }
-
 .logo {
   width: 85px;
   height: auto;
 }
-
 .logo-link {
   display: inline-flex;
   align-items: center;
   opacity: 1;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
-
 .logo-link:hover {
   opacity: 0.75;
   transform: scale(1.03);
 }
-
 .logo-link.active {
   opacity: 1;
 }
-
 /* ---- Media corona de rama de olivo al hover del logo (se inyecta con JS) ---- */
-
 .logo-link {
   position: relative;
 }
-
 .logo-branch-wrap {
   position: absolute;
   left: 100%;
   bottom: -4px;
-  margin-left: 4px;
+  margin-left: -4px;
   display: inline-flex;
   align-items: flex-end;
   pointer-events: none;
   z-index: 5;
 }
-
 .logo-branch-svg {
   display: block;
   overflow: visible;
 }
-
 .menu-toggle {
   display: none;
 }
-
 .nav {
   display: flex;
   align-items: center;
   gap: 28px;
   font-size: 13px;
 }
-
 .nav-link {
   text-decoration: none;
   padding: 8px 12px;
   border-radius: 999px;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
-
 .nav-link:hover {
   background-color: rgba(40, 35, 47, 0.08);
 }
-
 .nav-link.active {
   background-color: #28232f;
   color: white;
 }
-
 /* ---- "Volver al inicio" (a la puerta SALAM) ----
    Misma familia tipográfica que Home / About me (Arial/Helvetica,
    la del resto del sitio), pero en cursiva y en negrita, sin la
@@ -137,31 +118,26 @@ a {
   cursor: pointer;
   transition: color 0.2s ease, transform 0.15s ease, border-color 0.2s ease;
 }
-
 .nav-link-back .arrow-icon {
   flex-shrink: 0;
   overflow: visible;
   color: inherit;
   transition: color 0.2s ease, transform 0.15s ease;
 }
-
 .nav-link-back:hover {
   background-color: transparent;
   color: #3E6FB3;
   border-color: rgba(35, 77, 141, .4);
   transform: translateX(-3px);
 }
-
 .nav-link-back:active {
   background-color: transparent;
   color: #1c3a69;
   transform: translateX(-1px) scale(0.96);
 }
-
 /* =========================================================
    GLOBAL LAYOUT
 ========================================================= */
-
 .main {
   width: calc(100% - 180px);
   max-width: 1200px;
@@ -169,19 +145,15 @@ a {
   padding: 0 0 48px;
   flex: 1;
 }
-
 /* =========================================================
    TYPOGRAPHY
 ========================================================= */
-
 h1,
 h2,
 h3,
-h4,
 p {
   color: #28232f;
 }
-
 /* ---- Grupo Títulos (celeste = violeta en las notas) ----
    Misma familia, peso y line-height para todos los h1/h2/h3
    que funcionan como título. Cada uno conserva su propio
@@ -201,25 +173,21 @@ h3,
   font-weight: 700;
   line-height: 1.2;
 }
-
 h2 {
   font-size: 28px;
   text-align: center;
   margin: 0 0 36px;
 }
-
 h3 {
   font-size: 18px;
   margin: 0 0 8px;
 }
-
 h4 {
   font-size: 16px;
   line-height: 1.5;
   margin: 18px 0 8px;
   font-weight: 700;
 }
-
 /* ---- Grupo Cuerpo de texto (amarillo = rosa en las notas) ----
    Todos los párrafos y listas comparten tamaño, peso e
    interlineado. No se toca ningún color. */
@@ -245,20 +213,16 @@ li,
   font-weight: 400;
   line-height: 1.5;
 }
-
 p {
   margin: 0 0 14px;
 }
-
 ul {
   padding-left: 18px;
   margin: 0;
 }
-
 li {
   margin-bottom: 6px;
 }
-
 /* ---- Grupo Cuerpo de texto en negrita (marrón en las notas) ----
    Misma base que el cuerpo (16px / 1.5) pero en negrita.
    Cada elemento conserva su propio color. */
@@ -274,11 +238,9 @@ li {
   font-weight: 700;
   line-height: 1.5;
 }
-
 /* =========================================================
    BUTTONS
 ========================================================= */
-
 .button {
   display: inline-block;
   margin-top: 18px;
@@ -291,24 +253,19 @@ li {
   font-size: 14px;
   transition: all 0.2s ease;
 }
-
 .button:hover {
   background: #3a3443;
   transform: translateY(-2px);
 }
-
 .button:active {
   background: #1d1922;
   transform: translateY(0);
 }
-
 .button:focus-visible {
   outline: 2px solid #28232f;
   outline-offset: 3px;
 }
-
 /* ---- CV buttons (hero) ---- */
-
 .cv-buttons {
   display: flex;
   gap: 6%;
@@ -316,15 +273,12 @@ li {
   margin-top: 18px;
   width: 100%;
 }
-
 .cv-buttons .button {
   margin-top: 0;
 }
-
 /* =========================================================
    HERO
 ========================================================= */
-
 .hero {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -332,22 +286,18 @@ li {
   align-items: start;
   margin-bottom: 72px;
 }
-
 .hero h1 {
   font-size: 34px;
   line-height: 1.1;
   margin: 0 0 24px;
 }
-
 .hero p {
   max-width: 460px;
 }
-
 .hero-image {
   width: 100%;
   height: auto;
 }
-
 .hero-image img {
   width: 100%;
   max-height: 520px;
@@ -356,31 +306,25 @@ li {
   object-position: center top;
   display: block;
 }
-
 /* =========================================================
    HOME / ABOUT SECTIONS
 ========================================================= */
-
 .experience,
 .more {
   margin: 56px 0;
 }
-
 .columns {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 56px;
 }
-
 .values {
   text-align: right;
   margin-top: 40px;
 }
-
 /* =========================================================
    POKEMON CARDS SECTION
 ========================================================= */
-
 .pokemon-section {
   position: relative;
   width: 100%;
@@ -389,7 +333,6 @@ li {
   align-items: center;
   margin: 48px 0 104px;
 }
-
 .pokemon-fan {
   position: relative;
   width: 640px;
@@ -397,39 +340,31 @@ li {
   margin: 0 auto;
   overflow: visible;
 }
-
 .pokemon-card {
   position: absolute;
   width: 220px;
   min-height: 320px;
   padding: 14px;
   border-radius: 28px;
-
   /* Outline muy sutil */
   border: 1px solid rgba(40, 35, 47, 0.06);
-
   /* Sombra ligera */
   box-shadow:
     0 8px 20px rgba(40, 35, 47, 0.08),
     0 1px 2px rgba(40, 35, 47, 0.04);
-
   cursor: pointer;
   transition:
     transform .35s ease,
     box-shadow .35s ease,
     border-color .35s ease;
 }
-
 /* POKEMON HOVER 2 PARRAFOS */
-
 .pokemon-card:hover {
   border-color: rgba(40, 35, 47, 0.10);
-
   box-shadow:
     0 14px 30px rgba(40, 35, 47, 0.12),
     0 2px 6px rgba(40, 35, 47, 0.05);
 }
-
 .pokemon-card img {
   width: 100%;
   height: 145px;
@@ -438,62 +373,50 @@ li {
   display: block;
   margin-bottom: 18px;
 }
-
 .pokemon-card h3 {
   font-size: 22px;
   margin: 0 0 10px;
 }
-
 .pokemon-card p {
   margin: 0;
 }
-
 .card-blue {
   background: #e8f3ff;
 }
-
 .card-purple {
   background: #efe7ff;
 }
-
 .card-green {
   background: #e8f5e9;
 }
-
 .card-orange {
   background: #fff0df;
 }
-
 .pokemon-card.position-1 {
   left: 20px;
   top: 64px;
   transform: rotate(-14deg);
   z-index: 1;
 }
-
 .pokemon-card.position-2 {
   left: 160px;
   top: 32px;
   transform: rotate(-6deg);
   z-index: 2;
 }
-
 .pokemon-card.position-3 {
   left: 300px;
   top: 32px;
   transform: rotate(6deg);
   z-index: 3;
 }
-
 .pokemon-card.position-4 {
   left: 440px;
   top: 64px;
   transform: rotate(14deg);
   z-index: 4;
 }
-
 /* ---- Pokemon expand button ---- */
-
 .pokemon-expand-button {
   position: absolute;
   bottom: 16px;
@@ -510,14 +433,11 @@ li {
   box-shadow: 0 4px 16px rgba(40, 35, 47, .18);
   transition: transform .2s ease, background .2s ease;
 }
-
 .pokemon-expand-button:hover {
   background: #3a3443;
   transform: translateY(-2px);
 }
-
 /* ---- Pokemon modal / carousel ---- */
-
 .pokemon-modal {
   position: fixed;
   inset: 0;
@@ -531,14 +451,12 @@ li {
   z-index: 9999;
   pointer-events: none;
 }
-
 .pokemon-modal.open {
   display: flex;
   visibility: visible;
   opacity: 1;
   pointer-events: auto;
 }
-
 .pokemon-modal-close {
   position: absolute;
   top: 24px;
@@ -553,14 +471,12 @@ li {
   cursor: pointer;
   z-index: 2;
 }
-
 .pokemon-modal-carousel {
   position: relative;
   width: 100%;
   max-width: 1100px;
   max-height: 94vh;
 }
-
 .pokemon-modal-track {
   display: flex;
   gap: 24px;
@@ -570,11 +486,9 @@ li {
   scrollbar-width: none;
   padding: 8px 4px;
 }
-
 .pokemon-modal-track::-webkit-scrollbar {
   display: none;
 }
-
 .pokemon-modal-card {
   flex: 0 0 100%;
   min-width: 100%;
@@ -585,7 +499,6 @@ li {
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, .25);
 }
-
 .pokemon-modal-card img {
   width: 100%;
   height: 55vh;
@@ -597,36 +510,29 @@ li {
   margin-bottom: 24px;
   display: block;
 }
-
 .pokemon-modal-card h3 {
   font-size: 28px;
   margin: 0 0 14px;
 }
-
 .pokemon-modal-card p {
   font-size: 18px;
   line-height: 1.5;
   margin: 0;
 }
-
 @media (max-width: 600px) {
   .pokemon-modal-card {
     padding: 24px;
   }
-
   .pokemon-modal-card h3 {
     font-size: 22px;
   }
-
   .pokemon-modal-card p {
     font-size: 16px;
   }
 }
-
 /* =========================================================
    STATS HOME
 ========================================================= */
-
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -634,7 +540,6 @@ li {
   margin: 0 0 72px;
   text-align: center;
 }
-
 .stat strong {
   display: block;
   font-size: 38px;
@@ -642,7 +547,6 @@ li {
   color: #234D8D;
   margin-bottom: 10px;
 }
-
 .stat span {
   display: block;
   font-size: 18px;
@@ -650,18 +554,14 @@ li {
   font-weight: 700;
   color: #28232f;
 }
-
 /* =========================================================
    WORK EXPERIENCE - DESCRIPTION
 ========================================================= */
-
 /* ---------- Company ---------- */
-
 .experience h4{
     min-height:48px;
     margin:18px 0 8px;
 }
-
 .experience h4 a{
     color:#234D8D;
     text-decoration:underline;
@@ -669,51 +569,41 @@ li {
     text-underline-offset:3px;
     transition:.2s ease;
 }
-
 .experience h4 a:hover{
     color:#3E6FB3;
     text-decoration-color:#3E6FB3;
 }
-
 /* ---------- Description ---------- */
-
 .company-description{
     margin:6px 0 14px;
     min-height:112px;
     color:#66758C;
 }
-
 /* ---------- Date ---------- */
-
 .date{
     min-height:24px;
     margin-bottom:18px;
     color:#8B96A8;
 }
-
 .experience ul{
     margin-top:20px;
     padding-top:20px;
     border-top:2px solid rgba(35,77,141,.20);
 }
-
 /* =========================================================
    PROJECT / ARTICLE PAGES
 ========================================================= */
-
 .project-body .header {
   margin-bottom: 0;
   border-radius: 48px 48px 0 0;
   box-shadow: 0 0 0 1px rgba(40, 35, 47, .08);
 }
-
 .project-page {
   width: calc(100% - 180px);
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 0 48px;
 }
-
 .project-intro {
   background-image: url("images/background.jpg");
   background-size: cover;
@@ -722,7 +612,6 @@ li {
   padding: 30px 90px;
   border-radius: 0;
 }
-
 .project-title-row {
   display: flex;
   justify-content: space-between;
@@ -730,42 +619,34 @@ li {
   gap: 24px;
   margin-bottom: 12px;
 }
-
 .project-title-row h1 {
   font-size: 40px;
   line-height: 1.1;
   margin: 0;
 }
-
 .project-title-row span {
   font-size: 12px;
   line-height: 1.5;
   margin-top: 8px;
 }
-
 .project-intro h4 {
   margin: 0 0 8px;
 }
-
 .project-intro p {
   max-width: 850px;
   margin: 0 0 18px;
 }
-
 .project-overview {
   margin-bottom: 30px;
   padding: 0;
 }
-
 .project-overview h4 {
   margin: 30px 0 8px;
 }
-
 .project-overview p {
   max-width: 900px;
   margin-bottom: 18px;
 }
-
 .project-links {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -773,7 +654,6 @@ li {
   margin: 30px 0 60px;
   text-align: center;
 }
-
 .project-links img {
   width: 100%;
   aspect-ratio: 1 / 1;
@@ -781,50 +661,40 @@ li {
   display: block;
   margin-bottom: 12px;
 }
-
 .project-links p {
   font-size: 13px;
   line-height: 1.4;
   font-weight: 700;
   margin-bottom: 4px;
 }
-
 .project-links a {
   font-size: 12px;
   line-height: 1.4;
 }
-
 .table-contents {
   margin-bottom: 60px;
 }
-
 .table-contents h4 {
   margin-bottom: 8px;
 }
-
 .table-contents ol {
   padding-left: 20px;
 }
-
 .article-section {
   margin-bottom: 48px;
 }
-
 .article-section h2 {
   text-align: left;
   font-size: 28px;
   margin-bottom: 18px;
 }
-
 .article-section p {
   max-width: 900px;
   margin-bottom: 18px;
 }
-
 /* =========================================================
    CARDS
 ========================================================= */
-
 .selected-work-list {
     display:grid;
     grid-template-columns:repeat(2,1fr);
@@ -833,7 +703,6 @@ li {
     margin:0;
     align-items:stretch;
 }
-
 .work-card {
   display: flex;
   flex-direction: column;
@@ -845,12 +714,10 @@ li {
     0 0 0 1px rgba(40, 35, 47, .08),
     0 12px 28px rgba(40, 35, 47, .08);
 }
-
 .work-card-image-link {
   display: block;
   flex-shrink: 0;
 }
-
 .work-card-image {
   width: 100%;
   height: 220px;
@@ -859,48 +726,39 @@ li {
   display: block;
   background: #e7e5e8;
 }
-
 .work-card-content {
   display: flex;
   flex-direction: column;
   flex: 1;
   padding: 24px;
 }
-
 .work-card h3 {
   font-size: 24px;
   margin: 0 0 14px;
 }
-
 .work-card p {
   max-width: 700px;
   margin-bottom: 22px;
 }
-
 .work-card .button {
   margin-top: auto;
   align-self: flex-start;
 }
-
 .work-card.text-card {
   min-height: 320px;
 }
-
 .work-card.text-card .work-card-content {
   padding: 32px 24px;
 }
-
 /* =========================================================
    TAGS
 ========================================================= */
-
 .work-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 18px;
 }
-
 .tag {
   display: inline-flex;
   align-items: center;
@@ -912,99 +770,76 @@ li {
   color: #28232f;
   letter-spacing: 0.2px;
 }
-
 .tag-research {
   background: #D3ECE6;
 }
-
 .tag-ia {
   background: #D6E6F5;
 }
-
 .tag-strategy,
 .tag-ux-strategy {
   background: #DBDFF3;
 }
-
 .tag-prototype {
   background: #E2DAF0;
 }
-
 .tag-design-system {
   background: #E9D3EC;
 }
-
 .tag-rebranding {
   background: #F5D7E7;
 }
-
 .tag-handoff {
   background: #F6DED1;
 }
-
 .tag-testing {
   background: #F3E4C4;
 }
-
 .tag-documentation {
   background: #F1EEC6;
 }
-
 .tag-femtech {
   background: #F0D3E6;
 }
-
 .tag-creative-process {
   background: #F6DAD4;
 }
-
 .tag-personal-essay {
   background: #E9F0C9;
 }
-
 .tag-accessibility {
   background: #DCEBD1;
 }
-
 .tag-frontend {
   background: #CFEAF2;
 }
-
 .tag-personal-project {
   background: #EDE0D8;
 }
-
 .tag-ai-workflow {
   background: #D8E0EC;
 }
-
 /* =========================================================
    PRIVACY PAGE
 ========================================================= */
-
 .privacy-page {
   padding: 30px 90px 80px;
 }
-
 .privacy-content {
   max-width: 720px;
   margin: 0 auto;
 }
-
 .privacy-content h1 {
   font-size: 34px;
   line-height: 1.1;
   margin: 0 0 30px;
 }
-
 .privacy-content p {
   margin-bottom: 18px;
 }
-
 /* =========================================================
    FOOTER
 ========================================================= */
-
 .footer {
   background: #77757c;
   color: white;
@@ -1015,42 +850,35 @@ li {
   position: relative;
   margin-top: auto;
 }
-
 .footer-logo {
   width: 150px;
   display: block;
   margin-bottom: 48px;
 }
-
 .footer h4 {
   margin: 0 0 14px;
   color: white;
 }
-
 .footer p,
 .footer a {
   display: block;
   margin-bottom: 8px;
   color: white;
 }
-
 .privacy {
   position: absolute;
   left: 90px;
   bottom: 18px;
 }
-
 .copyright {
   position: absolute;
   right: 90px;
   bottom: 18px;
   font-size: 11px;
 }
-
 /* =========================================================
    BACK TO TOP
 ========================================================= */
-
 .back-to-top {
   position: fixed;
   right: 24px;
@@ -1073,48 +901,39 @@ li {
   box-shadow: 0 4px 16px rgba(40, 35, 47, .18);
   z-index: 999;
 }
-
 .back-to-top.show {
   opacity: .9;
   visibility: visible;
   transform: translateY(0);
 }
-
 .back-to-top:hover {
   opacity: 1;
   transform: translateY(-2px);
 }
-
 /* =========================================================
    RESPONSIVE GALLERY
 ========================================================= */
-
 .responsive-gallery {
   margin: 64px 0 56px;
 }
-
 .responsive-gallery h2 {
   text-align: left;
   margin-bottom: 32px;
 }
-
 .responsive-gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
   width: 100%;
 }
-
 .device-block {
   min-width: 0;
 }
-
 .device-block h3 {
   margin: 0 0 14px;
   font-size: 18px;
   text-align: center;
 }
-
 .device-carousel {
   position: relative;
   width: 100%;
@@ -1125,7 +944,6 @@ li {
   border: 1px solid rgba(40, 35, 47, .10);
   box-shadow: 0 6px 18px rgba(40, 35, 47, .08);
 }
-
 .device-carousel-track {
   display: flex;
   width: 100%;
@@ -1135,11 +953,9 @@ li {
   scroll-behavior: smooth;
   scrollbar-width: none;
 }
-
 .device-carousel-track::-webkit-scrollbar {
   display: none;
 }
-
 .device-carousel-track img {
   flex: 0 0 100%;
   min-width: 100%;
@@ -1150,7 +966,6 @@ li {
   object-position: center;
   scroll-snap-align: start;
 }
-
 .carousel-arrow {
   position: absolute;
   top: 50%;
@@ -1166,71 +981,56 @@ li {
   cursor: pointer;
   transform: translateY(-50%);
 }
-
 .carousel-prev {
   left: 10px;
 }
-
 .carousel-next {
   right: 10px;
 }
-
 .carousel-arrow:hover {
   background: #28232f;
 }
-
 @media (max-width: 900px) {
   .responsive-gallery-grid {
     grid-template-columns: 1fr;
   }
-
   .device-carousel {
     height: 240px;
   }
 }
-
 @media (max-width: 600px) {
   .responsive-gallery {
     padding-left: 24px;
     padding-right: 24px;
   }
-
   .device-carousel {
     height: 220px;
   }
 }
-
    /* ------------------------ confidentiality note ------------------------ */
-
 .confidentiality-note{
     margin-top:56px;
     padding:24px 28px;
-
     background:#EEF4FF;
     border:2px solid #A9C4EE;
     border-left:6px solid #3E6FB3;
     border-radius:16px;
 }
-
 .confidentiality-note strong{
     display:block;
     margin-bottom:16px;
     color:#234D8D;
     font-size:18px;
 }
-
 .confidentiality-note p{
     margin:0;
 }
-
 .confidentiality-note p + p{
     margin-top:16px;
 }
-
 /* =========================================================
    ARTICLE IMAGE
 ========================================================= */
-
 .article-image {
   position: relative;
   width: 100%;
@@ -1240,7 +1040,6 @@ li {
   border: 1px solid rgba(40, 35, 47, .14);
   box-shadow: 0 6px 14px rgba(40, 35, 47, .10);
 }
-
 .article-image img {
   width: 100%;
   height: 140px;
@@ -1249,7 +1048,6 @@ li {
   object-position: top;
   cursor: zoom-in;
 }
-
 /* Overlay de texto que cubre toda la miniatura: fondo blanco
    al 70% de opacidad (deja intuir la imagen detrás), contorno
    gris, texto oscuro. No aparece en el modal ampliado, solo
@@ -1264,7 +1062,6 @@ li {
   border: 1px solid rgba(40, 35, 47, .18);
   pointer-events: none;
 }
-
 .article-image-overlay p {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -1273,7 +1070,6 @@ li {
   color: #28232f;
   margin: 0;
 }
-
 .image-zoom-button {
   position: absolute;
   right: 16px;
@@ -1288,7 +1084,6 @@ li {
   cursor: pointer;
   z-index: 2;
 }
-
 .image-modal {
   position: fixed;
   inset: 0;
@@ -1299,11 +1094,9 @@ li {
   background: rgba(40, 35, 47, 0.72);
   z-index: 9999;
 }
-
 .image-modal.open {
   display: flex;
 }
-
 .image-modal img {
   max-width: 90vw;
   max-height: 90vh;
@@ -1313,7 +1106,6 @@ li {
   border-radius: 20px;
   display: block;
 }
-
 .image-modal-close {
   position: absolute;
   top: 24px;
@@ -1327,118 +1119,94 @@ li {
   font-size: 28px;
   cursor: pointer;
 }
-
 /* =========================================================
    TABLET
 ========================================================= */
-
 @media (max-width: 900px) {
   .main,
   .project-page {
     padding: 0 40px 48px;
   }
-
   .privacy-page {
     padding: 30px 40px 80px;
   }
-
   .hero {
     grid-template-columns: 1fr;
     gap: 40px;
     margin-bottom: 72px;
   }
-
   .hero-image {
     height: auto;
   }
-
   .hero-image img {
     width: 100%;
     height: auto !important;
     max-height: none;
   }
-
   .columns {
     grid-template-columns: 1fr;
     gap: 36px;
   }
-
   .project-intro {
     margin: 0 -40px 30px;
     padding: 30px 40px;
   }
-
   .project-links {
     grid-template-columns: 1fr 1fr;
   }
-
   .selected-work-list {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
-
   .work-card-image {
     height: 200px;
   }
-
   .pokemon-section {
     margin: 88px 0;
   }
-
   .pokemon-fan {
     width: 560px;
     height: 340px;
   }
-
   .pokemon-card {
     width: 180px;
     min-height: 270px;
   }
-
   .pokemon-card img {
     height: 110px;
   }
-
   .pokemon-card.position-1 {
     left: 20px;
     top: 60px;
   }
-
   .pokemon-card.position-2 {
     left: 135px;
     top: 32px;
   }
-
   .pokemon-card.position-3 {
     left: 250px;
     top: 32px;
   }
-
   .pokemon-card.position-4 {
     left: 365px;
     top: 60px;
   }
-
   .footer {
     grid-template-columns: 1fr;
     padding: 40px;
   }
-
   .privacy {
     position: static;
     margin-top: 24px;
   }
-
   .copyright {
     position: static;
     margin-top: 24px;
   }
 }
-
 /* =========================================================
    MOBILE
 ========================================================= */
-
 @media (max-width: 600px) {
   .header {
     width: calc(100% - 32px);
@@ -1447,15 +1215,12 @@ li {
     border-radius: 40px;
     position: relative;
   }
-
   .project-body .header {
     margin: 16px auto 0;
   }
-
   .logo {
     width: 70px;
   }
-
   .menu-toggle {
     display: block;
     background: none;
@@ -1465,7 +1230,6 @@ li {
     color: #28232f;
     cursor: pointer;
   }
-
   .nav {
     display: none;
     position: absolute;
@@ -1482,16 +1246,13 @@ li {
     gap: 12px;
     z-index: 10;
   }
-
   .nav.open {
     display: flex;
   }
-
   .nav-link {
     padding: 8px 10px;
     font-size: 13px;
   }
-
   .nav-link-back {
     justify-content: center;
     margin-right: 0;
@@ -1499,61 +1260,49 @@ li {
     border-right: none;
     border-bottom: 1px solid rgba(40, 35, 47, .18);
   }
-
   .main {
     width: calc(100% - 32px);
     padding: 0 0 40px;
   }
-
   .project-page {
     width: calc(100% - 32px);
     padding: 0 0 40px;
   }
-
   .privacy-page {
     padding: 30px 24px 80px;
   }
-
   .hero {
     grid-template-columns: 1fr;
     gap: 32px;
     margin-bottom: 72px;
   }
-
   .hero h1 {
     font-size: 32px;
   }
-
   .cv-buttons {
     flex-direction: column;
     align-items: stretch;
     gap: 14px;
   }
-
   .cv-buttons .button {
     text-align: center;
   }
-
   .hero-image {
     height: auto;
   }
-
   .hero-image img {
     width: 100%;
     height: auto !important;
     max-height: none;
     display: block;
   }
-
   h2 {
     font-size: 26px;
   }
-
   .project-intro {
     margin: 0 0 30px;
     padding: 30px 24px;
   }
-
   .project-overview,
   .project-links,
   .table-contents,
@@ -1561,20 +1310,16 @@ li {
     padding-left: 24px;
     padding-right: 24px;
   }
-
   .project-title-row {
     display: block;
   }
-
   .project-title-row span {
     display: block;
     margin-top: 12px;
   }
-
   .project-title-row h1 {
     font-size: 34px;
   }
-
   .project-links,
   .selected-work-list {
     display: flex;
@@ -1583,46 +1328,36 @@ li {
     scroll-snap-type: x mandatory;
     padding-bottom: 18px;
   }
-
   .project-links article,
   .work-card {
     flex: 0 0 85%;
     scroll-snap-align: start;
   }
-
   .work-card {
     border-radius: 24px;
   }
-
   .work-card-image {
     height: 160px;
   }
-
   .work-card-content {
     padding: 24px;
   }
-
   .work-tags {
     gap: 6px;
   }
-
   .work-card h3 {
     font-size: 22px;
   }
-
   .work-card.text-card {
     min-height: 280px;
   }
-
   /* ---- Pokemon cards: carrusel horizontal en mobile ----
      Sustituye el abanico con position:absolute + rotate por
      un scroll horizontal con snap, igual criterio que
      .device-carousel / .selected-work-list en mobile. */
-
   .pokemon-section {
     margin: 80px 0;
   }
-
   .pokemon-fan {
     width: 100%;
     height: auto;
@@ -1634,11 +1369,9 @@ li {
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
-
   .pokemon-fan::-webkit-scrollbar {
     display: none;
   }
-
   .pokemon-card,
   .pokemon-card.position-1,
   .pokemon-card.position-2,
@@ -1651,48 +1384,38 @@ li {
     transform: none;
     scroll-snap-align: start;
   }
-
   .pokemon-card img {
     height: 130px;
   }
-
   .pokemon-card h3 {
     font-size: 20px;
   }
-
   .pokemon-card p {
     font-size: 14px;
   }
-
   .footer {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 24px;
   }
-
   .footer-logo {
     width: 100px;
     margin-bottom: 18px;
   }
-
   .footer h4 {
     margin-bottom: 6px;
   }
-
   .footer p,
   .footer a {
     margin-bottom: 4px;
   }
-
   .privacy {
     margin-top: 8px;
   }
-
   .copyright {
     position: static;
     margin-top: 18px;
   }
-
   .back-to-top {
     width: 42px;
     height: 42px;
@@ -1700,19 +1423,15 @@ li {
     bottom: 16px;
     font-size: 20px;
   }
-
    .stats {
   grid-template-columns: 1fr;
   gap: 28px;
   margin-bottom: 64px;
 }
-
 .stat strong {
   font-size: 34px;
 }
-
 .stat span {
   font-size: 17px;
 }
-
 }
