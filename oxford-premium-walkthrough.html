@@ -88,7 +88,14 @@
       padding: 16px;
     }
 
-    .flow-clip video,
+    .flow-clip video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      background: #ECE9F1;
+    }
+
     .flow-clip img {
       width: 100%;
       height: 100%;
@@ -106,6 +113,7 @@
       background: #F7F5FA;
       border-bottom: 1.5px dashed #C7BFE0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 20px;
@@ -123,6 +131,10 @@
       text-transform: uppercase;
       margin-bottom: 8px;
       font-weight: 700;
+    }
+
+    .flow-note-text {
+      display: block;
     }
 
     .section-name {
@@ -417,7 +429,7 @@
     </article>
 
     <article class="flow-card">
-      <div class="flow-note"><span class="flow-note-label">No clip here</span>Adding a product isn't part of the demo account, so I can't show it on this page.</div>
+      <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">Adding a product isn't part of the demo account, so I can't show it on this page.</span></div>
       <div class="flow-card-body">
         <span class="flow-step">03 · GROWTH</span>
         <h3>Adding a product</h3>
@@ -426,7 +438,7 @@
     </article>
 
     <article class="flow-card">
-      <div class="flow-note"><span class="flow-note-label">No clip here</span>The full books library isn't part of the demo account either. Structurally, it works just like the <span class="section-name">"Demo library"</span> section shown further down, applied to the complete title catalogue instead of a sample one.</div>
+      <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">The full books library isn't part of the demo account either. Structurally, it works just like the <span class="section-name">"Demo library"</span> section shown further down, applied to the complete title catalogue instead of a sample one.</span></div>
       <div class="flow-card-body">
         <span class="flow-step">04 · DISCOVERY</span>
         <h3>Books library</h3>
@@ -469,8 +481,8 @@
     <p>The <span class="section-name">"Professional Development"</span>, <span class="section-name">"Certificate Courses"</span>, <span class="section-name">"New Resources"</span> and <span class="section-name">"News"</span> sections all run on the same components. That was the point of building a design system in the first place: a single source of truth, so nobody has to reinvent a pattern that already exists somewhere else on the platform.</p>
 
     <div class="walk-more-clips">
-      <div class="flow-note"><span class="flow-note-label">Professional Development</span>Not in demo. Visible in the full version</div>
-      <div class="flow-note"><span class="flow-note-label">Certificate Courses</span>Not in demo. Visible in the full version</div>
+      <div class="flow-note"><span class="flow-note-label">Professional Development</span><span class="flow-note-text">Not in demo. Visible in the full version</span></div>
+      <div class="flow-note"><span class="flow-note-label">Certificate Courses</span><span class="flow-note-text">Not in demo. Visible in the full version</span></div>
       <div class="flow-clip"><video src="videos/Oxford-New-Resources.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-clip"><video src="videos/Oxford-News.mp4" controls playsinline preload="metadata"></video></div>
     </div>
