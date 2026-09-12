@@ -29,7 +29,7 @@
       <div class="cookie-consent__content">
         <div class="cookie-consent__copy">
           <h2 id="cookie-consent-title">Help me improve this portfolio</h2>
-          <p>I use Contentsquare to understand visits, clicks and scrolling so I can improve this portfolio. The data is not used to identify you, and your personal information remains private. Analytics will only load if you accept. <a href="privacy-page.html">Privacy Policy</a></p>
+          <p>I use <strong>Contentsquare</strong> to understand <strong>visits</strong>, <strong>clicks</strong> and <strong>scrolling</strong> so I can improve this portfolio. The data is not used to identify you, and your <strong>personal information remains private</strong>. Analytics will only load if you accept. <a href="privacy-page.html">Privacy Policy</a></p>
         </div>
         <div class="cookie-consent__actions">
           <button type="button" class="cookie-consent__button cookie-consent__button--secondary" data-consent="declined">Decline</button>
