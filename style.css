@@ -127,6 +127,97 @@
   }
 }
 
+/* ---- Corazón de despedida al cerrar el aviso de cookies ----
+   Aparece exactamente donde estaba el popup (misma posición y tamaño,
+   calculados en JS con getBoundingClientRect), con un pequeño "puff"
+   de chispas alrededor. Dura ~2.4s y se auto-elimina del DOM. */
+.consent-heart-poof {
+  position: fixed;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.consent-heart-poof__icon {
+  width: 56px;
+  height: 56px;
+  color: #e8536f;
+  animation: consentHeartPoof 2.4s ease forwards;
+}
+
+.consent-heart-poof__spark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  border-radius: 50%;
+  background: #f6c15c;
+  opacity: 0;
+  animation: consentSparkPoof 1.4s ease-out forwards;
+}
+.consent-heart-poof__spark--1 {
+  --tx: -34px;
+  --ty: -30px;
+  animation-delay: 0.15s;
+}
+.consent-heart-poof__spark--2 {
+  --tx: 34px;
+  --ty: -30px;
+  animation-delay: 0.22s;
+}
+.consent-heart-poof__spark--3 {
+  --tx: -30px;
+  --ty: 28px;
+  animation-delay: 0.3s;
+}
+.consent-heart-poof__spark--4 {
+  --tx: 30px;
+  --ty: 26px;
+  animation-delay: 0.38s;
+}
+
+@keyframes consentHeartPoof {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  15% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+@keyframes consentSparkPoof {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(calc(var(--tx) * 0.4), calc(var(--ty) * 0.4)) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0.3);
+    opacity: 0;
+  }
+}
+
 .privacy-content h2 {
   text-align: left;
 }

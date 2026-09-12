@@ -13,8 +13,34 @@
     document.head.appendChild(tag);
   }
 
-  function closeBanner() {
-    document.querySelector(".cookie-consent")?.remove();
+  function spawnHeartPoof(rect) {
+    const heart = document.createElement("div");
+    heart.className = "consent-heart-poof";
+    heart.setAttribute("aria-hidden", "true");
+    heart.style.top = rect.top + "px";
+    heart.style.left = rect.left + "px";
+    heart.style.width = rect.width + "px";
+    heart.style.height = rect.height + "px";
+    heart.innerHTML = `
+      <span class="consent-heart-poof__spark consent-heart-poof__spark--1"></span>
+      <span class="consent-heart-poof__spark consent-heart-poof__spark--2"></span>
+      <span class="consent-heart-poof__spark consent-heart-poof__spark--3"></span>
+      <span class="consent-heart-poof__spark consent-heart-poof__spark--4"></span>
+      <svg class="consent-heart-poof__icon" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 21s-6.7-4.35-9.3-8.28C1.02 10.4 1.4 7.1 4.1 5.4c2.2-1.4 4.9-.8 6.4 1.1.4.5 1 .5 1.4 0 1.5-1.9 4.2-2.5 6.4-1.1 2.7 1.7 3.08 5 1.4 7.32C18.7 16.65 12 21 12 21z"/>
+      </svg>`;
+
+    document.body.appendChild(heart);
+    window.setTimeout(() => heart.remove(), 2600);
+  }
+
+  function closeBannerWithHeart() {
+    const banner = document.querySelector(".cookie-consent");
+    if (!banner) return;
+
+    const rect = banner.getBoundingClientRect();
+    banner.remove();
+    spawnHeartPoof(rect);
   }
 
   function showBanner() {
@@ -46,12 +72,12 @@
 
       const choice = button.dataset.consent;
       localStorage.setItem(CONSENT_KEY, choice);
-      closeBanner();
+      closeBannerWithHeart();
 
       if (choice === "accepted") {
         loadContentsquare();
       } else if (document.querySelector(`script[src="${CONTENTSQUARE_URL}"]`)) {
-        window.location.reload();
+        window.setTimeout(() => window.location.reload(), 1400);
       }
     });
   }
