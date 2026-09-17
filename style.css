@@ -1260,8 +1260,7 @@ li {
   font-weight: 700;
 }
 .case-study-video {
-  max-width: 720px;
-  margin: 0 auto 40px;
+  margin: 0 0 40px;
   background: white;
   border-radius: 24px;
   overflow: hidden;
