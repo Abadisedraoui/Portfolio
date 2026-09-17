@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a UX Practice at a SaaS Startup | Zainab Abadi</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Analytics consent and Contentsquare loader -->
+  <script defer src="analytics-consent.js"></script>
+</head>
+
+<body class="project-body">
+
+<header class="header">
+  <a href="home.html" class="logo-link active" aria-label="Go to homepage">
+    <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
+  </a>
+
+  <button class="menu-toggle" aria-label="Open menu">
+    ☰
+  </button>
+
+  <nav class="nav">
+  <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
+    <a href="home.html" class="nav-link active">Home</a>
+    <a href="about-me.html" class="nav-link">About me</a>
+  </nav>
+</header>
+
+<main class="main project-page">
+
+  <section class="project-intro">
+    <div class="project-title-row">
+      <h1>Building a UX Practice at a SaaS Startup</h1>
+      <span>5 min read</span>
+    </div>
+
+    <h4>TL;DR</h4>
+
+    <p>
+      Plytix was my <strong>first corporate role outside of internships</strong> — and I joined
+      <strong>Plytix</strong>, a SaaS Product Information Management (PIM) platform, as its
+      <strong>first and only UX hire</strong>: three months creating the UX function from the ground
+      up, rather than joining one that already existed.
+    </p>
+
+    <p>
+      My role split three ways: <strong>evangelising UX</strong> internally, <strong>managing UX
+      processes</strong> and stakeholders, and doing the <strong>day-to-day design and research
+      work</strong> myself.
+    </p>
+
+    <p>
+      It was short, but it taught me more about building bridges between teams than most longer
+      roles have.
+    </p>
+  </section>
+
+  <section class="table-contents">
+    <h4>Table of Contents</h4>
+
+    <ol>
+      <li><a href="#context">Context</a></li>
+      <li><a href="#role">My Role</a></li>
+      <li><a href="#processes">Processes I Built</a></li>
+      <li><a href="#day">A Day in My Work</a></li>
+      <li><a href="#outcome">Outcome</a></li>
+    </ol>
+  </section>
+
+  <section class="article-section" id="context">
+    <h2>1. Context</h2>
+
+    <p>
+      Plytix is a <strong>SaaS PIM</strong> (Product Information Management) tool: an online platform,
+      available on subscription, that brings a company's product data together as a single source of
+      truth and prepares it for every channel where the client sells.
+    </p>
+
+    <p>
+      There was no UX practice before I joined — no established processes, no shared vocabulary for
+      what UX could actually offer the team. I was hired as the only UX person, which meant the first
+      part of the job wasn't designing screens. It was explaining what UX was for, to people who had
+      never worked with a UX role before.
+    </p>
+  </section>
+
+  <section class="article-section" id="role">
+    <h2>2. My Role</h2>
+
+    <p>
+      My role split across three areas:
+    </p>
+
+    <p>
+      <strong>UX advocate</strong> — working with UI designers, managers and the dev team to build a
+      shared understanding of user needs. I ran the research myself, brought everyone's input
+      together, and looked for solutions that worked both technically and for the user. Rather than
+      telling a team something wasn't feasible, I focused on framing the outcome: what we could ship
+      now as a temporary solution, and when we could revisit the definitive one. That kept people
+      engaged instead of putting departments against each other.
+    </p>
+
+    <p>
+      <strong>UX manager</strong> — establishing and improving user-centred design processes,
+      connecting UX to the wider business alongside the Head of Product, and regularly reporting on
+      UX programmes, projects and best practices. I owned the key UX artefacts: user journeys,
+      personas, longitudinal research, UX measurement.
+    </p>
+
+    <p>
+      <strong>UX designer</strong> — the hands-on work: user research and competitor analysis,
+      interpreting data and qualitative feedback, user stories, personas, storyboards, information
+      architecture, sitemaps, prototypes, wireframes and usability testing.
+    </p>
+  </section>
+
+  <section class="article-section" id="processes">
+    <h2>3. Processes I Built</h2>
+
+    <p>
+      There was no existing UX process to plug into, so I documented four, adapted to how the team
+      already worked:
+    </p>
+
+    <ul>
+      <li><strong>Evaluate → Optimise</strong> — document and evaluate an existing flow, check related
+      user insights, evaluate the experience, and, where needed, map pain points with a swimlane
+      diagram.</li>
+      <li><strong>Document → Analyse</strong> — a descriptive analysis of the interface and flow, an
+      analysis of specific PIM features, and an evaluation of the emotional impact and behaviour
+      behind them.</li>
+      <li><strong>Propose → UX proposal</strong> — a first pass at a new feature, benchmarking what
+      competitors do, and an early look at technical feasibility before committing.</li>
+      <li><strong>Shortcut reviews</strong> — UX review and investigation work directly inside the
+      team's ticketing tool, comparing the user's perspective against the story's stated scenario,
+      with an overall analysis.</li>
+    </ul>
+
+    <p>
+      I also wrote a
+      <a href="work-methodology-plytix.pdf" target="_blank" rel="noopener noreferrer">short methodology guide</a><span class="info-popup">
+        <button class="info-popup__trigger" type="button" aria-label="More info about this document" aria-expanded="false">i</button>
+        <span class="info-popup__panel" hidden>
+          This document has been adapted for this portfolio — some information and visuals were removed to protect privacy, with Plytix's product team's approval. The three-month length of this role was unrelated to my performance; we maintained a good relationship throughout.
+        </span>
+      </span>
+      documenting my role, how I fit into the sprint, and what the team could ask of me. There was no
+      prior UX awareness to build on, so that context had to be made explicit rather than assumed.
+    </p>
+  </section>
+
+  <section class="article-section" id="day">
+    <h2>4. A Day in My Work</h2>
+
+    <p>
+      A concrete example of how this played out: I was asked to analyse a "Find and Replace" feature
+      for an HTML attribute. There were two types of text involved — the plain text end users
+      interact with, and the underlying code text that structures it. Product wasn't sure which one
+      the feature should target, so I went directly to a developer to understand the constraint.
+    </p>
+
+    <p>
+      He explained the actual usability problem: users could only interact with the code text, not
+      the plain text. That meant if the same word appeared in both, replacing it in one replaced it in
+      both — even though the two could serve different purposes. "Red", for instance, is a colour
+      attribute in the code (<code>&lt;p style="color:red"&gt;</code>) and an adjective in the plain
+      text ("red dress"). Same word, different jobs.
+    </p>
+
+    <p>
+      Product was already wary of technical complexity and wanted a result within the timeline,
+      without engaging much with the user problem. I took screenshots of the different scenarios with
+      the developer and asked whether the underlying configuration could change so users could
+      interact with the plain text directly. He was clear: not now — the current sprint didn't leave
+      room for it, and the feature wasn't high-impact enough to reprioritise.
+    </p>
+
+    <p>
+      I asked for ten minutes with my team, presented the scenarios with the screenshots, let them
+      react, and then reframed the conversation around the user outcome rather than the technical ask.
+      We agreed on a temporary solution: keep working with the code text for now, but show a warning
+      message when the feature is used on an HTML attribute, so users understand what's actually
+      happening. The team liked it, refined a few details together, and I looped the developer back in
+      on the outcome.
+    </p>
+
+    <p>
+      I also kept a running document of situations like this one, so decisions like it wouldn't have
+      to be re-litigated from scratch next time.
+    </p>
+  </section>
+
+  <section class="article-section" id="outcome">
+    <h2>5. Outcome</h2>
+
+    <p>
+      Three months wasn't long enough to see every process mature, but it was enough to establish a
+      working UX function where there hadn't been one: documented processes the team could actually
+      use, a shared vocabulary for talking about UX with people who'd never worked with a UX role
+      before, and a track record of resolving product-dev tension by focusing on outcomes instead of
+      taking sides.
+    </p>
+
+    <p>
+      It also shaped how I've worked since. Building bridges between teams isn't about being right —
+      it's about finding the version of a solution everyone can actually agree to ship.
+    </p>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
+    <a href="privacy-page.html" class="privacy">Privacy Policy</a>
+  </div>
+
+  <div>
+    <h4>CONTACT</h4>
+    <p>+34627892634</p>
+    <p>zainab.abadi.s@gmail.com</p>
+  </div>
+
+  <div>
+    <h4>LOCATION</h4>
+    <p>Madrid, Spain</p>
+  </div>
+
+  <div>
+    <h4>FEEDBACK IS WELCOME</h4>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
+  </div>
+
+  <p class="copyright">Vibe Coded with Claude 💫 © 2026 by Zainab Abadi.</p>
+</footer>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  menuButton.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+</script>
+
+<button class="back-to-top" aria-label="Back to top">
+  ↑
+</button>
+
+<script>
+const backToTop = document.querySelector('.back-to-top');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+</script>
+
+<script>
+  /* ---- info popup (botón "i" con panel flotante) ---- */
+  function closeAllInfoPopups() {
+    document.querySelectorAll('.info-popup__panel').forEach((panel) => {
+      panel.hidden = true;
+    });
+    document.querySelectorAll('.info-popup__trigger').forEach((trigger) => {
+      trigger.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  document.querySelectorAll('.info-popup').forEach((wrap) => {
+    const trigger = wrap.querySelector('.info-popup__trigger');
+    const panel = wrap.querySelector('.info-popup__panel');
+
+    trigger.addEventListener('click', (event) => {
+      event.stopPropagation();
+      const isOpen = !panel.hidden;
+      closeAllInfoPopups();
+      if (!isOpen) {
+        panel.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  document.addEventListener('click', closeAllInfoPopups);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') closeAllInfoPopups();
+  });
+</script>
+
+<script src="logo-animation.js"></script>
+</body>
+</html>
