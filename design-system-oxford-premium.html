@@ -38,20 +38,19 @@
     <h4>TL;DR</h4>
 
     <p>
-      I led the creation of a <strong>design system</strong> for Oxford Premium as part of a wider
-      <strong>rebranding</strong> and <strong>platform redesign</strong> initiative.
+      Oxford Premium had grown for years without a shared design language. I led the creation of
+      a <strong>design system</strong> for it as part of a wider rebranding and platform redesign
+      initiative. That is the project this case study walks through.
     </p>
 
     <p>
-      The project aimed to simplify a <strong>complex educational ecosystem</strong>, improve
-      <strong>consistency</strong>, support <strong>accessibility requirements</strong> and bring the experience
-      closer to Oxford's UK platform, <strong>HUB</strong>.
+      The goal was to simplify a complex educational ecosystem, improve consistency, support
+      accessibility requirements and bring the experience closer to Oxford's UK platform, <strong>HUB</strong>.
     </p>
 
     <p>
-      I worked as the <strong>sole UX/UI Designer</strong>, with full ownership across <strong>research</strong>,
-      <strong>visual direction</strong>, <strong>interaction design</strong>, <strong>design system foundations</strong>,
-      <strong>documentation</strong> and <strong>implementation support</strong>.
+      I worked as the sole UX/UI Designer, with full ownership across research, visual direction,
+      interaction design, design system foundations, documentation and implementation support.
     </p>
   </section>
 
@@ -73,544 +72,339 @@
     </ol>
   </section>
 
-  <div class="confidentiality-note case-study-video-note">
-    <strong>🎥 About this clip</strong>
-    <p>
-      A short screen recording made on <span class="platform-name">Oxford Premium</span>'s own
-      public demo account: showing interaction states from the design system in actual use —
-      button hover and focus states, a dropdown/filter opening, and other reusable components
-      reacting to input.
-    </p>
-    <p>
-      The demo account only includes a limited set of categories and titles. Several sections
-      aren't shown here, as they're only available to real users with full platform access, not
-      part of the public demo. No real school or customer data is included.
-    </p>
-  </div>
+  <section class="case-study-hero">
+    <figure class="case-hero-image zoomable-image">
+      <div class="media-frame">
+        <img
+          src="images/pic-6.jpg"
+          alt="Side-by-side comparison of the Oxford Premium and HUB interfaces, showing shared navigation and content patterns"
+        />
+        <button class="image-zoom-button" type="button" aria-label="Open image">
+          ⤢
+        </button>
+      </div>
+      <figcaption>One of the project's key references: aligning Oxford Premium with Oxford's UK platform, HUB.</figcaption>
+    </figure>
+  </section>
 
-  <figure class="case-study-video">
-    <video src="videos/design_system_video.mp4" controls playsinline preload="metadata"></video>
-    <figcaption>Component interaction states in use — Oxford Premium demo account</figcaption>
-  </figure>
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-1.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Design System Presentation</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-  
   <section class="article-section" id="overview">
     <h2>1. Overview</h2>
 
-    <p><strong>Role:</strong> Sole UX/UI Designer</p>
-    <p><strong>Project duration:</strong> 11 months</p>
-    <p><strong>Design and strategy:</strong> 7 months</p>
-    <p><strong>Implementation and support:</strong> 4 months</p>
-    <p><strong>Scope:</strong> Platform-wide redesign, information architecture and design system foundations.</p>
-    <p><strong>Tools:</strong> Figma, FigJam, Hotjar, Maze and Jira.</p>
+    <div class="section-media">
+      <div class="section-media-text">
+        <p><strong>Role:</strong> Sole UX/UI Designer</p>
+        <p><strong>Project duration:</strong> 11 months</p>
+        <p><strong>Design and strategy:</strong> 7 months</p>
+        <p><strong>Implementation and support:</strong> 4 months</p>
+        <p><strong>Scope:</strong> Platform-wide redesign, information architecture and design system foundations.</p>
+        <p><strong>Tools:</strong> Figma, FigJam, Hotjar, Maze and Jira.</p>
+      </div>
+
+      <figure class="section-media-image zoomable-image">
+        <div class="media-frame">
+          <img
+            src="images/pic-1.jpg"
+            alt="Cover slide of the Design System Presentation, showing the style guide's file structure, formats and navigation"
+          />
+          <button class="image-zoom-button" type="button" aria-label="Open image">
+            ⤢
+          </button>
+        </div>
+        <figcaption>Design System Presentation</figcaption>
+      </figure>
+    </div>
 
     <p>
-      The project covered the <strong>redesign of Oxford Premium's experience</strong>, the creation of
-      a new <strong>visual direction</strong> and the foundations of a <strong>scalable design system</strong>.
-    </p>
-
-    <p>
-      It was not a UI kit or a small component library. It was a <strong>full redesign initiative</strong>
-      connected to <strong>product strategy</strong>, <strong>platform structure</strong>, <strong>visual alignment</strong>
-      and <strong>implementation</strong>.
+      The project covered the redesign of Oxford Premium's experience, a new visual direction and
+      the foundations of a scalable design system. This went beyond a UI kit or a small component
+      library: a <strong>full redesign initiative</strong> connected to product strategy, platform
+      structure, visual alignment and implementation.
     </p>
   </section>
 
   <section class="article-section" id="context">
-
- <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-2.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>User Journey Mapping</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-
-    <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-2-1.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>User Journey Mapping</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-
-    <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-2-2.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Platform Ecosystem Comparison</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure> 
-    
     <h2>2. Context</h2>
 
     <p>
-      Oxford Premium is a <strong>complex educational platform</strong> that brings together digital books,
+      Oxford Premium is a complex educational platform that brings together digital books,
       teaching resources, assessments, professional development content and other learning tools.
     </p>
 
     <p>
       Over time, the platform had grown significantly. Different areas had evolved at different
-      moments, which created <strong>inconsistencies</strong> in navigation, resource organisation,
-      visual language and interaction patterns.
+      moments, which created inconsistencies in navigation, resource organisation, visual language
+      and interaction patterns.
     </p>
 
     <p>
-      At the same time, the platform was going through a <strong>rebranding process</strong> and there was a
+      At the same time, the platform was going through a rebranding process and there was a
       long-term objective of bringing the experience closer to <strong>HUB</strong>, Oxford's UK platform.
-    </p>
-
-    <p>
-      This created an opportunity to rethink the platform from a <strong>systems perspective</strong>, not only
-      by redesigning screens, but by creating a more coherent foundation for the whole experience.
+      This created an opportunity to rethink the platform from a systems perspective, not only by
+      redesigning screens, but by building a more coherent foundation for the whole experience.
     </p>
   </section>
-
-   <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-3.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Survey Interaction Flow</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>  
-
-  <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-3-1.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Research Process</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
 
   <section class="article-section" id="role">
     <h2>3. My Role</h2>
 
     <p>
-      I was the <strong>only designer</strong> working on the initiative and had <strong>full ownership</strong>
-      from strategy to implementation support.
+      I was the only designer working on the initiative and had full ownership from strategy to
+      implementation support. My work spanned research and analysis, information architecture, UX
+      strategy, interaction design, visual direction, design system foundations, documentation and
+      implementation support, working directly with product, development, editorial, leadership
+      and UK teams.
     </p>
 
     <p>
-      My work included:
-    </p>
-
-    <ul>
-      <li><strong>Research</strong> and analysis</li>
-      <li><strong>Information architecture</strong></li>
-      <li><strong>UX strategy</strong></li>
-      <li><strong>Interaction design</strong></li>
-      <li><strong>Visual direction</strong></li>
-      <li><strong>Design system foundations</strong></li>
-      <li><strong>Documentation</strong></li>
-      <li><strong>Implementation support</strong></li>
-    </ul>
-
-    <p>
-      I worked directly with <strong>product</strong>, <strong>development</strong>, <strong>editorial</strong>,
-      <strong>leadership</strong> and <strong>UK teams</strong>.
-    </p>
-
-    <p>
-      A significant part of the work involved presenting proposals, discussing
-      <strong>trade-offs</strong> and validating <strong>visual</strong> and <strong>structural decisions</strong>
-      as the project evolved.
+      A significant part of the work involved presenting proposals, discussing trade-offs and
+      validating visual and structural decisions as the project evolved. With no one else to
+      escalate a design decision to, most of that validation happened in the room, in real time,
+      with whoever the decision actually affected.
     </p>
   </section>
-
-   <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-4-1.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Insight Impact Analysis</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>  
 
   <section class="article-section" id="ecosystem">
     <h2>4. Understanding the Ecosystem</h2>
 
     <p>
-      Before designing, I needed to understand how the platform actually worked.
+      Before designing anything, I needed to understand how the platform actually worked. I mapped
+      products, services, resource structures, navigation patterns, existing journeys and platform
+      dependencies. The maps quickly became quite large.
     </p>
 
     <p>
-      I mapped <strong>products</strong>, <strong>services</strong>, <strong>resource structures</strong>,
-      <strong>navigation patterns</strong>, existing journeys and platform dependencies.
-    </p>
-
-    <p>
-      The maps quickly became quite large.
-    </p>
-
-    <p>
-      More importantly, they revealed that the platform had gradually been organised
-      around <strong>internal structures</strong> and <strong>historical decisions</strong> rather than around how teachers
-      actually used it.
-    </p>
-
-    <p>
-      The problem was not a lack of content. The problem was <strong>complexity</strong>,
-      <strong>discoverability</strong> and <strong>consistency</strong>.
+      More importantly, they revealed that the platform had gradually been organised around
+      internal structures and historical decisions rather than around how teachers actually used
+      it. The real problem was <strong>complexity, discoverability and consistency</strong>,
+      not a lack of content.
     </p>
   </section>
 
   <section class="article-section" id="process">
-
-    <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-5.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Figma Design Exploration</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>5. Design Process</h2>
 
     <p>
-      This was not a linear project.
+      This project didn't move in a straight line. Comparative analysis with HUB, information
+      architecture mapping, user flows, interaction redesign, wireframing, high-fidelity design,
+      prototyping, documentation, design system foundations, stakeholder validation and progressive
+      implementation with development all ran in parallel and continuously informed each other.
     </p>
 
     <p>
-      Several activities happened in parallel and continuously informed each other:
-    </p>
-
-    <ul>
-      <li><strong>Comparative analysis</strong> with HUB</li>
-      <li><strong>Information architecture</strong> mapping</li>
-      <li><strong>User flows</strong></li>
-      <li><strong>Interaction redesign</strong></li>
-      <li><strong>Wireframing</strong></li>
-      <li><strong>High-fidelity designs</strong></li>
-      <li><strong>Prototyping</strong></li>
-      <li><strong>Documentation</strong></li>
-      <li><strong>Design system foundations</strong></li>
-      <li><strong>Validation</strong> with stakeholders</li>
-      <li><strong>Progressive implementation</strong> with development</li>
-    </ul>
-
-    <p>
-      The project constantly moved between understanding the <strong>current experience</strong>,
-      proposing solutions and refining decisions as new information appeared.
-    </p>
-
-    <p>
-      The work also connected directly with the wider redesign of Oxford Premium:
-      <strong>navigation</strong>, <strong>resource browsing</strong>, <strong>search behaviour</strong>,
-      <strong>filters</strong>, <strong>responsive layouts</strong> and <strong>reusable components</strong>
-      all had to evolve together.
+      The project constantly moved between understanding the current experience, proposing
+      solutions and refining decisions as new information appeared. It also connected directly with
+      the wider redesign of Oxford Premium: navigation, resource browsing, search behaviour,
+      filters, responsive layouts and reusable components all had to evolve together.
     </p>
   </section>
 
   <section class="article-section" id="hub">
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-6.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>HUB Visual Comparison</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>6. Visual Alignment with HUB</h2>
 
     <p>
-      One of the strategic objectives was to bring Oxford Premium closer to <strong>HUB</strong> while
-      respecting the needs and complexity of the local product.
+      One of the strategic objectives was to bring Oxford Premium closer to <strong>HUB</strong>
+      while respecting the needs and complexity of the local product. Some HUB patterns worked
+      well as a reference, but Oxford Premium had more services, more resource types and
+      different content needs, so most decisions needed adapting rather than direct reuse. The
+      comparison above shows one of the areas where alignment made sense.
     </p>
-
     <p>
-      This was not about copying one platform into another.
-    </p>
-
-    <p>
-      Oxford Premium had <strong>more services</strong>, <strong>more resource types</strong> and different content needs.
-      Some HUB patterns could be used as reference, but many decisions needed to be adapted.
-    </p>
-
-    <p>
-      The work involved understanding HUB's <strong>visual</strong> and <strong>interaction principles</strong>,
-      identifying opportunities for alignment, exploring new visual directions,
-      adapting interaction patterns where appropriate and balancing <strong>consistency</strong>
-      with <strong>local product needs</strong>.
-    </p>
-
-    <p>
-      Throughout the project, I regularly presented and validated proposals with
-      <strong>leadership</strong> and the <strong>UK team</strong>.
+      The work involved understanding HUB's visual and interaction principles, identifying
+      opportunities for alignment, exploring new visual directions, adapting interaction
+      patterns where appropriate and balancing consistency with local product needs. Throughout
+      the project, I regularly presented and validated proposals with leadership and the UK
+      team.
     </p>
   </section>
 
   <section class="article-section" id="flows">
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-7.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Onboarding Flow Mapping</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>7. Redesigning Interaction Flows</h2>
 
     <p>
-      The work went far beyond reorganising information.
-    </p>
-
-    <p>
-      I redesigned the <strong>interaction model</strong> itself:
-    </p>
-
-    <ul>
-      <li><strong>Entry points</strong></li>
-      <li><strong>Navigation flows</strong></li>
-      <li><strong>Resource browsing</strong></li>
-      <li><strong>Search behaviours</strong></li>
-      <li><strong>Filtering patterns</strong></li>
-      <li><strong>Resource hierarchy</strong></li>
-    </ul>
-
-    <p>
-      A lot of the work focused on reducing <strong>unnecessary decisions</strong> and making navigation
+      The work went far beyond reorganising information. I redesigned the interaction model itself:
+      entry points, navigation flows, resource browsing, search behaviours, filtering patterns
+      and resource hierarchy. The focus was on reducing unnecessary decisions and making navigation
       more predictable.
     </p>
 
     <p>
-      Rather than asking teachers to understand how the platform was organised internally,
-      the experience was reorganised around <strong>what they were trying to achieve</strong>.
+      Rather than asking teachers to understand how the platform was organised internally, the
+      experience was reorganised around what they were trying to achieve.
     </p>
   </section>
 
   <section class="article-section" id="system">
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-8.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Component Specifications</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-
-    <figure class="article-image zoomable-image">
-  <img
-    src="images/pic-8-1.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Toolbar Specifications</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>8. Design System Foundations</h2>
 
     <p>
-      As the redesign progressed, it became clear that consistency could not be solved
-      screen by screen.
+      As the redesign progressed, it became clear that consistency could not be solved screen by
+      screen. I created the foundations for a design system covering typography, colour system,
+      components, spacing rules, responsive behaviours, accessibility requirements and
+      documentation.
     </p>
 
     <p>
-      I created the foundations for a <strong>design system</strong> covering:
-    </p>
-
-    <ul>
-      <li><strong>Typography</strong></li>
-      <li><strong>Colour system</strong></li>
-      <li><strong>Components</strong></li>
-      <li><strong>Spacing rules</strong></li>
-      <li><strong>Responsive behaviours</strong></li>
-      <li><strong>Accessibility requirements</strong></li>
-      <li><strong>Documentation</strong></li>
-    </ul>
-
-    <p>
-      The goal was to create a <strong>shared foundation</strong> that could support future work and reduce
-      implementation complexity.
-    </p>
-
-    <p>
-      Instead of treating each screen as an isolated solution, the system created a
-      <strong>shared language</strong> for future product work.
+      The goal was a <strong>shared foundation</strong> that could support future work and reduce
+      implementation complexity. A shared language for future product work, instead of treating
+      each screen as an isolated solution.
     </p>
   </section>
 
   <section class="article-section" id="implementation">
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-9.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Prototype Flow Diagram</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>9. Progressive Implementation</h2>
 
     <p>
-      The implementation phase lasted four months and happened progressively.
+      The implementation phase lasted four months and happened progressively. I worked closely
+      with developers to clarify behaviours, produce documentation, review implementations, support
+      handoff and iterate on solutions.
     </p>
 
     <p>
-      I worked closely with developers to clarify <strong>behaviours</strong>, produce <strong>documentation</strong>,
-      review implementations, support <strong>handoff</strong> and iterate on solutions.
-    </p>
-
-    <p>
-      Because the project touched almost every area of the platform, maintaining
-      <strong>alignment between design and development</strong> became just as important as the design work itself.
+      Because the project touched almost every area of the platform, keeping design and development
+      aligned became just as important as the design work itself.
     </p>
   </section>
 
   <section class="article-section" id="outcome">
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-10.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Content Licensing Comparison</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>10. Outcome</h2>
 
-<p>
-  The project delivered:
-</p>
+    <div class="section-media">
+      <div class="section-media-text">
+        <p>
+          The project delivered a new information architecture, simplified navigation patterns,
+          redesigned interaction flows, improved discoverability, closer alignment with the UK's
+          platform (HUB), the foundations for a scalable design system and a complete redesign of
+          the platform experience.
+        </p>
+      </div>
 
-<ul>
-  <li>A new <strong>information architecture</strong></li>
-  <li>Simplified <strong>navigation patterns</strong></li>
-  <li>Redesigned <strong>interaction flows</strong></li>
-  <li>Improved <strong>discoverability</strong></li>
-  <li>Greater alignment with <strong>the UK's platform (HUB)</strong></li>
-  <li>Foundations for a <strong>scalable design system</strong></li>
-  <li>A complete redesign of the <strong>platform experience</strong></li>
-</ul>
+      <figure class="section-media-image zoomable-image">
+        <div class="media-frame">
+          <img
+            src="images/pic-10.jpg"
+            alt="Content licensing comparison slide between Oxford Premium and HUB"
+          />
+          <button class="image-zoom-button" type="button" aria-label="Open image">
+            ⤢
+          </button>
+        </div>
+        <figcaption>Content Licensing Comparison</figcaption>
+      </figure>
+    </div>
 
-<p>
-  Beyond the redesign itself, the design system became a <strong>single source of truth</strong>
-  for designers and developers, improving consistency, reducing ambiguity during
-  implementation and streamlining collaboration across teams.
-</p>
+    <p>
+      Beyond the redesign itself, the design system became a <strong>single source of truth</strong>
+      for designers and developers, improving consistency, reducing ambiguity during implementation
+      and streamlining collaboration across teams. It also enabled faster design iterations and
+      more realistic prototypes, allowing ideas to be validated with users through Maze before
+      development, reducing risk and supporting more informed product decisions.
+    </p>
 
-<p>
-  It also enabled faster design iterations and more realistic prototypes, allowing
-  ideas to be validated with users through <strong>Maze</strong> before development,
-  reducing risk and supporting more informed product decisions.
-</p>
-
-<p>
-  More importantly, the project helped reduce <strong>complexity</strong> in a platform
-  that had grown faster than its structure, creating a more coherent foundation that
-  could evolve consistently over time.
-</p>
-    
+    <p>
+      More importantly, the project helped reduce complexity in a platform that had grown faster
+      than its structure, creating a more coherent foundation that could evolve consistently over
+      time.
+    </p>
   </section>
 
   <section class="article-section" id="reflection">
-
-<figure class="article-image zoomable-image">
-  <img
-    src="images/pic-11.jpg"
-    alt="text"
-  />
-  <div class="article-image-overlay">
-    <p>Keyboard Focus Design</p>
-  </div>
-  <button class="image-zoom-button" type="button" aria-label="Open image">
-    ⤢
-  </button>
-</figure>
-    
     <h2>11. Reflection</h2>
 
     <p>
-      One thing this project reinforced for me is that the biggest UX problems are rarely
-      caused by missing features.
+      One thing this project reinforced for me is that the biggest UX problems are rarely caused by
+      missing features. More often, they appear when products grow faster than their structure.
     </p>
 
     <p>
-      More often, they appear when products grow faster than their structure.
-    </p>
-
-    <p>
-      This project was not really about redesigning screens.
-      It was about <strong>reducing complexity</strong> and helping people spend less time understanding
-      the platform and more time using it.
+      More than redesigning screens, this project was about <strong>reducing complexity</strong> and
+      helping people spend less time understanding the platform and more time using it.
     </p>
   </section>
+
+  <details class="process-more">
+    <summary>See more of the process (12 images)</summary>
+
+    <div class="process-carousel">
+      <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">‹</button>
+
+      <div class="process-carousel-track">
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-2.jpg" alt="User journey map: stage of the journey, platform, account type, actions and touchpoints">
+          </div>
+          <figcaption>User journey map across platforms and account types</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-2-1.jpg" alt="User journey map with sign up, activation and sign in stages, user thoughts and emotion curve">
+          </div>
+          <figcaption>Sign up, activation and sign in, with the emotion curve</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-2-2.jpg" alt="Full platform ecosystem comparison diagram, HUB on the left and Oxford Premium on the right">
+          </div>
+          <figcaption>Platform ecosystem comparison: HUB and Oxford Premium</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-3.jpg" alt="Survey interaction flow diagram">
+          </div>
+          <figcaption>Survey interaction flow</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-3-1.jpg" alt="Research process overview">
+          </div>
+          <figcaption>Research process overview</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-4-1.jpg" alt="Insight impact analysis">
+          </div>
+          <figcaption>Insight impact analysis</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-5.jpg" alt="Figma design exploration for the design system components">
+          </div>
+          <figcaption>Figma exploration of the system components</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-7.jpg" alt="Onboarding flow mapping">
+          </div>
+          <figcaption>Onboarding flow mapping</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-8.jpg" alt="Component specifications for buttons and filters, showing default, hover, focus and active states">
+          </div>
+          <figcaption>Button and filter specs, with all interaction states</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-8-1.jpg" alt="Toolbar component specifications">
+          </div>
+          <figcaption>Toolbar component specifications</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-9.jpg" alt="Prototype flow diagram used for implementation handoff">
+          </div>
+          <figcaption>Prototype flow used for implementation handoff</figcaption>
+        </figure>
+        <figure class="process-slide">
+          <div class="process-slide-media">
+            <img src="images/pic-11.jpg" alt="Keyboard focus state design for interactive components">
+          </div>
+          <figcaption>Keyboard focus states for interactive components</figcaption>
+        </figure>
+      </div>
+
+      <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">›</button>
+    </div>
+  </details>
 
 <section class="responsive-gallery">
   <h2>Responsive layouts</h2>
@@ -765,7 +559,7 @@
     });
   });
 
-  const carouselImages = document.querySelectorAll(".device-carousel-track img");
+  const carouselImages = document.querySelectorAll(".device-carousel-track img, .process-carousel-track img");
 
   carouselImages.forEach((image) => {
     image.style.cursor = "zoom-in";
@@ -785,10 +579,10 @@
     }
   });
 
-  const deviceCarousels = document.querySelectorAll(".device-carousel");
+  const deviceCarousels = document.querySelectorAll(".device-carousel, .process-carousel");
 
   deviceCarousels.forEach((carousel) => {
-    const track = carousel.querySelector(".device-carousel-track");
+    const track = carousel.querySelector(".device-carousel-track, .process-carousel-track");
     const prev = carousel.querySelector(".carousel-prev");
     const next = carousel.querySelector(".carousel-next");
 
