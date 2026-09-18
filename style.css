@@ -953,7 +953,7 @@ li {
 }
 .work-card-category {
   color: #234D8D;
-} 
+}
 .work-card h3 {
   font-size: 24px;
   margin: 0 0 14px;
@@ -1290,6 +1290,12 @@ li {
    esquina inferior derecha. Reutilizable junto a cualquier
    enlace/texto que necesite una nota aclaratoria corta.
 ========================================================= */
+.doc-link {
+  color: #234D8D;
+}
+.doc-link:hover {
+  color: #3E6FB3;
+}
 .info-popup {
   position: relative;
   display: inline-flex;
