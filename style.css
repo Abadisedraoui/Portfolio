@@ -951,6 +951,9 @@ li {
   flex: 1;
   padding: 24px;
 }
+.work-card-category {
+  color: #234D8D;
+} 
 .work-card h3 {
   font-size: 24px;
   margin: 0 0 14px;
