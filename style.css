@@ -1599,7 +1599,7 @@ li {
     margin-bottom: 72px;
   }
   .hero h1 {
-    font-size: 32px;
+    font-size: 35px;
   }
   .cv-buttons {
     flex-direction: column;
@@ -1619,7 +1619,41 @@ li {
     display: block;
   }
   h2 {
-    font-size: 26px;
+    font-size: 29px;
+  }
+  /* ---- Ajuste de legibilidad en mobile: el cuerpo de texto se
+     queda igual que en desktop si no se sube aquí, así que se
+     sube ~12% para que no dé sensación de tener que hacer zoom. ---- */
+  p,
+  li,
+  .hero p,
+  .work-card p,
+  .article-section p,
+  .project-intro p,
+  .project-overview p,
+  .privacy-content p,
+  .experience li,
+  .more li,
+  .table-contents li,
+  .table-contents a,
+  .footer p,
+  .footer a,
+  .confidentiality-note p,
+  .values {
+    font-size: 18px;
+  }
+  h3 {
+    font-size: 20px;
+  }
+  h4,
+  .hero h4,
+  .project-intro h4,
+  .project-overview h4,
+  .table-contents h4,
+  .footer h4,
+  .company-description,
+  .date {
+    font-size: 18px;
   }
   .project-intro {
     margin: 0 0 30px;
@@ -1640,7 +1674,7 @@ li {
     margin-top: 12px;
   }
   .project-title-row h1 {
-    font-size: 34px;
+    font-size: 37px;
   }
   .project-links,
   .selected-work-list {
