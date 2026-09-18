@@ -3,7 +3,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zainab Abadi | Portfolio</title>
-<meta name="description" content="Zainab Abadi — UX/UI Designer. Choose Quick Scan for a condensed overview or Deep Dive for the full portfolio.">
+<meta name="description" content="Zainab Abadi, UX/UI Designer. Choose Quick Scan for a condensed overview or Deep Dive for the full portfolio.">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800;900&family=Cormorant+Garamond:wght@500;600&display=swap');
 
@@ -95,8 +95,8 @@
   }
 
   .eye {
-    width: clamp(176px, 12vw, 220px);
-    height: calc(clamp(176px, 12vw, 220px) / 2);
+    width: calc(var(--content-w) * 0.3667);
+    height: calc(var(--content-w) * 0.3667 / 2);
   }
 
   .eye svg {
@@ -149,10 +149,10 @@
 
   .subtitle-stone.subtitle-note {
     font-weight: 500;
-    font-style: italic;
-    font-size: clamp(13px, 1.05vw, 15px);
-    color: #8b8f99;
-    letter-spacing: 0.2px;
+    font-style: normal;
+    font-size: clamp(14px, 1.15vw, 17px);
+    color: var(--ink-soft);
+    letter-spacing: 0.3px;
   }
 
   .subtitle-stone:last-of-type {
@@ -163,7 +163,7 @@
 
   .cta-row {
     display: flex;
-    gap: 48px;
+    gap: 32px;
     flex-wrap: wrap;
     justify-content: center;
     width: var(--content-w);
@@ -174,7 +174,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 260px;
+    flex: 0 1 calc((100% - 32px) / 2);
+    min-width: 0;
   }
 
   .cta-label {
@@ -257,6 +258,10 @@
       gap: 18px;
     }
 
+    .cta-item {
+      flex: 0 1 100%;
+    }
+
     .btn-stone {
       width: 168px;
       height: 56px;
@@ -302,7 +307,7 @@
     <nav class="cta-row" id="ctaRow" aria-label="Choose how to explore the portfolio">
     <div class="cta-item">
       <p class="cta-label">Short on time? Get a fast, visual look at the work and the outcomes.</p>
-      <a href="quick-scan.html" class="btn-stone" aria-label="Quick Scan — Recruiter mode">
+      <a href="quick-scan.html" class="btn-stone" aria-label="Quick Scan">
         
     <svg viewBox="0 0 200 54" preserveAspectRatio="none">
       <defs>
@@ -322,7 +327,7 @@
   
     <div class="cta-item">
       <p class="cta-label">Have more time? Explore the process, research and iterations behind each project.</p>
-      <a href="home.html" class="btn-stone" aria-label="Deep Dive — Designer mode">
+      <a href="home.html" class="btn-stone" aria-label="Deep Dive">
         
     <svg viewBox="0 0 200 54" preserveAspectRatio="none">
       <defs>
@@ -433,16 +438,16 @@
   }
 
   const buttons = [
-    { label: 'Quick Scan', eyebrow: 'Recruiter mode', key: 'quick', href: 'quick-scan.html' },
-    { label: 'Deep Dive', eyebrow: 'Designer mode', key: 'deep', href: 'home.html' }
+    { label: 'Quick Scan', description: 'Short on time? Get a fast, visual look at the work and the outcomes.', key: 'quick', href: 'quick-scan.html' },
+    { label: 'Deep Dive', description: 'Have more time? Explore the process, research and iterations behind each project.', key: 'deep', href: 'home.html' }
   ];
 
   let btnUid = 0;
   const ctaRow = document.getElementById('ctaRow');
   ctaRow.innerHTML = buttons.map((b) => `
     <div class="cta-item">
-      <p class="cta-eyebrow">${b.eyebrow}</p>
-      <a href="${b.href}" class="btn-stone" aria-label="${b.label} — ${b.eyebrow}">
+      <p class="cta-label">${b.description}</p>
+      <a href="${b.href}" class="btn-stone" aria-label="${b.label}">
         ${buildButtonSVG(b.key, btnUid++)}
         <span class="btn-label">${b.label}</span>
       </a>
