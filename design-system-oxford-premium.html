@@ -5,6 +5,279 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Building a Design System | Zainab Abadi</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Estilos de imágenes, leyendas y visor (van después de style.css a propósito) -->
+  <style>
+/* =========================================================
+   CASE STUDY MEDIA
+   Imágenes de los case studies largos (Deep Dive) y su visor
+   ampliado. Va dentro de esta página, después del enlace a
+   style.css, y no sustituye ninguna regla de style.css: solo
+   añade. Reutiliza
+   los colores, radios y sombras de .article-image y de
+   .case-study-video (guía de estilo).
+========================================================= */
+
+:root {
+  /* Un solo valor para el espacio vertical entre bloques:
+     párrafo > título, párrafo > imagen, imagen > párrafo.
+     Coincide con el margin-bottom de .article-section. */
+  --flow-gap: 48px;
+}
+
+/* =========================================================
+   MEDIA CARD
+   Imagen + leyenda en un mismo bloque. La imagen ocupa el 100%
+   del ancho de .project-page (el mismo ancho que el bloque gris
+   de .project-intro). La leyenda va dentro del bloque, en la
+   parte inferior, alineada a la derecha.
+========================================================= */
+.media-card {
+  width: 100%;
+  margin: var(--flow-gap) 0;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(40, 35, 47, .14);
+  box-shadow: 0 6px 14px rgba(40, 35, 47, .10);
+  overflow: hidden;
+}
+
+.media-card__frame {
+  position: relative;
+}
+
+.media-card__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.media-card figcaption {
+  padding: 12px 20px 14px;
+  border-top: 1px solid rgba(40, 35, 47, .10);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #66758C;
+  text-align: right;
+}
+
+/* El hero no es un .article-section: el margen inferior lo pone
+   la propia tarjeta (--flow-gap) y el superior colapsa con el
+   margin-bottom de .table-contents. */
+.case-study-hero {
+  margin: 0;
+}
+
+/* =========================================================
+   "SEE MORE OF THE PROCESS"
+   Botón con la estética de .button (píldora oscura). Abre el
+   visor con las 12 imágenes del proceso.
+========================================================= */
+.process-more {
+  margin: 0;
+}
+
+.process-more .button {
+  margin-top: 0;
+  border: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+/* Mismo ritmo vertical para lo que viene después del botón */
+.project-page .responsive-gallery {
+  margin: var(--flow-gap) 0;
+}
+
+.project-page .confidentiality-note {
+  margin-top: var(--flow-gap);
+}
+
+/* =========================================================
+   LIGHTBOX (visor ampliado con carrusel)
+   Sustituye al antiguo .image-modal en esta página. Muestra
+   las imágenes con el mismo formato de tarjeta (imagen +
+   leyenda abajo a la derecha). Si el grupo tiene una sola
+   imagen se ocultan flechas y contador.
+   Mismo overlay y botón de cierre que .pokemon-modal.
+========================================================= */
+html.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 88px;
+  background: rgba(40, 35, 47, 0.72);
+  z-index: 9999;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox__close,
+.lightbox__arrow {
+  position: absolute;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #28232f;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close {
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+}
+
+.lightbox__arrow {
+  top: 50%;
+  font-size: 30px;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 16px rgba(40, 35, 47, .18);
+}
+
+.lightbox__prev {
+  left: 24px;
+}
+
+.lightbox__next {
+  right: 24px;
+}
+
+.lightbox__arrow:hover:not(:disabled),
+.lightbox__close:hover {
+  background: #EEF4FF;
+}
+
+.lightbox__arrow:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.lightbox__close:focus-visible,
+.lightbox__arrow:focus-visible {
+  outline: 3px solid #3E6FB3;
+  outline-offset: 3px;
+}
+
+.lightbox.is-single .lightbox__arrow,
+.lightbox.is-single .lightbox__status {
+  display: none;
+}
+
+.lightbox__status {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.lightbox__track {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.lightbox__track::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox__slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+
+/* La tarjeta se ajusta a la imagen: el ancho sale del ratio real
+   (--ratio lo fija el JS al cargar la imagen), limitado por el
+   ancho disponible y por el alto de la ventana. Así la leyenda
+   siempre queda pegada a la esquina inferior derecha de la
+   imagen, sin barras vacías a los lados. */
+.lightbox .media-card {
+  width: min(100%, calc((100vh - 216px) * var(--ratio, 1.7778)));
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .lightbox {
+    padding: 72px 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Alinea imágenes y botón con el texto, que en mobile lleva
+     24px de padding lateral (.article-section) */
+  .case-study-hero,
+  .process-more {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .media-card figcaption {
+    padding: 10px 16px 12px;
+  }
+
+  .lightbox {
+    padding: 72px 16px 96px;
+  }
+
+  .lightbox__close {
+    top: 16px;
+    right: 16px;
+  }
+
+  .lightbox__arrow {
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
+
+  .lightbox__prev {
+    left: 16px;
+  }
+
+  .lightbox__next {
+    right: 16px;
+  }
+
+  .lightbox__status {
+    bottom: 36px;
+  }
+
+  .lightbox .media-card {
+    width: min(100%, calc((100vh - 230px) * var(--ratio, 1.7778)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox__track {
+    scroll-behavior: auto;
+  }
+}
+
+  </style>
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
 </head>
@@ -73,8 +346,8 @@
   </section>
 
   <section class="case-study-hero">
-    <figure class="case-hero-image zoomable-image">
-      <div class="media-frame">
+    <figure class="media-card zoomable-image">
+      <div class="media-card__frame">
         <img
           src="images/pic-6.jpg"
           alt="Side-by-side comparison of the Oxford Premium and HUB interfaces, showing shared navigation and content patterns"
@@ -90,29 +363,25 @@
   <section class="article-section" id="overview">
     <h2>1. Overview</h2>
 
-    <div class="section-media">
-      <div class="section-media-text">
-        <p><strong>Role:</strong> Sole UX/UI Designer</p>
-        <p><strong>Project duration:</strong> 11 months</p>
-        <p><strong>Design and strategy:</strong> 7 months</p>
-        <p><strong>Implementation and support:</strong> 4 months</p>
-        <p><strong>Scope:</strong> Platform-wide redesign, information architecture and design system foundations.</p>
-        <p><strong>Tools:</strong> Figma, FigJam, Hotjar, Maze and Jira.</p>
-      </div>
+    <p>
+      I worked as the sole UX/UI Designer on this project, which lasted 11 months in total: 7 months
+      of design and strategy and 4 months of implementation and support. The scope covered a
+      platform-wide redesign, information architecture and the foundations of a design system,
+      and I worked with Figma, FigJam, Hotjar, Maze and Jira.
+    </p>
 
-      <figure class="section-media-image zoomable-image">
-        <div class="media-frame">
-          <img
-            src="images/pic-1.jpg"
-            alt="Cover slide of the Design System Presentation, showing the style guide's file structure, formats and navigation"
-          />
-          <button class="image-zoom-button" type="button" aria-label="Open image">
-            ⤢
-          </button>
-        </div>
-        <figcaption>Design System Presentation</figcaption>
-      </figure>
-    </div>
+    <figure class="media-card zoomable-image">
+      <div class="media-card__frame">
+        <img
+          src="images/pic-1.jpg"
+          alt="Cover slide of the Design System Presentation, showing the style guide's file structure, formats and navigation"
+        />
+        <button class="image-zoom-button" type="button" aria-label="Open image">
+          ⤢
+        </button>
+      </div>
+      <figcaption>Design System Presentation</figcaption>
+    </figure>
 
     <p>
       The project covered the redesign of Oxford Premium's experience, a new visual direction and
@@ -268,29 +537,25 @@
   <section class="article-section" id="outcome">
     <h2>10. Outcome</h2>
 
-    <div class="section-media">
-      <div class="section-media-text">
-        <p>
-          The project delivered a new information architecture, simplified navigation patterns,
-          redesigned interaction flows, improved discoverability, closer alignment with the UK's
-          platform (HUB), the foundations for a scalable design system and a complete redesign of
-          the platform experience.
-        </p>
-      </div>
+    <p>
+      The project delivered a new information architecture, simplified navigation patterns,
+      redesigned interaction flows, improved discoverability, closer alignment with the UK's
+      platform (HUB), the foundations for a scalable design system and a complete redesign of
+      the platform experience.
+    </p>
 
-      <figure class="section-media-image zoomable-image">
-        <div class="media-frame">
-          <img
-            src="images/pic-10.jpg"
-            alt="Content licensing comparison slide between Oxford Premium and HUB"
-          />
-          <button class="image-zoom-button" type="button" aria-label="Open image">
-            ⤢
-          </button>
-        </div>
-        <figcaption>Content Licensing Comparison</figcaption>
-      </figure>
-    </div>
+    <figure class="media-card zoomable-image">
+      <div class="media-card__frame">
+        <img
+          src="images/pic-10.jpg"
+          alt="Content licensing comparison slide between Oxford Premium and HUB"
+        />
+        <button class="image-zoom-button" type="button" aria-label="Open image">
+          ⤢
+        </button>
+      </div>
+      <figcaption>Content Licensing Comparison</figcaption>
+    </figure>
 
     <p>
       Beyond the redesign itself, the design system became a <strong>single source of truth</strong>
@@ -321,90 +586,64 @@
     </p>
   </section>
 
-  <details class="process-more">
-    <summary>See more of the process (12 images)</summary>
+  <div class="process-more">
+    <button class="button" type="button" id="processOpen" aria-haspopup="dialog">
+      See more of the process (12 images)
+    </button>
+  </div>
 
-    <div class="process-carousel">
-      <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">‹</button>
-
-      <div class="process-carousel-track">
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-2.jpg" alt="User journey map: stage of the journey, platform, account type, actions and touchpoints">
-          </div>
-          <figcaption>User journey map across platforms and account types</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-2-1.jpg" alt="User journey map with sign up, activation and sign in stages, user thoughts and emotion curve">
-          </div>
-          <figcaption>Sign up, activation and sign in, with the emotion curve</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-2-2.jpg" alt="Full platform ecosystem comparison diagram, HUB on the left and Oxford Premium on the right">
-          </div>
-          <figcaption>Platform ecosystem comparison: HUB and Oxford Premium</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-3.jpg" alt="Survey interaction flow diagram">
-          </div>
-          <figcaption>Survey interaction flow</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-3-1.jpg" alt="Research process overview">
-          </div>
-          <figcaption>Research process overview</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-4-1.jpg" alt="Insight impact analysis">
-          </div>
-          <figcaption>Insight impact analysis</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-5.jpg" alt="Figma design exploration for the design system components">
-          </div>
-          <figcaption>Figma exploration of the system components</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-7.jpg" alt="Onboarding flow mapping">
-          </div>
-          <figcaption>Onboarding flow mapping</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-8.jpg" alt="Component specifications for buttons and filters, showing default, hover, focus and active states">
-          </div>
-          <figcaption>Button and filter specs, with all interaction states</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-8-1.jpg" alt="Toolbar component specifications">
-          </div>
-          <figcaption>Toolbar component specifications</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-9.jpg" alt="Prototype flow diagram used for implementation handoff">
-          </div>
-          <figcaption>Prototype flow used for implementation handoff</figcaption>
-        </figure>
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/pic-11.jpg" alt="Keyboard focus state design for interactive components">
-          </div>
-          <figcaption>Keyboard focus states for interactive components</figcaption>
-        </figure>
-      </div>
-
-      <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">›</button>
-    </div>
-  </details>
+  <!-- Las 12 imágenes del proceso. El contenido de <template> no se
+       renderiza ni se descarga hasta que el visor lo abre. -->
+  <template id="processSlides">
+    <figure>
+      <img src="images/pic-2.jpg" alt="User journey map: stage of the journey, platform, account type, actions and touchpoints">
+      <figcaption>User journey map across platforms and account types</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-2-1.jpg" alt="User journey map with sign up, activation and sign in stages, user thoughts and emotion curve">
+      <figcaption>Sign up, activation and sign in, with the emotion curve</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-2-2.jpg" alt="Full platform ecosystem comparison diagram, HUB on the left and Oxford Premium on the right">
+      <figcaption>Platform ecosystem comparison: HUB and Oxford Premium</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-3.jpg" alt="Survey interaction flow diagram">
+      <figcaption>Survey interaction flow</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-3-1.jpg" alt="Research process overview">
+      <figcaption>Research process overview</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-4-1.jpg" alt="Insight impact analysis">
+      <figcaption>Insight impact analysis</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-5.jpg" alt="Figma design exploration for the design system components">
+      <figcaption>Figma exploration of the system components</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-7.jpg" alt="Onboarding flow mapping">
+      <figcaption>Onboarding flow mapping</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-8.jpg" alt="Component specifications for buttons and filters, showing default, hover, focus and active states">
+      <figcaption>Button and filter specs, with all interaction states</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-8-1.jpg" alt="Toolbar component specifications">
+      <figcaption>Toolbar component specifications</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-9.jpg" alt="Prototype flow diagram used for implementation handoff">
+      <figcaption>Prototype flow used for implementation handoff</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-11.jpg" alt="Keyboard focus state design for interactive components">
+      <figcaption>Keyboard focus states for interactive components</figcaption>
+    </figure>
+  </template>
 
 <section class="responsive-gallery">
   <h2>Responsive layouts</h2>
@@ -505,12 +744,16 @@
   ↑
 </button>
 
-<div class="image-modal" id="imageModal">
-  <button class="image-modal-close" type="button" aria-label="Close image">
-    ×
-  </button>
+<!-- Visor con carrusel: lo usan las imágenes sueltas (1 imagen), los
+     carruseles de Responsive layouts (3 imágenes) y el proceso (12). -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox__close" type="button" aria-label="Close image viewer">×</button>
+  <button class="lightbox__arrow lightbox__prev" type="button" aria-label="Previous image">‹</button>
 
-  <img id="imageModalImg" src="" alt="" />
+  <div class="lightbox__track" id="lightboxTrack" aria-roledescription="carousel"></div>
+
+  <button class="lightbox__arrow lightbox__next" type="button" aria-label="Next image">›</button>
+  <p class="lightbox__status" id="lightboxStatus" aria-live="polite"></p>
 </div>
 
 <script>
@@ -538,53 +781,180 @@
     });
   });
 
-  const imageModal = document.getElementById("imageModal");
-  const imageModalImg = document.getElementById("imageModalImg");
-  const imageModalClose = document.querySelector(".image-modal-close");
+  /* -------------------------------------------------------
+     LIGHTBOX
+     openLightbox(items, startIndex, opener)
+     items = [{ src, alt, caption }]
+  ------------------------------------------------------- */
+  const lightbox = document.getElementById("lightbox");
+  const lightboxTrack = document.getElementById("lightboxTrack");
+  const lightboxStatus = document.getElementById("lightboxStatus");
+  const lightboxClose = lightbox.querySelector(".lightbox__close");
+  const lightboxPrev = lightbox.querySelector(".lightbox__prev");
+  const lightboxNext = lightbox.querySelector(".lightbox__next");
 
-  function openImageModal(image) {
-    imageModalImg.src = image.src;
-    imageModalImg.alt = image.alt;
-    imageModal.classList.add("open");
+  let lightboxOpener = null;
+  let lightboxCount = 0;
+
+  function buildSlide(item, index, total) {
+    const slide = document.createElement("div");
+    slide.className = "lightbox__slide";
+    slide.setAttribute("role", "group");
+    slide.setAttribute("aria-roledescription", "slide");
+    slide.setAttribute("aria-label", (index + 1) + " of " + total);
+
+    const figure = document.createElement("figure");
+    figure.className = "media-card";
+
+    const frame = document.createElement("div");
+    frame.className = "media-card__frame";
+
+    const image = document.createElement("img");
+    image.alt = item.alt || "";
+    image.addEventListener("load", () => {
+      figure.style.setProperty("--ratio", image.naturalWidth / image.naturalHeight);
+    });
+    image.src = item.src;
+    if (image.complete && image.naturalWidth) {
+      figure.style.setProperty("--ratio", image.naturalWidth / image.naturalHeight);
+    }
+
+    frame.appendChild(image);
+    figure.appendChild(frame);
+
+    if (item.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = item.caption;
+      figure.appendChild(caption);
+    }
+
+    slide.appendChild(figure);
+    return slide;
   }
 
-  const zoomableImages = document.querySelectorAll(".zoomable-image");
+  function currentIndex() {
+    return Math.round(lightboxTrack.scrollLeft / lightboxTrack.clientWidth) || 0;
+  }
 
-  zoomableImages.forEach((figure) => {
-    const image = figure.querySelector("img");
-    const button = figure.querySelector(".image-zoom-button");
+  function updateLightboxState() {
+    const index = currentIndex();
+    lightboxPrev.disabled = index <= 0;
+    lightboxNext.disabled = index >= lightboxCount - 1;
+    lightboxStatus.textContent = (index + 1) + " / " + lightboxCount;
+  }
 
-    button.addEventListener("click", () => {
-      openImageModal(image);
+  function goToSlide(index, smooth) {
+    const target = Math.max(0, Math.min(lightboxCount - 1, index));
+    lightboxTrack.scrollTo({
+      left: target * lightboxTrack.clientWidth,
+      behavior: smooth ? "smooth" : "instant"
     });
-  });
+  }
 
-  const carouselImages = document.querySelectorAll(".device-carousel-track img, .process-carousel-track img");
+  function openLightbox(items, startIndex, opener) {
+    lightboxOpener = opener || null;
+    lightboxCount = items.length;
+    lightboxTrack.innerHTML = "";
 
-  carouselImages.forEach((image) => {
-    image.style.cursor = "zoom-in";
-
-    image.addEventListener("click", () => {
-      openImageModal(image);
+    items.forEach((item, index) => {
+      lightboxTrack.appendChild(buildSlide(item, index, items.length));
     });
-  });
 
-  imageModalClose.addEventListener("click", () => {
-    imageModal.classList.remove("open");
-  });
+    lightbox.classList.toggle("is-single", items.length < 2);
+    lightbox.classList.add("open");
+    document.documentElement.classList.add("lightbox-open");
 
-  imageModal.addEventListener("click", (event) => {
-    if (event.target === imageModal) {
-      imageModal.classList.remove("open");
+    goToSlide(startIndex || 0, false);
+    updateLightboxState();
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.documentElement.classList.remove("lightbox-open");
+    lightboxTrack.innerHTML = "";
+
+    if (lightboxOpener && typeof lightboxOpener.focus === "function") {
+      lightboxOpener.focus();
+    }
+    lightboxOpener = null;
+  }
+
+  lightboxTrack.addEventListener("scroll", updateLightboxState);
+  lightboxPrev.addEventListener("click", () => goToSlide(currentIndex() - 1, true));
+  lightboxNext.addEventListener("click", () => goToSlide(currentIndex() + 1, true));
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  // Clic fuera de la tarjeta y de los botones = cerrar
+  lightbox.addEventListener("click", (event) => {
+    if (!event.target.closest(".media-card, .lightbox__arrow, .lightbox__close")) {
+      closeLightbox();
     }
   });
 
-  const deviceCarousels = document.querySelectorAll(".device-carousel, .process-carousel");
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) return;
 
-  deviceCarousels.forEach((carousel) => {
-    const track = carousel.querySelector(".device-carousel-track, .process-carousel-track");
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowLeft") {
+      goToSlide(currentIndex() - 1, true);
+    } else if (event.key === "ArrowRight") {
+      goToSlide(currentIndex() + 1, true);
+    } else if (event.key === "Tab") {
+      // Foco atrapado dentro del visor
+      const focusable = [lightboxClose, lightboxPrev, lightboxNext].filter(
+        (control) => !control.disabled && control.offsetParent !== null
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!focusable.includes(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  /* Imágenes sueltas (hero, overview, outcome): 1 imagen + leyenda */
+  document.querySelectorAll(".zoomable-image").forEach((figure) => {
+    const image = figure.querySelector("img");
+    const button = figure.querySelector(".image-zoom-button");
+    const caption = figure.querySelector("figcaption");
+
+    button.addEventListener("click", () => {
+      openLightbox([{
+        src: image.currentSrc || image.src,
+        alt: image.alt,
+        caption: caption ? caption.textContent.trim() : ""
+      }], 0, button);
+    });
+  });
+
+  /* Carruseles pequeños (Responsive layouts): al ampliar, el visor
+     trae el resto de imágenes del mismo carrusel, con flechas */
+  document.querySelectorAll(".device-carousel").forEach((carousel) => {
+    const track = carousel.querySelector(".device-carousel-track");
     const prev = carousel.querySelector(".carousel-prev");
     const next = carousel.querySelector(".carousel-next");
+    const images = Array.from(track.querySelectorAll("img"));
+
+    const items = images.map((image) => ({
+      src: image.currentSrc || image.src,
+      alt: image.alt,
+      caption: ""
+    }));
+
+    images.forEach((image, index) => {
+      image.style.cursor = "zoom-in";
+      image.addEventListener("click", () => openLightbox(items, index, image));
+    });
 
     prev.addEventListener("click", () => {
       track.scrollBy({
@@ -599,6 +969,25 @@
         behavior: "smooth"
       });
     });
+  });
+
+  /* See more of the process: 12 imágenes con leyenda */
+  const processOpen = document.getElementById("processOpen");
+  const processSlides = document.getElementById("processSlides");
+
+  processOpen.addEventListener("click", () => {
+    const items = Array.from(processSlides.content.querySelectorAll("figure")).map((figure) => {
+      const image = figure.querySelector("img");
+      const caption = figure.querySelector("figcaption");
+
+      return {
+        src: image.getAttribute("src"),
+        alt: image.getAttribute("alt"),
+        caption: caption ? caption.textContent.trim() : ""
+      };
+    });
+
+    openLightbox(items, 0, processOpen);
   });
 </script>
 
