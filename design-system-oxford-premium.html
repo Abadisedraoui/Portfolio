@@ -277,6 +277,52 @@ html.lightbox-open {
   }
 }
 
+
+/* Layout scoped to this case study; shared site styles stay unchanged. */
+.project-intro { padding: clamp(24px, 4vw, 48px); }
+.project-title-row { margin-bottom: 28px; }
+.project-title-row h1 { max-width: 740px; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.12; }
+.project-title-row span { flex-shrink: 0; }
+.case-summary { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 32px; align-items: center; }
+.case-summary > * { min-width: 0; }
+.case-summary .media-card { margin: 0; border: 0; background: transparent; box-shadow: none; }
+.case-summary .media-card__frame { padding: 12px 0; }
+.case-summary .media-card__frame img { width: 100%; height: auto; }
+.case-summary figcaption { padding: 12px 0 0; border: 0; color: #43536b; }
+.case-facts { display: flex; flex-wrap: wrap; gap: 16px 24px; margin: 24px 0; }
+.case-facts div { flex: 1 1 130px; }
+.case-facts dt { font-size: 13px; color: #43536b; margin-bottom: 4px; }
+.case-facts dd { margin: 0; font-weight: 700; line-height: 1.5; }
+.case-decisions { margin: 40px 0; }
+.case-decisions h2 { font-size: 24px; margin-bottom: 24px; }
+.case-decisions nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.case-decisions a { display: block; padding: 16px 0; border-top: 3px solid #c8d6e8; color: #28232f; text-decoration: none; }
+.case-decisions a:nth-child(2) { border-color: #d9cde9; }
+.case-decisions a:nth-child(3) { border-color: #c6dfcf; }
+.case-decisions strong { display: block; margin-bottom: 8px; font-size: 18px; line-height: 1.4; }
+.case-decisions span { font-size: 16px; line-height: 1.5; }
+.case-decisions a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.case-decisions a:focus-visible, .case-gallery-link:focus-visible, .case-index summary:focus-visible { outline: 3px solid #3e6fb3; outline-offset: 4px; }
+.case-gallery-link { display: inline-block; padding: 10px 0; border: 0; background: transparent; font: inherit; color: #234d8d; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.case-index { margin-bottom: 40px; }
+.case-index summary { cursor: pointer; font-weight: 700; padding: 16px 0; border-block: 1px solid #c8d6e8; }
+.case-index ol { columns: 2; margin-top: 16px; }
+.case-index li { break-inside: avoid; }
+.article-section .case-evidence { max-width: 900px; margin: 28px 0; box-shadow: none; }
+.case-evidence--figma .media-card__frame { background: #eef4ff; }
+.case-evidence--figma .media-card__frame img { max-height: 480px; object-fit: contain; }
+.article-section { scroll-margin-top: 100px; }
+.article-section h2 { max-width: 900px; line-height: 1.3; }
+@media (max-width: 1000px) {
+  .case-summary { grid-template-columns: 1fr; }
+  .case-summary .media-card { width: 100%; max-width: 760px; }
+  .case-decisions nav { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 600px) {
+  .project-intro { padding: 30px 24px; }
+  .case-decisions { padding-inline: 24px; }
+  .case-index ol { columns: 1; }
+}
   </style>
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
@@ -308,27 +354,40 @@ html.lightbox-open {
       <span>7 min read</span>
     </div>
 
-    <h4>TL;DR</h4>
-
-    <p>
-      Oxford Premium had grown for years without a shared design language. I led the creation of
-      a <strong>design system</strong> for it as part of a wider rebranding and platform redesign
-      initiative. That is the project this case study walks through.
-    </p>
-
-    <p>
-      The goal was to simplify a complex educational ecosystem, improve consistency, support
-      accessibility requirements and bring the experience closer to Oxford's UK platform, <strong>HUB</strong>.
-    </p>
-
-    <p>
-      I worked as the sole UX/UI Designer, with full ownership across research, visual direction,
-      interaction design, design system foundations, documentation and implementation support.
-    </p>
+    <div class="case-summary">
+      <div>
+        <h4>At a glance</h4>
+        <p>Oxford Premium had grown for years without a shared design language. I led the creation of a <strong>design system</strong> as part of a wider rebranding and platform redesign.</p>
+        <p>The goal was to simplify a complex educational ecosystem, improve consistency and support accessibility requirements.</p>
+        <dl class="case-facts">
+          <div><dt>My role</dt><dd>Sole UX/UI Designer</dd></div>
+          <div><dt>Timeline</dt><dd>11 months</dd></div>
+          <div><dt>Scope</dt><dd>Research to implementation support</dd></div>
+        </dl>
+        <p><strong>Delivered:</strong> design system foundations, redesigned interaction flows and implementation documentation.</p>
+        <button class="case-gallery-link" type="button" data-process-open aria-haspopup="dialog">See the process images ↗</button>
+      </div>
+      <figure class="media-card zoomable-image">
+        <div class="media-card__frame">
+          <img src="images/pc_3.png" alt="Oxford Premium resource screen with navigation, content tabs, search and list controls" width="1823" height="1054" fetchpriority="high" />
+          <button class="image-zoom-button" type="button" aria-label="Enlarge the Oxford Premium interface">⤢</button>
+        </div>
+        <figcaption>The system in context: navigation, content tabs and resource controls.</figcaption>
+      </figure>
+    </div>
   </section>
 
-  <section class="table-contents">
-    <h4>Table of Contents</h4>
+  <section class="case-decisions" aria-labelledby="caseDecisionsTitle">
+    <h2 id="caseDecisionsTitle">Three decisions behind the system</h2>
+    <nav aria-label="Key design decisions">
+      <a href="#flows"><strong>Organise around teachers’ tasks →</strong><span>Rethink entry points, navigation and resource browsing.</span></a>
+      <a href="#hub"><strong>Adapt HUB to the local product →</strong><span>Balance a shared visual language with different services and content.</span></a>
+      <a href="#system"><strong>Define shared component behaviours →</strong><span>Document states, accessibility and responsive foundations.</span></a>
+    </nav>
+  </section>
+
+  <details class="table-contents case-index">
+    <summary>Read the full case study · 11 sections</summary>
 
     <ol>
       <li><a href="#overview">Overview</a></li>
@@ -343,7 +402,7 @@ html.lightbox-open {
       <li><a href="#outcome">Outcome</a></li>
       <li><a href="#reflection">Reflection</a></li>
     </ol>
-  </section>
+  </details>
 
   <section class="article-section" id="overview">
     <h2>1. Overview</h2>
@@ -441,14 +500,13 @@ html.lightbox-open {
   </section>
 
   <section class="article-section" id="hub">
-    <h2>6. Visual Alignment with HUB</h2>
+    <h2>6. Adapting HUB to the local product</h2>
 
     <p>
       One of the strategic objectives was to bring Oxford Premium closer to <strong>HUB</strong>
       while respecting the needs and complexity of the local product. Some HUB patterns worked
       well as a reference, but Oxford Premium had more services, more resource types and
-      different content needs, so most decisions needed adapting rather than direct reuse. The
-      comparison above shows one of the areas where alignment made sense.
+      different content needs, so most decisions needed adapting rather than direct reuse. The process gallery includes the platform comparison.
     </p>
     <p>
       The work involved understanding HUB's visual and interaction principles, identifying
@@ -460,7 +518,7 @@ html.lightbox-open {
   </section>
 
   <section class="article-section" id="flows">
-    <h2>7. Redesigning Interaction Flows</h2>
+    <h2>7. Organising navigation around teachers’ tasks</h2>
 
     <p>
       The work went far beyond reorganising information. I redesigned the interaction model itself:
@@ -473,10 +531,17 @@ html.lightbox-open {
       Rather than asking teachers to understand how the platform was organised internally, the
       experience was reorganised around what they were trying to achieve.
     </p>
+    <figure class="media-card case-evidence case-evidence--figma zoomable-image">
+      <div class="media-card__frame">
+        <img src="images/pic-5.jpg" alt="Resource navigation in Figma alongside component variant and auto layout properties" loading="lazy" />
+        <button class="image-zoom-button" type="button" aria-label="Enlarge the navigation component in Figma">⤢</button>
+      </div>
+      <figcaption>Resource navigation in Figma, with the component’s states and layout properties.</figcaption>
+    </figure>
   </section>
 
   <section class="article-section" id="system">
-    <h2>8. Design System Foundations</h2>
+    <h2>8. Defining shared components and behaviours</h2>
 
     <p>
       As the redesign progressed, it became clear that consistency could not be solved screen by
@@ -490,6 +555,13 @@ html.lightbox-open {
       implementation complexity. A shared language for future product work, instead of treating
       each screen as an isolated solution.
     </p>
+    <figure class="media-card case-evidence zoomable-image">
+      <div class="media-card__frame">
+        <img src="images/pic-8.jpg" alt="Button and filter specifications comparing default, hover, focus, active and disabled states" loading="lazy" />
+        <button class="image-zoom-button" type="button" aria-label="Enlarge the component states">⤢</button>
+      </div>
+      <figcaption>Button and filter states documented together for implementation.</figcaption>
+    </figure>
   </section>
 
   <section class="article-section" id="implementation">
@@ -548,7 +620,7 @@ html.lightbox-open {
   </section>
 
   <div class="process-more">
-    <button class="button" type="button" id="processOpen" aria-haspopup="dialog">
+    <button class="button" type="button" id="processOpen" data-process-open aria-haspopup="dialog">
       See more of the process (15 images)
     </button>
   </div>
@@ -945,10 +1017,10 @@ html.lightbox-open {
   });
 
   /* See more of the process: 15 imágenes con leyenda */
-  const processOpen = document.getElementById("processOpen");
   const processSlides = document.getElementById("processSlides");
 
-  processOpen.addEventListener("click", () => {
+  document.querySelectorAll("[data-process-open]").forEach((opener) => {
+    opener.addEventListener("click", () => {
     const items = Array.from(processSlides.content.querySelectorAll("figure")).map((figure) => {
       const image = figure.querySelector("img");
       const caption = figure.querySelector("figcaption");
@@ -960,7 +1032,8 @@ html.lightbox-open {
       };
     });
 
-    openLightbox(items, 0, processOpen);
+    openLightbox(items, 0, opener);
+    });
   });
 </script>
 
