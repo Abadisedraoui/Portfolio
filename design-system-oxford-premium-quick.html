@@ -1,17 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building a Design System | Zainab Abadi</title>
-  <meta name="description" content="A short, visual case study of the design system work I led for Oxford Premium." />
-  <link rel="stylesheet" href="style.css" />
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Building a Design System | Zainab Abadi</title>
+      <meta name="description" content="A short, visual case study of the design system work I led for Oxford Premium." />
+      <link rel="stylesheet" href="style.css" />
 
   <style>
-    /* ============= QUICK CASE STUDY — DESIGN SYSTEM ============= */
-    .quick-case {
-      padding-bottom: 72px;
-    }
+    .quick-case { padding-bottom: 72px; }
 
     .quick-case__intro {
       margin-bottom: 28px;
@@ -32,9 +29,16 @@
       text-transform: uppercase;
     }
 
-    .quick-case__eyebrow {
-      margin: 0 0 16px;
+    .quick-case__meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px 24px;
+      margin-bottom: 16px;
     }
+
+    .quick-case__eyebrow { margin: 0; }
 
     .quick-case__title-row {
       display: flex;
@@ -53,11 +57,13 @@
 
     .quick-case__read-time {
       flex: 0 0 auto;
-      margin-top: 8px;
+      margin: 8px 0 0;
       color: #66758C;
       font-size: 13px;
       font-weight: 700;
     }
+
+    .quick-case__meta-row .quick-case__read-time { margin: 0; }
 
     .quick-case__lead {
       max-width: 820px;
@@ -79,11 +85,9 @@
       gap: 40px;
       align-items: center;
       padding: 36px;
-      background: #ffffff;
+      background: #fff;
       border-radius: 28px;
-      box-shadow:
-        0 0 0 1px rgba(40, 35, 47, .08),
-        0 12px 28px rgba(40, 35, 47, .08);
+      box-shadow: 0 0 0 1px rgba(40,35,47,.08), 0 12px 28px rgba(40,35,47,.08);
     }
 
     .quick-case__summary h2,
@@ -93,6 +97,7 @@
       margin: 6px 0 16px;
       font-size: 28px;
       line-height: 1.2;
+      text-align: left;
     }
 
     .quick-case__summary p {
@@ -105,10 +110,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 18px;
       margin: 28px 0 0;
-    }
-
-    .quick-case__facts div {
-      min-width: 0;
     }
 
     .quick-case__facts dt {
@@ -126,30 +127,62 @@
       line-height: 1.4;
     }
 
-    .quick-case__hero-media {
+    .quick-case__hero-media,
+    .quick-case__visual,
+    .quick-case__clip {
+      position: relative;
+      min-width: 0;
       margin: 0;
+      overflow: hidden;
+      background: #fff;
+      border-radius: 22px;
     }
 
-    .quick-case__hero-media img {
+    .quick-case__hero-media {
+      background: transparent;
+      overflow: visible;
+      border-radius: 0;
+    }
+
+    .quick-case__visual,
+    .quick-case__clip {
+      box-shadow: 0 0 0 1px rgba(40,35,47,.08), 0 12px 28px rgba(40,35,47,.08);
+    }
+
+    .quick-case__hero-media img,
+    .quick-case__visual img {
       display: block;
       width: 100%;
       height: auto;
-      border-radius: 18px;
+      object-fit: contain;
+      background: #F7F7F7;
     }
 
-    .quick-case__hero-media figcaption {
-      margin-top: 10px;
+    .quick-case__hero-media img { border-radius: 18px; }
+
+    .quick-case figcaption {
       color: #66758C;
       font-size: 13px;
       line-height: 1.4;
       text-align: right;
     }
 
+    .quick-case__hero-media figcaption { margin-top: 10px; }
+    .quick-case__visual figcaption,
+    .quick-case__clip figcaption { padding: 14px 18px 16px; }
+
+    .quick-case__hero-media a,
+    .quick-case__visual a { display: block; }
+
+    .quick-case__hero-media a:focus-visible,
+    .quick-case__visual a:focus-visible {
+      outline: 3px solid #234D8D;
+      outline-offset: -3px;
+    }
+
     .quick-case__decisions,
     .quick-case__evidence,
-    .quick-case__outcome {
-      margin-top: 56px;
-    }
+    .quick-case__outcome { margin-top: 56px; }
 
     .quick-case__decision-grid {
       display: grid;
@@ -161,14 +194,8 @@
       padding: 22px 0 0;
       border-top: 3px solid #C8D6E8;
     }
-
-    .quick-case__decision:nth-child(2) {
-      border-color: #D9CDE9;
-    }
-
-    .quick-case__decision:nth-child(3) {
-      border-color: #C6DFCF;
-    }
+    .quick-case__decision:nth-child(2) { border-color: #D9CDE9; }
+    .quick-case__decision:nth-child(3) { border-color: #C6DFCF; }
 
     .quick-case__decision-number {
       color: #8B96A8;
@@ -182,7 +209,9 @@
       line-height: 1.3;
     }
 
-    .quick-case__decision p {
+    .quick-case__decision p,
+    .quick-case__evidence-intro p,
+    .quick-case__clip p {
       margin: 0;
       color: #66758C;
     }
@@ -192,99 +221,30 @@
       margin-bottom: 24px;
     }
 
-    .quick-case__evidence-intro p {
-      margin: 0;
-      color: #66758C;
-    }
-
-    .quick-case__evidence-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .quick-case__visual {
-      margin: 0;
-      overflow: hidden;
-      background: #ffffff;
-      border-radius: 22px;
-      box-shadow:
-        0 0 0 1px rgba(40, 35, 47, .08),
-        0 12px 28px rgba(40, 35, 47, .08);
-    }
-
-    .quick-case__visual:first-child {
-      grid-column: 1 / -1;
-    }
-
-    .quick-case__visual img {
-      display: block;
-      width: 100%;
-      height: 290px;
-      object-fit: cover;
-      object-position: top;
-    }
-
-    .quick-case__visual:first-child img {
-      height: auto;
-      max-height: 440px;
-      object-fit: contain;
-      background: #F7F7F7;
-    }
-
-    .quick-case__visual figcaption {
-      padding: 14px 18px 16px;
-      color: #66758C;
-      font-size: 13px;
-      line-height: 1.4;
-    }
-
+    .quick-case__evidence-grid,
     .quick-case__clips {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
-      margin-top: 24px;
     }
 
-    .quick-case__clip {
-      overflow: hidden;
-      background: #ffffff;
-      border-radius: 22px;
-      box-shadow:
-        0 0 0 1px rgba(40, 35, 47, .08),
-        0 12px 28px rgba(40, 35, 47, .08);
-    }
+    .quick-case__evidence-grid > :first-child,
+    .quick-case__clip--wide { grid-column: 1 / -1; }
 
-    .quick-case__clip--wide {
-      grid-column: 1 / -1;
-    }
+    .quick-case__clips { margin-top: 24px; }
 
     .quick-case__clip video {
       display: block;
       width: 100%;
-      aspect-ratio: 16 / 10;
+      height: auto;
       background: #ECE9F1;
     }
 
-    .quick-case__clip-copy {
-      padding: 18px 20px 20px;
-    }
+    .quick-case__clip-copy { padding: 18px 20px 20px; }
+    .quick-case__clip h3 { margin: 6px 0; font-size: 18px; }
+    .quick-case__clip p { font-size: 14px; line-height: 1.5; }
 
-    .quick-case__clip h3 {
-      margin: 6px 0 6px;
-      font-size: 18px;
-    }
-
-    .quick-case__clip p {
-      margin: 0;
-      color: #66758C;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    .quick-case__outcome {
-      max-width: 900px;
-    }
+    .quick-case__outcome { max-width: 900px; }
 
     .quick-case__outcome ul {
       display: grid;
@@ -317,118 +277,147 @@
       gap: 18px;
       margin-top: 56px;
       padding-top: 28px;
-      border-top: 1px solid rgba(40, 35, 47, .14);
+      border-top: 1px solid rgba(40,35,47,.14);
     }
 
     .quick-case__footer p {
       margin: 0;
       color: #66758C;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
     }
 
-    .quick-case__footer .button {
-      margin-top: 0;
+    .quick-case__footer .button { margin-top: 0; }
+
+    /* Image expansion — same interaction across every Quick case. */
+    .quick-case__expand-button {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 4;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 0;
+      border-radius: 999px;
+      background: #28232f;
+      color: #fff;
+      font-size: 18px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(40,35,47,.18);
+    }
+
+    .quick-case__expand-button:hover { transform: translateY(-1px); }
+    .quick-case__expand-button:focus-visible {
+      outline: 3px solid #3E6FB3;
+      outline-offset: 3px;
+    }
+
+    .quick-case__image-dialog {
+      width: min(94vw, 1400px);
+      max-width: none;
+      max-height: 92vh;
+      margin: auto;
+      padding: 0;
+      border: 0;
+      background: transparent;
+    }
+
+    .quick-case__image-dialog::backdrop { background: rgba(24,21,29,.82); }
+
+    .quick-case__dialog-shell {
+      position: relative;
+      display: grid;
+      place-items: center;
+      max-height: 92vh;
+      padding: 18px;
+      background: #fff;
+      border-radius: 20px;
+      overflow: auto;
+    }
+
+    .quick-case__dialog-image {
+      display: block;
+      max-width: 100%;
+      max-height: calc(92vh - 36px);
+      width: auto;
+      height: auto;
+    }
+
+    .quick-case__dialog-close {
+      position: sticky;
+      top: 0;
+      justify-self: end;
+      z-index: 2;
+      width: 40px;
+      height: 40px;
+      margin: 0 0 -40px;
+      border: 0;
+      border-radius: 999px;
+      background: #28232f;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
     }
 
     @media (max-width: 900px) {
-      .quick-case__summary {
-        grid-template-columns: 1fr;
-      }
-
-      .quick-case__summary-copy {
-        order: 1;
-      }
-
-      .quick-case__hero-media {
-        order: 0;
-      }
-
+      .quick-case__summary { grid-template-columns: 1fr; }
+      .quick-case__summary-copy { order: 1; }
+      .quick-case__hero-media { order: 0; }
       .quick-case__decision-grid,
-      .quick-case__clips {
-        grid-template-columns: 1fr;
-      }
-
-      .quick-case__clip--wide {
-        grid-column: auto;
-      }
+      .quick-case__evidence-grid,
+      .quick-case__clips,
+      .quick-case__outcome ul { grid-template-columns: 1fr; }
+      .quick-case__evidence-grid > :first-child,
+      .quick-case__clip--wide { grid-column: auto; }
     }
 
     @media (max-width: 600px) {
-      .quick-case__intro {
-        border-radius: 0 0 22px 22px;
-      }
-
-      .quick-case__title-row {
-        display: block;
-      }
-
-      .quick-case__read-time {
-        display: block;
-        margin-top: 12px;
-      }
-
-      .quick-case__summary {
-        padding: 24px;
-        border-radius: 22px;
-      }
-
-      .quick-case__facts {
-        grid-template-columns: 1fr;
-        gap: 14px;
-      }
-
-      .quick-case__evidence-grid,
-      .quick-case__outcome ul {
-        grid-template-columns: 1fr;
-      }
-
-      .quick-case__visual:first-child {
-        grid-column: auto;
-      }
-
-      .quick-case__visual img,
-      .quick-case__visual:first-child img {
-        height: auto;
-        max-height: none;
-      }
-
-      .quick-case__footer {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .quick-case__footer .button {
-        text-align: center;
-      }
+      .quick-case__intro { border-radius: 0 0 22px 22px; }
+      .quick-case__title-row { display: block; }
+      .quick-case__read-time { display: block; margin-top: 12px; }
+      .quick-case__meta-row .quick-case__read-time { margin-top: 0; }
+      .quick-case__summary { padding: 24px; border-radius: 22px; }
+      .quick-case__facts { grid-template-columns: 1fr; gap: 14px; }
+      .quick-case__footer { align-items: stretch; flex-direction: column; }
+      .quick-case__footer .button { text-align: center; }
+      .quick-case__expand-button { width: 38px; height: 38px; top: 10px; right: 10px; }
     }
   </style>
-  <!-- Analytics consent and Contentsquare loader -->
-  <script defer src="analytics-consent.js"></script>
-</head>
 
-<body class="project-body">
+      <script defer src="analytics-consent.js"></script>
+    </head>
+    <body class="project-body">
 
 <header class="header">
   <a href="quick-scan.html" class="logo-link" aria-label="Go to Quick Scan home">
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="quickCaseNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="quickCaseNav">
     <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
-    <a href="quick-scan.html" class="nav-link active">Quick Scan</a>
+    <a href="quick-scan.html" class="nav-link">Home</a>
   </nav>
 </header>
 
-<main class="main project-page quick-case">
+    <main class="main project-page quick-case">
 
   <section class="quick-case__intro">
-    <p class="quick-case__eyebrow">Oxford Premium · Design System</p>
+    <div class="quick-case__meta-row">
+      <p class="quick-case__eyebrow">Oxford Premium · Design System</p>
+      <span class="quick-case__read-time">Quick case · 2 min read</span>
+    </div>
     <div class="quick-case__title-row">
       <h1>Building a Design System</h1>
-      <span class="quick-case__read-time">Quick case · 2 min read</span>
     </div>
     <p class="quick-case__lead">I led the foundations of a design system for Oxford Premium as part of a wider platform redesign and rebranding initiative.</p>
     <div class="quick-case__tags" aria-label="Case study topics">
@@ -445,23 +434,12 @@
       <h2 id="quickSummaryTitle">One system for a complex platform</h2>
       <p>Oxford Premium had grown without a shared design language. Different areas of the product had started to drift apart, while the platform also needed to move closer to Oxford's UK platform, HUB.</p>
       <p>As the <strong>sole UX/UI Designer</strong>, I connected platform research, interaction design, visual direction, component foundations and implementation support.</p>
-
       <dl class="quick-case__facts">
-        <div>
-          <dt>Role</dt>
-          <dd>Sole UX/UI Designer</dd>
-        </div>
-        <div>
-          <dt>Timeline</dt>
-          <dd>11 months</dd>
-        </div>
-        <div>
-          <dt>Scope</dt>
-          <dd>Research to implementation support</dd>
-        </div>
+        <div><dt>Role</dt><dd>Sole UX/UI Designer</dd></div>
+        <div><dt>Timeline</dt><dd>11 months</dd></div>
+        <div><dt>Scope</dt><dd>Research to implementation support</dd></div>
       </dl>
     </div>
-
     <figure class="quick-case__hero-media">
       <img src="images/pc_3.png" alt="Oxford Premium resource screen with navigation, content tabs, search and list controls" width="1823" height="1054" fetchpriority="high" />
       <figcaption>The system in context: navigation, content tabs and resource controls.</figcaption>
@@ -471,25 +449,10 @@
   <section class="quick-case__decisions" aria-labelledby="quickDecisionsTitle">
     <p class="quick-case__label">The decisions</p>
     <h2 id="quickDecisionsTitle">Three choices that shaped the system</h2>
-
     <div class="quick-case__decision-grid">
-      <article class="quick-case__decision">
-        <span class="quick-case__decision-number">01</span>
-        <h3>Start with the ecosystem</h3>
-        <p>I mapped the platform, its flows and its relationship with HUB before defining shared patterns.</p>
-      </article>
-
-      <article class="quick-case__decision">
-        <span class="quick-case__decision-number">02</span>
-        <h3>Build patterns, not one-off screens</h3>
-        <p>I defined foundations for typography, colour, spacing, components, states and responsive behaviour.</p>
-      </article>
-
-      <article class="quick-case__decision">
-        <span class="quick-case__decision-number">03</span>
-        <h3>Design with implementation</h3>
-        <p>I documented behaviour and worked with development so the system could be introduced progressively.</p>
-      </article>
+      <article class="quick-case__decision"><span class="quick-case__decision-number">01</span><h3>Start with the ecosystem</h3><p>I mapped the platform, its flows and its relationship with HUB before defining shared patterns.</p></article>
+      <article class="quick-case__decision"><span class="quick-case__decision-number">02</span><h3>Build patterns, not one-off screens</h3><p>I defined foundations for typography, colour, spacing, components, states and responsive behaviour.</p></article>
+      <article class="quick-case__decision"><span class="quick-case__decision-number">03</span><h3>Design with implementation</h3><p>I documented behaviour and worked with development so the system could be introduced progressively.</p></article>
     </div>
   </section>
 
@@ -499,18 +462,15 @@
       <h2 id="quickEvidenceTitle">From shared foundations to real product flows</h2>
       <p>The work was not just a component library. It connected visual alignment, interaction patterns and implementation decisions across the platform.</p>
     </div>
-
     <div class="quick-case__evidence-grid">
       <figure class="quick-case__visual">
         <img src="images/pic-6.jpg" alt="Comparison of Oxford Premium and HUB interfaces showing shared navigation and content patterns" loading="lazy" />
         <figcaption>Aligning Oxford Premium with HUB while keeping the local product's needs visible.</figcaption>
       </figure>
-
       <figure class="quick-case__visual">
         <img src="images/pic-8.jpg" alt="Component state documentation showing button, navigation and filter states" loading="lazy" />
         <figcaption>Documenting states so components behaved consistently across the interface.</figcaption>
       </figure>
-
       <figure class="quick-case__visual">
         <img src="images/pic-11.jpg" alt="Oxford Premium interface shown across two product views" loading="lazy" />
         <figcaption>Applying the same system across different product views and resource flows.</figcaption>
@@ -520,29 +480,15 @@
     <div class="quick-case__clips" aria-label="Live product evidence">
       <article class="quick-case__clip">
         <video src="videos/Oxford-Login.mp4" controls playsinline preload="metadata" aria-label="Oxford Premium login flow"></video>
-        <div class="quick-case__clip-copy">
-          <span class="quick-case__step">Live evidence · 01</span>
-          <h3>Entry point</h3>
-          <p>The login flow uses the same visual foundations and interaction conventions as the rest of the platform.</p>
-        </div>
+        <div class="quick-case__clip-copy"><span class="quick-case__step">Live evidence · 01</span><h3>Entry point</h3><p>The login flow uses the same visual foundations and interaction conventions as the rest of the platform.</p></div>
       </article>
-
       <article class="quick-case__clip">
         <video src="videos/Oxford-Profile.mp4" controls playsinline preload="metadata" aria-label="Oxford Premium profile settings flow"></video>
-        <div class="quick-case__clip-copy">
-          <span class="quick-case__step">Live evidence · 02</span>
-          <h3>Account settings</h3>
-          <p>The component library helped replace patterns that had drifted apart across different areas of the product.</p>
-        </div>
+        <div class="quick-case__clip-copy"><span class="quick-case__step">Live evidence · 02</span><h3>Account settings</h3><p>The component library helped replace patterns that had drifted apart across different areas of the product.</p></div>
       </article>
-
       <article class="quick-case__clip quick-case__clip--wide">
         <video src="videos/oxford-premium-thumbnail.mp4" controls playsinline preload="metadata" aria-label="Oxford Premium pop-up adapted to the existing design system"></video>
-        <div class="quick-case__clip-copy">
-          <span class="quick-case__step">Business constraint · 03</span>
-          <h3>Adapting a commercial request</h3>
-          <p>The Commercial team requested a pop-up with a very specific design and format. Working within that constraint, I adapted the UI as far as possible to the existing system so it remained coherent with the rest of Oxford Premium.</p>
-        </div>
+        <div class="quick-case__clip-copy"><span class="quick-case__step">Business constraint · 03</span><h3>Adapting a commercial request</h3><p>The Commercial team requested a pop-up with a very specific design and format. Working within that constraint, I adapted the UI as far as possible to the existing system so it remained coherent with the rest of Oxford Premium.</p></div>
       </article>
     </div>
   </section>
@@ -558,46 +504,33 @@
     </ul>
   </section>
 
-  <div class="confidentiality-note">
-    <strong>🔒 About the examples</strong>
-    <p>The clips show Oxford Premium's demo account. No real school or customer data is included. Internal process material is kept in the Deep Dive case study in adapted form.</p>
-  </div>
+  <div class="confidentiality-note"><strong>🔒 About the examples</strong><p>The clips show Oxford Premium's demo account. No real school or customer data is included. Internal process material is kept in the Deep Dive case study in adapted form.</p></div>
+  <div class="quick-case__footer"><p>Want the full process, research and iterations?</p><a href="design-system-oxford-premium.html" class="button">Explore the Deep Dive →</a></div>
 
-  <div class="quick-case__footer">
-    <p>Want the full process, research and iterations?</p>
-    <a href="design-system-oxford-premium.html" class="button">Explore the Deep Dive →</a>
-  </div>
-
-</main>
+    </main>
 
 <footer class="footer">
   <div>
     <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
     <a href="privacy-page.html" class="privacy">Privacy Policy</a>
   </div>
-
   <div>
     <h4>CONTACT</h4>
     <p>+34627892634</p>
     <p>zainab.abadi.s@gmail.com</p>
   </div>
-
   <div>
     <h4>LOCATION</h4>
     <p>Madrid, Spain</p>
   </div>
-
   <div>
     <h4>FEEDBACK IS WELCOME</h4>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
-
   <p class="copyright">Vibe Coded with Claude 💫 © 2026 by Zainab Abadi.</p>
 </footer>
 
-<button class="back-to-top" aria-label="Back to top">
-  ↑
-</button>
+<button class="back-to-top" aria-label="Back to top">↑</button>
 
 <script>
   const menuButton = document.querySelector(".menu-toggle");
@@ -605,23 +538,66 @@
 
   if (menuButton && nav) {
     menuButton.addEventListener("click", () => {
-      nav.classList.toggle("open");
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
     });
   }
 
   const backToTop = document.querySelector(".back-to-top");
-
   if (backToTop) {
     window.addEventListener("scroll", () => {
       backToTop.classList.toggle("show", window.scrollY > 300);
     });
-
     backToTop.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
+
+  // Add an explicit expand control to every still image in the Quick cases.
+  const expandableFigures = document.querySelectorAll(".quick-case__hero-media, .quick-case__visual");
+  const imageDialog = document.createElement("dialog");
+  imageDialog.className = "quick-case__image-dialog";
+  imageDialog.setAttribute("aria-label", "Expanded case study image");
+  imageDialog.innerHTML = `
+    <div class="quick-case__dialog-shell">
+      <button class="quick-case__dialog-close" type="button" aria-label="Close expanded image">×</button>
+      <img class="quick-case__dialog-image" alt="" />
+    </div>
+  `;
+  document.body.appendChild(imageDialog);
+
+  const dialogImage = imageDialog.querySelector(".quick-case__dialog-image");
+  const dialogClose = imageDialog.querySelector(".quick-case__dialog-close");
+
+  expandableFigures.forEach((figure) => {
+    const image = figure.querySelector("img");
+    if (!image) return;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "quick-case__expand-button";
+    button.setAttribute("aria-label", `Expand image: ${image.alt || "case study image"}`);
+    button.innerHTML = "↗";
+    figure.appendChild(button);
+
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      dialogImage.src = image.currentSrc || image.src;
+      dialogImage.alt = image.alt || "";
+      imageDialog.showModal();
+      dialogClose.focus();
+    });
+  });
+
+  dialogClose.addEventListener("click", () => imageDialog.close());
+  imageDialog.addEventListener("click", (event) => {
+    if (event.target === imageDialog) imageDialog.close();
+  });
 </script>
 
 <script src="logo-animation.js"></script>
-</body>
-</html>
+
+    </body>
+    </html>
