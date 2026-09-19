@@ -290,30 +290,39 @@
 
     .quick-case__footer .button { margin-top: 0; }
 
-    /* Image expansion — same interaction across every Quick case. */
-    .quick-case__expand-button {
+    /* Image expansion — same black circular control used in the Deep Dive media cards. */
+    .quick-case__image-frame {
+      position: relative;
+    }
+
+    .image-zoom-button {
       position: absolute;
-      top: 14px;
       right: 14px;
+      bottom: 14px;
       z-index: 4;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       padding: 0;
       border: 0;
-      border-radius: 999px;
+      border-radius: 50%;
       background: #28232f;
       color: #fff;
+      font: inherit;
       font-size: 18px;
       line-height: 1;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(40,35,47,.18);
+      box-shadow: 0 4px 16px rgba(40,35,47,.18);
     }
 
-    .quick-case__expand-button:hover { transform: translateY(-1px); }
-    .quick-case__expand-button:focus-visible {
+    .image-zoom-button:hover {
+      background: #3a3443;
+      transform: translateY(-1px);
+    }
+
+    .image-zoom-button:focus-visible {
       outline: 3px solid #3E6FB3;
       outline-offset: 3px;
     }
@@ -386,7 +395,7 @@
       .quick-case__facts { grid-template-columns: 1fr; gap: 14px; }
       .quick-case__footer { align-items: stretch; flex-direction: column; }
       .quick-case__footer .button { text-align: center; }
-      .quick-case__expand-button { width: 38px; height: 38px; top: 10px; right: 10px; }
+      .image-zoom-button { width: 40px; height: 40px; right: 10px; bottom: 10px; }
     }
   </style>
 
@@ -554,7 +563,7 @@
     });
   }
 
-  // Add an explicit expand control to every still image in the Quick cases.
+  // Add the same expand control to every still image in the Quick cases.
   const expandableFigures = document.querySelectorAll(".quick-case__hero-media, .quick-case__visual");
   const imageDialog = document.createElement("dialog");
   imageDialog.className = "quick-case__image-dialog";
@@ -574,12 +583,18 @@
     const image = figure.querySelector("img");
     if (!image) return;
 
+    const mediaTarget = image.closest("a") || image;
+    const frame = document.createElement("div");
+    frame.className = "quick-case__image-frame";
+    mediaTarget.parentNode.insertBefore(frame, mediaTarget);
+    frame.appendChild(mediaTarget);
+
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "quick-case__expand-button";
-    button.setAttribute("aria-label", `Expand image: ${image.alt || "case study image"}`);
-    button.innerHTML = "↗";
-    figure.appendChild(button);
+    button.className = "image-zoom-button";
+    button.setAttribute("aria-label", `Enlarge image: ${image.alt || "case study image"}`);
+    button.innerHTML = "⤢";
+    frame.appendChild(button);
 
     button.addEventListener("click", (event) => {
       event.preventDefault();
