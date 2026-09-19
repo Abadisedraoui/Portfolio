@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Building a Design System | Zainab Abadi</title>
+  <meta name="description" content="A short, visual case study of the design system work I led for Oxford Premium." />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ============= QUICK CASE STUDY — DESIGN SYSTEM ============= */
+    .quick-case {
+      padding-bottom: 72px;
+    }
+
+    .quick-case__intro {
+      margin-bottom: 28px;
+      padding: clamp(28px, 5vw, 56px);
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .quick-case__eyebrow,
+    .quick-case__label,
+    .quick-case__step {
+      color: #234D8D;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .quick-case__eyebrow {
+      margin: 0 0 16px;
+    }
+
+    .quick-case__title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .quick-case__title-row h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.08;
+    }
+
+    .quick-case__read-time {
+      flex: 0 0 auto;
+      margin-top: 8px;
+      color: #66758C;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quick-case__lead {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+    }
+
+    .quick-case__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .quick-case__summary {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 40px;
+      align-items: center;
+      padding: 36px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .quick-case__summary h2,
+    .quick-case__decisions h2,
+    .quick-case__evidence h2,
+    .quick-case__outcome h2 {
+      margin: 6px 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+    }
+
+    .quick-case__summary p {
+      max-width: 620px;
+      margin: 0 0 16px;
+    }
+
+    .quick-case__facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 28px 0 0;
+    }
+
+    .quick-case__facts div {
+      min-width: 0;
+    }
+
+    .quick-case__facts dt {
+      margin-bottom: 4px;
+      color: #66758C;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .quick-case__facts dd {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .quick-case__hero-media {
+      margin: 0;
+    }
+
+    .quick-case__hero-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+    }
+
+    .quick-case__hero-media figcaption {
+      margin-top: 10px;
+      color: #66758C;
+      font-size: 13px;
+      line-height: 1.4;
+      text-align: right;
+    }
+
+    .quick-case__decisions,
+    .quick-case__evidence,
+    .quick-case__outcome {
+      margin-top: 56px;
+    }
+
+    .quick-case__decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .quick-case__decision {
+      padding: 22px 0 0;
+      border-top: 3px solid #C8D6E8;
+    }
+
+    .quick-case__decision:nth-child(2) {
+      border-color: #D9CDE9;
+    }
+
+    .quick-case__decision:nth-child(3) {
+      border-color: #C6DFCF;
+    }
+
+    .quick-case__decision-number {
+      color: #8B96A8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quick-case__decision h3 {
+      margin: 10px 0 8px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    .quick-case__decision p {
+      margin: 0;
+      color: #66758C;
+    }
+
+    .quick-case__evidence-intro {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .quick-case__evidence-intro p {
+      margin: 0;
+      color: #66758C;
+    }
+
+    .quick-case__evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .quick-case__visual {
+      margin: 0;
+      overflow: hidden;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .quick-case__visual:first-child {
+      grid-column: 1 / -1;
+    }
+
+    .quick-case__visual img {
+      display: block;
+      width: 100%;
+      height: 290px;
+      object-fit: cover;
+      object-position: top;
+    }
+
+    .quick-case__visual:first-child img {
+      height: auto;
+      max-height: 440px;
+      object-fit: contain;
+      background: #F7F7F7;
+    }
+
+    .quick-case__visual figcaption {
+      padding: 14px 18px 16px;
+      color: #66758C;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .quick-case__clips {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .quick-case__clip {
+      overflow: hidden;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .quick-case__clip video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      background: #ECE9F1;
+    }
+
+    .quick-case__clip-copy {
+      padding: 18px 20px 20px;
+    }
+
+    .quick-case__clip h3 {
+      margin: 6px 0 6px;
+      font-size: 18px;
+    }
+
+    .quick-case__clip p {
+      margin: 0;
+      color: #66758C;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .quick-case__outcome {
+      max-width: 900px;
+    }
+
+    .quick-case__outcome ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px 32px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-case__outcome li {
+      position: relative;
+      padding-left: 24px;
+      line-height: 1.5;
+    }
+
+    .quick-case__outcome li::before {
+      position: absolute;
+      left: 0;
+      color: #234D8D;
+      content: "✓";
+      font-weight: 700;
+    }
+
+    .quick-case__footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(40, 35, 47, .14);
+    }
+
+    .quick-case__footer p {
+      margin: 0;
+      color: #66758C;
+    }
+
+    .quick-case__footer .button {
+      margin-top: 0;
+    }
+
+    @media (max-width: 900px) {
+      .quick-case__summary {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-case__summary-copy {
+        order: 1;
+      }
+
+      .quick-case__hero-media {
+        order: 0;
+      }
+
+      .quick-case__decision-grid,
+      .quick-case__clips {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quick-case__intro {
+        border-radius: 0 0 22px 22px;
+      }
+
+      .quick-case__title-row {
+        display: block;
+      }
+
+      .quick-case__read-time {
+        display: block;
+        margin-top: 12px;
+      }
+
+      .quick-case__summary {
+        padding: 24px;
+        border-radius: 22px;
+      }
+
+      .quick-case__facts {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .quick-case__evidence-grid,
+      .quick-case__outcome ul {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-case__visual:first-child {
+        grid-column: auto;
+      }
+
+      .quick-case__visual img,
+      .quick-case__visual:first-child img {
+        height: auto;
+        max-height: none;
+      }
+
+      .quick-case__footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .quick-case__footer .button {
+        text-align: center;
+      }
+    }
+  </style>
+  <!-- Analytics consent and Contentsquare loader -->
+  <script defer src="analytics-consent.js"></script>
+</head>
+
+<body class="project-body">
+
+<header class="header">
+  <a href="quick-scan.html" class="logo-link" aria-label="Go to Quick Scan home">
+    <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
+  </a>
+
+  <button class="menu-toggle" aria-label="Open menu">
+    ☰
+  </button>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
+    <a href="quick-scan.html" class="nav-link active">Quick Scan</a>
+  </nav>
+</header>
+
+<main class="main project-page quick-case">
+
+  <section class="quick-case__intro">
+    <p class="quick-case__eyebrow">Oxford Premium · Design System</p>
+    <div class="quick-case__title-row">
+      <h1>Building a Design System</h1>
+      <span class="quick-case__read-time">Quick case · 2 min read</span>
+    </div>
+    <p class="quick-case__lead">I led the foundations of a design system for Oxford Premium as part of a wider platform redesign and rebranding initiative.</p>
+    <div class="quick-case__tags" aria-label="Case study topics">
+      <span class="tag tag-design-system">Design System</span>
+      <span class="tag tag-rebranding">Rebranding</span>
+      <span class="tag tag-handoff">Developer Handoff</span>
+      <span class="tag tag-accessibility">Accessibility</span>
+    </div>
+  </section>
+
+  <section class="quick-case__summary" aria-labelledby="quickSummaryTitle">
+    <div class="quick-case__summary-copy">
+      <p class="quick-case__label">At a glance</p>
+      <h2 id="quickSummaryTitle">One system for a complex platform</h2>
+      <p>Oxford Premium had grown without a shared design language. Different areas of the product had started to drift apart, while the platform also needed to move closer to Oxford's UK platform, HUB.</p>
+      <p>As the <strong>sole UX/UI Designer</strong>, I connected platform research, interaction design, visual direction, component foundations and implementation support.</p>
+
+      <dl class="quick-case__facts">
+        <div>
+          <dt>Role</dt>
+          <dd>Sole UX/UI Designer</dd>
+        </div>
+        <div>
+          <dt>Timeline</dt>
+          <dd>11 months</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>Research to implementation support</dd>
+        </div>
+      </dl>
+    </div>
+
+    <figure class="quick-case__hero-media">
+      <img src="images/pc_3.png" alt="Oxford Premium resource screen with navigation, content tabs, search and list controls" width="1823" height="1054" fetchpriority="high" />
+      <figcaption>The system in context: navigation, content tabs and resource controls.</figcaption>
+    </figure>
+  </section>
+
+  <section class="quick-case__decisions" aria-labelledby="quickDecisionsTitle">
+    <p class="quick-case__label">The decisions</p>
+    <h2 id="quickDecisionsTitle">Three choices that shaped the system</h2>
+
+    <div class="quick-case__decision-grid">
+      <article class="quick-case__decision">
+        <span class="quick-case__decision-number">01</span>
+        <h3>Start with the ecosystem</h3>
+        <p>I mapped the platform, its flows and its relationship with HUB before defining shared patterns.</p>
+      </article>
+
+      <article class="quick-case__decision">
+        <span class="quick-case__decision-number">02</span>
+        <h3>Build patterns, not one-off screens</h3>
+        <p>I defined foundations for typography, colour, spacing, components, states and responsive behaviour.</p>
+      </article>
+
+      <article class="quick-case__decision">
+        <span class="quick-case__decision-number">03</span>
+        <h3>Design with implementation</h3>
+        <p>I documented behaviour and worked with development so the system could be introduced progressively.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="quick-case__evidence" aria-labelledby="quickEvidenceTitle">
+    <div class="quick-case__evidence-intro">
+      <p class="quick-case__label">Evidence</p>
+      <h2 id="quickEvidenceTitle">From shared foundations to real product flows</h2>
+      <p>The work was not just a component library. It connected visual alignment, interaction patterns and implementation decisions across the platform.</p>
+    </div>
+
+    <div class="quick-case__evidence-grid">
+      <figure class="quick-case__visual">
+        <img src="images/pic-6.jpg" alt="Comparison of Oxford Premium and HUB interfaces showing shared navigation and content patterns" loading="lazy" />
+        <figcaption>Aligning Oxford Premium with HUB while keeping the local product's needs visible.</figcaption>
+      </figure>
+
+      <figure class="quick-case__visual">
+        <img src="images/pic-8.jpg" alt="Component state documentation showing button, navigation and filter states" loading="lazy" />
+        <figcaption>Documenting states so components behaved consistently across the interface.</figcaption>
+      </figure>
+
+      <figure class="quick-case__visual">
+        <img src="images/pic-11.jpg" alt="Oxford Premium interface shown across two product views" loading="lazy" />
+        <figcaption>Applying the same system across different product views and resource flows.</figcaption>
+      </figure>
+    </div>
+
+    <div class="quick-case__clips" aria-label="Live product evidence">
+      <article class="quick-case__clip">
+        <video src="videos/Oxford-Login.mp4" controls playsinline preload="metadata" aria-label="Oxford Premium login flow"></video>
+        <div class="quick-case__clip-copy">
+          <span class="quick-case__step">Live evidence · 01</span>
+          <h3>Entry point</h3>
+          <p>The login flow uses the same visual foundations and interaction conventions as the rest of the platform.</p>
+        </div>
+      </article>
+
+      <article class="quick-case__clip">
+        <video src="videos/Oxford-Profile.mp4" controls playsinline preload="metadata" aria-label="Oxford Premium profile settings flow"></video>
+        <div class="quick-case__clip-copy">
+          <span class="quick-case__step">Live evidence · 02</span>
+          <h3>Account settings</h3>
+          <p>The component library helped replace patterns that had drifted apart across different areas of the product.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="quick-case__outcome" aria-labelledby="quickOutcomeTitle">
+    <p class="quick-case__label">Outcome</p>
+    <h2 id="quickOutcomeTitle">A shared source of truth</h2>
+    <ul>
+      <li>Design system foundations covering typography, colour, spacing, components and states.</li>
+      <li>Redesigned interaction flows with closer alignment to Oxford's UK platform, HUB.</li>
+      <li>Clearer documentation and handoff for progressive implementation with development.</li>
+      <li>Responsive behaviour and accessibility considered as part of the system.</li>
+    </ul>
+  </section>
+
+  <div class="confidentiality-note">
+    <strong>🔒 About the examples</strong>
+    <p>The clips show Oxford Premium's demo account. No real school or customer data is included. Internal process material is kept in the Deep Dive case study in adapted form.</p>
+  </div>
+
+  <div class="quick-case__footer">
+    <p>Want the full process, research and iterations?</p>
+    <a href="design-system-oxford-premium.html" class="button">Explore the Deep Dive →</a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
+    <a href="privacy-page.html" class="privacy">Privacy Policy</a>
+  </div>
+
+  <div>
+    <h4>CONTACT</h4>
+    <p>+34627892634</p>
+    <p>zainab.abadi.s@gmail.com</p>
+  </div>
+
+  <div>
+    <h4>LOCATION</h4>
+    <p>Madrid, Spain</p>
+  </div>
+
+  <div>
+    <h4>FEEDBACK IS WELCOME</h4>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
+  </div>
+
+  <p class="copyright">Vibe Coded with Claude 💫 © 2026 by Zainab Abadi.</p>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  ↑
+</button>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+  }
+
+  const backToTop = document.querySelector(".back-to-top");
+
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 300);
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+</script>
+
+<script src="logo-animation.js"></script>
+</body>
+</html>
