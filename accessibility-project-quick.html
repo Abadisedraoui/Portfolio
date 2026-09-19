@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Across a Product Ecosystem — Quick Case | Zainab Abadi</title>
+  <meta name="description" content="A short, visual case study of accessibility audits, screen reader testing and practical guidance across Oxford's product ecosystem." />
+  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* ============= QUICK CASE STUDY — ACCESSIBILITY ============= */
+    .quick-case {
+      padding-bottom: 72px;
+    }
+
+    .quick-case__intro {
+      margin-bottom: 28px;
+      padding: clamp(28px, 5vw, 56px);
+      background-image: url("images/background.jpg");
+      background-size: cover;
+      background-position: center;
+      border-radius: 0 0 28px 28px;
+    }
+
+    .quick-case__eyebrow,
+    .quick-case__label {
+      color: #234D8D;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .quick-case__meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px 24px;
+      margin-bottom: 16px;
+    }
+
+    .quick-case__eyebrow {
+      margin: 0;
+    }
+
+    .quick-case__title-row {
+      margin-bottom: 20px;
+    }
+
+    .quick-case__title-row h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(34px, 5vw, 54px);
+      line-height: 1.08;
+    }
+
+    .quick-case__read-time {
+      flex: 0 0 auto;
+      margin: 0;
+      color: #66758C;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quick-case__lead {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.5;
+    }
+
+    .quick-case__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 24px;
+    }
+
+    .quick-case__summary {
+      display: grid;
+      grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+      gap: 40px;
+      align-items: center;
+      padding: 36px;
+      background: #ffffff;
+      border-radius: 28px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .quick-case__summary h2,
+    .quick-case__decisions h2,
+    .quick-case__evidence h2,
+    .quick-case__outcome h2 {
+      margin: 6px 0 16px;
+      font-size: 28px;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    .quick-case__summary p {
+      max-width: 620px;
+      margin: 0 0 16px;
+    }
+
+    .quick-case__facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin: 28px 0 0;
+    }
+
+    .quick-case__facts div {
+      min-width: 0;
+    }
+
+    .quick-case__facts dt {
+      margin-bottom: 4px;
+      color: #66758C;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .quick-case__facts dd {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .quick-case__hero-media {
+      margin: 0;
+    }
+
+    .quick-case__hero-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+    }
+
+    .quick-case figcaption {
+      text-align: right;
+    }
+
+    .quick-case__hero-media a,
+    .quick-case__visual a {
+      display: block;
+    }
+
+    .quick-case__hero-media a:focus-visible,
+    .quick-case__visual a:focus-visible {
+      outline: 3px solid #234D8D;
+      outline-offset: -3px;
+    }
+
+    .quick-case__hero-media figcaption {
+      margin-top: 10px;
+      color: #66758C;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .quick-case__decisions,
+    .quick-case__evidence,
+    .quick-case__outcome {
+      margin-top: 56px;
+    }
+
+    .quick-case__decision-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .quick-case__decision {
+      padding: 22px 0 0;
+      border-top: 3px solid #C8D6E8;
+    }
+
+    .quick-case__decision:nth-child(2) {
+      border-color: #D9CDE9;
+    }
+
+    .quick-case__decision:nth-child(3) {
+      border-color: #C6DFCF;
+    }
+
+    .quick-case__decision-number {
+      color: #8B96A8;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .quick-case__decision h3 {
+      margin: 10px 0 8px;
+      font-size: 19px;
+      line-height: 1.3;
+    }
+
+    .quick-case__decision p {
+      margin: 0;
+      color: #66758C;
+    }
+
+    .quick-case__evidence-intro {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .quick-case__evidence-intro p {
+      margin: 0;
+      color: #66758C;
+    }
+
+    .quick-case__evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .quick-case__visual {
+      margin: 0;
+      overflow: hidden;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .quick-case__visual:first-child {
+      grid-column: 1 / -1;
+    }
+
+    .quick-case__visual img {
+      display: block;
+      width: 100%;
+      height: 290px;
+      object-fit: contain;
+      background: #F7F7F7;
+    }
+
+    .quick-case__visual:first-child img {
+      height: auto;
+      max-height: 440px;
+      object-fit: contain;
+      background: #F7F7F7;
+    }
+
+    .quick-case__visual figcaption {
+      padding: 14px 18px 16px;
+      color: #66758C;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .quick-case__clip {
+      margin: 24px 0 0;
+      overflow: hidden;
+      background: #ffffff;
+      border-radius: 22px;
+      box-shadow:
+        0 0 0 1px rgba(40, 35, 47, .08),
+        0 12px 28px rgba(40, 35, 47, .08);
+    }
+
+    .quick-case__clip video {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1916 / 910;
+      background: #ECE9F1;
+    }
+
+    .quick-case__clip figcaption {
+      padding: 14px 18px 16px;
+      color: #66758C;
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .quick-case__outcome {
+      max-width: 900px;
+    }
+
+    .quick-case__outcome ul {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px 32px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .quick-case__outcome li {
+      position: relative;
+      padding-left: 24px;
+      line-height: 1.5;
+    }
+
+    .quick-case__outcome li::before {
+      position: absolute;
+      left: 0;
+      color: #234D8D;
+      content: "✓";
+      font-weight: 700;
+    }
+
+    .quick-case__footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 56px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(40, 35, 47, .14);
+    }
+
+    .quick-case__footer p {
+      margin: 0;
+      color: #66758C;
+      font-family: inherit;
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+
+    .quick-case__footer .button {
+      margin-top: 0;
+    }
+
+    @media (max-width: 900px) {
+      .quick-case__summary {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-case__summary-copy {
+        order: 1;
+      }
+
+      .quick-case__hero-media {
+        order: 0;
+      }
+
+      .quick-case__decision-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .quick-case__intro {
+        border-radius: 0 0 22px 22px;
+      }
+
+      .quick-case__summary {
+        padding: 24px;
+        border-radius: 22px;
+      }
+
+      .quick-case__facts {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .quick-case__evidence-grid,
+      .quick-case__outcome ul {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-case__visual:first-child {
+        grid-column: auto;
+      }
+
+      .quick-case__visual img,
+      .quick-case__visual:first-child img {
+        height: auto;
+        max-height: none;
+      }
+
+      .quick-case__footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .quick-case__footer .button {
+        text-align: center;
+      }
+    }
+  </style>
+  <!-- Analytics consent and Contentsquare loader -->
+  <script defer src="analytics-consent.js"></script>
+</head>
+
+<body class="project-body">
+
+<header class="header">
+  <a href="quick-scan.html" class="logo-link" aria-label="Go to Quick Scan home">
+    <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
+  </a>
+
+  <button class="menu-toggle" aria-label="Open menu">
+    ☰
+  </button>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
+    <a href="quick-scan.html" class="nav-link active">Quick Scan</a>
+  </nav>
+</header>
+
+<main class="main project-page quick-case">
+
+  <section class="quick-case__intro">
+    <div class="quick-case__meta-row">
+      <p class="quick-case__eyebrow">Oxford University Press · Accessibility</p>
+      <span class="quick-case__read-time">Quick case · 2 min read</span>
+    </div>
+    <div class="quick-case__title-row">
+      <h1>Accessibility Across a Product Ecosystem</h1>
+    </div>
+    <p class="quick-case__lead">I connected accessibility audits, screen reader testing and practical guidance across Oxford's platforms, interfaces and learning content.</p>
+    <div class="quick-case__tags" aria-label="Case study topics">
+      <span class="tag tag-accessibility">Accessibility (WCAG)</span>
+      <span class="tag tag-testing">Screen Reader Testing</span>
+      <span class="tag tag-documentation">Documentation</span>
+      <span class="tag tag-handoff">Developer Handoff</span>
+    </div>
+  </section>
+
+  <section class="quick-case__summary" aria-labelledby="quickSummaryTitle">
+    <div class="quick-case__summary-copy">
+      <p class="quick-case__label">At a glance</p>
+      <h2 id="quickSummaryTitle">Making barriers visible</h2>
+      <p>Accessibility barriers appeared across interfaces, learning platforms and PDFs. Understanding them meant looking at how content was structured, built and read with assistive technology.</p>
+      <p>As a <strong>UX/UI Designer</strong>, I audited products, tested with screen readers and translated findings into component guidance and documentation for product, development, editorial, legal and multimedia teams.</p>
+
+      <dl class="quick-case__facts">
+        <div>
+          <dt>Role</dt>
+          <dd>UX/UI Designer</dd>
+        </div>
+        <div>
+          <dt>Scope</dt>
+          <dd>Platforms, interfaces and PDFs</dd>
+        </div>
+        <div>
+          <dt>Methods</dt>
+          <dd>Audits and screen reader testing</dd>
+        </div>
+      </dl>
+    </div>
+
+    <figure class="quick-case__hero-media">
+      <a href="images/image-6-1.jpg" target="_blank" rel="noopener" aria-label="Open the screen reader navigation map at full size (new tab)">
+        <img src="images/image-6-1.jpg" alt="Annotated login and home screens mapping keyboard navigation, headings and screen reader reading order" width="1280" height="720" fetchpriority="high" />
+      </a>
+      <figcaption>Making screen reader navigation visible: reading order, headings and regions.</figcaption>
+    </figure>
+  </section>
+
+  <section class="quick-case__decisions" aria-labelledby="quickDecisionsTitle">
+    <p class="quick-case__label">The decisions</p>
+    <h2 id="quickDecisionsTitle">Three decisions behind the work</h2>
+
+    <div class="quick-case__decision-grid">
+      <article class="quick-case__decision">
+        <span class="quick-case__decision-number">01</span>
+        <h3>Specify accessible components</h3>
+        <p>I documented focus states, contrast, labels and interaction guidance in the design system, giving development a reference for implementation.</p>
+      </article>
+
+      <article class="quick-case__decision">
+        <span class="quick-case__decision-number">02</span>
+        <h3>Test across environments</h3>
+        <p>I compared documents and platforms using NVDA, JAWS and Microsoft Narrator, recording how behaviour changed across formats and tools.</p>
+      </article>
+
+      <article class="quick-case__decision">
+        <span class="quick-case__decision-number">03</span>
+        <h3>Give each team usable guidance</h3>
+        <p>I adapted recommendations to each team's work, from document structure and image descriptions to component behaviour and development handoff.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="quick-case__evidence" aria-labelledby="quickEvidenceTitle">
+    <div class="quick-case__evidence-intro">
+      <p class="quick-case__label">Evidence</p>
+      <h2 id="quickEvidenceTitle">From findings to practical guidance</h2>
+      <p>The same content could behave differently across a PDF reader, a browser and a learning platform. I documented those differences alongside component requirements and proposed fixes.</p>
+    </div>
+
+    <div class="quick-case__evidence-grid">
+      <figure class="quick-case__visual">
+        <a href="images/image-11.jpg" target="_blank" rel="noopener" aria-label="Open the focus state documentation at full size (new tab)">
+          <img src="images/image-11.jpg" alt="Focus state documentation with highlighted button states and an implementation reference" width="1453" height="781" loading="lazy" />
+        </a>
+        <figcaption>Focus states: the behaviour, visual specification and implementation reference in one place.</figcaption>
+      </figure>
+
+      <figure class="quick-case__visual">
+        <a href="images/image-7-1.jpg" target="_blank" rel="noopener" aria-label="Open the screen reader testing matrix at full size (new tab)">
+          <img src="images/image-7-1.jpg" alt="Testing matrix listing document versions, platforms and screen readers used for each test" width="1344" height="755" loading="lazy" />
+        </a>
+        <figcaption>Testing matrix: recording the document, platform and screen reader for each comparison.</figcaption>
+      </figure>
+
+      <figure class="quick-case__visual">
+        <a href="images/image-1.jpg" target="_blank" rel="noopener" aria-label="Open the accessibility audit tracker at full size (new tab)">
+          <img src="images/image-1.jpg" alt="Audit tracker linking accessibility issues to their severity, impact, location, examples and possible solutions" width="1863" height="733" loading="lazy" />
+        </a>
+        <figcaption>Audit tracker: connecting each issue with its impact, location and possible solutions.</figcaption>
+      </figure>
+    </div>
+
+    <figure class="quick-case__clip">
+      <video src="videos/accessibility_video.mp4" controls playsinline preload="metadata" width="1916" height="910" aria-label="Accessibility checks on Oxford Premium" aria-describedby="accessibilityVideoCaption"></video>
+      <figcaption id="accessibilityVideoCaption">A short demonstration of colour-vision simulation, contrast checking and alternative-text inspection on Oxford Premium using an accessibility plugin. The screen reader tests are documented in the images above.</figcaption>
+    </figure>
+  </section>
+
+  <section class="quick-case__outcome" aria-labelledby="quickOutcomeTitle">
+    <p class="quick-case__label">Outcome</p>
+    <h2 id="quickOutcomeTitle">A practical reference for the teams</h2>
+    <ul>
+      <li>Accessibility reports linking issues, their impact and proposed fixes.</li>
+      <li>Documented screen reader tests across platforms and document formats.</li>
+      <li>Component guidance covering focus, labels, contrast and interaction states.</li>
+      <li>Recommendations adapted to editorial, multimedia, product and development workflows.</li>
+    </ul>
+  </section>
+
+  <div class="confidentiality-note">
+    <strong>🔒 About the examples</strong>
+    <p>The video uses Oxford Premium's demo account. The process examples have been adapted for sharing. Further documentation and context are available in the Deep Dive.</p>
+  </div>
+
+  <div class="quick-case__footer">
+    <p>Want the full process, research and iterations?</p>
+    <a href="accessibility-project.html" class="button">Explore the Deep Dive →</a>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div>
+    <img src="images/logo-white.png" alt="Zainab Abadi logo" class="footer-logo" />
+    <a href="privacy-page.html" class="privacy">Privacy Policy</a>
+  </div>
+
+  <div>
+    <h4>CONTACT</h4>
+    <p>+34627892634</p>
+    <p>zainab.abadi.s@gmail.com</p>
+  </div>
+
+  <div>
+    <h4>LOCATION</h4>
+    <p>Madrid, Spain</p>
+  </div>
+
+  <div>
+    <h4>FEEDBACK IS WELCOME</h4>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
+  </div>
+
+  <p class="copyright">Vibe Coded with Claude 💫 © 2026 by Zainab Abadi.</p>
+</footer>
+
+<button class="back-to-top" aria-label="Back to top">
+  ↑
+</button>
+
+<script>
+  const menuButton = document.querySelector(".menu-toggle");
+  const nav = document.querySelector(".nav");
+
+  if (menuButton && nav) {
+    menuButton.addEventListener("click", () => {
+      nav.classList.toggle("open");
+    });
+  }
+
+  const backToTop = document.querySelector(".back-to-top");
+
+  if (backToTop) {
+    window.addEventListener("scroll", () => {
+      backToTop.classList.toggle("show", window.scrollY > 300);
+    });
+
+    backToTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+</script>
+
+<script src="logo-animation.js"></script>
+</body>
+</html>
