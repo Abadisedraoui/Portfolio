@@ -5,6 +5,325 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Educational Platform Restructuring | Zainab Abadi</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+/* =========================================================
+   CASE STUDY MEDIA
+   Imágenes de los case studies largos (Deep Dive) y su visor
+   ampliado. Va dentro de esta página, después del enlace a
+   style.css, y no sustituye ninguna regla de style.css: solo
+   añade. Reutiliza
+   los colores, radios y sombras de .article-image y de
+   .case-study-video (guía de estilo).
+========================================================= */
+
+:root {
+  /* Un solo valor para el espacio vertical entre bloques:
+     párrafo > título, párrafo > imagen, imagen > párrafo.
+     Coincide con el margin-bottom de .article-section. */
+  --flow-gap: 48px;
+}
+
+/* =========================================================
+   MEDIA CARD
+   Imagen + leyenda en un mismo bloque. La imagen ocupa el 100%
+   del ancho de .project-page (el mismo ancho que el bloque gris
+   de .project-intro). La leyenda va dentro del bloque, en la
+   parte inferior, alineada a la derecha.
+========================================================= */
+.media-card {
+  width: 100%;
+  margin: var(--flow-gap) 0;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(40, 35, 47, .14);
+  box-shadow: 0 6px 14px rgba(40, 35, 47, .10);
+  overflow: hidden;
+}
+
+.media-card__frame {
+  position: relative;
+}
+
+.media-card__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.media-card figcaption {
+  padding: 12px 20px 14px;
+  border-top: 1px solid rgba(40, 35, 47, .10);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #66758C;
+  text-align: right;
+}
+
+/* El hero no es un .article-section: el margen inferior lo pone
+   la propia tarjeta (--flow-gap) y el superior colapsa con el
+   margin-bottom de .table-contents. */
+.case-study-hero {
+  margin: 0;
+}
+
+/* =========================================================
+   "SEE MORE OF THE PROCESS"
+   Botón con la estética de .button (píldora oscura). Abre el
+   visor con las imágenes del proceso.
+========================================================= */
+.process-more {
+  margin: 0;
+}
+
+.process-more .button {
+  margin-top: 0;
+  border: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+/* Mismo ritmo vertical para lo que viene después del botón */
+.project-page .responsive-gallery {
+  margin: var(--flow-gap) 0;
+}
+
+.project-page .confidentiality-note {
+  margin-top: var(--flow-gap);
+}
+
+/* =========================================================
+   LIGHTBOX (visor ampliado con carrusel)
+   Sustituye al antiguo .image-modal en esta página. Muestra
+   las imágenes con el mismo formato de tarjeta (imagen +
+   leyenda abajo a la derecha). Si el grupo tiene una sola
+   imagen se ocultan flechas y contador.
+   Mismo overlay y botón de cierre que .pokemon-modal.
+========================================================= */
+html.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 88px;
+  background: rgba(40, 35, 47, 0.72);
+  z-index: 9999;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox__close,
+.lightbox__arrow {
+  position: absolute;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #28232f;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close {
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+}
+
+.lightbox__arrow {
+  top: 50%;
+  font-size: 30px;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 16px rgba(40, 35, 47, .18);
+}
+
+.lightbox__prev {
+  left: 24px;
+}
+
+.lightbox__next {
+  right: 24px;
+}
+
+.lightbox__arrow:hover:not(:disabled),
+.lightbox__close:hover {
+  background: #EEF4FF;
+}
+
+.lightbox__arrow:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.lightbox__close:focus-visible,
+.lightbox__arrow:focus-visible {
+  outline: 3px solid #3E6FB3;
+  outline-offset: 3px;
+}
+
+.lightbox.is-single .lightbox__arrow,
+.lightbox.is-single .lightbox__status {
+  display: none;
+}
+
+.lightbox__status {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.lightbox__track {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.lightbox__track::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox__slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+
+/* La tarjeta se ajusta a la imagen: el ancho sale del ratio real
+   (--ratio lo fija el JS al cargar la imagen), limitado por el
+   ancho disponible y por el alto de la ventana. Así la leyenda
+   siempre queda pegada a la esquina inferior derecha de la
+   imagen, sin barras vacías a los lados. */
+.lightbox .media-card {
+  width: min(100%, calc((100vh - 216px) * var(--ratio, 1.7778)));
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .lightbox {
+    padding: 72px 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Alinea imágenes y botón con el texto, que en mobile lleva
+     24px de padding lateral (.article-section) */
+  .case-study-hero,
+  .process-more {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .media-card figcaption {
+    padding: 10px 16px 12px;
+  }
+
+  .lightbox {
+    padding: 72px 16px 96px;
+  }
+
+  .lightbox__close {
+    top: 16px;
+    right: 16px;
+  }
+
+  .lightbox__arrow {
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
+
+  .lightbox__prev {
+    left: 16px;
+  }
+
+  .lightbox__next {
+    right: 16px;
+  }
+
+  .lightbox__status {
+    bottom: 36px;
+  }
+
+  .lightbox .media-card {
+    width: min(100%, calc((100vh - 230px) * var(--ratio, 1.7778)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox__track {
+    scroll-behavior: auto;
+  }
+}
+
+
+
+/* Layout scoped to this case study; shared site styles stay unchanged. */
+.project-intro { padding: clamp(24px, 4vw, 48px); }
+.project-title-row { margin-bottom: 28px; }
+.project-title-row h1 { max-width: 740px; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.12; }
+.project-title-row span { flex-shrink: 0; }
+.case-summary { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 32px; align-items: center; }
+.case-summary > * { min-width: 0; }
+.case-summary .media-card { margin: 0; border: 0; background: transparent; box-shadow: none; }
+.case-summary .media-card__frame { padding: 12px 0; }
+.case-summary .media-card__frame img { width: 100%; height: auto; }
+.case-summary figcaption { padding: 12px 0 0; border: 0; color: #43536b; }
+.case-facts { display: flex; flex-wrap: wrap; gap: 16px 24px; margin: 24px 0; }
+.case-facts div { flex: 1 1 130px; }
+.case-facts dt { font-size: 13px; color: #43536b; margin-bottom: 4px; }
+.case-facts dd { margin: 0; font-weight: 700; line-height: 1.5; }
+.case-decisions { margin: 40px 0; }
+.case-decisions h2 { font-size: 24px; margin-bottom: 24px; }
+.case-decisions nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.case-decisions a { display: block; padding: 16px 0; border-top: 3px solid #c8d6e8; color: #28232f; text-decoration: none; }
+.case-decisions a:nth-child(2) { border-color: #d9cde9; }
+.case-decisions a:nth-child(3) { border-color: #c6dfcf; }
+.case-decisions strong { display: block; margin-bottom: 8px; font-size: 18px; line-height: 1.4; }
+.case-decisions span { font-size: 16px; line-height: 1.5; }
+.case-decisions a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.case-decisions a:focus-visible, .case-gallery-link:focus-visible, .case-index summary:focus-visible { outline: 3px solid #3e6fb3; outline-offset: 4px; }
+.case-gallery-link { display: inline-block; padding: 10px 0; border: 0; background: transparent; font: inherit; color: #234d8d; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.case-index { margin-bottom: 40px; }
+.case-index summary { cursor: pointer; font-weight: 700; padding: 16px 0; border-block: 1px solid #c8d6e8; }
+.case-index ol { columns: 2; margin-top: 16px; }
+.case-index li { break-inside: avoid; }
+.article-section .case-evidence { max-width: 900px; margin: 28px 0; box-shadow: none; }
+.case-evidence--figma .media-card__frame { background: #eef4ff; }
+.case-evidence--figma .media-card__frame img { max-height: 480px; object-fit: contain; }
+.article-section { scroll-margin-top: 100px; }
+.article-section h2 { max-width: 900px; line-height: 1.3; }
+@media (max-width: 1000px) {
+  .case-summary { grid-template-columns: 1fr; }
+  .case-summary .media-card { width: 100%; max-width: 760px; }
+  .case-decisions nav { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 600px) {
+  .project-intro { padding: 30px 24px; }
+  .case-decisions { padding-inline: 24px; }
+  .case-index ol { columns: 1; }
+}
+  </style>
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
 </head>
@@ -35,27 +354,40 @@
       <span>5 min read</span>
     </div>
 
-    <h4>TL;DR</h4>
-
-    <p>
-      Oxford Premium contained <strong>thousands of educational resources</strong>,
-      multiple navigation paths, and different organisational models depending on the product line.
-    </p>
-
-    <p>
-      The challenge was not creating more content.
-      <strong>It was helping teachers find and use what already existed.</strong>
-    </p>
-
-    <p>
-      Through behavioural analysis, user interviews, information architecture work,
-      prototyping, and usability testing, I helped redefine how educational resources
-      were structured and accessed across the platform.
-    </p>
+    <div class="case-summary">
+      <div>
+        <h4>At a glance</h4>
+        <p>Oxford Premium contained <strong>thousands of educational resources</strong>, multiple navigation paths, and different organisational models depending on the product line.</p>
+        <p>The challenge was not creating more content. <strong>It was helping teachers find and use what already existed.</strong></p>
+        <dl class="case-facts">
+          <div><dt>Research</dt><dd>600+ Hotjar sessions and 31 teacher interviews</dd></div>
+          <div><dt>Focus</dt><dd>Information architecture and resource discovery</dd></div>
+          <div><dt>Methods</dt><dd>Card sorting, prototyping and usability testing</dd></div>
+        </dl>
+        <p><strong>Delivered:</strong> a validated information architecture, new navigation proposals, documented resource structures and interactive prototypes.</p>
+        <button class="case-gallery-link" type="button" data-process-open aria-haspopup="dialog">See the process images ↗</button>
+      </div>
+      <figure class="media-card zoomable-image">
+        <div class="media-card__frame">
+          <img src="images/vi-6.jpg" alt="New Oxford Premium proposal with resource navigation, search and category structure" width="1280" height="720" fetchpriority="high" />
+          <button class="image-zoom-button" type="button" aria-label="Enlarge the new Oxford Premium proposal">⤢</button>
+        </div>
+        <figcaption>The proposed structure in context: clearer categories, navigation and resource discovery.</figcaption>
+      </figure>
+    </div>
   </section>
 
-  <section class="table-contents">
-    <h4>Table of Contents</h4>
+  <section class="case-decisions" aria-labelledby="caseDecisionsTitle">
+    <h2 id="caseDecisionsTitle">Three decisions behind the work</h2>
+    <nav aria-label="Key design decisions">
+      <a href="#problem"><strong>Start with behaviour →</strong><span>Use sessions and interviews to understand where discovery breaks down.</span></a>
+      <a href="#structure"><strong>Organise around teachers’ mental models →</strong><span>Use card sorting to define clearer categories and terminology.</span></a>
+      <a href="#process"><strong>Reduce fragmentation across products →</strong><span>Compare ecosystems and create a more coherent structure.</span></a>
+    </nav>
+  </section>
+
+  <details class="table-contents case-index">
+    <summary>Read the full case study · 6 sections</summary>
 
     <ol>
       <li><a href="#background">Background</a></li>
@@ -65,8 +397,10 @@
       <li><a href="#beyond">Beyond the Interface</a></li>
       <li><a href="#outcome">Outcome</a></li>
     </ol>
-  </section>
+  </details>
 
+  <!-- Temporarily hidden: restore by removing the template wrapper. -->
+  <template id="pausedCaseStudyVideo">
   <div class="confidentiality-note case-study-video-note">
     <strong>🎥 About this clip</strong>
     <p>
@@ -86,24 +420,9 @@
     <video src="videos/Educational_Platform_Video.mp4" controls playsinline preload="metadata"></video>
     <figcaption>Accessing the library, exploring resources and using search — Oxford Premium demo account</figcaption>
   </figure>
+  </template>
 
   <section class="article-section" id="background">
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-1.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Platform Comparison Table</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure>
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-1-1.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Content Structure Comparison Table</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
 
     <h2>1. Background</h2>
 
@@ -131,22 +450,6 @@
   </section>
 
   <section class="article-section" id="problem">
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-2.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Navigation Behaviour Analysis</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-2-3.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Session Recordings Dataset</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
 
     <h2>2. Understanding the Problem</h2>
 
@@ -199,30 +502,6 @@
 
     <h2>3. Defining a New Structure</h2>
 
-      <figure class="article-image zoomable-image">
-      <img src="images/vi-3.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Card Sorting Results 1</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-3-1.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Card Sorting Results 2</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure>
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-3-2.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Task Performance Results</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
-
     <p>
       The next step was to understand how users expected educational resources
       to be grouped.
@@ -265,14 +544,6 @@
   </section>
 
   <section class="article-section" id="process">
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-4.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Qualitative Interview Insights</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
 
     <h2>4. Design Process</h2>
 
@@ -346,22 +617,6 @@
 
   <section class="article-section" id="beyond">
 
-      <figure class="article-image zoomable-image">
-      <img src="images/vi-5.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>New Structure Definition</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure>  
-
-    <figure class="article-image zoomable-image">
-      <img src="images/vi-5-1.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>Platform Ecosystem Comparison</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure> 
-
     <h2>5. Beyond the Interface</h2>
 
     <p>
@@ -385,14 +640,6 @@
   </section>
 
   <section class="article-section" id="outcome">
-
-     <figure class="article-image zoomable-image">
-      <img src="images/vi-6.jpg" alt="text" />
-      <div class="article-image-overlay">
-        <p>New Proposal Interface</p>
-      </div>
-      <button class="image-zoom-button" type="button" aria-label="Open image">⤢</button>
-    </figure>  
 
     <h2>6. Outcome</h2>
 
@@ -429,6 +676,57 @@
     </p>
 
   </section>
+
+  <div class="process-more">
+    <button class="button" type="button" id="processOpen" data-process-open aria-haspopup="dialog">See more of the process (11 images)</button>
+  </div>
+
+  <template id="processSlides">
+    <figure>
+      <img src="images/vi-1.jpg" alt="Platform Comparison Table" />
+      <figcaption>Platform Comparison Table</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-1-1.jpg" alt="Content Structure Comparison Table" />
+      <figcaption>Content Structure Comparison Table</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-2.jpg" alt="Navigation Behaviour Analysis" />
+      <figcaption>Navigation Behaviour Analysis</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-2-3.jpg" alt="Session Recordings Dataset" />
+      <figcaption>Session Recordings Dataset</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-3.jpg" alt="Card Sorting Results 1" />
+      <figcaption>Card Sorting Results 1</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-3-1.jpg" alt="Card Sorting Results 2" />
+      <figcaption>Card Sorting Results 2</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-3-2.jpg" alt="Task Performance Results" />
+      <figcaption>Task Performance Results</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-4.jpg" alt="Qualitative Interview Insights" />
+      <figcaption>Qualitative Interview Insights</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-5.jpg" alt="New Structure Definition" />
+      <figcaption>New Structure Definition</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-5-1.jpg" alt="Platform Ecosystem Comparison" />
+      <figcaption>Platform Ecosystem Comparison</figcaption>
+    </figure>
+    <figure>
+      <img src="images/vi-6.jpg" alt="New Proposal Interface" />
+      <figcaption>New Proposal Interface</figcaption>
+    </figure>
+  </template>
 
   <div class="confidentiality-note">
     <strong>🔒 Confidentiality note</strong>
@@ -473,86 +771,201 @@
   ↑
 </button>
 
-<div class="image-modal" id="imageModal">
-  <button class="image-modal-close" type="button" aria-label="Close image">
-    ×
-  </button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox__close" type="button" aria-label="Close image viewer">×</button>
+  <button class="lightbox__arrow lightbox__prev" type="button" aria-label="Previous image">‹</button>
 
-  <img id="imageModalImg" src="" alt="" />
+  <div class="lightbox__track" id="lightboxTrack" aria-roledescription="carousel"></div>
+
+  <button class="lightbox__arrow lightbox__next" type="button" aria-label="Next image">›</button>
+  <p class="lightbox__status" id="lightboxStatus" aria-live="polite"></p>
 </div>
 
 <script>
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
 
-  if (menuButton && nav) {
-    menuButton.addEventListener("click", () => {
-      nav.classList.toggle("open");
-    });
-  }
-
-  const zoomableImages = document.querySelectorAll(".zoomable-image");
-  const imageModal = document.getElementById("imageModal");
-  const imageModalImg = document.getElementById("imageModalImg");
-  const imageModalClose = document.querySelector(".image-modal-close");
-
-  zoomableImages.forEach((figure) => {
-    const image = figure.querySelector("img");
-    const button = figure.querySelector(".image-zoom-button");
-
-    if (image && button && imageModal && imageModalImg) {
-      button.addEventListener("click", () => {
-        imageModalImg.src = image.src;
-        imageModalImg.alt = image.alt;
-        imageModal.classList.add("open");
-      });
-
-      image.addEventListener("click", () => {
-        imageModalImg.src = image.src;
-        imageModalImg.alt = image.alt;
-        imageModal.classList.add("open");
-      });
-    }
-  });
-
-  if (imageModalClose && imageModal) {
-    imageModalClose.addEventListener("click", () => {
-      imageModal.classList.remove("open");
-    });
-  }
-
-  if (imageModal) {
-    imageModal.addEventListener("click", (event) => {
-      if (event.target === imageModal) {
-        imageModal.classList.remove("open");
-      }
-    });
-  }
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && imageModal) {
-      imageModal.classList.remove("open");
-    }
+  menuButton.addEventListener("click", () => {
+    nav.classList.toggle("open");
   });
 
   const backToTop = document.querySelector(".back-to-top");
 
-  if (backToTop) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
-        backToTop.classList.add("show");
-      } else {
-        backToTop.classList.remove("show");
-      }
-    });
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.classList.add("show");
+    } else {
+      backToTop.classList.remove("show");
+    }
+  });
 
-    backToTop.addEventListener("click", () => {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-      });
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  /* -------------------------------------------------------
+     LIGHTBOX
+     openLightbox(items, startIndex, opener)
+     items = [{ src, alt, caption }]
+  ------------------------------------------------------- */
+  const lightbox = document.getElementById("lightbox");
+  const lightboxTrack = document.getElementById("lightboxTrack");
+  const lightboxStatus = document.getElementById("lightboxStatus");
+  const lightboxClose = lightbox.querySelector(".lightbox__close");
+  const lightboxPrev = lightbox.querySelector(".lightbox__prev");
+  const lightboxNext = lightbox.querySelector(".lightbox__next");
+
+  let lightboxOpener = null;
+  let lightboxCount = 0;
+
+  function buildSlide(item, index, total) {
+    const slide = document.createElement("div");
+    slide.className = "lightbox__slide";
+    slide.setAttribute("role", "group");
+    slide.setAttribute("aria-roledescription", "slide");
+    slide.setAttribute("aria-label", (index + 1) + " of " + total);
+
+    const figure = document.createElement("figure");
+    figure.className = "media-card";
+
+    const frame = document.createElement("div");
+    frame.className = "media-card__frame";
+
+    const image = document.createElement("img");
+    image.alt = item.alt || "";
+    image.addEventListener("load", () => {
+      figure.style.setProperty("--ratio", image.naturalWidth / image.naturalHeight);
+    });
+    image.src = item.src;
+    if (image.complete && image.naturalWidth) {
+      figure.style.setProperty("--ratio", image.naturalWidth / image.naturalHeight);
+    }
+
+    frame.appendChild(image);
+    figure.appendChild(frame);
+
+    if (item.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = item.caption;
+      figure.appendChild(caption);
+    }
+
+    slide.appendChild(figure);
+    return slide;
+  }
+
+  function currentIndex() {
+    return Math.round(lightboxTrack.scrollLeft / lightboxTrack.clientWidth) || 0;
+  }
+
+  function updateLightboxState() {
+    const index = currentIndex();
+    lightboxPrev.disabled = index <= 0;
+    lightboxNext.disabled = index >= lightboxCount - 1;
+    lightboxStatus.textContent = (index + 1) + " / " + lightboxCount;
+  }
+
+  function goToSlide(index, smooth) {
+    const target = Math.max(0, Math.min(lightboxCount - 1, index));
+    lightboxTrack.scrollTo({
+      left: target * lightboxTrack.clientWidth,
+      behavior: smooth ? "smooth" : "instant"
     });
   }
+
+  function openLightbox(items, startIndex, opener) {
+    lightboxOpener = opener || null;
+    lightboxCount = items.length;
+    lightboxTrack.innerHTML = "";
+
+    items.forEach((item, index) => {
+      lightboxTrack.appendChild(buildSlide(item, index, items.length));
+    });
+
+    lightbox.classList.toggle("is-single", items.length < 2);
+    lightbox.classList.add("open");
+    document.documentElement.classList.add("lightbox-open");
+
+    goToSlide(startIndex || 0, false);
+    updateLightboxState();
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.documentElement.classList.remove("lightbox-open");
+    lightboxTrack.innerHTML = "";
+
+    if (lightboxOpener && typeof lightboxOpener.focus === "function") {
+      lightboxOpener.focus();
+    }
+    lightboxOpener = null;
+  }
+
+  lightboxTrack.addEventListener("scroll", updateLightboxState);
+  lightboxPrev.addEventListener("click", () => goToSlide(currentIndex() - 1, true));
+  lightboxNext.addEventListener("click", () => goToSlide(currentIndex() + 1, true));
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  // Clic fuera de la tarjeta y de los botones = cerrar
+  lightbox.addEventListener("click", (event) => {
+    if (!event.target.closest(".media-card, .lightbox__arrow, .lightbox__close")) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowLeft") {
+      goToSlide(currentIndex() - 1, true);
+    } else if (event.key === "ArrowRight") {
+      goToSlide(currentIndex() + 1, true);
+    } else if (event.key === "Tab") {
+      // Foco atrapado dentro del visor
+      const focusable = [lightboxClose, lightboxPrev, lightboxNext].filter(
+        (control) => !control.disabled && control.offsetParent !== null
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!focusable.includes(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  /* See more of the process: 11 imágenes con leyenda */
+  const processSlides = document.getElementById("processSlides");
+
+  document.querySelectorAll("[data-process-open]").forEach((opener) => {
+    opener.addEventListener("click", () => {
+      const items = Array.from(processSlides.content.querySelectorAll("figure")).map((figure) => {
+        const image = figure.querySelector("img");
+        const caption = figure.querySelector("figcaption");
+
+        return {
+          src: image.getAttribute("src"),
+          alt: image.getAttribute("alt"),
+          caption: caption ? caption.textContent.trim() : ""
+        };
+      });
+
+      openLightbox(items, 0, opener);
+    });
+  });
 </script>
 
 <script src="logo-animation.js"></script>
