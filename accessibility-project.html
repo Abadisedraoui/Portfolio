@@ -5,6 +5,324 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Accessibility Across a Product Ecosystem | Zainab Abadi</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+/* =========================================================
+   CASE STUDY MEDIA
+   Imágenes de los case studies largos (Deep Dive) y su visor
+   ampliado. Va dentro de esta página, después del enlace a
+   style.css, y no sustituye ninguna regla de style.css: solo
+   añade. Reutiliza
+   los colores, radios y sombras de .article-image y de
+   .case-study-video (guía de estilo).
+========================================================= */
+
+:root {
+  /* Un solo valor para el espacio vertical entre bloques:
+     párrafo > título, párrafo > imagen, imagen > párrafo.
+     Coincide con el margin-bottom de .article-section. */
+  --flow-gap: 48px;
+}
+
+/* =========================================================
+   MEDIA CARD
+   Imagen + leyenda en un mismo bloque. La imagen ocupa el 100%
+   del ancho de .project-page (el mismo ancho que el bloque gris
+   de .project-intro). La leyenda va dentro del bloque, en la
+   parte inferior, alineada a la derecha.
+========================================================= */
+.media-card {
+  width: 100%;
+  margin: var(--flow-gap) 0;
+  background: #ffffff;
+  border-radius: 20px;
+  border: 1px solid rgba(40, 35, 47, .14);
+  box-shadow: 0 6px 14px rgba(40, 35, 47, .10);
+  overflow: hidden;
+}
+
+.media-card__frame {
+  position: relative;
+}
+
+.media-card__frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.media-card figcaption {
+  padding: 12px 20px 14px;
+  border-top: 1px solid rgba(40, 35, 47, .10);
+  font-size: 13px;
+  line-height: 1.4;
+  color: #66758C;
+  text-align: right;
+}
+
+/* El hero no es un .article-section: el margen inferior lo pone
+   la propia tarjeta (--flow-gap) y el superior colapsa con el
+   margin-bottom de .table-contents. */
+.case-study-hero {
+  margin: 0;
+}
+
+/* =========================================================
+   "SEE MORE OF THE PROCESS"
+   Botón con la estética de .button (píldora oscura). Abre el
+   visor con las 12 imágenes del proceso.
+========================================================= */
+.process-more {
+  margin: 0;
+}
+
+.process-more .button {
+  margin-top: 0;
+  border: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+/* Mismo ritmo vertical para lo que viene después del botón */
+.project-page .responsive-gallery {
+  margin: var(--flow-gap) 0;
+}
+
+.project-page .confidentiality-note {
+  margin-top: var(--flow-gap);
+}
+
+/* =========================================================
+   LIGHTBOX (visor ampliado con carrusel)
+   Sustituye al antiguo .image-modal en esta página. Muestra
+   las imágenes con el mismo formato de tarjeta (imagen +
+   leyenda abajo a la derecha). Si el grupo tiene una sola
+   imagen se ocultan flechas y contador.
+   Mismo overlay y botón de cierre que .pokemon-modal.
+========================================================= */
+html.lightbox-open {
+  overflow: hidden;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 72px 88px;
+  background: rgba(40, 35, 47, 0.72);
+  z-index: 9999;
+}
+
+.lightbox.open {
+  display: flex;
+}
+
+.lightbox__close,
+.lightbox__arrow {
+  position: absolute;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: white;
+  color: #28232f;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox__close {
+  top: 24px;
+  right: 24px;
+  font-size: 28px;
+}
+
+.lightbox__arrow {
+  top: 50%;
+  font-size: 30px;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 16px rgba(40, 35, 47, .18);
+}
+
+.lightbox__prev {
+  left: 24px;
+}
+
+.lightbox__next {
+  right: 24px;
+}
+
+.lightbox__arrow:hover:not(:disabled),
+.lightbox__close:hover {
+  background: #EEF4FF;
+}
+
+.lightbox__arrow:disabled {
+  opacity: .35;
+  cursor: default;
+}
+
+.lightbox__close:focus-visible,
+.lightbox__arrow:focus-visible {
+  outline: 3px solid #3E6FB3;
+  outline-offset: 3px;
+}
+
+.lightbox.is-single .lightbox__arrow,
+.lightbox.is-single .lightbox__status {
+  display: none;
+}
+
+.lightbox__status {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+.lightbox__track {
+  display: flex;
+  width: 100%;
+  max-width: 1200px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.lightbox__track::-webkit-scrollbar {
+  display: none;
+}
+
+.lightbox__slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+}
+
+/* La tarjeta se ajusta a la imagen: el ancho sale del ratio real
+   (--ratio lo fija el JS al cargar la imagen), limitado por el
+   ancho disponible y por el alto de la ventana. Así la leyenda
+   siempre queda pegada a la esquina inferior derecha de la
+   imagen, sin barras vacías a los lados. */
+.lightbox .media-card {
+  width: min(100%, calc((100vh - 216px) * var(--ratio, 1.7778)));
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .lightbox {
+    padding: 72px 72px;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Alinea imágenes y botón con el texto, que en mobile lleva
+     24px de padding lateral (.article-section) */
+  .case-study-hero,
+  .process-more {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .media-card figcaption {
+    padding: 10px 16px 12px;
+  }
+
+  .lightbox {
+    padding: 72px 16px 96px;
+  }
+
+  .lightbox__close {
+    top: 16px;
+    right: 16px;
+  }
+
+  .lightbox__arrow {
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
+
+  .lightbox__prev {
+    left: 16px;
+  }
+
+  .lightbox__next {
+    right: 16px;
+  }
+
+  .lightbox__status {
+    bottom: 36px;
+  }
+
+  .lightbox .media-card {
+    width: min(100%, calc((100vh - 230px) * var(--ratio, 1.7778)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox__track {
+    scroll-behavior: auto;
+  }
+}
+
+
+/* Layout scoped to this case study; shared site styles stay unchanged. */
+.project-intro { padding: clamp(24px, 4vw, 48px); }
+.project-title-row { margin-bottom: 28px; }
+.project-title-row h1 { max-width: 740px; font-size: clamp(32px, 3.5vw, 46px); line-height: 1.12; }
+.project-title-row span { flex-shrink: 0; }
+.case-summary { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 32px; align-items: center; }
+.case-summary > * { min-width: 0; }
+.case-summary .media-card { margin: 0; border: 0; background: transparent; box-shadow: none; }
+.case-summary .media-card__frame { padding: 12px 0; }
+.case-summary .media-card__frame img { width: 100%; height: auto; }
+.case-summary figcaption { padding: 12px 0 0; border: 0; color: #43536b; }
+.case-facts { display: flex; flex-wrap: wrap; gap: 16px 24px; margin: 24px 0; }
+.case-facts div { flex: 1 1 130px; }
+.case-facts dt { font-size: 13px; color: #43536b; margin-bottom: 4px; }
+.case-facts dd { margin: 0; font-weight: 700; line-height: 1.5; }
+.case-decisions { margin: 40px 0; }
+.case-decisions h2 { font-size: 24px; margin-bottom: 24px; }
+.case-decisions nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.case-decisions a { display: block; padding: 16px 0; border-top: 3px solid #c8d6e8; color: #28232f; text-decoration: none; }
+.case-decisions a:nth-child(2) { border-color: #d9cde9; }
+.case-decisions a:nth-child(3) { border-color: #c6dfcf; }
+.case-decisions strong { display: block; margin-bottom: 8px; font-size: 18px; line-height: 1.4; }
+.case-decisions span { font-size: 16px; line-height: 1.5; }
+.case-decisions a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.case-decisions a:focus-visible, .case-gallery-link:focus-visible, .case-index summary:focus-visible { outline: 3px solid #3e6fb3; outline-offset: 4px; }
+.case-gallery-link { display: inline-block; padding: 10px 0; border: 0; background: transparent; font: inherit; color: #234d8d; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.case-index { margin-bottom: 40px; }
+.case-index summary { cursor: pointer; font-weight: 700; padding: 16px 0; border-block: 1px solid #c8d6e8; }
+.case-index ol { columns: 2; margin-top: 16px; }
+.case-index li { break-inside: avoid; }
+.article-section .case-evidence { max-width: 900px; margin: 28px 0; box-shadow: none; }
+.case-evidence--figma .media-card__frame { background: #eef4ff; }
+.case-evidence--figma .media-card__frame img { max-height: 480px; object-fit: contain; }
+.article-section { scroll-margin-top: 100px; }
+.article-section h2 { max-width: 900px; line-height: 1.3; }
+@media (max-width: 1000px) {
+  .case-summary { grid-template-columns: 1fr; }
+  .case-summary .media-card { width: 100%; max-width: 760px; }
+  .case-decisions nav { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 600px) {
+  .project-intro { padding: 30px 24px; }
+  .case-decisions { padding-inline: 24px; }
+  .case-index ol { columns: 1; }
+}
+  </style>
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
 </head>
@@ -35,31 +353,40 @@
       <span>6 min read</span>
     </div>
 
-    <h4>TL;DR</h4>
-
-    <p>
-      Accessibility requirements were arriving at Oxford Premium from several directions at once:
-      European legislation, <strong>WCAG 2.1</strong>, and the everyday reality of teachers using the
-      platform in class. I worked on the accessibility initiative across product, content and
-      development, with one goal running through all of it: making accessibility something teams
-      could understand, apply and maintain without needing me in the room.
-    </p>
-
-    <p>
-      The work ran from <strong>platform audits</strong> and <strong>screen reader testing</strong>
-      through to <strong>design system foundations</strong>, documentation written separately for
-      each team, and support during implementation.
-    </p>
-
-    <p>
-      What the project reinforced is that accessibility is not a layer added at the end. It depends
-      on structure, content, design decisions, technical implementation and the internal processes
-      that produce all of them.
-    </p>
+    <div class="case-summary">
+      <div>
+        <h4>At a glance</h4>
+        <p>I worked across product, content and development to make accessibility requirements easier for teams to understand, apply and maintain.</p>
+        <p>The work connected <strong>platform audits and screen reader testing</strong> with design system foundations, team-specific documentation and implementation support.</p>
+        <dl class="case-facts">
+          <div><dt>My role</dt><dd>UX/UI Designer</dd></div>
+          <div><dt>Scope</dt><dd>Platforms, interfaces and PDFs</dd></div>
+          <div><dt>Methods</dt><dd>Audits and assistive technology testing</dd></div>
+        </dl>
+        <p><strong>Deliverables:</strong> accessibility reports, testing documentation, component guidance and recommendations for different teams.</p>
+        <button class="case-gallery-link" type="button" data-process-open aria-haspopup="dialog">See the process images ↗</button>
+      </div>
+      <figure class="media-card zoomable-image">
+        <div class="media-card__frame">
+          <img src="images/image-6-1.jpg" alt="Annotated Oxford interfaces showing screen reader navigation and reading order" width="1280" height="720" fetchpriority="high" />
+          <button class="image-zoom-button" type="button" aria-label="Enlarge the screen reader navigation map">⤢</button>
+        </div>
+        <figcaption>Making screen reader navigation visible: reading order, headings and regions.</figcaption>
+      </figure>
+    </div>
   </section>
 
-  <section class="table-contents">
-    <h4>Table of Contents</h4>
+  <section class="case-decisions" aria-labelledby="caseDecisionsTitle">
+    <h2 id="caseDecisionsTitle">Three decisions behind the work</h2>
+    <nav aria-label="Key accessibility decisions">
+      <a href="#design-system"><strong>Build accessibility into components →</strong><span>Define focus states, labels, contrast and interaction guidance.</span></a>
+      <a href="#testing"><strong>Test across assistive technologies →</strong><span>Compare screen reader behaviour across documents and platforms.</span></a>
+      <a href="#documentation"><strong>Adapt guidance to each team →</strong><span>Translate requirements into practical documentation for everyday work.</span></a>
+    </nav>
+  </section>
+
+  <details class="table-contents case-index">
+    <summary>Read the full case study · 12 sections</summary>
 
     <ol>
       <li><a href="#overview">Overview</a></li>
@@ -75,19 +402,7 @@
       <li><a href="#handoff">Handoff with Development</a></li>
       <li><a href="#outcome">Outcome</a></li>
     </ol>
-  </section>
-
-  <section class="case-study-hero">
-    <figure class="case-hero-image zoomable-image">
-      <div class="media-frame">
-        <img src="images/image-11.jpg" alt="Focus state documentation: the explanation of when a focus state applies, the standard button states with the focused ones highlighted, and the CSS rule that implements it">
-        <button class="image-zoom-button" type="button" aria-label="Open image">
-          ⤢
-        </button>
-      </div>
-      <figcaption>Focus states, from the reasoning to the exact CSS the developers needed.</figcaption>
-    </figure>
-  </section>
+  </details>
 
   <section class="article-section" id="overview">
     <h2>1. Overview</h2>
@@ -112,30 +427,16 @@
   <section class="article-section" id="context">
     <h2>2. Context</h2>
 
-    <div class="section-media">
-      <div class="section-media-text">
-        <p>
-          Most of accessibility is invisible to most users and essential for the rest. Very few of
-          the real barriers show up in a visual review, which is exactly why they survive so long.
-        </p>
+    <p>
+      Most of accessibility is invisible to most users and essential for the rest. Very few of
+      the real barriers show up in a visual review, which is exactly why they survive so long.
+    </p>
 
-        <p>
-          The project had to hold several perspectives at the same time: usability, technical
-          implementation, content structure, legal requirements and the day to day workflows of the
-          teams producing the content.
-        </p>
-      </div>
-
-      <figure class="section-media-image zoomable-image">
-        <div class="media-frame">
-          <img src="images/image-2.jpg" alt="Slide mapping each article of the draft accessibility law onto the specific WCAG criterion that satisfies it, including pause and hide controls, name role value, and information and relationships">
-          <button class="image-zoom-button" type="button" aria-label="Open image">
-            ⤢
-          </button>
-        </div>
-        <figcaption>Mapping the law onto the WCAG criteria that actually satisfy it</figcaption>
-      </figure>
-    </div>
+    <p>
+      The project had to hold several perspectives at the same time: usability, technical
+      implementation, content structure, legal requirements and the day to day workflows of the
+      teams producing the content.
+    </p>
 
     <p>
       That mapping mattered more than it sounds. Legal text says what must be guaranteed, not what to
@@ -151,7 +452,7 @@
   </section>
 
   <section class="article-section" id="design-system">
-    <h2>3. Design System</h2>
+    <h2>3. Building accessibility into components</h2>
 
     <p>
       Rather than reviewing accessibility at the end of each project, I built it into the design
@@ -166,6 +467,13 @@
       between a keyboard user and the interface. Specifying them once, with the exact CSS, removed a
       recurring argument about whether the browser default was good enough.
     </p>
+    <figure class="media-card case-evidence zoomable-image">
+      <div class="media-card__frame">
+        <img src="images/image-11.jpg" alt="Focus state documentation with button states and an implementation reference" loading="lazy" />
+        <button class="image-zoom-button" type="button" aria-label="Enlarge image: Focus state documentation with button states and an implementation reference">⤢</button>
+      </div>
+      <figcaption>Focus states documented alongside the component states and implementation reference.</figcaption>
+    </figure>
   </section>
 
   <section class="article-section" id="report">
@@ -205,38 +513,31 @@
   </section>
 
   <section class="article-section" id="testing">
-    <h2>6. Testing with Assistive Technologies</h2>
+    <h2>6. Testing across assistive technologies</h2>
 
-    <div class="section-media">
-      <div class="section-media-text">
-        <p>
-          A large part of the project was testing products with NVDA, JAWS and Microsoft Narrator,
-          and documenting how each one behaved in each environment. They do not agree with each
-          other, so a single pass with one of them proves very little.
-        </p>
+    <p>
+      A large part of the project was testing products with NVDA, JAWS and Microsoft Narrator,
+      and documenting how each one behaved in each environment. They do not agree with each
+      other, so a single pass with one of them proves very little.
+    </p>
 
-        <p>
-          Screen readers do not navigate interfaces visually. They navigate headings, buttons, forms,
-          tables and landmarks, which changes both how issues are found and how they have to be
-          explained to the people fixing them.
-        </p>
-      </div>
-
-      <figure class="section-media-image zoomable-image">
-        <div class="media-frame">
-          <img src="images/image-7-1.jpg" alt="Testing matrix recording each document tested, the platform it was opened in and the screen reader used, across original and tagged versions of the same files">
-          <button class="image-zoom-button" type="button" aria-label="Open image">
-            ⤢
-          </button>
-        </div>
-        <figcaption>Every combination tested: document, platform and screen reader</figcaption>
-      </figure>
-    </div>
+    <p>
+      Screen readers do not navigate interfaces visually. They navigate headings, buttons, forms,
+      tables and landmarks, which changes both how issues are found and how they have to be
+      explained to the people fixing them.
+    </p>
 
     <p>
       Recording the combinations this way made the results reproducible by someone else, which is
       what turned the testing from an opinion into evidence a development team could act on.
     </p>
+    <figure class="media-card case-evidence zoomable-image">
+      <div class="media-card__frame">
+        <img src="images/image-7-1.jpg" alt="Testing matrix listing documents, platforms and screen readers" loading="lazy" />
+        <button class="image-zoom-button" type="button" aria-label="Enlarge image: Testing matrix listing documents, platforms and screen readers">⤢</button>
+      </div>
+      <figcaption>Recording the document, platform and screen reader for each test.</figcaption>
+    </figure>
   </section>
 
   <section class="article-section" id="environments">
@@ -258,7 +559,7 @@
   </section>
 
   <section class="article-section" id="documentation">
-    <h2>8. Documentation</h2>
+    <h2>8. Adapting guidance to each team</h2>
 
     <p>
       Accessibility standards explain what needs to be true. They rarely explain how to get there in
@@ -326,30 +627,16 @@
   <section class="article-section" id="outcome">
     <h2>12. Outcome</h2>
 
-    <div class="section-media">
-      <div class="section-media-text">
-        <p>
-          The initiative established a <strong>shared accessibility framework</strong> across product,
-          development, editorial, legal and multimedia, embedding accessibility into how products
-          would be designed, built and maintained rather than how they would be reviewed.
-        </p>
+    <p>
+      The initiative established a <strong>shared accessibility framework</strong> across product,
+      development, editorial, legal and multimedia, embedding accessibility into how products
+      would be designed, built and maintained rather than how they would be reviewed.
+    </p>
 
-        <p>
-          Shared processes, documentation and design foundations reduced ambiguity, improved
-          collaboration between teams and moved accessibility much earlier in the product lifecycle.
-        </p>
-      </div>
-
-      <figure class="section-media-image zoomable-image">
-        <div class="media-frame">
-          <img src="images/image-9.jpg" alt="Analysis of 634 recorded user sessions over a two week period, with a breakdown of the recordings by language">
-          <button class="image-zoom-button" type="button" aria-label="Open image">
-            ⤢
-          </button>
-        </div>
-        <figcaption>Grounding the work in 634 recorded sessions rather than assumptions</figcaption>
-      </figure>
-    </div>
+    <p>
+      Shared processes, documentation and design foundations reduced ambiguity, improved
+      collaboration between teams and moved accessibility much earlier in the product lifecycle.
+    </p>
 
     <p>
       Beyond compliance, the approach produced more consistent experiences across the platform,
@@ -359,122 +646,87 @@
     </p>
   </section>
 
-  <details class="process-more">
-    <summary>See more of the process (15 images)</summary>
-
-    <div class="process-carousel">
-      <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous image">‹</button>
-
-      <div class="process-carousel-track">
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-1.jpg" alt="Accessibility audit tracker listing each criterion with its level, the issue found, a worked example and a proposed fix">
-          </div>
-          <figcaption>Audit tracker: every criterion with its level, issue and proposed fix</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-5.jpg" alt="Contents of the action plan chapter, covering the audit process, prioritised improvements, goals and deadlines, testing, training and maintenance">
-          </div>
-          <figcaption>The action plan: audit, prioritise, implement, test and maintain</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-5-1.jpg" alt="Flow diagram mapping the screens and decision points reviewed during the audit">
-          </div>
-          <figcaption>Mapping the flows reviewed during the audit</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-4.jpg" alt="WCAG criteria on resizing text to 200 percent, avoiding images of text, and reflow without loss of information">
-          </div>
-          <figcaption>WCAG criteria on text resize, images of text and reflow</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-4-1.jpg" alt="Basic requirements slide covering alternative text, logical structure, labels and titles, and colour contrast with a good and bad contrast example">
-          </div>
-          <figcaption>The four basic requirements, with a good and bad contrast example</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-10.jpg" alt="Reference table of WCAG navigation and structure criteria, each with its conformance level and what it requires in practice">
-          </div>
-          <figcaption>Navigation and structure criteria, translated into practical requirements</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-6.jpg" alt="Screen reader command reference with the keyboard shortcuts for moving through headings, links, forms and tables, next to the Narrator settings panel">
-          </div>
-          <figcaption>Screen reader command reference used during testing</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-6-1.jpg" alt="Three page layouts annotated with the order a screen reader follows through their headings and regions">
-          </div>
-          <figcaption>How a screen reader reads a page, made visible</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-7.jpg" alt="AXE analysis of the PDF viewer showing the underlying code for each issue and conclusions on how Narrator, NVDA and JAWS each behaved">
-          </div>
-          <figcaption>AXE analysis of the PDF viewer, and how each screen reader behaved</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-8-1.jpg" alt="Evaluation of FlipHTML5 covering its size and page limits, export formats and SCORM support for learning platforms">
-          </div>
-          <figcaption>Evaluating FlipHTML5: limits, export formats and SCORM support</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-3.jpg" alt="Style guide slide showing the file structure, navigation, brand colours and the light and dark modes">
-          </div>
-          <figcaption>Building the style guide: structure, brand colours, light and dark modes</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-3-1.jpg" alt="Component specification in Figma laid over the live interface, showing state, icon, position and auto layout properties">
-          </div>
-          <figcaption>Component specification in Figma, mapped onto the real interface</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-11-2.jpg" alt="Style guide document with icon specifications, including a dedicated accessibility row for each component state">
-          </div>
-          <figcaption>Icon specifications, with accessibility built into each state</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-11-1.jpg" alt="Responsive design based on Bootstrap 5, showing the login screen at three widths with the grid overlaid">
-          </div>
-          <figcaption>Responsive behaviour on a Bootstrap 5 grid, across three widths</figcaption>
-        </figure>
-
-        <figure class="process-slide">
-          <div class="process-slide-media">
-            <img src="images/image-12.jpg" alt="Screen design slide showing the page inventory next to the redesigned login screen">
-          </div>
-          <figcaption>Screen designs: page inventory and the redesigned login</figcaption>
-        </figure>
-      </div>
-
-      <button class="carousel-arrow carousel-next" type="button" aria-label="Next image">›</button>
-    </div>
-  </details>
+  <div class="process-more">
+    <button class="button" type="button" id="processOpen" data-process-open aria-haspopup="dialog">See more of the process (19 images)</button>
+  </div>
+  <template id="processSlides">
+    <figure>
+      <img src="images/image-1.jpg" alt="Accessibility audit tracker listing each criterion with its level, the issue found, a worked example and a proposed fix">
+      <figcaption>Audit tracker: every criterion with its level, issue and proposed fix</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-2.jpg" alt="Slide mapping each article of the draft accessibility law onto the specific WCAG criterion that satisfies it, including pause and hide controls, name role value, and information and relationships">
+      <figcaption>Mapping the law onto the WCAG criteria that actually satisfy it</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-5.jpg" alt="Contents of the action plan chapter, covering the audit process, prioritised improvements, goals and deadlines, testing, training and maintenance">
+      <figcaption>The action plan: audit, prioritise, implement, test and maintain</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-5-1.jpg" alt="Flow diagram mapping the screens and decision points reviewed during the audit">
+      <figcaption>Mapping the flows reviewed during the audit</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-4.jpg" alt="WCAG criteria on resizing text to 200 percent, avoiding images of text, and reflow without loss of information">
+      <figcaption>WCAG criteria on text resize, images of text and reflow</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-4-1.jpg" alt="Basic requirements slide covering alternative text, logical structure, labels and titles, and colour contrast with a good and bad contrast example">
+      <figcaption>The four basic requirements, with a good and bad contrast example</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-10.jpg" alt="Reference table of WCAG navigation and structure criteria, each with its conformance level and what it requires in practice">
+      <figcaption>Navigation and structure criteria, translated into practical requirements</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-6.jpg" alt="Screen reader command reference with the keyboard shortcuts for moving through headings, links, forms and tables, next to the Narrator settings panel">
+      <figcaption>Screen reader command reference used during testing</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-6-1.jpg" alt="Three page layouts annotated with the order a screen reader follows through their headings and regions">
+      <figcaption>How a screen reader reads a page, made visible</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-7.jpg" alt="AXE analysis of the PDF viewer showing the underlying code for each issue and conclusions on how Narrator, NVDA and JAWS each behaved">
+      <figcaption>AXE analysis of the PDF viewer, and how each screen reader behaved</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-7-1.jpg" alt="Testing matrix recording each document tested, the platform it was opened in and the screen reader used, across original and tagged versions of the same files">
+      <figcaption>Every combination tested: document, platform and screen reader</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-8-1.jpg" alt="Evaluation of FlipHTML5 covering its size and page limits, export formats and SCORM support for learning platforms">
+      <figcaption>Evaluating FlipHTML5: limits, export formats and SCORM support</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-9.jpg" alt="Analysis of 634 recorded user sessions over a two week period, with a breakdown of the recordings by language">
+      <figcaption>Grounding the work in 634 recorded sessions rather than assumptions</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-3.jpg" alt="Style guide slide showing the file structure, navigation, brand colours and the light and dark modes">
+      <figcaption>Building the style guide: structure, brand colours, light and dark modes</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-3-1.jpg" alt="Component specification in Figma laid over the live interface, showing state, icon, position and auto layout properties">
+      <figcaption>Component specification in Figma, mapped onto the real interface</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-11.jpg" alt="Focus state documentation: the explanation of when a focus state applies, the standard button states with the focused ones highlighted, and the CSS rule that implements it">
+      <figcaption>Focus states, from the reasoning to the exact CSS the developers needed.</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-11-2.jpg" alt="Style guide document with icon specifications, including a dedicated accessibility row for each component state">
+      <figcaption>Icon specifications, with accessibility built into each state</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-11-1.jpg" alt="Responsive design based on Bootstrap 5, showing the login screen at three widths with the grid overlaid">
+      <figcaption>Responsive behaviour on a Bootstrap 5 grid, across three widths</figcaption>
+    </figure>
+    <figure>
+      <img src="images/image-12.jpg" alt="Screen design slide showing the page inventory next to the redesigned login screen">
+      <figcaption>Screen designs: page inventory and the redesigned login</figcaption>
+    </figure>
+  </template>
 
   <div class="confidentiality-note">
     <strong>🔒 Confidentiality note</strong>
@@ -519,12 +771,14 @@
   ↑
 </button>
 
-<div class="image-modal" id="imageModal">
-  <button class="image-modal-close" type="button" aria-label="Close image">
-    ×
-  </button>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lightbox__close" type="button" aria-label="Close image viewer">×</button>
+  <button class="lightbox__arrow lightbox__prev" type="button" aria-label="Previous image">‹</button>
 
-  <img id="imageModalImg" src="" alt="" />
+  <div class="lightbox__track" id="lightboxTrack" aria-roledescription="carousel"></div>
+
+  <button class="lightbox__arrow lightbox__next" type="button" aria-label="Next image">›</button>
+  <p class="lightbox__status" id="lightboxStatus" aria-live="polite"></p>
 </div>
 
 <script>
@@ -552,68 +806,179 @@
     });
   });
 
-  const imageModal = document.getElementById("imageModal");
-  const imageModalImg = document.getElementById("imageModalImg");
-  const imageModalClose = document.querySelector(".image-modal-close");
+  /* -------------------------------------------------------
+     LIGHTBOX
+     openLightbox(items, startIndex, opener)
+     items = [{ src, alt, caption }]
+  ------------------------------------------------------- */
+  const lightbox = document.getElementById("lightbox");
+  const lightboxTrack = document.getElementById("lightboxTrack");
+  const lightboxStatus = document.getElementById("lightboxStatus");
+  const lightboxClose = lightbox.querySelector(".lightbox__close");
+  const lightboxPrev = lightbox.querySelector(".lightbox__prev");
+  const lightboxNext = lightbox.querySelector(".lightbox__next");
 
-  function openImageModal(image) {
-    imageModalImg.src = image.src;
-    imageModalImg.alt = image.alt;
-    imageModal.classList.add("open");
+  let lightboxOpener = null;
+  let lightboxCount = 0;
+
+  function buildSlide(item, index, total) {
+    const slide = document.createElement("div");
+    slide.className = "lightbox__slide";
+    slide.setAttribute("role", "group");
+    slide.setAttribute("aria-roledescription", "slide");
+    slide.setAttribute("aria-label", (index + 1) + " of " + total);
+
+    const figure = document.createElement("figure");
+    figure.className = "media-card";
+
+    const frame = document.createElement("div");
+    frame.className = "media-card__frame";
+
+    const image = document.createElement("img");
+    image.alt = item.alt || "";
+    image.addEventListener("load", () => {
+      figure.style.setProperty("--ratio", image.naturalWidth / image.naturalHeight);
+    });
+    image.src = item.src;
+    if (image.complete && image.naturalWidth) {
+      figure.style.setProperty("--ratio", image.naturalWidth / image.naturalHeight);
+    }
+
+    frame.appendChild(image);
+    figure.appendChild(frame);
+
+    if (item.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = item.caption;
+      figure.appendChild(caption);
+    }
+
+    slide.appendChild(figure);
+    return slide;
   }
 
-  const zoomableImages = document.querySelectorAll(".zoomable-image");
+  function currentIndex() {
+    return Math.round(lightboxTrack.scrollLeft / lightboxTrack.clientWidth) || 0;
+  }
 
-  zoomableImages.forEach((figure) => {
+  function updateLightboxState() {
+    const index = currentIndex();
+    lightboxPrev.disabled = index <= 0;
+    lightboxNext.disabled = index >= lightboxCount - 1;
+    lightboxStatus.textContent = (index + 1) + " / " + lightboxCount;
+  }
+
+  function goToSlide(index, smooth) {
+    const target = Math.max(0, Math.min(lightboxCount - 1, index));
+    lightboxTrack.scrollTo({
+      left: target * lightboxTrack.clientWidth,
+      behavior: smooth ? "smooth" : "instant"
+    });
+  }
+
+  function openLightbox(items, startIndex, opener) {
+    lightboxOpener = opener || null;
+    lightboxCount = items.length;
+    lightboxTrack.innerHTML = "";
+
+    items.forEach((item, index) => {
+      lightboxTrack.appendChild(buildSlide(item, index, items.length));
+    });
+
+    lightbox.classList.toggle("is-single", items.length < 2);
+    lightbox.classList.add("open");
+    document.documentElement.classList.add("lightbox-open");
+
+    goToSlide(startIndex || 0, false);
+    updateLightboxState();
+    lightboxClose.focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove("open");
+    document.documentElement.classList.remove("lightbox-open");
+    lightboxTrack.innerHTML = "";
+
+    if (lightboxOpener && typeof lightboxOpener.focus === "function") {
+      lightboxOpener.focus();
+    }
+    lightboxOpener = null;
+  }
+
+  lightboxTrack.addEventListener("scroll", updateLightboxState);
+  lightboxPrev.addEventListener("click", () => goToSlide(currentIndex() - 1, true));
+  lightboxNext.addEventListener("click", () => goToSlide(currentIndex() + 1, true));
+  lightboxClose.addEventListener("click", closeLightbox);
+
+  // Clic fuera de la tarjeta y de los botones = cerrar
+  lightbox.addEventListener("click", (event) => {
+    if (!event.target.closest(".media-card, .lightbox__arrow, .lightbox__close")) {
+      closeLightbox();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox.classList.contains("open")) return;
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowLeft") {
+      goToSlide(currentIndex() - 1, true);
+    } else if (event.key === "ArrowRight") {
+      goToSlide(currentIndex() + 1, true);
+    } else if (event.key === "Tab") {
+      // Foco atrapado dentro del visor
+      const focusable = [lightboxClose, lightboxPrev, lightboxNext].filter(
+        (control) => !control.disabled && control.offsetParent !== null
+      );
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      } else if (!focusable.includes(document.activeElement)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  /* Imágenes sueltas (hero, overview, outcome): 1 imagen + leyenda */
+  document.querySelectorAll(".zoomable-image").forEach((figure) => {
     const image = figure.querySelector("img");
     const button = figure.querySelector(".image-zoom-button");
+    const caption = figure.querySelector("figcaption");
 
-    if (image && button) {
-      button.addEventListener("click", () => {
-        openImageModal(image);
-      });
-    }
-  });
-
-  const carouselImages = document.querySelectorAll(".device-carousel-track img, .process-carousel-track img");
-
-  carouselImages.forEach((image) => {
-    image.style.cursor = "zoom-in";
-
-    image.addEventListener("click", () => {
-      openImageModal(image);
+    button.addEventListener("click", () => {
+      openLightbox([{
+        src: image.currentSrc || image.src,
+        alt: image.alt,
+        caption: caption ? caption.textContent.trim() : ""
+      }], 0, button);
     });
   });
 
-  imageModalClose.addEventListener("click", () => {
-    imageModal.classList.remove("open");
-  });
+  /* See more of the process: 19 imágenes con leyenda */
+  const processSlides = document.getElementById("processSlides");
 
-  imageModal.addEventListener("click", (event) => {
-    if (event.target === imageModal) {
-      imageModal.classList.remove("open");
-    }
-  });
+  document.querySelectorAll("[data-process-open]").forEach((opener) => {
+    opener.addEventListener("click", () => {
+    const items = Array.from(processSlides.content.querySelectorAll("figure")).map((figure) => {
+      const image = figure.querySelector("img");
+      const caption = figure.querySelector("figcaption");
 
-  const deviceCarousels = document.querySelectorAll(".device-carousel, .process-carousel");
-
-  deviceCarousels.forEach((carousel) => {
-    const track = carousel.querySelector(".device-carousel-track, .process-carousel-track");
-    const prev = carousel.querySelector(".carousel-prev");
-    const next = carousel.querySelector(".carousel-next");
-
-    prev.addEventListener("click", () => {
-      track.scrollBy({
-        left: -track.clientWidth,
-        behavior: "smooth"
-      });
+      return {
+        src: image.getAttribute("src"),
+        alt: image.getAttribute("alt"),
+        caption: caption ? caption.textContent.trim() : ""
+      };
     });
 
-    next.addEventListener("click", () => {
-      track.scrollBy({
-        left: track.clientWidth,
-        behavior: "smooth"
-      });
+    openLightbox(items, 0, opener);
     });
   });
 </script>
