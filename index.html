@@ -222,9 +222,56 @@
   }
 
   @media (min-width: 1000px) {
-    :root { --content-w: clamp(480px, 34vw, 640px); }
-    .plaque-content { gap: clamp(24px, 3.5dvh, 36px); }
-    .salam-stone { margin-bottom: 7px; }
+    /* Give the composition more presence on large desktop screens. */
+    :root { --content-w: clamp(540px, 38vw, 700px); }
+
+    .plaque-content {
+      width: min(100%, 780px);
+      gap: clamp(22px, 3dvh, 32px);
+    }
+
+    .face {
+      width: min(86%, calc(var(--content-w) * .86));
+      margin-bottom: clamp(6px, 1.2dvh, 14px);
+    }
+
+    .salam-stone {
+      margin-bottom: 3px;
+    }
+
+    .identity-line {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+
+    /* Desktop: keep name and role on the same line. */
+    .identity-line .identity-role {
+      display: inline-block;
+    }
+
+    .entry-intro {
+      gap: 0;
+    }
+
+    .mode-description {
+      max-width: 590px;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    .cta-row {
+      width: min(100%, 540px);
+      gap: 30px;
+    }
+
+    .btn-stone {
+      height: 76px;
+    }
+
+    .btn-label {
+      font-size: 19px;
+      letter-spacing: 2px;
+    }
   }
 
   @media (max-width: 560px) {
@@ -318,7 +365,6 @@
     </div>
     <div class="entry-options">
       <div class="entry-intro">
-        <p class="welcome">Have a look and get to know me.</p>
         <p class="mode-description" id="modeDescription">Explore the same work in two ways: <strong>Quick Scan</strong> is faster and more visual; <strong>Deep Dive</strong> goes further into the process and detail.</p>
       </div>
       <div class="entry-actions">
