@@ -345,21 +345,6 @@ html.lightbox-open {
     </ol>
   </section>
 
-  <section class="case-study-hero">
-    <figure class="media-card zoomable-image">
-      <div class="media-card__frame">
-        <img
-          src="images/pic-6.jpg"
-          alt="Side-by-side comparison of the Oxford Premium and HUB interfaces, showing shared navigation and content patterns"
-        />
-        <button class="image-zoom-button" type="button" aria-label="Open image">
-          ⤢
-        </button>
-      </div>
-      <figcaption>One of the project's key references: aligning Oxford Premium with Oxford's UK platform, HUB.</figcaption>
-    </figure>
-  </section>
-
   <section class="article-section" id="overview">
     <h2>1. Overview</h2>
 
@@ -370,18 +355,6 @@ html.lightbox-open {
       and I worked with Figma, FigJam, Hotjar, Maze and Jira.
     </p>
 
-    <figure class="media-card zoomable-image">
-      <div class="media-card__frame">
-        <img
-          src="images/pic-1.jpg"
-          alt="Cover slide of the Design System Presentation, showing the style guide's file structure, formats and navigation"
-        />
-        <button class="image-zoom-button" type="button" aria-label="Open image">
-          ⤢
-        </button>
-      </div>
-      <figcaption>Design System Presentation</figcaption>
-    </figure>
 
     <p>
       The project covered the redesign of Oxford Premium's experience, a new visual direction and
@@ -544,18 +517,6 @@ html.lightbox-open {
       the platform experience.
     </p>
 
-    <figure class="media-card zoomable-image">
-      <div class="media-card__frame">
-        <img
-          src="images/pic-10.jpg"
-          alt="Content licensing comparison slide between Oxford Premium and HUB"
-        />
-        <button class="image-zoom-button" type="button" aria-label="Open image">
-          ⤢
-        </button>
-      </div>
-      <figcaption>Content Licensing Comparison</figcaption>
-    </figure>
 
     <p>
       Beyond the redesign itself, the design system became a <strong>single source of truth</strong>
@@ -588,13 +549,17 @@ html.lightbox-open {
 
   <div class="process-more">
     <button class="button" type="button" id="processOpen" aria-haspopup="dialog">
-      See more of the process (12 images)
+      See more of the process (15 images)
     </button>
   </div>
 
-  <!-- Las 12 imágenes del proceso. El contenido de <template> no se
+  <!-- Las 15 imágenes del proceso. El contenido de <template> no se
        renderiza ni se descarga hasta que el visor lo abre. -->
   <template id="processSlides">
+    <figure>
+      <img src="images/pic-1.jpg" alt="Cover slide of the Design System Presentation, showing the style guide's file structure, formats and navigation">
+      <figcaption>Design System Presentation</figcaption>
+    </figure>
     <figure>
       <img src="images/pic-2.jpg" alt="User journey map: stage of the journey, platform, account type, actions and touchpoints">
       <figcaption>User journey map across platforms and account types</figcaption>
@@ -624,6 +589,10 @@ html.lightbox-open {
       <figcaption>Figma exploration of the system components</figcaption>
     </figure>
     <figure>
+      <img src="images/pic-6.jpg" alt="Side-by-side comparison of the Oxford Premium and HUB interfaces, showing shared navigation and content patterns">
+      <figcaption>One of the project's key references: aligning Oxford Premium with Oxford's UK platform, HUB.</figcaption>
+    </figure>
+    <figure>
       <img src="images/pic-7.jpg" alt="Onboarding flow mapping">
       <figcaption>Onboarding flow mapping</figcaption>
     </figure>
@@ -638,6 +607,10 @@ html.lightbox-open {
     <figure>
       <img src="images/pic-9.jpg" alt="Prototype flow diagram used for implementation handoff">
       <figcaption>Prototype flow used for implementation handoff</figcaption>
+    </figure>
+    <figure>
+      <img src="images/pic-10.jpg" alt="Content licensing comparison slide between Oxford Premium and HUB">
+      <figcaption>Content Licensing Comparison</figcaption>
     </figure>
     <figure>
       <img src="images/pic-11.jpg" alt="Keyboard focus state design for interactive components">
@@ -971,7 +944,7 @@ html.lightbox-open {
     });
   });
 
-  /* See more of the process: 12 imágenes con leyenda */
+  /* See more of the process: 15 imágenes con leyenda */
   const processOpen = document.getElementById("processOpen");
   const processSlides = document.getElementById("processSlides");
 
