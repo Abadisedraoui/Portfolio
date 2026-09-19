@@ -255,6 +255,10 @@
         0 12px 28px rgba(40, 35, 47, .08);
     }
 
+    .quick-case__clip--wide {
+      grid-column: 1 / -1;
+    }
+
     .quick-case__clip video {
       display: block;
       width: 100%;
@@ -341,6 +345,10 @@
       .quick-case__decision-grid,
       .quick-case__clips {
         grid-template-columns: 1fr;
+      }
+
+      .quick-case__clip--wide {
+        grid-column: auto;
       }
     }
 
@@ -525,6 +533,15 @@
           <span class="quick-case__step">Live evidence · 02</span>
           <h3>Account settings</h3>
           <p>The component library helped replace patterns that had drifted apart across different areas of the product.</p>
+        </div>
+      </article>
+
+      <article class="quick-case__clip quick-case__clip--wide">
+        <video src="videos/oxford-premium-thumbnail.mp4" controls playsinline preload="metadata" aria-label="Oxford Premium pop-up adapted to the existing design system"></video>
+        <div class="quick-case__clip-copy">
+          <span class="quick-case__step">Business constraint · 03</span>
+          <h3>Adapting a commercial request</h3>
+          <p>The Commercial team requested a pop-up with a very specific design and format. Working within that constraint, I adapted the UI as far as possible to the existing system so it remained coherent with the rest of Oxford Premium.</p>
         </div>
       </article>
     </div>
