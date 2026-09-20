@@ -218,9 +218,94 @@
     document.querySelectorAll(".logo-link").forEach(attachAnimation);
   }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initLogoAnimation);
-  } else {
+  function initPortfolioFixes() {
+    // Keep the current Behance project URL even if an older link remains in the HTML.
+    var behanceLink = document.querySelector(
+      'a[href*="/251658619/Building-an-Immersive-Design-System"]'
+    );
+    if (behanceLink) {
+      behanceLink.href =
+        "https://www.behance.net/gallery/255997619/Building-an-Immersive-Design-System";
+    }
+
+    // The Deep Dive should reuse the same working collaboration image as the Quick Case.
+    var plytixHero = document.querySelector(
+      'img[src="images/plytix-pdf/hero-collaboration.jpg"]'
+    );
+    if (plytixHero) {
+      plytixHero.src = "images/hero-collaboration.jpg";
+    }
+
+    // About-me expanded cards: preserve the current height but shrink each visible
+    // card to the natural width of its image instead of stretching all cards full width.
+    var modalCards = Array.from(document.querySelectorAll(".pokemon-modal-card"));
+    if (!modalCards.length) return;
+
+    var style = document.createElement("style");
+    style.id = "pokemon-modal-natural-width-fix";
+    style.textContent = [
+      ".pokemon-modal-card .pokemon-card-face {",
+      "  width: var(--modal-card-width, 100%);",
+      "  max-width: 100%;",
+      "  margin-inline: auto;",
+      "}",
+      ".pokemon-modal-card .pokemon-card-photo {",
+      "  height: var(--modal-image-height, max(180px, calc(100dvh - 300px)));",
+      "}",
+      ".pokemon-modal-card .pokemon-card-heading h3 br {",
+      "  display: none;",
+      "}",
+    ].join("\n");
+    document.head.appendChild(style);
+
+    function sizeModalCards() {
+      var desiredImageHeight = Math.max(180, window.innerHeight - 300);
+      var sideClearance = window.innerWidth <= 600 ? 48 : 112;
+      var maxCardWidth = Math.max(280, window.innerWidth - sideClearance);
+      var faceHorizontalPadding = 24;
+      var maxImageWidth = Math.max(240, maxCardWidth - faceHorizontalPadding);
+
+      modalCards.forEach(function (card) {
+        var image = card.querySelector(".pokemon-card-photo");
+        if (!image) return;
+
+        function applySize() {
+          if (!image.naturalWidth || !image.naturalHeight) return;
+
+          var ratio = image.naturalWidth / image.naturalHeight;
+          var imageHeight = Math.min(desiredImageHeight, maxImageWidth / ratio);
+          var imageWidth = imageHeight * ratio;
+
+          card.style.setProperty(
+            "--modal-card-width",
+            Math.ceil(imageWidth + faceHorizontalPadding) + "px"
+          );
+          card.style.setProperty(
+            "--modal-image-height",
+            Math.floor(imageHeight) + "px"
+          );
+        }
+
+        if (image.complete) {
+          applySize();
+        } else {
+          image.addEventListener("load", applySize, { once: true });
+        }
+      });
+    }
+
+    sizeModalCards();
+    window.addEventListener("resize", sizeModalCards);
+  }
+
+  function initAll() {
     initLogoAnimation();
+    initPortfolioFixes();
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAll);
+  } else {
+    initAll();
   }
 })();
