@@ -801,7 +801,7 @@ li {
   opacity: 0;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 64px 16px 16px;
   background: rgba(40, 35, 47, 0.72);
   z-index: 9999;
   pointer-events: none;
@@ -829,7 +829,7 @@ li {
 .pokemon-modal-carousel {
   position: relative;
   width: 100%;
-  max-width: 460px;
+  max-width: none;
 }
 .pokemon-modal-track {
   display: flex;
@@ -848,17 +848,22 @@ li {
   flex: 0 0 100%;
   min-width: 0;
   scroll-snap-align: center;
-  max-height: calc(100dvh - 128px);
+  height: calc(100dvh - 112px);
   overflow-y: auto;
 }
+.pokemon-modal-card .pokemon-card-face {
+  min-height: 100%;
+}
 .pokemon-modal-card .pokemon-card-photo {
+  height: max(180px, calc(100dvh - 300px));
+  aspect-ratio: auto;
   object-fit: contain;
   object-position: center;
   background: rgba(255, 255, 255, .4);
 }
 @media (max-width: 600px) {
   .pokemon-modal {
-    padding: 12px;
+    padding: 64px 0 16px;
   }
 }
 /* =========================================================
