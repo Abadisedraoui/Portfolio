@@ -249,66 +249,89 @@
         .forEach(fixPlytixImagePath);
     }
 
-    // About-me expanded cards: preserve the current height but shrink each visible
-    // card to the natural width of its image instead of stretching all cards full width.
+    // About-me expanded cards: all popups keep the same width, but that common
+    // width is derived from the photos instead of stretching to the viewport.
     var modalCards = Array.from(document.querySelectorAll(".pokemon-modal-card"));
     if (!modalCards.length) return;
 
     var style = document.createElement("style");
     style.id = "pokemon-modal-natural-width-fix";
     style.textContent = [
-      ".pokemon-modal-card .pokemon-card-face {",
-      "  width: var(--modal-card-width, 100%);",
-      "  max-width: 100%;",
+      ".pokemon-modal-carousel {",
+      "  width: var(--pokemon-modal-width, min(900px, calc(100vw - 112px))) !important;",
+      "  max-width: var(--pokemon-modal-width, min(900px, calc(100vw - 112px))) !important;",
       "  margin-inline: auto;",
       "}",
-      ".pokemon-modal-card .pokemon-card-photo {",
-      "  height: var(--modal-image-height, max(180px, calc(100dvh - 300px)));",
+      ".pokemon-modal-track {",
+      "  width: 100%;",
+      "}",
+      ".pokemon-modal-card {",
+      "  flex: 0 0 100% !important;",
+      "  width: 100% !important;",
+      "}",
+      ".pokemon-modal-card .pokemon-card-face {",
+      "  width: 100% !important;",
+      "  max-width: none !important;",
+      "  margin-inline: 0 !important;",
       "}",
       ".pokemon-modal-card .pokemon-card-heading h3 br {",
       "  display: none;",
+      "}",
+      "@media (max-width: 600px) {",
+      "  .pokemon-modal-carousel {",
+      "    width: calc(100vw - 32px) !important;",
+      "    max-width: calc(100vw - 32px) !important;",
+      "  }",
       "}",
     ].join("\n");
     document.head.appendChild(style);
 
     function sizeModalCards() {
       var desiredImageHeight = Math.max(180, window.innerHeight - 300);
-      var sideClearance = window.innerWidth <= 600 ? 48 : 112;
-      var maxCardWidth = Math.max(280, window.innerWidth - sideClearance);
+      var sideClearance = window.innerWidth <= 600 ? 32 : 112;
+      var viewportLimit = Math.max(280, window.innerWidth - sideClearance);
+      var desktopCap = 960;
       var faceHorizontalPadding = 24;
-      var maxImageWidth = Math.max(240, maxCardWidth - faceHorizontalPadding);
+      var candidateWidths = [];
 
       modalCards.forEach(function (card) {
         var image = card.querySelector(".pokemon-card-photo");
-        if (!image) return;
-
-        function applySize() {
-          if (!image.naturalWidth || !image.naturalHeight) return;
-
-          var ratio = image.naturalWidth / image.naturalHeight;
-          var imageHeight = Math.min(desiredImageHeight, maxImageWidth / ratio);
-          var imageWidth = imageHeight * ratio;
-
-          card.style.setProperty(
-            "--modal-card-width",
-            Math.ceil(imageWidth + faceHorizontalPadding) + "px"
-          );
-          card.style.setProperty(
-            "--modal-image-height",
-            Math.floor(imageHeight) + "px"
-          );
-        }
-
-        if (image.complete) {
-          applySize();
-        } else {
-          image.addEventListener("load", applySize, { once: true });
-        }
+        if (!image || !image.naturalWidth || !image.naturalHeight) return;
+        var ratio = image.naturalWidth / image.naturalHeight;
+        candidateWidths.push((desiredImageHeight * ratio) + faceHorizontalPadding);
       });
+
+      // Use one common width for all four cards. It follows the widest image at
+      // the existing modal height, but is capped so the popup never becomes huge.
+      var naturalCommonWidth = candidateWidths.length
+        ? Math.max.apply(null, candidateWidths)
+        : 900;
+      var commonWidth = Math.min(viewportLimit, desktopCap, naturalCommonWidth);
+      commonWidth = Math.max(320, commonWidth);
+
+      document.documentElement.style.setProperty(
+        "--pokemon-modal-width",
+        Math.round(commonWidth) + "px"
+      );
     }
 
+    modalCards.forEach(function (card) {
+      var image = card.querySelector(".pokemon-card-photo");
+      if (image && !image.complete) {
+        image.addEventListener("load", sizeModalCards);
+      }
+    });
+
     sizeModalCards();
+    window.addEventListener("load", sizeModalCards);
     window.addEventListener("resize", sizeModalCards);
+
+    var pokemonExpandButton = document.getElementById("pokemonExpandButton");
+    if (pokemonExpandButton) {
+      pokemonExpandButton.addEventListener("click", function () {
+        requestAnimationFrame(sizeModalCards);
+      });
+    }
   }
 
   function initAll() {
