@@ -228,12 +228,25 @@
         "https://www.behance.net/gallery/255997619/Building-an-Immersive-Design-System";
     }
 
-    // The Deep Dive should reuse the same working collaboration image as the Quick Case.
-    var plytixHero = document.querySelector(
-      'img[src="images/plytix-pdf/hero-collaboration.jpg"]'
-    );
-    if (plytixHero) {
-      plytixHero.src = "images/hero-collaboration.jpg";
+    // The Plytix image files live directly in /images. Older markup still points
+    // to a removed /images/plytix-pdf subfolder, including images inside the
+    // inert processSlides template used to build the carousel.
+    function fixPlytixImagePath(image) {
+      var src = image.getAttribute("src");
+      if (src && src.indexOf("images/plytix-pdf/") === 0) {
+        image.setAttribute("src", src.replace("images/plytix-pdf/", "images/"));
+      }
+    }
+
+    document
+      .querySelectorAll('img[src^="images/plytix-pdf/"]')
+      .forEach(fixPlytixImagePath);
+
+    var processSlides = document.getElementById("processSlides");
+    if (processSlides && processSlides.content) {
+      processSlides.content
+        .querySelectorAll('img[src^="images/plytix-pdf/"]')
+        .forEach(fixPlytixImagePath);
     }
 
     // About-me expanded cards: preserve the current height but shrink each visible
