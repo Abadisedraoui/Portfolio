@@ -1,222 +1,111 @@
 (function () {
-  // Medidas a escala reducida a propósito: el logo está muy cerca del
-  // borde superior de la página (poco margen encima), así que la
-  // corona tiene que caber en ese hueco sin salirse de la ventana al
-  // hacer hover nada más cargar la página.
-  var LEAF_D = "M0,0 C0.85,-1.7 3.3,-1.9 4.7,0 C3.3,1.9 0.85,1.7 0,0 Z";
-  var LEAF_COLOR = "#9a9a9a";
-
-  // Media corona de laurel real: literalmente la mitad de una
-  // circunferencia (borde recto y vertical pegado al logo, curva
-  // hacia fuera por el otro lado), no un arco ancho y redondeado.
-  // Por eso el lienzo es alto y estrecho, igual que la referencia.
-  var ARC_CX = 4;
-  var ARC_CY = 20;
-  var ARC_R = 16;
-  var ARC_THETA_START = 90; // abajo, pegado al logo
-  var ARC_THETA_END = -90; // arriba, pegado al logo (borde recto)
-  var ARC_STEM_STEPS = 60;
-
-  var VIEW_W = Math.ceil(ARC_CX + ARC_R + 8);
-  var VIEW_H = Math.ceil(ARC_CY + ARC_R + 8);
-
-  var LEAF_T = [0, 1 / 7, 2 / 7, 3 / 7, 4 / 7, 5 / 7, 6 / 7, 1];
-  var LEAF_SIDE_ANGLE = 52;
-
   var svgNS = "http://www.w3.org/2000/svg";
+  var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var sparklePath = "M-1-10 C1-5 1.3-2 4-1.3 L9.3-.2 C4 1.1 2 2.4 .6 8.7 C-.8 4-1.6 1.9-4.3 1 L-9-.5 C-4-1.2-2.4-3.1-1-10 Z";
+  var petalPath = "M-2-2 C-5-5-5.5-11-2.4-13 C.6-15 4.8-12.6 4.4-8.7 C4.2-5.3 2.4-2.6 1-1.7 Z";
 
-  function arcPoint(deg) {
-    var rad = (deg * Math.PI) / 180;
-    return {
-      x: ARC_CX + ARC_R * Math.cos(rad),
-      y: ARC_CY + ARC_R * Math.sin(rad),
-    };
-  }
-
-  function buildStemPath() {
-    var d = "";
-    for (var i = 0; i <= ARC_STEM_STEPS; i++) {
-      var deg = ARC_THETA_START + (ARC_THETA_END - ARC_THETA_START) * (i / ARC_STEM_STEPS);
-      var p = arcPoint(deg);
-      d += (i === 0 ? "M" : "L") + p.x.toFixed(2) + "," + p.y.toFixed(2) + " ";
-    }
-    return d;
-  }
-
-  function buildOliveBranch() {
-    var wrap = document.createElement("span");
-    wrap.className = "logo-branch-wrap";
-
-    var svg = document.createElementNS(svgNS, "svg");
-    svg.setAttribute("class", "logo-branch-svg");
-    svg.setAttribute("width", String(VIEW_W));
-    svg.setAttribute("height", String(VIEW_H));
-    svg.setAttribute("viewBox", "0 0 " + VIEW_W + " " + VIEW_H);
-
-    var group = document.createElementNS(svgNS, "g");
-    group.setAttribute("class", "logo-branch-group");
-    group.style.opacity = "0";
-
-    var stem = document.createElementNS(svgNS, "path");
-    stem.setAttribute("class", "branch-stem");
-    stem.setAttribute("d", buildStemPath());
-    stem.setAttribute("fill", "none");
-    stem.setAttribute("stroke", LEAF_COLOR);
-    stem.setAttribute("stroke-width", "0.5");
-    stem.setAttribute("stroke-linecap", "round");
-    group.appendChild(stem);
-
-    var leavesGroup = document.createElementNS(svgNS, "g");
-    leavesGroup.setAttribute("class", "branch-leaves");
-    group.appendChild(leavesGroup);
-
-    svg.appendChild(group);
-    wrap.appendChild(svg);
-
-    return {
-      wrap: wrap,
-      group: group,
-      stem: stem,
-      leavesGroup: leavesGroup,
-    };
-  }
-
-  function makeLeaf(leavesGroup, p, angleDeg, sideSign, scale) {
-    var leaf = document.createElementNS(svgNS, "path");
-    leaf.setAttribute("class", "branch-leaf");
-    leaf.setAttribute("d", LEAF_D);
-    leaf.setAttribute("fill", LEAF_COLOR);
-    leaf.style.transformOrigin = "0px 0px";
-
-    var baseTransform =
-      "translate(" + p.x.toFixed(2) + "px," + p.y.toFixed(2) + "px) " +
-      "rotate(" + (angleDeg + sideSign * LEAF_SIDE_ANGLE).toFixed(1) + "deg)";
-
-    leavesGroup.appendChild(leaf);
-    return { el: leaf, baseTransform: baseTransform, targetScale: scale, groupIndex: 0 };
-  }
-
-  function growLeaves(branch) {
-    var stem = branch.stem;
-    var leavesGroup = branch.leavesGroup;
-    var len = stem.getTotalLength();
-    var pieces = [];
-
-    LEAF_T.forEach(function (t, idx) {
-      var frac = 0.04 + t * 0.94;
-      var p = stem.getPointAtLength(frac * len);
-      var p2 = stem.getPointAtLength(Math.min(len, frac * len + 1));
-      var angleDeg = Math.atan2(p2.y - p.y, p2.x - p.x) * 180 / Math.PI;
-
-      // Hojas más grandes en el centro del arco, más pequeñas en los
-      // dos extremos — como en una corona de laurel real.
-      var scale = 0.8 + Math.sin(t * Math.PI) * 0.7;
-
-      [1, -1].forEach(function (side) {
-        var piece = makeLeaf(leavesGroup, p, angleDeg, side, scale);
-        piece.groupIndex = idx;
-        pieces.push(piece);
-      });
+  function svgElement(tag, attributes) {
+    var element = document.createElementNS(svgNS, tag);
+    Object.keys(attributes).forEach(function (key) {
+      element.setAttribute(key, attributes[key]);
     });
+    return element;
+  }
 
-    // Pequeño rizo extra justo en la base, como el remate que tienen
-    // las coronas de laurel al arrancar el tallo.
-    var basePoint = stem.getPointAtLength(0);
-    var basePoint2 = stem.getPointAtLength(Math.min(len, 1));
-    var baseAngle = Math.atan2(basePoint2.y - basePoint.y, basePoint2.x - basePoint.x) * 180 / Math.PI;
-    var curl = makeLeaf(leavesGroup, basePoint, baseAngle - 70, 1, 0.5);
-    curl.groupIndex = -1;
-    pieces.unshift(curl);
-
-    return { pieces: pieces, stemLength: len };
+  function clamp(value) {
+    return Math.max(0, Math.min(1, value));
   }
 
   function attachAnimation(link) {
-    var branch = buildOliveBranch();
-    link.appendChild(branch.wrap);
+    if (link.querySelector(".logo-sparkles")) return;
+    link.classList.add("logo-sparkle-link");
 
-    var grown = growLeaves(branch);
-    var pieces = grown.pieces;
-    var stemLength = grown.stemLength;
-    var stem = branch.stem;
-    var group = branch.group;
-    var wrap = branch.wrap;
+    // Coordinates match the approved preview and scale with the original logo.
+    var svg = svgElement("svg", {
+      "class": "logo-sparkles",
+      "viewBox": "0 0 156 156",
+      "aria-hidden": "true",
+      "focusable": "false"
+    });
+    var pieces = [
+      { x: 140, y: 124, size: 1.7, angle: -7, start: .48, duration: .4, color: "#e5c0cc" },
+      { x: 167, y: 73, size: 1.6, angle: 0, start: .76, duration: .48, flower: true },
+      { x: 139, y: 22, size: 2.1, angle: 9, start: 1.07, duration: .4, color: "#c8b9e1" }
+    ];
 
-    var maxGroupIndex = pieces.reduce(function (max, piece) {
-      return Math.max(max, piece.groupIndex);
-    }, 0);
+    pieces.forEach(function (piece) {
+      piece.element = svgElement("g", { opacity: "0" });
+      if (piece.flower) {
+        var petals = [
+          [-3, 1, 1, "#fff1cc"], [49, .92, 1.05, "#fcebc5"],
+          [104, 1.05, .96, "#fff3d3"], [153, .93, 1.02, "#fbecc9"],
+          [208, 1.02, .94, "#fff1cc"], [259, .94, 1.04, "#fcedcd"],
+          [307, 1.03, .97, "#fff3d4"]
+        ];
+        petals.forEach(function (petal) {
+          piece.element.appendChild(svgElement("path", {
+            d: petalPath,
+            transform: "rotate(" + petal[0] + ") scale(" + petal[1] + " " + petal[2] + ")",
+            fill: petal[3], stroke: "#ddcda9", "stroke-width": ".65", "stroke-linejoin": "round"
+          }));
+        });
+        piece.element.appendChild(svgElement("path", {
+          d: "M-4-.6 C-4.2-3.1-1.4-4.6 1.2-4 C4.3-3.4 4.8-.7 3.7 1.8 C2.5 4.4-.5 4.9-2.8 3 C-4 2-4.1 .8-4-.6 Z",
+          fill: "#eed184"
+        }));
+        piece.element.appendChild(svgElement("path", {
+          d: "M-1.6-1.3 Q-.2-2 1.3-1", fill: "none", stroke: "#f8e7b2",
+          "stroke-width": "1", "stroke-linecap": "round"
+        }));
+      } else {
+        piece.element.appendChild(svgElement("path", { d: sparklePath, fill: piece.color }));
+      }
+      svg.appendChild(piece.element);
+    });
+    link.appendChild(svg);
 
-    var timers = [];
-
-    function clearTimers() {
-      timers.forEach(function (t) {
-        clearTimeout(t);
-      });
-      timers = [];
-    }
-
+    var frameId = 0;
     function play() {
-      clearTimers();
-
-      stem.style.transition = "none";
-      stem.style.strokeDasharray = stemLength;
-      stem.style.strokeDashoffset = stemLength;
-
-      pieces.forEach(function (piece) {
-        piece.el.style.transition = "none";
-        piece.el.style.opacity = "0";
-        piece.el.style.transform = piece.baseTransform + " scale(0.25)";
-      });
-
-      group.style.transition = "none";
-      group.style.opacity = "1";
-
-      void wrap.offsetWidth;
-
-      // 1) el tallo se dibuja
-      timers.push(
-        setTimeout(function () {
-          stem.style.transition = "stroke-dashoffset 0.55s ease-out";
-          stem.style.strokeDashoffset = "0";
-        }, 10)
-      );
-
-      // 2) las hojas van brotando en pares a lo largo del arco
-      var leafStart = 90;
-      var leafStagger = 65;
-
-      pieces.forEach(function (piece) {
-        timers.push(
-          setTimeout(function () {
-            piece.el.style.transition =
-              "opacity 0.25s ease-out, transform 0.25s ease-out";
-            piece.el.style.opacity = "1";
-            piece.el.style.transform =
-              piece.baseTransform + " scale(" + piece.targetScale + ")";
-          }, leafStart + piece.groupIndex * leafStagger)
-        );
-      });
-
-      var leavesDone = leafStart + maxGroupIndex * leafStagger + leafStagger;
-
-      // 3) breve pausa sosteniendo la corona completa, y luego
-      // desaparece en un fade único
-      var fadeStart = leavesDone + 550;
-
-      timers.push(
-        setTimeout(function () {
-          group.style.transition = "opacity 0.5s ease-in";
-          group.style.opacity = "0";
-        }, fadeStart)
-      );
+      if (frameId || reducedMotion.matches) return;
+      // Omit the GIF's introductory pause so hover responds promptly.
+      var startedAt = performance.now() - 400;
+      function draw(now) {
+        var time = (now - startedAt) / 1000;
+        var fade = clamp((time - 2.18) / .46);
+        pieces.forEach(function (piece) {
+          var progress = 1 - Math.pow(1 - clamp((time - piece.start) / piece.duration), 3);
+          var opacity = reducedMotion.matches ? 0 : clamp((time - piece.start) / .14) * (1 - fade);
+          var initialScale = piece.flower ? .24 : .3;
+          var scale = piece.size * (initialScale + (1 - initialScale) * progress);
+          var x = piece.x - (piece.flower ? 7 * (1 - progress) : 0);
+          var y = piece.y + (piece.flower ? 11 : 8) * (1 - progress) - fade * 3;
+          var angle = piece.angle - (piece.flower ? 12 : 13) * (1 - progress);
+          piece.element.setAttribute("opacity", opacity);
+          piece.element.setAttribute("transform", "translate(" + x + " " + y + ") rotate(" + angle + ") scale(" + scale + ")");
+        });
+        frameId = time < 2.64 && !reducedMotion.matches ? requestAnimationFrame(draw) : 0;
+      }
+      frameId = requestAnimationFrame(draw);
     }
-
     link.addEventListener("mouseenter", play);
+    link.addEventListener("focus", play);
   }
 
   function initLogoAnimation() {
-    document.querySelectorAll(".logo-link").forEach(attachAnimation);
+    var links = document.querySelectorAll(".logo-link");
+    if (!links.length) return;
+    if (!document.getElementById("logo-sparkles-style")) {
+      var style = document.createElement("style");
+      style.id = "logo-sparkles-style";
+      style.textContent =
+        ".logo-link.logo-sparkle-link{position:relative;overflow:visible}" +
+        ".logo-link.logo-sparkle-link:hover{opacity:1;transform:none}" +
+        ".logo-sparkles{position:absolute;inset:0;width:100%;height:100%;display:block;overflow:visible;pointer-events:none}";
+      document.head.appendChild(style);
+    }
+    links.forEach(attachAnimation);
   }
+
 
   function initPortfolioFixes() {
     // Keep the current Behance project URL even if an older link remains in the HTML.
