@@ -672,6 +672,10 @@ li {
   height: 3px;
   background: var(--card-divider);
 }
+/* Match Facilitation's text area without stretching the other content. */
+.pokemon-card:not(.card-purple) .pokemon-card-face > p {
+  min-height: var(--card-text-height, 0px);
+}
 .card-blue {
   --card-background: linear-gradient(135deg, #d6ecf6 0%, #e3f4ed 42%, #ded9f4 100%);
   --card-frame: linear-gradient(135deg, #c9e5f3, #d5e8e9 45%, #d8d2ef);
@@ -827,6 +831,7 @@ li {
   z-index: 2;
 }
 .pokemon-modal-carousel {
+  --modal-photo-height: max(180px, calc(100dvh - 300px));
   position: relative;
   width: 100%;
   max-width: none;
@@ -844,10 +849,18 @@ li {
 .pokemon-modal-track::-webkit-scrollbar {
   display: none;
 }
-.pokemon-modal-card {
+.pokemon-modal-slide {
+  display: flex;
+  justify-content: center;
   flex: 0 0 100%;
   min-width: 0;
   scroll-snap-align: center;
+}
+.pokemon-modal-card {
+  /* Photo width + its border, face padding and outer frame. */
+  width: calc((var(--modal-photo-height) - 6px) * var(--photo-ratio) + 54px);
+  max-width: 100%;
+  min-width: 0;
   height: calc(100dvh - 112px);
   overflow-y: auto;
 }
@@ -855,7 +868,7 @@ li {
   min-height: 100%;
 }
 .pokemon-modal-card .pokemon-card-photo {
-  height: max(180px, calc(100dvh - 300px));
+  height: var(--modal-photo-height);
   aspect-ratio: auto;
   object-fit: contain;
   object-position: center;

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>About me | Zainab Abadi</title>
-  <link rel="stylesheet" href="style.css?v=pokemon-pastel-expanded-v2" />
+  <link rel="stylesheet" href="style.css?v=pokemon-equal-height-v3" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
 
@@ -361,7 +361,8 @@
     <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous card">‹</button>
 
     <div class="pokemon-modal-track">
-      <article class="pokemon-modal-card card-blue pokemon-collectible">
+      <div class="pokemon-modal-slide">
+      <article class="pokemon-modal-card card-blue pokemon-collectible" style="--photo-ratio: 1200 / 1600;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
             <h3>Community</h3>
@@ -383,8 +384,10 @@
           <p>Sharing knowledge through accessibility, neuroscience, and emotional wellbeing.</p>
         </div>
       </article>
+      </div>
 
-      <article class="pokemon-modal-card card-purple pokemon-collectible">
+      <div class="pokemon-modal-slide">
+      <article class="pokemon-modal-card card-purple pokemon-collectible" style="--photo-ratio: 637 / 786;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
             <h3>Facilitation</h3>
@@ -402,11 +405,13 @@
           <p>Designing and facilitating workshops on emotional regulation, fascia work, and Theatre of the Oppressed for mixed and neurodivergent communities.</p>
         </div>
       </article>
+      </div>
 
-      <article class="pokemon-modal-card card-green pokemon-collectible">
+      <div class="pokemon-modal-slide">
+      <article class="pokemon-modal-card card-green pokemon-collectible" style="--photo-ratio: 1537 / 1286;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Participatory<br>Arts</h3>
+            <h3>Participatory Arts</h3>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">PA 03</span>
               <span class="pokemon-card-icon">
@@ -422,11 +427,13 @@
           <p>Collaborative art projects bringing together writing, painting, theatre, and performance.</p>
         </div>
       </article>
+      </div>
 
-      <article class="pokemon-modal-card card-orange pokemon-collectible">
+      <div class="pokemon-modal-slide">
+      <article class="pokemon-modal-card card-orange pokemon-collectible" style="--photo-ratio: 720 / 598;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Games &amp;<br>Storytelling</h3>
+            <h3>Games &amp; Storytelling</h3>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">GS 04</span>
               <span class="pokemon-card-icon">
@@ -446,6 +453,7 @@
           <p>Passionate about LARP, D&D, board games, and video games.</p>
         </div>
       </article>
+      </div>
     </div>
 
     <button class="carousel-arrow carousel-next" type="button" aria-label="Next card">›</button>
@@ -486,10 +494,13 @@
 
   pokemonFans.forEach((fan) => {
     const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
+    const referenceText = fan.querySelector(".card-purple .pokemon-card-face > p");
 
     // Rotated, absolutely positioned cards do not contribute to their parent's
     // height. Fit the fan to their full bounds so both outer gaps stay equal.
     function fitFan() {
+      // Measure unrotated text; the reference keeps its natural height.
+      fan.style.setProperty("--card-text-height", getComputedStyle(referenceText).height);
       if (getComputedStyle(cards[0]).position === "static") {
         fan.style.removeProperty("--fan-height");
         fan.style.removeProperty("--fan-offset-x");
@@ -537,6 +548,7 @@
     if ("ResizeObserver" in window) {
       const observer = new ResizeObserver(fitFan);
       cards.forEach((card) => observer.observe(card));
+      observer.observe(referenceText);
     }
     window.addEventListener("resize", fitFan);
     updatePositions();
