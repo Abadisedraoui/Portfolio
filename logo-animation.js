@@ -223,9 +223,43 @@
     }
   }
 
+  function initFooterLinks() {
+    document.querySelectorAll(".footer").forEach(function (footer) {
+      var contactHeading = Array.from(footer.querySelectorAll("h4")).find(function (heading) {
+        return heading.textContent.trim().toUpperCase() === "CONTACT" ||
+          heading.textContent.trim().toUpperCase() === "FIND ME";
+      });
+      if (!contactHeading) return;
+
+      var block = contactHeading.parentElement;
+      contactHeading.textContent = "FIND ME";
+
+      Array.from(block.querySelectorAll("a")).forEach(function (link) {
+        var label = link.textContent.trim().replace("↗", "").trim().toLowerCase();
+        if (["linkedin", "github", "behance"].indexOf(label) !== -1) {
+          link.remove();
+        }
+      });
+
+      [
+        ["LinkedIn ↗", "https://www.linkedin.com/in/zainab-abadi-7878951b0/"],
+        ["GitHub ↗", "https://github.com/Abadisedraoui"],
+        ["Behance ↗", "https://www.behance.net/az119"]
+      ].forEach(function (item) {
+        var link = document.createElement("a");
+        link.href = item[1];
+        link.textContent = item[0];
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        block.appendChild(link);
+      });
+    });
+  }
+
   function initAll() {
     initLogoAnimation();
     initPortfolioFixes();
+    initFooterLinks();
   }
 
   if (document.readyState === "loading") {
