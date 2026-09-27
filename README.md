@@ -6,11 +6,3 @@ I'm currently exploring how AI-assisted development can help me move from design
 
 → Portfolio: https://abadisedraoui.github.io/Portfolio/index.html
 → LinkedIn: https://www.linkedin.com/in/zainab-abadi-7878951b0/
-
- ██   ██
-████ ████
-█████████
- ███████
-  █████
-   ███
-    █
