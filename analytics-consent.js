@@ -123,18 +123,25 @@
           bottom: auto;
           margin: 0 0 8px;
         }
-        .footer .footer-more .cookie-settings-link {
+        .footer .footer-more button.cookie-settings-link {
           display: block;
           margin: 0 0 8px;
           padding: 0;
           border: 0;
           background: transparent;
           color: white;
-          font: inherit;
+          font-family: inherit !important;
+          font-size: inherit !important;
+          font-weight: inherit !important;
+          font-style: inherit !important;
+          line-height: inherit !important;
+          letter-spacing: inherit !important;
           text-align: left;
           text-decoration: underline;
           text-underline-offset: 3px;
           cursor: pointer;
+          appearance: none;
+          -webkit-appearance: none;
         }
       `;
       document.head.appendChild(style);
