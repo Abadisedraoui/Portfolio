@@ -242,9 +242,9 @@
       });
 
       [
-        ["LinkedIn ↗", "https://www.linkedin.com/in/zainab-abadi-7878951b0/"],
-        ["GitHub ↗", "https://github.com/Abadisedraoui"],
-        ["Behance ↗", "https://www.behance.net/az119"]
+        ["LinkedIn", "https://www.linkedin.com/in/zainab-abadi-7878951b0/"],
+        ["GitHub", "https://github.com/Abadisedraoui"],
+        ["Behance", "https://www.behance.net/az119"]
       ].forEach(function (item) {
         var link = document.createElement("a");
         link.href = item[1];
