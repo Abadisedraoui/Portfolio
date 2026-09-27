@@ -97,12 +97,26 @@
     const moreBlock = moreHeading.parentElement;
     moreBlock.classList.add("footer-more");
     moreHeading.textContent = "MORE";
+
+    const reviewLink = Array.from(moreBlock.querySelectorAll("a")).find((link) =>
+      link.textContent.trim().toLowerCase().startsWith("review me")
+    );
+    if (reviewLink) reviewLink.textContent = "Review me";
+
+    Array.from(moreBlock.querySelectorAll("a, button")).forEach((control) => {
+      control.textContent = control.textContent.replace(/[↗→]\s*$/u, "").trim();
+    });
+
     moreBlock.appendChild(privacyLink);
 
     if (!document.getElementById("footer-more-style")) {
       const style = document.createElement("style");
       style.id = "footer-more-style";
       style.textContent = `
+        .footer .footer-more a::after,
+        .footer .footer-more button::after {
+          content: none !important;
+        }
         .footer .footer-more .privacy {
           position: static;
           left: auto;
