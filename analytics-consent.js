@@ -82,6 +82,51 @@
     });
   }
 
+  function organiseFooterUtilities() {
+    const footer = document.querySelector(".footer");
+    if (!footer) return;
+
+    const moreHeading = Array.from(footer.querySelectorAll("h4")).find((heading) => {
+      const label = heading.textContent.trim().toUpperCase();
+      return label === "FEEDBACK IS WELCOME" || label === "MORE";
+    });
+    const privacyLink = footer.querySelector(".privacy");
+
+    if (!moreHeading || !privacyLink) return;
+
+    const moreBlock = moreHeading.parentElement;
+    moreBlock.classList.add("footer-more");
+    moreHeading.textContent = "MORE";
+    moreBlock.appendChild(privacyLink);
+
+    if (!document.getElementById("footer-more-style")) {
+      const style = document.createElement("style");
+      style.id = "footer-more-style";
+      style.textContent = `
+        .footer .footer-more .privacy {
+          position: static;
+          left: auto;
+          bottom: auto;
+          margin: 0 0 8px;
+        }
+        .footer .footer-more .cookie-settings-link {
+          display: block;
+          margin: 0 0 8px;
+          padding: 0;
+          border: 0;
+          background: transparent;
+          color: white;
+          font: inherit;
+          text-align: left;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+          cursor: pointer;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
   function addSettingsControl() {
     const privacyLink = document.querySelector("footer .privacy");
     if (!privacyLink || document.querySelector(".cookie-settings-link")) return;
@@ -101,6 +146,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     const savedChoice = localStorage.getItem(CONSENT_KEY);
 
+    organiseFooterUtilities();
     addSettingsControl();
     if (!savedChoice) showBanner();
   });
