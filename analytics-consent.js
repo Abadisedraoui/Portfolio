@@ -164,9 +164,90 @@
     privacyLink.insertAdjacentElement("afterend", settingsButton);
   }
 
+  /*
+   * Portfolio entry selector — Iteration 2.
+   * Iteration 1 remains in index.html, so this block can be removed to restore it.
+   */
+  function applyPortfolioEntryIteration2() {
+    const modeDescription = document.getElementById("modeDescription");
+    const identityLine = document.querySelector(".identity-line");
+    if (!modeDescription || !identityLine) return;
+
+    modeDescription.classList.add("mode-description-iteration-2");
+    modeDescription.innerHTML = `
+      <span class="mode-description-title">Choose how you want to explore the work</span>
+      <span class="mode-description-line"><strong>Quick Scan</strong> — faster &amp; visual</span>
+      <span class="mode-description-line"><strong>Deep Dive</strong> — process &amp; detail</span>
+    `;
+
+    if (!document.getElementById("portfolio-entry-iteration-2-style")) {
+      const style = document.createElement("style");
+      style.id = "portfolio-entry-iteration-2-style";
+      style.textContent = `
+        .identity-line {
+          color: rgba(74, 88, 112, .62) !important;
+        }
+        .mode-description.mode-description-iteration-2 {
+          max-width: 590px;
+          font-family: Arial, Helvetica, sans-serif;
+          color: var(--ink-soft);
+        }
+        .mode-description-iteration-2 .mode-description-title {
+          display: block;
+          margin-bottom: 13px;
+          font-family: 'Cormorant Garamond', serif;
+          font-size: 25px;
+          font-weight: 600;
+          line-height: 1.12;
+          letter-spacing: .01em;
+          color: var(--ink-soft);
+        }
+        .mode-description-iteration-2 .mode-description-line {
+          display: block;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 16px;
+          line-height: 1.7;
+          color: var(--ink-soft);
+        }
+        .mode-description-iteration-2 .mode-description-line strong {
+          color: var(--accent);
+          font-weight: 700;
+        }
+        @media (min-width: 1000px) {
+          .mode-description-iteration-2 .mode-description-line {
+            font-size: 17px;
+          }
+        }
+        @media (max-width: 560px) {
+          .mode-description.mode-description-iteration-2 {
+            max-width: 340px;
+          }
+          .mode-description-iteration-2 .mode-description-title {
+            font-size: 23px;
+          }
+          .mode-description-iteration-2 .mode-description-line {
+            font-size: 15px;
+          }
+        }
+        @media (max-height: 440px) and (max-width: 599px) {
+          .mode-description-iteration-2 .mode-description-title {
+            margin-bottom: 8px;
+            font-size: 20px;
+          }
+          .mode-description-iteration-2 .mode-description-line {
+            font-size: 14px;
+            line-height: 1.5;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
     const savedChoice = localStorage.getItem(CONSENT_KEY);
 
+    applyPortfolioEntryIteration2();
     organiseFooterUtilities();
     addSettingsControl();
     if (!savedChoice) showBanner();
