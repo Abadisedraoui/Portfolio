@@ -165,10 +165,10 @@
   }
 
   /*
-   * Portfolio entry selector — Iteration 2.
+   * Portfolio entry selector — Iteration 3.
    * Iteration 1 remains in index.html, so this block can be removed to restore it.
    */
-  function applyPortfolioEntryIteration2() {
+  function applyPortfolioEntryIteration3() {
     const modeDescription = document.getElementById("modeDescription");
     const identityLine = document.querySelector(".identity-line");
     if (!modeDescription || !identityLine) return;
@@ -178,70 +178,85 @@
       identityRole.textContent = "UX/UI & Product Designer";
     }
 
-    modeDescription.classList.add("mode-description-iteration-2");
+    modeDescription.classList.remove("mode-description-iteration-2");
+    modeDescription.classList.add("mode-description-iteration-3");
     modeDescription.innerHTML = `
       <span class="mode-description-title">Choose how you want to explore the work</span>
       <span class="mode-description-line"><strong>Quick Scan</strong> — concise &amp; visual</span>
       <span class="mode-description-line"><strong>Deep Dive</strong> — thorough &amp; detailed</span>
     `;
 
-    if (!document.getElementById("portfolio-entry-iteration-2-style")) {
+    if (!document.getElementById("portfolio-entry-iteration-3-style")) {
       const style = document.createElement("style");
-      style.id = "portfolio-entry-iteration-2-style";
+      style.id = "portfolio-entry-iteration-3-style";
       style.textContent = `
         .identity-line {
-          color: #9da3ad !important;
+          color: var(--ink-soft) !important;
         }
-        .mode-description.mode-description-iteration-2 {
+        .identity-line .identity-name {
+          color: var(--ink) !important;
+          font-weight: 700;
+        }
+        .identity-line .identity-role {
+          color: var(--ink-soft) !important;
+        }
+        .mode-description.mode-description-iteration-3 {
           max-width: 590px;
+          margin-top: 2px;
           font-family: Arial, Helvetica, sans-serif;
           color: var(--ink-soft);
         }
-        .mode-description-iteration-2 .mode-description-title {
+        .mode-description-iteration-3 .mode-description-title {
           display: block;
-          margin-bottom: 13px;
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 25px;
-          font-weight: 600;
-          line-height: 1.12;
-          letter-spacing: .01em;
-          color: var(--ink-soft);
+          margin-bottom: 8px;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 19px;
+          font-weight: 700;
+          line-height: 1.35;
+          letter-spacing: 0;
+          color: var(--accent);
         }
-        .mode-description-iteration-2 .mode-description-line {
+        .mode-description-iteration-3 .mode-description-line {
           display: block;
           font-family: Arial, Helvetica, sans-serif;
           font-size: 16px;
-          line-height: 1.7;
+          line-height: 1.55;
           color: var(--ink-soft);
         }
-        .mode-description-iteration-2 .mode-description-line strong {
+        .mode-description-iteration-3 .mode-description-line strong {
           color: var(--accent);
           font-weight: 700;
         }
+        .mode-description-iteration-3 + .cta-row {
+          margin-top: -2px;
+        }
         @media (min-width: 1000px) {
-          .mode-description-iteration-2 .mode-description-line {
-            font-size: 17px;
+          .mode-description-iteration-3 .mode-description-title {
+            font-size: 20px;
+          }
+          .mode-description-iteration-3 .mode-description-line {
+            font-size: 16px;
           }
         }
         @media (max-width: 560px) {
-          .mode-description.mode-description-iteration-2 {
+          .mode-description.mode-description-iteration-3 {
             max-width: 340px;
           }
-          .mode-description-iteration-2 .mode-description-title {
-            font-size: 23px;
+          .mode-description-iteration-3 .mode-description-title {
+            font-size: 18px;
           }
-          .mode-description-iteration-2 .mode-description-line {
+          .mode-description-iteration-3 .mode-description-line {
             font-size: 15px;
           }
         }
         @media (max-height: 440px) and (max-width: 599px) {
-          .mode-description-iteration-2 .mode-description-title {
-            margin-bottom: 8px;
-            font-size: 20px;
+          .mode-description-iteration-3 .mode-description-title {
+            margin-bottom: 6px;
+            font-size: 17px;
           }
-          .mode-description-iteration-2 .mode-description-line {
+          .mode-description-iteration-3 .mode-description-line {
             font-size: 14px;
-            line-height: 1.5;
+            line-height: 1.45;
           }
         }
       `;
@@ -252,7 +267,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     const savedChoice = localStorage.getItem(CONSENT_KEY);
 
-    applyPortfolioEntryIteration2();
+    applyPortfolioEntryIteration3();
     organiseFooterUtilities();
     addSettingsControl();
     if (!savedChoice) showBanner();
