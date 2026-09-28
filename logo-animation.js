@@ -225,6 +225,11 @@
 
   function initFooterLinks() {
     document.querySelectorAll(".footer").forEach(function (footer) {
+      var copyright = footer.querySelector(".copyright");
+      if (copyright) {
+        copyright.textContent = "Vibe Coded ✨ © 2026 by Zainab Abadi.";
+      }
+
       var contactHeading = Array.from(footer.querySelectorAll("h4")).find(function (heading) {
         return heading.textContent.trim().toUpperCase() === "CONTACT" ||
           heading.textContent.trim().toUpperCase() === "FIND ME";
