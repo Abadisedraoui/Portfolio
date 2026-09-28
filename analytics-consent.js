@@ -165,30 +165,30 @@
   }
 
   /*
-   * Portfolio entry selector — Iteration 4.
+   * Portfolio entry selector — Iteration 5.
    * Iteration 1 remains in index.html, so this block can be removed to restore it.
    */
-  function applyPortfolioEntryIteration4() {
+  function applyPortfolioEntryIteration5() {
     const modeDescription = document.getElementById("modeDescription");
     const identityLine = document.querySelector(".identity-line");
-    if (!modeDescription || !identityLine) return;
+    const ctaRow = document.querySelector(".cta-row");
+    if (!modeDescription || !identityLine || !ctaRow) return;
 
     const identityRole = identityLine.querySelector(".identity-role");
     if (identityRole) {
       identityRole.textContent = "UX/UI & Product Designer";
     }
 
-    modeDescription.classList.remove("mode-description-iteration-2", "mode-description-iteration-3");
-    modeDescription.classList.add("mode-description-iteration-4");
-    modeDescription.innerHTML = `
-      <span class="mode-description-title">Choose how you want to explore the work</span>
-      <span class="mode-description-line"><strong>Quick Scan</strong> — concise &amp; visual</span>
-      <span class="mode-description-line"><strong>Deep Dive</strong> — thorough &amp; detailed</span>
-    `;
+    modeDescription.className = "mode-description mode-description-iteration-5";
+    modeDescription.textContent = "Explore the same work in two different ways.";
 
-    if (!document.getElementById("portfolio-entry-iteration-4-style")) {
+    const buttons = Array.from(ctaRow.querySelectorAll(".btn-stone"));
+    if (buttons[0]) buttons[0].setAttribute("data-mode-detail", "Concise & visual");
+    if (buttons[1]) buttons[1].setAttribute("data-mode-detail", "Thorough & detailed");
+
+    if (!document.getElementById("portfolio-entry-iteration-5-style")) {
       const style = document.createElement("style");
-      style.id = "portfolio-entry-iteration-4-style";
+      style.id = "portfolio-entry-iteration-5-style";
       style.textContent = `
         .identity-line {
           color: var(--ink-soft) !important;
@@ -204,71 +204,63 @@
           color: var(--ink-soft) !important;
           font-weight: 400;
         }
-        .mode-description.mode-description-iteration-4 {
+        .mode-description.mode-description-iteration-5 {
           max-width: 590px;
           margin-top: 10px;
           font-family: Arial, Helvetica, sans-serif;
-          font-size: 15px;
-          line-height: 1.5;
-          color: var(--ink-soft);
-        }
-        .mode-description-iteration-4 .mode-description-title {
-          display: block;
-          margin-bottom: 5px;
-          font-family: Arial, Helvetica, sans-serif;
-          font-size: 15px;
+          font-size: 15px !important;
           font-weight: 600;
           line-height: 1.5;
           letter-spacing: 0;
           color: var(--accent);
+          text-wrap: balance;
         }
-        .mode-description-iteration-4 .mode-description-line {
-          display: block;
+        .cta-row {
+          margin-top: 8px !important;
+          margin-bottom: 26px;
+        }
+        .cta-row .btn-stone[data-mode-detail]::after {
+          content: attr(data-mode-detail);
+          position: absolute;
+          top: calc(100% + 7px);
+          left: 0;
+          width: 100%;
           font-family: Arial, Helvetica, sans-serif;
-          font-size: 15px;
-          line-height: 1.5;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 1.35;
+          letter-spacing: 0;
+          text-transform: none;
+          white-space: nowrap;
           color: var(--ink-soft);
-        }
-        .mode-description-iteration-4 .mode-description-line strong {
-          color: var(--accent);
-          font-weight: 700;
-        }
-        .mode-description-iteration-4 + .cta-row {
-          margin-top: -1px;
-        }
-        @media (min-width: 1000px) {
-          .identity-line,
-          .mode-description.mode-description-iteration-4,
-          .mode-description-iteration-4 .mode-description-title,
-          .mode-description-iteration-4 .mode-description-line {
-            font-size: 15px !important;
-          }
+          pointer-events: none;
         }
         @media (max-width: 560px) {
           .identity-line,
-          .mode-description.mode-description-iteration-4,
-          .mode-description-iteration-4 .mode-description-title,
-          .mode-description-iteration-4 .mode-description-line {
+          .mode-description.mode-description-iteration-5 {
             font-size: 14px !important;
           }
-          .mode-description.mode-description-iteration-4 {
+          .mode-description.mode-description-iteration-5 {
             max-width: 340px;
             margin-top: 8px;
           }
+          .cta-row .btn-stone[data-mode-detail]::after {
+            font-size: 13px;
+          }
         }
         @media (max-height: 440px) and (max-width: 599px) {
-          .mode-description.mode-description-iteration-4 {
+          .mode-description.mode-description-iteration-5 {
             margin-top: 5px;
-          }
-          .mode-description-iteration-4 .mode-description-title {
-            margin-bottom: 3px;
-          }
-          .identity-line,
-          .mode-description.mode-description-iteration-4,
-          .mode-description-iteration-4 .mode-description-title,
-          .mode-description-iteration-4 .mode-description-line {
             font-size: 13px !important;
             line-height: 1.4;
+          }
+          .cta-row {
+            margin-top: 5px !important;
+            margin-bottom: 22px;
+          }
+          .cta-row .btn-stone[data-mode-detail]::after {
+            top: calc(100% + 4px);
+            font-size: 12px;
           }
         }
       `;
@@ -279,7 +271,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     const savedChoice = localStorage.getItem(CONSENT_KEY);
 
-    applyPortfolioEntryIteration4();
+    applyPortfolioEntryIteration5();
     organiseFooterUtilities();
     addSettingsControl();
     if (!savedChoice) showBanner();
