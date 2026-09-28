@@ -180,7 +180,7 @@
     }
 
     modeDescription.className = "mode-description mode-description-iteration-5";
-    modeDescription.textContent = "Explore the same work in two different ways.";
+    modeDescription.textContent = "Explore the same work in two different ways";
 
     const buttons = Array.from(ctaRow.querySelectorAll(".btn-stone"));
     if (buttons[0]) buttons[0].setAttribute("data-mode-detail", "Concise & visual");
