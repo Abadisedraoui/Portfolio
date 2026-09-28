@@ -173,11 +173,16 @@
     const identityLine = document.querySelector(".identity-line");
     if (!modeDescription || !identityLine) return;
 
+    const identityRole = identityLine.querySelector(".identity-role");
+    if (identityRole) {
+      identityRole.textContent = "UX/UI & Product Designer";
+    }
+
     modeDescription.classList.add("mode-description-iteration-2");
     modeDescription.innerHTML = `
       <span class="mode-description-title">Choose how you want to explore the work</span>
-      <span class="mode-description-line"><strong>Quick Scan</strong> — faster &amp; visual</span>
-      <span class="mode-description-line"><strong>Deep Dive</strong> — process &amp; detail</span>
+      <span class="mode-description-line"><strong>Quick Scan</strong> — concise &amp; visual</span>
+      <span class="mode-description-line"><strong>Deep Dive</strong> — thorough &amp; detailed</span>
     `;
 
     if (!document.getElementById("portfolio-entry-iteration-2-style")) {
@@ -185,7 +190,7 @@
       style.id = "portfolio-entry-iteration-2-style";
       style.textContent = `
         .identity-line {
-          color: rgba(74, 88, 112, .62) !important;
+          color: #9da3ad !important;
         }
         .mode-description.mode-description-iteration-2 {
           max-width: 590px;
