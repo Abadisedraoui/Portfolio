@@ -243,11 +243,8 @@
             margin-top: 6px;
             font-size: 17px !important;
           }
-          .entry-options {
-            gap: 10px;
-          }
           .cta-row {
-            margin-top: 2px !important;
+            margin-top: 6px !important;
           }
           .cta-row .btn-stone[data-mode-detail]::after {
             font-size: 15px;
