@@ -235,6 +235,24 @@
           color: var(--ink-soft);
           pointer-events: none;
         }
+        @media (min-width: 1000px) {
+          .identity-line {
+            font-size: 17px !important;
+          }
+          .mode-description.mode-description-iteration-5 {
+            margin-top: 6px;
+            font-size: 17px !important;
+          }
+          .entry-options {
+            gap: 10px;
+          }
+          .cta-row {
+            margin-top: 2px !important;
+          }
+          .cta-row .btn-stone[data-mode-detail]::after {
+            font-size: 15px;
+          }
+        }
         @media (max-width: 560px) {
           .identity-line,
           .mode-description.mode-description-iteration-5 {
