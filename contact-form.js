@@ -2,7 +2,9 @@
   "use strict";
 
   const ENDPOINT = "https://formspree.io/f/mgaoewzl";
+  const SUCCESS_CLOSE_DELAY = 3000;
   let lastFocused = null;
+  let successCloseTimer = null;
 
   function stoneButtonMarkup(label) {
     return `
@@ -19,6 +21,62 @@
         </g>
       </svg>
       <span class="contact-form__submit-label">${label}</span>
+    `;
+  }
+
+  function homeEyeMarkup(side, wink) {
+    const lashes = side === "left"
+      ? `
+        <line x1="4" y1="35" x2="-3" y2="29" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"></line>
+        <line x1="4" y1="35" x2="-5" y2="35" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"></line>
+        <line x1="4" y1="35" x2="-3" y2="41" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"></line>
+      `
+      : `
+        <line x1="136" y1="35" x2="143" y2="29" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"></line>
+        <line x1="136" y1="35" x2="145" y2="35" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"></line>
+        <line x1="136" y1="35" x2="143" y2="41" stroke="#28232f" stroke-width="1.6" stroke-linecap="round"></line>
+      `;
+
+    return `
+      <div class="contact-success__eye ${wink ? "contact-success__eye--wink" : ""}">
+        <svg viewBox="0 0 140 70" aria-hidden="true" focusable="false">
+          <g class="contact-success__eye-group">
+            <path d="M4,35 Q70,4 136,35" fill="none" stroke="#28232f" stroke-width="3.6" stroke-linecap="round"></path>
+            <path d="M4,35 Q70,66 136,35" fill="none" stroke="#28232f" stroke-width="2.2" stroke-linecap="round"></path>
+            <g class="contact-success__eyeball">
+              <circle cx="70" cy="35" r="15" fill="none" stroke="#28232f" stroke-width="2.4"></circle>
+              <circle cx="70" cy="35" r="7" fill="#28232f"></circle>
+            </g>
+          </g>
+          ${lashes}
+        </svg>
+        ${side === "right" ? `
+          <svg class="contact-success__check" viewBox="0 0 34 24" aria-hidden="true" focusable="false">
+            <path d="M2 14 L9 20 L31 3"></path>
+          </svg>
+        ` : ""}
+      </div>
+    `;
+  }
+
+  function successMarkup() {
+    return `
+      <div class="contact-success" aria-live="polite" aria-atomic="true">
+        <div class="contact-success__inner">
+          <div class="contact-success__eyes" aria-hidden="true">
+            ${homeEyeMarkup("left", false)}
+            ${homeEyeMarkup("right", true)}
+          </div>
+
+          <p class="contact-success__message">
+            MESSAGE SEN<span class="contact-success__last-letter">T
+              <span class="contact-success__dust" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              </span>
+            </span>
+          </p>
+        </div>
+      </div>
     `;
   }
 
@@ -67,6 +125,8 @@
           <p class="contact-form__status" role="status" aria-live="polite"></p>
           <p class="contact-form__privacy">Your message is sent through Formspree. <a href="privacy-page.html">Privacy Policy</a></p>
         </form>
+
+        ${successMarkup()}
       </div>
     `;
 
@@ -112,10 +172,25 @@
     return dialog;
   }
 
+  function resetSuccessState(dialog) {
+    if (successCloseTimer) {
+      window.clearTimeout(successCloseTimer);
+      successCloseTimer = null;
+    }
+
+    dialog.classList.remove("is-success");
+
+    const panel = dialog.querySelector(".contact-dialog__panel");
+    if (panel) {
+      panel.style.height = "";
+    }
+  }
+
   function openDialog(event) {
     if (event) event.preventDefault();
 
     const dialog = buildDialog();
+    resetSuccessState(dialog);
     lastFocused = document.activeElement;
 
     dialog.hidden = false;
@@ -131,6 +206,7 @@
     const dialog = document.querySelector(".contact-dialog");
     if (!dialog || dialog.hidden) return;
 
+    resetSuccessState(dialog);
     dialog.hidden = true;
     document.body.classList.remove("contact-dialog-open");
 
@@ -139,10 +215,29 @@
     }
   }
 
+  function showSuccessState(dialog) {
+    const panel = dialog.querySelector(".contact-dialog__panel");
+    const currentHeight = panel.getBoundingClientRect().height;
+
+    /* Keep the exact same slab dimensions while the form becomes the success state. */
+    panel.style.height = currentHeight + "px";
+    dialog.classList.add("is-success");
+
+    const closeButton = dialog.querySelector(".contact-dialog__close");
+    if (closeButton) {
+      closeButton.focus({ preventScroll: true });
+    }
+
+    successCloseTimer = window.setTimeout(function () {
+      closeDialog();
+    }, SUCCESS_CLOSE_DELAY);
+  }
+
   async function submitForm(event) {
     event.preventDefault();
 
     const form = event.currentTarget;
+    const dialog = form.closest(".contact-dialog");
     const submitButton = form.querySelector(".contact-form__submit");
     const submitLabel = form.querySelector(".contact-form__submit-label");
     const status = form.querySelector(".contact-form__status");
@@ -172,8 +267,7 @@
       }
 
       form.reset();
-      status.textContent = "Message sent. Thank you!";
-      status.setAttribute("data-state", "success");
+      showSuccessState(dialog);
     } catch (error) {
       status.textContent = "Something went wrong. Please try again.";
       status.setAttribute("data-state", "error");
