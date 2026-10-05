@@ -20,22 +20,25 @@ body {
 
 /* Paper rests a little above the page; original navigation stays intact. */
 .header, .project-body .header {
+  position: relative;
+  z-index: 2;
   background-color: #fff;
   background-image: linear-gradient(rgba(255,255,255,.74), rgba(255,255,255,.74)), var(--wc-paper);
   background-size: auto, 520px 520px;
   box-shadow:
-    inset 0 2px 0 #fff,
-    inset 0 -1px 0 rgba(40,35,47,.05),
+    inset 0 1px 0 #fff,
+    inset -1px -1px 0 rgba(40,35,47,.06),
     0 0 0 1px rgba(59,67,80,.22),
-    0 4px 0 #ccd1d8,
-    0 10px 20px rgba(40,35,47,.13);
+    1px 2px 0 #d0d5dc,
+    3px 5px 4px rgba(40,35,47,.21),
+    8px 13px 18px rgba(40,35,47,.19);
 }
 @media (max-width:600px) {
   .nav {
     background-color: #fff;
     background-image: linear-gradient(rgba(255,255,255,.74), rgba(255,255,255,.74)), var(--wc-paper);
     background-size: auto, 520px 520px;
-    box-shadow: inset 0 2px 0 #fff, 0 0 0 1px rgba(59,67,80,.22), 0 4px 0 #ccd1d8, 0 10px 20px rgba(40,35,47,.13);
+    box-shadow: inset 0 1px 0 #fff, 0 0 0 1px rgba(59,67,80,.22), 1px 2px 0 #d0d5dc, 3px 5px 4px rgba(40,35,47,.21), 8px 13px 18px rgba(40,35,47,.19);
   }
 }
 .work-card, .quick-case__summary, .quick-case__visual, .quick-case__clip, .media-card, .exp-card {
@@ -82,6 +85,8 @@ body {
   transition: mask-position 2.2s cubic-bezier(.2,.55,.25,1), opacity 1.7s ease;
 }
 .watercolor-surface.is-washed::before { mask-position: 0 0; opacity: .8; }
+/* The overview remains plain paper, including when an older script is cached. */
+.quick-case__summary.watercolor-surface::before { display: none; }
 .footer.watercolor-surface::before {
   background-image: linear-gradient(100deg, rgba(58,89,132,.9), rgba(71,105,145,.45)), var(--wc-wash);
   background-blend-mode: multiply;
@@ -99,9 +104,10 @@ body {
   background: transparent;
   box-shadow: none;
   filter:
-    drop-shadow(0 0 .65px rgba(59,67,80,.65))
-    drop-shadow(0 4px 0 #c9cfd7)
-    drop-shadow(0 12px 22px rgba(40,35,47,.18));
+    drop-shadow(0 0 .5px rgba(59,67,80,.65))
+    drop-shadow(1px 2px 0 #c9cfd7)
+    drop-shadow(3px 6px 3px rgba(40,35,47,.24))
+    drop-shadow(8px 15px 16px rgba(40,35,47,.22));
 }
 .contact-dialog__panel::after, .cookie-consent::after {
   content: '';

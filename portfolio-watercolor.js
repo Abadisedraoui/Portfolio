@@ -72,7 +72,7 @@
     if (motion.matches || !observer) surface.classList.add('is-washed');
     else observer.observe(surface);
   }
-  const surfaceSelector = '.project-intro, .quick-case__intro, .quick-case__summary, .work-card.text-card, .footer, .cookie-consent, .contact-dialog__panel';
+  const surfaceSelector = '.project-intro, .quick-case__intro, .work-card.text-card, .footer, .cookie-consent, .contact-dialog__panel';
   function prepare(root) {
     if (root.nodeType !== 1 && root !== document) return;
     if (root.matches && root.matches(surfaceSelector)) prepareSurface(root);
