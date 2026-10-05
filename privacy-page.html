@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Privacy Policy | Zainab Abadi</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006">
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 <body>
@@ -17,10 +17,10 @@
   <a href="home.html" class="logo-link active" aria-label="Go to homepage">
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
   <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="home.html" class="nav-link active">Home</a>
     <a href="about-me.html" class="nav-link">About me</a>
@@ -105,15 +105,15 @@
     <a href="privacy-page.html" class="privacy">Privacy Policy</a>
   </div>
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
   <p class="copyright">
@@ -124,8 +124,19 @@
   const menuButton = document.querySelector(".menu-toggle");
   const nav = document.querySelector(".nav");
   menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
+    });
 </script>
   <button class="back-to-top" aria-label="Back to top">
   ↑
@@ -148,6 +159,7 @@ backToTop.addEventListener('click', () => {
 </script>
   
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>
+

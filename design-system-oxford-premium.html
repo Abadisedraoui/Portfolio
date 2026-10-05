@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Building a Design System | Zainab Abadi</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
   <!-- Estilos de imágenes, leyendas y visor (van después de style.css a propósito) -->
   <style>
 /* =========================================================
@@ -57,7 +57,7 @@
   border-top: 1px solid rgba(40, 35, 47, .10);
   font-size: 13px;
   line-height: 1.4;
-  color: #66758C;
+  color: #3e4e64;
   text-align: right;
 }
 
@@ -328,7 +328,7 @@ html.lightbox-open {
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 
@@ -339,11 +339,11 @@ html.lightbox-open {
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
   <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="home.html" class="nav-link active">Home</a>
     <a href="about-me.html" class="nav-link">About me</a>
@@ -360,7 +360,7 @@ html.lightbox-open {
 
     <div class="case-summary">
       <div>
-        <h4>At a glance</h4>
+        <h2 class="section-label">At a glance</h2>
         <p>Oxford Premium had grown for years without a shared design language. I led the creation of a <strong>design system</strong> as part of a wider rebranding and platform redesign.</p>
         <p>The goal was to simplify a complex educational ecosystem, improve consistency and support accessibility requirements.</p>
         <dl class="case-facts">
@@ -373,7 +373,7 @@ html.lightbox-open {
       </div>
       <figure class="media-card zoomable-image">
         <div class="media-card__frame">
-          <img src="images/pc_3.png" alt="Oxford Premium resource screen with navigation, content tabs, search and list controls" width="1823" height="1054" fetchpriority="high" />
+          <img src="images/pc_3.png" alt="Oxford Premium desktop resource view, with persistent left navigation, subject tabs, search and a list of downloadable resources." width="1823" height="1054" fetchpriority="high" />
           <button class="image-zoom-button" type="button" aria-label="Enlarge the Oxford Premium interface">⤢</button>
         </div>
         <figcaption>The system in context: navigation, content tabs and resource controls.</figcaption>
@@ -649,15 +649,15 @@ html.lightbox-open {
       <figcaption>Platform ecosystem comparison: HUB and Oxford Premium</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-3.jpg" alt="Survey interaction flow diagram">
+      <img src="images/pic-3.jpg" alt="Survey interaction flowchart, connecting entry points, decision branches, messages and exit routes.">
       <figcaption>Survey interaction flow</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-3-1.jpg" alt="Research process overview">
+      <img src="images/pic-3-1.jpg" alt="Research workflow from teacher interviews to qualitative analysis and a results report, illustrated with grouped notes and deliverable examples.">
       <figcaption>Research process overview</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-4-1.jpg" alt="Insight impact analysis">
+      <img src="images/pic-4-1.jpg" alt="Four-quadrant impact analysis, with research insights grouped on coloured sticky notes to support prioritisation.">
       <figcaption>Insight impact analysis</figcaption>
     </figure>
     <figure>
@@ -677,19 +677,19 @@ html.lightbox-open {
       <figcaption>Button and filter specs, with all interaction states</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-8-1.jpg" alt="Toolbar component specifications">
+      <img src="images/pic-8-1.jpg" alt="Top toolbar and side navigation specifications, showing expanded and compact layouts at different screen widths.">
       <figcaption>Toolbar component specifications</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-9.jpg" alt="Prototype flow diagram used for implementation handoff">
+      <img src="images/pic-9.jpg" alt="Figma prototype map linking Oxford Premium screens and account panels to document the navigation and interaction flows.">
       <figcaption>Prototype flow used for implementation handoff</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-10.jpg" alt="Content licensing comparison slide between Oxford Premium and HUB">
+      <img src="images/pic-10.jpg" alt="Side-by-side Oxford Premium and HUB resource screens, comparing their navigation, book libraries and resource presentation.">
       <figcaption>Content Licensing Comparison</figcaption>
     </figure>
     <figure>
-      <img src="images/pic-11.jpg" alt="Keyboard focus state design for interactive components">
+      <img src="images/pic-11.jpg" alt="Two Oxford Premium resource views showing shared navigation, digital content groups and expandable offline-download sections.">
       <figcaption>Keyboard focus states for interactive components</figcaption>
     </figure>
   </template>
@@ -706,9 +706,9 @@ html.lightbox-open {
         <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous desktop image">‹</button>
 
         <div class="device-carousel-track">
-          <img src="images/pc_1.png" alt="Desktop interface 1">
-          <img src="images/pc_2.png" alt="Desktop interface 2">
-          <img src="images/pc_3.png" alt="Desktop interface 3">
+          <img src="images/pc_1.png" alt="Oxford Premium desktop library, with a persistent left navigation, book cards and a separate demo library below.">
+          <img src="images/pc_2.png" alt="Oxford Premium desktop profile panel over the library, with the page dimmed behind the account details.">
+          <img src="images/pc_3.png" alt="Oxford Premium desktop resource view, with persistent left navigation, subject tabs, search and a list of downloadable resources.">
         </div>
 
         <button class="carousel-arrow carousel-next" type="button" aria-label="Next desktop image">›</button>
@@ -722,9 +722,9 @@ html.lightbox-open {
         <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous tablet image">‹</button>
 
         <div class="device-carousel-track">
-          <img src="images/tab_1.png" alt="Tablet interface 1">
-          <img src="images/tab_2.png" alt="Tablet interface 2">
-          <img src="images/tab_3.png" alt="Tablet interface 3">
+          <img src="images/tab_1.png" alt="Oxford Premium tablet view of certified courses, keeping the left navigation beside a narrower scrolling content column.">
+          <img src="images/tab_2.png" alt="Oxford Premium tablet professional development page, with courses grouped into sections beneath the page heading.">
+          <img src="images/tab_3.png" alt="Oxford Premium tablet account form, with teacher details and save controls in a panel over the page.">
         </div>
 
         <button class="carousel-arrow carousel-next" type="button" aria-label="Next tablet image">›</button>
@@ -738,9 +738,9 @@ html.lightbox-open {
         <button class="carousel-arrow carousel-prev" type="button" aria-label="Previous mobile image">‹</button>
 
         <div class="device-carousel-track">
-          <img src="images/phone_1.png" alt="Mobile interface 1">
-          <img src="images/phone_2.png" alt="Mobile interface 2">
-          <img src="images/phone_3.png" alt="Mobile interface 3">
+          <img src="images/phone_1.png" alt="Oxford Premium mobile library, with book cards stacked in one column and a menu button in the top bar.">
+          <img src="images/phone_2.png" alt="Oxford Premium mobile resource view, with horizontally arranged subject tabs above search and the resource list.">
+          <img src="images/phone_3.png" alt="Oxford Premium mobile navigation drawer, with resource and account links over the dimmed page.">
         </div>
 
         <button class="carousel-arrow carousel-next" type="button" aria-label="Next mobile image">›</button>
@@ -771,17 +771,17 @@ html.lightbox-open {
   </div>
 
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
 
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
 
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
 
@@ -809,8 +809,19 @@ html.lightbox-open {
   const nav = document.querySelector(".nav");
 
   menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
+    });
 
   const backToTop = document.querySelector(".back-to-top");
 
@@ -1001,7 +1012,17 @@ html.lightbox-open {
 
     images.forEach((image, index) => {
       image.style.cursor = "zoom-in";
+      image.setAttribute("role", "button");
+      image.tabIndex = 0;
+      image.setAttribute("aria-label", "Enlarge: " + image.alt);
+      image.setAttribute("aria-haspopup", "dialog");
       image.addEventListener("click", () => openLightbox(items, index, image));
+      image.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          openLightbox(items, index, image);
+        }
+      });
     });
 
     prev.addEventListener("click", () => {
@@ -1041,6 +1062,7 @@ html.lightbox-open {
 </script>
 
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>
+

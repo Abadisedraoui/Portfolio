@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Educational Platform Restructuring | Zainab Abadi</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
   <style>
 /* =========================================================
    CASE STUDY MEDIA
@@ -56,7 +56,7 @@
   border-top: 1px solid rgba(40, 35, 47, .10);
   font-size: 13px;
   line-height: 1.4;
-  color: #66758C;
+  color: #3e4e64;
   text-align: right;
 }
 
@@ -328,7 +328,7 @@ html.lightbox-open {
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 
@@ -339,11 +339,11 @@ html.lightbox-open {
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
   <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="home.html" class="nav-link active">Home</a>
     <a href="about-me.html" class="nav-link">About me</a>
@@ -360,7 +360,7 @@ html.lightbox-open {
 
     <div class="case-summary">
       <div>
-        <h4>At a glance</h4>
+        <h2 class="section-label">At a glance</h2>
         <p>Oxford Premium contained <strong>thousands of educational resources</strong>, multiple navigation paths, and different organisational models depending on the product line.</p>
         <p>The challenge was not creating more content. <strong>It was helping teachers find and use what already existed.</strong></p>
         <dl class="case-facts">
@@ -373,7 +373,7 @@ html.lightbox-open {
       </div>
       <figure class="media-card zoomable-image">
         <div class="media-card__frame">
-          <img src="images/vi-6.jpg" alt="New Oxford Premium proposal with resource navigation, search and category structure" width="1280" height="720" fetchpriority="high" />
+          <img src="images/vi-6.jpg" alt="Oxford Premium redesign proposal, with resource categories in the left navigation and a searchable grid of resources grouped by unit." width="1280" height="720" fetchpriority="high" />
           <button class="image-zoom-button" type="button" aria-label="Enlarge the new Oxford Premium proposal">⤢</button>
         </div>
         <figcaption>The proposed structure in context: clearer categories, navigation and resource discovery.</figcaption>
@@ -687,47 +687,47 @@ html.lightbox-open {
 
   <template id="processSlides">
     <figure>
-      <img src="images/vi-1.jpg" alt="Platform Comparison Table" />
+      <img src="images/vi-1.jpg" alt="Comparison table of HUB, Oxford Premium ELT and Oxford Premium OXED, covering content access, resource organisation and professional development." />
       <figcaption>Platform Comparison Table</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-1-1.jpg" alt="Content Structure Comparison Table" />
+      <img src="images/vi-1-1.jpg" alt="Content comparison across textbook series, mapping course material, assessment, introductory content, resources and professional development." />
       <figcaption>Content Structure Comparison Table</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-2.jpg" alt="Navigation Behaviour Analysis" />
+      <img src="images/vi-2.jpg" alt="Navigation analysis with charts comparing visits through individual resource categories and the View all entry point for English and Spanish content." />
       <figcaption>Navigation Behaviour Analysis</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-2-3.jpg" alt="Session Recordings Dataset" />
+      <img src="images/vi-2-3.jpg" alt="Session-recording analysis spreadsheet, with navigation observations and charts summarising recordings by language and time period." />
       <figcaption>Session Recordings Dataset</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-3.jpg" alt="Card Sorting Results 1" />
+      <img src="images/vi-3.jpg" alt="Card-sorting results from 16 teacher responses, comparing agreement with proposed resource categories and highlighting ambiguous labels." />
       <figcaption>Card Sorting Results 1</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-3-1.jpg" alt="Card Sorting Results 2" />
+      <img src="images/vi-3-1.jpg" alt="Card-sorting results for Activities and worksheets, comparing how teachers classified different resources and highlighting the most widely agreed labels." />
       <figcaption>Card Sorting Results 2</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-3-2.jpg" alt="Task Performance Results" />
+      <img src="images/vi-3-2.jpg" alt="Prototype resource-finding test results, showing task success, abandonment, misclicks and duration beside the Maze report." />
       <figcaption>Task Performance Results</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-4.jpg" alt="Qualitative Interview Insights" />
+      <img src="images/vi-4.jpg" alt="Qualitative interview synthesis, with teacher observations grouped on sticky notes beside an example interview record." />
       <figcaption>Qualitative Interview Insights</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-5.jpg" alt="New Structure Definition" />
+      <img src="images/vi-5.jpg" alt="Proposed navigation structure, mapping HUB categories to Oxford Premium: titles, assessment, introductory content, resources and professional development." />
       <figcaption>New Structure Definition</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-5-1.jpg" alt="Platform Ecosystem Comparison" />
+      <img src="images/vi-5-1.jpg" alt="Side-by-side ecosystem maps of HUB and Oxford Premium, showing their navigation branches and nested resource groups." />
       <figcaption>Platform Ecosystem Comparison</figcaption>
     </figure>
     <figure>
-      <img src="images/vi-6.jpg" alt="New Proposal Interface" />
+      <img src="images/vi-6.jpg" alt="Oxford Premium redesign proposal, with resource categories in the left navigation and a searchable grid of resources grouped by unit." />
       <figcaption>New Proposal Interface</figcaption>
     </figure>
   </template>
@@ -753,17 +753,17 @@ html.lightbox-open {
   </div>
 
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
 
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
 
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
 
@@ -789,8 +789,19 @@ html.lightbox-open {
   const nav = document.querySelector(".nav");
 
   menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
+    });
 
   const backToTop = document.querySelector(".back-to-top");
 
@@ -972,6 +983,7 @@ html.lightbox-open {
 </script>
 
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>
+

@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Zainab Abadi | Product & UX/UI Designer</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
   <style>
     .tag-wcag { background: #CFE8E0; }
     .tag-auditing { background: #D7E8F2; }
@@ -16,7 +16,7 @@
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.7-20261005"></script>
 </head>
 
@@ -27,11 +27,11 @@
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
   <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="home.html" class="nav-link active">Home</a>
     <a href="about-me.html" class="nav-link">About me</a>
@@ -44,14 +44,14 @@
 <div class="hero-text" id="heroText">
   <h1>Zainab Abadi</h1>
 
-        <h4>WHO I AM</h4>
+        <h2 class="section-label">WHO I AM</h2>
       <p>
         Product & UX/UI Designer with +4 years of experience designing complex digital products,
         B2B platforms, and scalable systems. I combine research, accessibility, and
         product thinking to create solutions that work for both users and businesses.
       </p>
 
-      <h4>HOW I THINK</h4>
+      <h2 class="section-label">HOW I THINK</h2>
       <p>
         I approach design through curiosity, systems thinking, and structured
         problem-solving, connecting user needs, business goals, and technical
@@ -98,7 +98,7 @@
 
       <article class="work-card">
         <a href="educational-platform.html" class="work-card-image-link">
-          <img src="images/educational-platform-card.jpg" alt="Preview of the educational platform restructuring case study" class="work-card-image" />
+          <img src="images/educational-platform-card.jpg" alt="Diagram of a branching information architecture with four resource groups and nested items." class="work-card-image" />
         </a>
 
         <div class="work-card-content">
@@ -125,7 +125,7 @@
 
       <article class="work-card">
         <a href="design-system-oxford-premium.html" class="work-card-image-link">
-          <img src="images/design-system-card.jpg" alt="Preview of the design system case study" class="work-card-image" />
+          <img src="images/design-system-card.jpg" alt="Illustration of a design system with typography, colour swatches and reusable interface components." class="work-card-image" />
         </a>
 
         <div class="work-card-content">
@@ -154,7 +154,7 @@
   <a href="accessibility-project.html" class="work-card-image-link">
     <img
       src="images/accessibility-card.jpg"
-      alt="Preview of the accessibility case study"
+      alt="Illustration of an interface audit with typography, UI panels and an accessibility checklist."
       class="work-card-image"
     />
   </a>
@@ -186,7 +186,7 @@
   <a href="plytix-project.html" class="work-card-image-link">
     <img
       src="images/plytix-card.jpg"
-      alt="Preview of the Plytix UX practice case study"
+      alt="Illustration of a UX workflow connecting research inputs, process steps and review checkpoints."
       class="work-card-image"
     />
   </a>
@@ -408,17 +408,17 @@
   </div>
 
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
 
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
 
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
 
@@ -430,8 +430,19 @@
   const nav = document.querySelector(".nav");
 
   menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
+    });
 </script>
 
 <button class="back-to-top" aria-label="Back to top">
@@ -477,6 +488,6 @@ window.addEventListener("resize", resizeHeroImage);
 </script>
 
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>

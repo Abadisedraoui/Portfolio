@@ -58,3 +58,14 @@ Archivos nuevos: `portfolio-watercolor.css`, `portfolio-watercolor.js`,
 `images/watercolor-paper.webp`, `images/watercolor-wash.webp` y
 `images/watercolor-cursor.svg`. La rama `iteracion-4` guardará la versión
 validada y publicada, sin cambiar los puntos anteriores.
+
+## Iteration 5 — estado anterior a las correcciones de accesibilidad
+
+- Rama de referencia: `iteration-5`; no moverla ni editarla.
+- Commit exacto: `381f06dc02e69ff17b9f863d1fcc2537a3491455`.
+- Árbol completo: `66c954486c5421c0e3a880de4d542457d09adc79`.
+- Guarda todo el portfolio tal como estaba cuando Zainab autorizó la
+  primera tanda de la checklist de accesibilidad, el 6 de octubre de 2026.
+- Para volver, crear un nuevo commit con ese árbol completo y el main
+  vigente como padre; después comprobar la publicación de GitHub Pages.
+- Los cambios posteriores se registran en `ACCESSIBILITY_CHECKLIST.md`.

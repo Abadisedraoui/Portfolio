@@ -2,9 +2,7 @@
   "use strict";
 
   const ENDPOINT = "https://formspree.io/f/mgaoewzl";
-  const SUCCESS_CLOSE_DELAY = 3000;
   let lastFocused = null;
-  let successCloseTimer = null;
 
   function stoneButtonMarkup(label) {
     return `
@@ -89,7 +87,8 @@
           <button class="contact-dialog__close" type="button" aria-label="Close contact form" data-contact-close>×</button>
         </div>
 
-        <form class="contact-form" action="${ENDPOINT}" method="POST" novalidate>
+        <form class="contact-form" action="${ENDPOINT}" method="POST" aria-describedby="contact-required-note" novalidate>
+          <p class="contact-form__required-note" id="contact-required-note">All fields are required.</p>
           <div class="contact-form__field">
             <label for="contact-name">Your name</label>
             <input id="contact-name" name="name" type="text" autocomplete="name" required />
@@ -162,11 +161,6 @@
   }
 
   function resetSuccessState(dialog) {
-    if (successCloseTimer) {
-      window.clearTimeout(successCloseTimer);
-      successCloseTimer = null;
-    }
-
     dialog.classList.remove("is-success");
     dialog.setAttribute("aria-labelledby", "contact-dialog-title");
 
@@ -210,9 +204,6 @@
       closeButton.focus({ preventScroll: true });
     }
 
-    successCloseTimer = window.setTimeout(function () {
-      closeDialog();
-    }, SUCCESS_CLOSE_DELAY);
   }
 
   async function submitForm(event) {
@@ -272,3 +263,4 @@
     init();
   }
 })();
+

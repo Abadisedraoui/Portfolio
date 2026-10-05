@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>About me | Zainab Abadi</title>
-  <link rel="stylesheet" href="style.css?v=pokemon-equal-height-v3" />
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
 
@@ -18,7 +18,7 @@
       font-weight: 700;
       font-size: 22px;
       line-height: 1;
-      color: #9a9a9a;
+      color: #52627a;
       transform: rotate(-4deg) translateY(-3px);
       pointer-events: none;
       user-select: none;
@@ -29,7 +29,7 @@
     .click-here-note svg {
       width: 34px;
       height: 22px;
-      color: #9a9a9a;
+      color: #52627a;
     }
 
     .chulapa-line {
@@ -45,7 +45,7 @@
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 
@@ -57,11 +57,11 @@
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
   <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="home.html" class="nav-link">Home</a>
     <a href="about-me.html" class="nav-link active">About me</a>
@@ -101,7 +101,7 @@
       <article class="pokemon-card card-blue position-1 pokemon-collectible">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Community</h3>
+            <h2>Community</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">CM 01</span>
               <span class="pokemon-card-icon">
@@ -124,7 +124,7 @@
       <article class="pokemon-card card-purple position-2 pokemon-collectible">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Facilitation</h3>
+            <h2>Facilitation</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">FC 02</span>
               <span class="pokemon-card-icon">
@@ -143,7 +143,7 @@
       <article class="pokemon-card card-green position-3 pokemon-collectible">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Participatory<br>Arts</h3>
+            <h2>Participatory<br>Arts</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">PA 03</span>
               <span class="pokemon-card-icon">
@@ -163,7 +163,7 @@
       <article class="pokemon-card card-orange position-4 pokemon-collectible">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Games &amp;<br>Storytelling</h3>
+            <h2>Games &amp;<br>Storytelling</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">GS 04</span>
               <span class="pokemon-card-icon">
@@ -335,17 +335,17 @@
   </div>
 
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
 
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
 
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
 
@@ -358,7 +358,7 @@
 </button>
 
 <!-- POKEMON CARDS MODAL / CAROUSEL -->
-<div class="pokemon-modal" id="pokemonModal">
+<div class="pokemon-modal" id="pokemonModal" role="dialog" aria-modal="true" aria-label="About me cards">
   <button class="pokemon-modal-close" type="button" aria-label="Close">
     ×
   </button>
@@ -371,7 +371,7 @@
       <article class="pokemon-modal-card card-blue pokemon-collectible" style="--photo-ratio: 1200 / 1600;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Community</h3>
+            <h2>Community</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">CM 01</span>
               <span class="pokemon-card-icon">
@@ -396,7 +396,7 @@
       <article class="pokemon-modal-card card-purple pokemon-collectible" style="--photo-ratio: 637 / 786;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Facilitation</h3>
+            <h2>Facilitation</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">FC 02</span>
               <span class="pokemon-card-icon">
@@ -417,7 +417,7 @@
       <article class="pokemon-modal-card card-green pokemon-collectible" style="--photo-ratio: 1537 / 1286;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Participatory Arts</h3>
+            <h2>Participatory Arts</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">PA 03</span>
               <span class="pokemon-card-icon">
@@ -439,7 +439,7 @@
       <article class="pokemon-modal-card card-orange pokemon-collectible" style="--photo-ratio: 720 / 598;">
         <div class="pokemon-card-face">
           <div class="pokemon-card-heading">
-            <h3>Games &amp; Storytelling</h3>
+            <h2>Games &amp; Storytelling</h2>
             <div class="pokemon-card-meta" aria-hidden="true">
               <span class="pokemon-card-code">GS 04</span>
               <span class="pokemon-card-icon">
@@ -473,7 +473,18 @@
 
   if (menuButton && nav) {
     menuButton.addEventListener("click", () => {
-      nav.classList.toggle("open");
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
     });
   }
 
@@ -500,6 +511,7 @@
 
   pokemonFans.forEach((fan) => {
     const cards = Array.from(fan.querySelectorAll(".pokemon-card"));
+    let cardOrder = cards.slice();
     const referenceText = fan.querySelector(".card-purple .pokemon-card-face > p");
 
     // Rotated, absolutely positioned cards do not contribute to their parent's
@@ -507,7 +519,12 @@
     function fitFan() {
       // Measure unrotated text; the reference keeps its natural height.
       fan.style.setProperty("--card-text-height", getComputedStyle(referenceText).height);
-      if (getComputedStyle(cards[0]).position === "static") {
+      const isStatic = getComputedStyle(cards[0]).position === "static";
+      cards.forEach((card) => {
+        const control = card.querySelector(".pokemon-card-front-trigger");
+        if (control) control.disabled = isStatic;
+      });
+      if (isStatic) {
         fan.style.removeProperty("--fan-height");
         fan.style.removeProperty("--fan-offset-x");
         fan.style.removeProperty("--fan-offset-y");
@@ -536,7 +553,8 @@
     }
 
     function updatePositions() {
-      Array.from(fan.querySelectorAll(".pokemon-card")).forEach((card, index) => {
+      cardOrder.forEach((card, index) => {
+        card.style.setProperty("--card-layer", String(index + 1));
         card.classList.remove("position-1", "position-2", "position-3", "position-4");
         card.classList.add(`position-${index + 1}`);
       });
@@ -544,9 +562,15 @@
     }
 
     cards.forEach((card) => {
+      const control = document.createElement("button");
+      control.type = "button";
+      control.className = "pokemon-card-front-trigger";
+      control.setAttribute("aria-label", "Bring the " + card.querySelector("h2").textContent.trim() + " card to the front");
+      card.appendChild(control);
       card.addEventListener("click", () => {
         if (getComputedStyle(card).position === "static") return;
-        fan.appendChild(card);
+        cardOrder = cardOrder.filter((item) => item !== card);
+        cardOrder.push(card);
         updatePositions();
       });
     });
@@ -584,22 +608,52 @@ window.addEventListener("resize", resizeHeroImage);
   const pokemonPrev = document.querySelector(".pokemon-modal-carousel .carousel-prev");
   const pokemonNext = document.querySelector(".pokemon-modal-carousel .carousel-next");
 
+  let pokemonOpener = null;
+  let pokemonBackground = [];
+
+  function openPokemonModal() {
+    pokemonOpener = document.activeElement;
+    pokemonBackground = Array.from(document.body.children)
+      .filter((element) => element !== pokemonModal)
+      .map((element) => ({element, inert: element.inert}));
+    pokemonBackground.forEach(({element}) => { element.inert = true; });
+    pokemonModal.classList.add("open");
+    document.body.classList.add("pokemon-dialog-open");
+    pokemonModalClose.focus();
+  }
+
+  function closePokemonModal() {
+    if (!pokemonModal.classList.contains("open")) return;
+    pokemonModal.classList.remove("open");
+    document.body.classList.remove("pokemon-dialog-open");
+    pokemonBackground.forEach(({element, inert}) => { element.inert = inert; });
+    pokemonBackground = [];
+    const opener = pokemonOpener || pokemonExpandButton;
+    if (opener && opener.isConnected) opener.focus({preventScroll: true});
+    pokemonOpener = null;
+  }
+
   if (pokemonExpandButton && pokemonModal) {
-    pokemonExpandButton.addEventListener("click", () => {
-      pokemonModal.classList.add("open");
-    });
-  }
-
-  if (pokemonModalClose && pokemonModal) {
-    pokemonModalClose.addEventListener("click", () => {
-      pokemonModal.classList.remove("open");
-    });
-  }
-
-  if (pokemonModal) {
+    pokemonExpandButton.addEventListener("click", openPokemonModal);
+    pokemonModalClose.addEventListener("click", closePokemonModal);
     pokemonModal.addEventListener("click", (event) => {
-      if (event.target === pokemonModal) {
-        pokemonModal.classList.remove("open");
+      if (event.target === pokemonModal) closePokemonModal();
+    });
+    pokemonModal.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closePokemonModal();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const controls = Array.from(pokemonModal.querySelectorAll('button:not([disabled]), a[href], [tabindex="0"]'))
+        .filter((element) => element.offsetParent !== null);
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault(); last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault(); first.focus();
       }
     });
   }
@@ -614,15 +668,12 @@ window.addEventListener("resize", resizeHeroImage);
     });
   }
 
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && pokemonModal) {
-      pokemonModal.classList.remove("open");
-    }
-  });
+
   
 </script>
 
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>
+

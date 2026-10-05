@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Oxford Premium: A Platform Walkthrough | Zainab Abadi</title>
   <meta name="description" content="A short, visual walkthrough of Oxford Premium: information architecture, design system, and accessibility working together across real flows." />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
 
   <style>
     /* ============= OXFORD PREMIUM WALKTHROUGH — bloques propios ============= */
@@ -45,7 +45,7 @@
     }
 
     .walk-intro p {
-      color: #66758C;
+      color: #3e4e64;
       max-width: 700px;
       margin: 0 auto;
       text-align: justify;
@@ -82,7 +82,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #8B96A8;
+      color: #3e4e64;
       font-size: 13px;
       font-weight: 700;
       text-align: center;
@@ -119,14 +119,14 @@
       justify-content: center;
       padding: 20px;
       text-align: center;
-      color: #66758C;
+      color: #3e4e64;
       font-size: 13px;
       line-height: 1.5;
     }
 
     .flow-note-label {
       display: block;
-      color: #8B96A8;
+      color: #3e4e64;
       font-size: 11px;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -152,7 +152,7 @@
       padding-top: 10px;
       border-top: 1px solid rgba(40, 35, 47, .08);
       font-size: 13px;
-      color: #8B96A8;
+      color: #3e4e64;
     }
 
     .flow-step {
@@ -160,18 +160,18 @@
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 1px;
-      color: #8B96A8;
+      color: #3e4e64;
       margin-bottom: 6px;
     }
 
-    .flow-card h3 {
+    .flow-card .walk-section-title {
       font-size: 17px;
       margin: 0 0 8px;
     }
 
     .flow-card p {
       font-size: 14px;
-      color: #66758C;
+      color: #3e4e64;
       margin: 0;
     }
 
@@ -192,7 +192,7 @@
 
     .walk-more p {
       font-size: 14px;
-      color: #66758C;
+      color: #3e4e64;
       margin: 0 0 16px;
     }
 
@@ -294,14 +294,14 @@
         0 12px 28px rgba(40, 35, 47, .08);
     }
 
-    .project-def-card h3 {
+    .project-def-card .walk-section-title {
       font-size: 16px;
       margin: 6px 0 10px;
     }
 
     .project-def-card p {
       font-size: 14px;
-      color: #66758C;
+      color: #3e4e64;
       margin: 0;
     }
 
@@ -333,7 +333,7 @@
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 
@@ -346,11 +346,11 @@
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
     <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="quick-scan.html" class="nav-link">Home</a>
   </nav>
@@ -394,19 +394,19 @@
   <section class="project-defs">
     <div class="project-def-card">
       <span class="flow-step">PROJECT 01</span>
-      <h3>Design System</h3>
+      <h2 class="walk-section-title">Design System</h2>
       <p>I led the creation of a design system for <span class="platform-name">Oxford Premium</span> as part of a wider rebranding and platform redesign. The goal was to improve consistency and accessibility while bringing the experience closer to Oxford's UK platform, <span class="platform-name">HUB</span>.</p>
     </div>
 
     <div class="project-def-card">
       <span class="flow-step">PROJECT 02</span>
-      <h3>Reorganising a Complex Educational Platform</h3>
+      <h2 class="walk-section-title">Reorganising a Complex Educational Platform</h2>
       <p><span class="platform-name">Oxford Premium</span> had thousands of resources and several ways of organising and accessing them. Through research and information architecture work, I helped redefine how teachers could find and use the content already available to them.</p>
     </div>
 
     <div class="project-def-card">
       <span class="flow-step">PROJECT 03</span>
-      <h3>Accessibility Across a Product Ecosystem</h3>
+      <h2 class="walk-section-title">Accessibility Across a Product Ecosystem</h2>
       <p>I worked on a wider accessibility initiative spanning product, content and development. I ran platform audits, tested with screen readers and created documentation to help make accessibility part of the process rather than a final step.</p>
     </div>
   </section>
@@ -428,7 +428,7 @@
       <div class="flow-clip"><video src="videos/Oxford-Login.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-card-body">
         <span class="flow-step">01 · ENTRY POINT</span>
-        <h3>Login</h3>
+        <h2 class="walk-section-title">Login</h2>
         <p>I rebuilt the entry point using components from the new design system, with consistent typography, spacing and colour aligned with Oxford's rebranding. I also checked it for keyboard navigation and screen reader support as part of the accessibility audits I ran across the platform.</p>
       </div>
     </article>
@@ -437,7 +437,7 @@
       <div class="flow-clip"><video src="videos/Oxford-Profile.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-card-body">
         <span class="flow-step">02 · ACCOUNT</span>
-        <h3>Editing your profile</h3>
+        <h2 class="walk-section-title">Editing your profile</h2>
         <p>Profile settings rebuilt using the same component library, replacing patterns that had drifted apart across different areas of the platform. A good example of how the design system helped bring consistency across the whole product, not just its main flows.</p>
       </div>
     </article>
@@ -446,7 +446,7 @@
       <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">Adding a product isn't available through the demo account, so I can't show this flow on this page.</span></div>
       <div class="flow-card-body">
         <span class="flow-step">03 · GROWTH</span>
-        <h3>Adding a product</h3>
+        <h2 class="walk-section-title">Adding a product</h2>
         <p>One of the interaction flows I redesigned by adding direct access to a feature that previously required users to search for it, reducing friction and making it easier to find. I also unified the interface design using the new component system, bringing the experience closer to <span class="platform-name">HUB</span>, Oxford's UK platform.</p>
       </div>
     </article>
@@ -455,7 +455,7 @@
       <div class="flow-note"><span class="flow-note-label">No clip here</span><span class="flow-note-text">The full books library isn't available through the demo account either. Structurally, it works like the <span class="section-name">"Demo Library"</span> shown further down, but applied to the complete title catalogue rather than a sample.</span></div>
       <div class="flow-card-body">
         <span class="flow-step">04 · DISCOVERY</span>
-        <h3>Books library</h3>
+        <h2 class="walk-section-title">Books library</h2>
         <p>We redesigned the structure together with teachers, using direct interviews, Hotjar and Maze to understand how most of them naturally expected resources to be organised. The goal was to bring the platform closer to their own mental models, reducing friction and shortening the learning curve.</p>
       </div>
     </article>
@@ -464,7 +464,7 @@
       <div class="flow-clip"><video src="videos/Oxford-Explore-Title.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-card-body">
         <span class="flow-step">05 · DISCOVERY</span>
-        <h3>Exploring a title</h3>
+        <h2 class="walk-section-title">Exploring a title</h2>
         <p>Related resources are now easier to find and understand, following the same structure we developed with teachers. We tested and refined it through card sorting and prototyping before applying it across the platform.</p>
       </div>
     </article>
@@ -473,7 +473,7 @@
       <div class="flow-clip"><video src="videos/Oxford-Access-Resources.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-card-body">
         <span class="flow-step">06 · DISCOVERY</span>
-        <h3>Accessing resources</h3>
+        <h2 class="walk-section-title">Accessing resources</h2>
         <p><span class="platform-name">Oxford Premium</span> held thousands of educational resources across different subjects, editorial lines and navigation paths. Finding one structure that worked for most teachers was complex. Their expectations varied depending on what they taught, the language they taught in, and their teaching and socioeconomic context.</p>
         <p>We used 600+ Hotjar sessions, 31 teacher interviews and Maze testing to find a middle ground that matched how most teachers naturally expected resources to be organised. We then tested whether they could actually understand the categories and find what they needed.</p>
         <span class="extra-note">The demo shows guides, answer keys and resource groupings. The full platform includes additional categories that aren't visible through the demo account.</span>
@@ -484,7 +484,7 @@
       <div class="flow-clip"><video src="videos/Oxford-Demo-Library.mp4" controls playsinline preload="metadata"></video></div>
       <div class="flow-card-body">
         <span class="flow-step">07 · CONSISTENCY</span>
-        <h3>Demo library</h3>
+        <h2 class="walk-section-title">Demo library</h2>
         <p>Demo used to sit inside the main Library, which made the distinction between the two less clear. Separating them made each experience easier to understand and gave us more flexibility to offer different profiles independently, such as Demo, Full and Academy.</p>
       </div>
     </article>
@@ -492,7 +492,7 @@
   </div>
 
   <div class="walk-more">
-    <h3>The same system, everywhere else</h3>
+    <h2 class="walk-section-title">The same system, everywhere else</h2>
     <p>The <span class="section-name">"Professional Development"</span>, <span class="section-name">"Certificate Courses"</span>, <span class="section-name">"New Resources"</span> and <span class="section-name">"News"</span> sections all use the same component system. That was the point of building a design system in the first place: one source of truth, so nobody has to reinvent a pattern that already exists somewhere else on the platform.</p>
 
     <div class="walk-more-clips">
@@ -517,7 +517,7 @@
       <li><strong>Compatibility with Bootstrap</strong>, making handoff and implementation with development easier</li>
       <li><strong>Accessibility considered from the start</strong>, rather than added as an afterthought</li>
     </ul>
-    <p style="margin-top:24px; color:#66758C;">
+    <p style="margin-top:24px; color:#3e4e64;">
       What stayed with me most from this work is that complexity like this doesn't resolve itself.
       You have to keep choosing clarity, flow by flow, decision by decision, and trust that it adds up.
     </p>
@@ -556,17 +556,17 @@
   </div>
 
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
 
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
 
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
 
@@ -578,8 +578,19 @@
   const nav = document.querySelector(".nav");
 
   menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
+    });
 </script>
 
 <button class="back-to-top" aria-label="Back to top">
@@ -606,6 +617,7 @@ backToTop.addEventListener('click', () => {
 </script>
 
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>
+

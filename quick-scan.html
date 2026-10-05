@@ -6,7 +6,7 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Zainab Abadi | Quick Scan</title>
   <meta name="description" content="Zainab Abadi — UX/UI Designer. Quick scan: skills, experience highlights, and case studies at a glance." />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
   </style>
@@ -23,7 +23,7 @@
       font-weight: 700;
       font-size: 22px;
       line-height: 1;
-      color: #9a9a9a;
+      color: #52627a;
       transform: rotate(-4deg) translateY(-3px);
       pointer-events: none;
       user-select: none;
@@ -60,12 +60,12 @@
         0 12px 28px rgba(40, 35, 47, .08);
     }
 
-    .exp-card h4 {
+    .exp-card :is(h4, .section-label) {
       min-height: 0;
       margin: 0 0 2px;
     }
 
-    .exp-card h4 a {
+    .exp-card :is(h4, .section-label) a {
       color: #234D8D;
       text-decoration: underline;
       text-decoration-color: rgba(35, 77, 141, .35);
@@ -73,7 +73,7 @@
       transition: .2s ease;
     }
 
-    .exp-card h4 a:hover {
+    .exp-card :is(h4, .section-label) a:hover {
       color: #3E6FB3;
       text-decoration-color: #3E6FB3;
     }
@@ -81,7 +81,7 @@
     .exp-card .role-label {
       font-size: 13px;
       font-weight: 700;
-      color: #8B96A8;
+      color: #3e4e64;
       margin: 0 0 14px;
     }
 
@@ -109,7 +109,7 @@
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 
@@ -120,11 +120,11 @@
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="siteNav">
     ☰
   </button>
 
-  <nav class="nav">
+  <nav class="nav" id="siteNav">
     <a href="index.html" class="nav-link nav-link-back"><svg class="arrow-icon" width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6H1M1 6L6 1M1 6L6 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Change mode</a>
     <a href="quick-scan.html" class="nav-link active">Home</a>
   </nav>
@@ -136,14 +136,14 @@
     <div class="hero-text">
       <h1>Zainab Abadi</h1>
 
-      <h4>WHO I AM</h4>
+      <h2 class="section-label">WHO I AM</h2>
       <p>
         Product &amp; UX/UI Designer with +4 years of experience designing complex digital products,
         B2B platforms, and scalable systems. I combine research, accessibility, and
         product thinking to create solutions that work for both users and businesses.
       </p>
 
-      <h4>HOW I THINK</h4>
+      <h2 class="section-label">HOW I THINK</h2>
       <p>
         I approach design through curiosity, systems thinking, and structured
         problem-solving, connecting user needs, business goals, and technical
@@ -205,13 +205,13 @@
 
     <div class="exp-cards">
       <div class="exp-card">
-        <h4><a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">Oxford University Press</a><span class="click-here-note" aria-hidden="true">click here!</span></h4>
+        <h3 class="section-label"><a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">Oxford University Press</a><span class="click-here-note" aria-hidden="true">click here!</span></h3>
         <p class="role-label">UX/UI Designer · Jan 2023 – Oct 2025</p>
         <p class="impact">Improved accessibility and product consistency across a major academic platform through research, WCAG audits, and design system work.</p>
       </div>
 
       <div class="exp-card">
-        <h4><a href="https://www.plytix.com/" target="_blank" rel="noopener noreferrer">Plytix</a><span class="click-here-note" aria-hidden="true">click here!</span></h4>
+        <h3 class="section-label"><a href="https://www.plytix.com/" target="_blank" rel="noopener noreferrer">Plytix</a><span class="click-here-note" aria-hidden="true">click here!</span></h3>
         <p class="role-label">UX Designer · Jul 2022 – Sept 2022</p>
         <p class="impact">Optimised SaaS workflows and strengthened product consistency through UX documentation and cross-functional collaboration.</p>
       </div>
@@ -345,17 +345,17 @@
   </div>
 
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
 
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
 
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
 
@@ -367,8 +367,19 @@
   const nav = document.querySelector(".nav");
 
   menuButton.addEventListener("click", () => {
-    nav.classList.toggle("open");
-  });
+      const isOpen = nav.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
+    });
 </script>
 
 <button class="back-to-top" aria-label="Back to top">
@@ -395,6 +406,6 @@ backToTop.addEventListener('click', () => {
 </script>
 
 <script src="logo-animation.js"></script>
-  <script src="contact-form.js?v=iteracion-4-20261005"></script>
+  <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>

@@ -78,8 +78,8 @@ body:not(.portfolio-entry) .hero h1 { margin-bottom: 28px; }
   line-height: 1.15;
   letter-spacing: -.015em;
 }
-.hero h4,
-.project-intro h4 {
+.hero :is(h4, .section-label),
+.project-intro :is(h4, .section-label) {
   font-size: 12px;
   letter-spacing: .1em;
   color: var(--portfolio-accent);
@@ -262,3 +262,4 @@ body:not(.portfolio-entry) .hero h1 { margin-bottom: 28px; }
   .button:hover,
   .contact-form__submit:hover { transform: none; }
 }
+

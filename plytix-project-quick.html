@@ -6,7 +6,7 @@
       <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Building a UX Practice at a SaaS Startup — Quick Case | Zainab Abadi</title>
       <meta name="description" content="A short case study of building UX processes and hands-on research and design as Plytix's first and only UX hire." />
-      <link rel="stylesheet" href="style.css" />
+      <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
 
   <style>
     .quick-case { padding-bottom: 72px; }
@@ -59,7 +59,7 @@
     .quick-case__read-time {
       flex: 0 0 auto;
       margin: 8px 0 0;
-      color: #66758C;
+      color: #3e4e64;
       font-size: 13px;
       font-weight: 700;
     }
@@ -115,7 +115,7 @@
 
     .quick-case__facts dt {
       margin-bottom: 4px;
-      color: #66758C;
+      color: #3e4e64;
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
@@ -162,7 +162,7 @@
     .quick-case__hero-media img { border-radius: 18px; }
 
     .quick-case figcaption {
-      color: #66758C;
+      color: #3e4e64;
       font-size: 13px;
       line-height: 1.4;
       text-align: right;
@@ -199,7 +199,7 @@
     .quick-case__decision:nth-child(3) { border-color: #C6DFCF; }
 
     .quick-case__decision-number {
-      color: #8B96A8;
+      color: #3e4e64;
       font-size: 13px;
       font-weight: 700;
     }
@@ -214,7 +214,7 @@
     .quick-case__evidence-intro p,
     .quick-case__clip p {
       margin: 0;
-      color: #66758C;
+      color: #3e4e64;
     }
 
     .quick-case__evidence-intro {
@@ -283,7 +283,7 @@
 
     .quick-case__footer p {
       margin: 0;
-      color: #66758C;
+      color: #3e4e64;
       font-size: 18px;
       font-weight: 700;
       line-height: 1.5;
@@ -402,7 +402,7 @@
 
       <script defer src="analytics-consent.js"></script>
       <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
-  <link rel="stylesheet" href="portfolio-watercolor.css?v=iteracion-4.9-20261005" />
+  <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
     <body class="project-body">
@@ -412,7 +412,7 @@
     <img src="images/logo.png" alt="Zainab Abadi logo" class="logo" />
   </a>
 
-  <button class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="quickCaseNav">
+  <button class="menu-toggle" aria-label="Open menu" type="button" aria-expanded="false" aria-controls="quickCaseNav">
     ☰
   </button>
 
@@ -511,15 +511,15 @@
     <a href="privacy-page.html" class="privacy">Privacy Policy</a>
   </div>
   <div>
-    <h4>CONTACT</h4>
+    <h2 class="section-label">CONTACT</h2>
     <p><a href="mailto:zainab.abadi.s@gmail.com">Email me</a></p>
   </div>
   <div>
-    <h4>LOCATION</h4>
+    <h2 class="section-label">LOCATION</h2>
     <p>Madrid, Spain</p>
   </div>
   <div>
-    <h4>FEEDBACK IS WELCOME</h4>
+    <h2 class="section-label">FEEDBACK IS WELCOME</h2>
     <a href="https://docs.google.com/forms/d/e/1FAIpQLSd-3brmaxmeZgDtAxEWxv0_fjQf2yEEItGtBD_zx_nhCqOaqA/viewform" target="_blank" rel="noopener noreferrer">Review me!</a>
   </div>
   <p class="copyright">Vibe Coded with Claude 💫 © 2026 by Zainab Abadi.</p>
@@ -536,6 +536,15 @@
       const isOpen = nav.classList.toggle("open");
       menuButton.setAttribute("aria-expanded", String(isOpen));
       menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
+    });
+    menuButton.closest("header").addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && nav.classList.contains("open")) {
+        event.preventDefault();
+        nav.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.setAttribute("aria-label", "Open menu");
+        menuButton.focus();
+      }
     });
   }
 
@@ -600,6 +609,7 @@
 
 <script src="logo-animation.js"></script>
 
-      <script src="contact-form.js?v=iteracion-4-20261005"></script>
+      <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
     </html>
+

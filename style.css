@@ -401,7 +401,7 @@ h3 {
   font-size: 18px;
   margin: 0 0 8px;
 }
-h4 {
+:is(h4, .section-label) {
   font-size: 16px;
   line-height: 1.5;
   margin: 18px 0 8px;
@@ -445,11 +445,11 @@ li {
 /* ---- Grupo Cuerpo de texto en negrita (marrón en las notas) ----
    Misma base que el cuerpo (16px / 1.5) pero en negrita.
    Cada elemento conserva su propio color. */
-.hero h4,
-.project-intro h4,
-.project-overview h4,
-.table-contents h4,
-.footer h4,
+.hero :is(h4, .section-label),
+.project-intro :is(h4, .section-label),
+.project-overview :is(h4, .section-label),
+.table-contents :is(h4, .section-label),
+.footer :is(h4, .section-label),
 .company-description,
 .date {
   font-family: Arial, Helvetica, sans-serif;
@@ -606,7 +606,7 @@ li {
   min-height: 2.3em;
   margin-bottom: 12px;
 }
-.pokemon-card-heading h3 {
+.pokemon-card-heading :is(h2, h3) {
   min-width: 0;
   margin: 0;
   font-size: inherit;
@@ -907,18 +907,18 @@ li {
    WORK EXPERIENCE - DESCRIPTION
 ========================================================= */
 /* ---------- Company ---------- */
-.experience h4{
+.experience :is(h4, .section-label){
     min-height:48px;
     margin:18px 0 8px;
 }
-.experience h4 a{
+.experience :is(h4, .section-label) a{
     color:#234D8D;
     text-decoration:underline;
     text-decoration-color:rgba(35,77,141,.35);
     text-underline-offset:3px;
     transition:.2s ease;
 }
-.experience h4 a:hover{
+.experience :is(h4, .section-label) a:hover{
     color:#3E6FB3;
     text-decoration-color:#3E6FB3;
 }
@@ -926,13 +926,13 @@ li {
 .company-description{
     margin:6px 0 14px;
     min-height:112px;
-    color:#66758C;
+    color:#3e4e64;
 }
 /* ---------- Date ---------- */
 .date{
     min-height:24px;
     margin-bottom:18px;
-    color:#8B96A8;
+    color:#3e4e64;
 }
 .experience ul{
     margin-top:20px;
@@ -978,7 +978,7 @@ li {
   line-height: 1.5;
   margin-top: 8px;
 }
-.project-intro h4 {
+.project-intro :is(h4, .section-label) {
   margin: 0 0 8px;
 }
 .project-intro p {
@@ -989,7 +989,7 @@ li {
   margin-bottom: 30px;
   padding: 0;
 }
-.project-overview h4 {
+.project-overview :is(h4, .section-label) {
   margin: 30px 0 8px;
 }
 .project-overview p {
@@ -1023,7 +1023,7 @@ li {
 .table-contents {
   margin-bottom: 60px;
 }
-.table-contents h4 {
+.table-contents :is(h4, .section-label) {
   margin-bottom: 8px;
 }
 .table-contents ol {
@@ -1207,7 +1207,7 @@ li {
   display: block;
   margin-bottom: 48px;
 }
-.footer h4 {
+.footer :is(h4, .section-label) {
   margin: 0 0 14px;
   color: white;
 }
@@ -1416,7 +1416,7 @@ figcaption {
 .case-study-video figcaption {
   padding: 14px 22px 20px;
   font-size: 13px;
-  color: #66758C;
+  color: #3e4e64;
 }
 /* =========================================================
    INFO POPUP
@@ -1749,12 +1749,12 @@ figcaption {
   h3 {
     font-size: 20px;
   }
-  h4,
-  .hero h4,
-  .project-intro h4,
-  .project-overview h4,
-  .table-contents h4,
-  .footer h4,
+  :is(h4, .section-label),
+  .hero :is(h4, .section-label),
+  .project-intro :is(h4, .section-label),
+  .project-overview :is(h4, .section-label),
+  .table-contents :is(h4, .section-label),
+  .footer :is(h4, .section-label),
   .company-description,
   .date {
     font-size: 18px;
@@ -1820,7 +1820,7 @@ figcaption {
     width: 100px;
     margin-bottom: 18px;
   }
-  .footer h4 {
+  .footer :is(h4, .section-label) {
     margin-bottom: 6px;
   }
   .footer p,
@@ -1853,3 +1853,8 @@ figcaption {
   font-size: 17px;
 }
 }
+
+
+/* Heading levels can change without changing the original label hierarchy. */
+.section-label { text-align: left; }
+.walk-section-title { text-align: left; }
