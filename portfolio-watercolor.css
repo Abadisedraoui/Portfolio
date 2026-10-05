@@ -169,7 +169,8 @@ body {
 /* The overview remains plain paper, including when an older script is cached. */
 .quick-case__summary.watercolor-surface::before { display: none; }
 .footer.watercolor-surface::before {
-  background-image: linear-gradient(100deg, rgba(58,89,132,.9), rgba(71,105,145,.45)), var(--wc-wash);
+  /* The lightest possible wash stays above 5:1 against white text. */
+  background-image: linear-gradient(100deg, rgba(58,89,132,.9), rgba(62,94,131,.88)), var(--wc-wash);
   background-blend-mode: multiply;
   mix-blend-mode: normal;
 }
