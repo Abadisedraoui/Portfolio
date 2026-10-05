@@ -120,7 +120,7 @@ body {
   max-width: none;
   height: auto;
   left: 50%;
-  top: calc(50% + 10px);
+  top: calc(50% - 45px);
   transform: translate(-50%, -50%);
   opacity: .8;
   mix-blend-mode: multiply;
@@ -145,7 +145,7 @@ body {
 .is-blushing .watercolor-button-bloom { opacity: .9; transform: translate(0,0) scale(1.2); }
 .is-blushing .btn-label { color: #28232f; }
 @media (max-width:560px) {
-  .entry-watercolor { width: calc(100% + 150px); top: calc(50% + 8px); opacity: .76; }
+  .entry-watercolor { width: calc(100% + 150px); top: calc(50% - 25px); opacity: .76; }
   .portfolio-entry .face { margin-bottom: 26px; }
 }
 @media (max-height:600px) {
