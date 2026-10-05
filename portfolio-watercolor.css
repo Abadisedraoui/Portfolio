@@ -29,10 +29,10 @@ body {
   background: transparent;
   box-shadow: none;
   filter:
-    drop-shadow(0 0 .5px rgba(59,67,80,.48))
+    drop-shadow(0 0 .5px rgba(59,67,80,.43))
     drop-shadow(1px 2px 0 #d0d5dc)
-    drop-shadow(3px 5px 4px rgba(40,35,47,.18))
-    drop-shadow(8px 13px 18px rgba(40,35,47,.16));
+    drop-shadow(3px 5px 4px rgba(40,35,47,.15))
+    drop-shadow(8px 13px 18px rgba(40,35,47,.13));
 }
 .header::before {
   content: '';
@@ -70,7 +70,7 @@ body {
     0 12px 24px rgba(40,35,47,.11);
 }
 /* White study sheets keep the grid, image sizes and original typography. */
-.work-card:not(.text-card) {
+.work-card:not(.text-card), .exp-card {
   --wc-study-edge: polygon(6px 4px, 13% 0, 27% 3px, 46% 1px, 68% 3px, 87% 0, calc(100% - 5px) 3px, 100% 12%, calc(100% - 3px) 31%, 100% 52%, calc(100% - 2px) 73%, 100% 91%, calc(100% - 5px) calc(100% - 3px), 83% 100%, 63% calc(100% - 3px), 42% 100%, 24% calc(100% - 2px), 5px calc(100% - 1px), 0 87%, 3px 68%, 0 47%, 2px 26%, 0 12%);
   position: relative;
   isolation: isolate;
@@ -80,7 +80,7 @@ body {
   box-shadow: none;
   filter: drop-shadow(0 1px .6px rgba(59,67,80,.14)) drop-shadow(2px 6px 10px rgba(40,35,47,.08));
 }
-.work-card:not(.text-card)::before {
+.work-card:not(.text-card)::before, .exp-card::before {
   content: '';
   position: absolute;
   inset: 0;
@@ -104,13 +104,12 @@ body {
   box-shadow: none;
 }
 .work-card.text-card .work-card-content { padding: 36px; }
-.work-card.text-card .tag { background: rgba(135,175,203,.2); }
 .work-card.text-card.watercolor-surface::before {
   border-radius: 0;
   background: var(--wc-swatch) center / 100% 100% no-repeat;
   transform: var(--wc-swatch-turn);
 }
-.work-card.text-card.watercolor-surface.is-washed::before { opacity: .82; }
+.work-card.text-card.watercolor-surface.is-washed::before { opacity: .52; }
 .work-card.text-card[data-swatch='1'],
 .work-card.text-card[data-swatch='3'],
 .work-card.text-card[data-swatch='5'] { --wc-swatch: var(--wc-swatch-wet); }
