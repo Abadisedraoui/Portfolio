@@ -50,11 +50,6 @@
           </g>
           ${lashes}
         </svg>
-        ${side === "right" ? `
-          <svg class="contact-success__check" viewBox="0 0 34 24" aria-hidden="true" focusable="false">
-            <path d="M2 14 L9 20 L31 3"></path>
-          </svg>
-        ` : ""}
       </div>
     `;
   }
@@ -68,13 +63,12 @@
             ${homeEyeMarkup("right", true)}
           </div>
 
-          <p class="contact-success__message">
-            MESSAGE SEN<span class="contact-success__last-letter">T
-              <span class="contact-success__dust" aria-hidden="true">
-                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              </span>
-            </span>
-          </p>
+          <h2 class="contact-success__message" id="contact-success-message">Message sent</h2>
+          <span class="contact-success__check" aria-hidden="true">
+            <svg viewBox="0 0 24 24" focusable="false">
+              <path d="M5 12.5 L10 17.5 L19 7"></path>
+            </svg>
+          </span>
         </div>
       </div>
     `;
@@ -179,6 +173,7 @@
     }
 
     dialog.classList.remove("is-success");
+    dialog.setAttribute("aria-labelledby", "contact-dialog-title");
 
     const panel = dialog.querySelector(".contact-dialog__panel");
     if (panel) {
@@ -222,6 +217,7 @@
     /* Keep the exact same slab dimensions while the form becomes the success state. */
     panel.style.height = currentHeight + "px";
     dialog.classList.add("is-success");
+    dialog.setAttribute("aria-labelledby", "contact-success-message");
 
     const closeButton = dialog.querySelector(".contact-dialog__close");
     if (closeButton) {
