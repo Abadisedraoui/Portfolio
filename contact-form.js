@@ -41,12 +41,12 @@
       <div class="contact-success__eye ${wink ? "contact-success__eye--wink" : ""}">
         <svg viewBox="0 0 140 70" aria-hidden="true" focusable="false">
           <g class="contact-success__eye-group">
-            <path d="M4,35 Q70,4 136,35" fill="none" stroke="#28232f" stroke-width="3.6" stroke-linecap="round"></path>
-            <path d="M4,35 Q70,66 136,35" fill="none" stroke="#28232f" stroke-width="2.2" stroke-linecap="round"></path>
-            <g class="contact-success__eyeball">
-              <circle cx="70" cy="35" r="15" fill="none" stroke="#28232f" stroke-width="2.4"></circle>
+<g class="contact-success__eyeball">
+              <circle cx="70" cy="35" r="15" fill="#94b7d6" fill-opacity=".2" stroke="#28232f" stroke-width="2.4"></circle>
               <circle cx="70" cy="35" r="7" fill="#28232f"></circle>
             </g>
+<path d="M4,35 Q70,4 136,35" fill="none" stroke="#28232f" stroke-width="3.6" stroke-linecap="round"></path>
+            <path d="M4,35 Q70,66 136,35" fill="none" stroke="#28232f" stroke-width="2.2" stroke-linecap="round"></path>
           </g>
           ${lashes}
         </svg>

@@ -1,0 +1,157 @@
+/* Iteration 4: existing layouts and typography, on cotton paper. */
+:root {
+  --wc-paper: url('images/watercolor-paper.webp');
+  --wc-wash: url('images/watercolor-wash.webp');
+  --wc-ink: #28232f;
+  --wc-edge: polygon(2px 2px, 17% 0, 34% 1px, 51% 0, 72% 2px, 89% 0, calc(100% - 2px) 2px, 100% 19%, calc(100% - 1px) 43%, 100% 68%, calc(100% - 2px) calc(100% - 2px), 81% 100%, 61% calc(100% - 1px), 42% 100%, 23% calc(100% - 2px), 2px calc(100% - 1px), 0 79%, 1px 54%, 0 27%);
+}
+body {
+  background-color: #f3f4f6;
+  background-image: linear-gradient(rgba(244,245,247,.45), rgba(244,245,247,.45)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+}
+@media (pointer: fine) {
+  body, body :is(a, button, [role='button'], .pokemon-card) {
+    cursor: url('images/watercolor-cursor.svg') 16 2, auto;
+  }
+  input, textarea { cursor: text; }
+  button:disabled { cursor: wait; }
+}
+
+/* Paper rests a little above the page; original navigation stays intact. */
+.header, .project-body .header {
+  background-color: #f8f9fa;
+  background-image: linear-gradient(rgba(250,251,252,.22), rgba(250,251,252,.22)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 2px 0 #d5d8dc, 0 6px 16px rgba(40,35,47,.07), 0 0 0 1px rgba(40,35,47,.09);
+}
+@media (max-width:600px) {
+  .nav {
+    background-color: #f8f9fa;
+    background-image: var(--wc-paper);
+    background-size: 520px 520px;
+    box-shadow: 0 2px 0 #d5d8dc, 0 8px 24px rgba(40,35,47,.1);
+  }
+}
+.work-card, .quick-case__summary, .quick-case__visual, .quick-case__clip, .media-card, .exp-card {
+  background-color: #f9fafb;
+  background-image: linear-gradient(rgba(255,255,255,.45), rgba(255,255,255,.45)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+}
+.project-intro, .quick-case__intro {
+  background-color: #e4e7eb;
+  background-image: linear-gradient(rgba(214,220,227,.58), rgba(214,220,227,.58)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+}
+.footer {
+  background-color: #626874;
+  background-image: linear-gradient(rgba(84,91,106,.92), rgba(84,91,106,.92)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+}
+
+/* One watery reveal on entry; the pigment stays after it has settled. */
+.watercolor-surface { position: relative; isolation: isolate; }
+.watercolor-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--wc-wash) left center / 115% 150% no-repeat;
+  mix-blend-mode: multiply;
+  opacity: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(90deg, #000 0%, #000 39%, transparent 52%, transparent 100%);
+  mask-size: 260% 100%;
+  mask-position: 100% 0;
+  transition: mask-position 2.2s cubic-bezier(.2,.55,.25,1), opacity 1.7s ease;
+}
+.watercolor-surface.is-washed::before { mask-position: 0 0; opacity: .8; }
+.footer.watercolor-surface::before {
+  background-image: linear-gradient(100deg, rgba(58,89,132,.9), rgba(71,105,145,.45)), var(--wc-wash);
+  background-blend-mode: multiply;
+  mix-blend-mode: normal;
+}
+.footer.watercolor-surface.is-washed::before { opacity: .72; }
+
+/* Slightly irregular edges on the two loose sheets of paper. */
+.contact-dialog__panel, .cookie-consent {
+  isolation: isolate;
+  color: var(--wc-ink);
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 2px 0 #d0d4d9) drop-shadow(0 10px 20px rgba(40,35,47,.14));
+}
+.contact-dialog__panel::after, .cookie-consent::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  clip-path: var(--wc-edge);
+  background-color: #f5f6f8;
+  background-image: linear-gradient(rgba(246,247,249,.2), rgba(246,247,249,.2)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+  pointer-events: none;
+}
+.contact-dialog__panel.watercolor-surface::before,
+.cookie-consent.watercolor-surface::before { clip-path: var(--wc-edge); }
+.contact-dialog__panel.watercolor-surface.is-washed::before { opacity: .32; }
+.cookie-consent.watercolor-surface.is-washed::before { opacity: .36; }
+.contact-dialog__title, .contact-success__message { text-shadow: 0 1px 0 rgba(255,255,255,.8); }
+.contact-form input, .contact-form textarea {
+  background: rgba(255,255,255,.65);
+  border-color: rgba(66,81,102,.24);
+  box-shadow: inset 0 1px 3px rgba(40,35,47,.035);
+}
+.contact-form__submit-label { color: #3e4e64; }
+.contact-form__submit svg g { filter: drop-shadow(0 2px 2px rgba(40,35,47,.11)); }
+.contact-success__eyeball circle:first-child { fill: #94b7d6; fill-opacity: .2; }
+
+/* Exact original index artwork, with the wash below the ink. */
+.portfolio-entry::before, .portfolio-entry::after { display: none; }
+.portfolio-entry .hero { overflow: clip; }
+.portfolio-entry .face { position: relative; isolation: isolate; }
+.entry-watercolor {
+  position: absolute;
+  z-index: -1;
+  width: calc(100% + 330px);
+  max-width: none;
+  height: auto;
+  left: 50%;
+  top: calc(50% + 10px);
+  transform: translate(-50%, -50%);
+  opacity: .8;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  mask-image: linear-gradient(35deg, #000 8%, #000 37%, rgba(0,0,0,.82) 52%, rgba(0,0,0,.2) 73%, transparent 91%);
+}
+.portfolio-entry .eye { position: relative; z-index: 1; }
+.portfolio-entry .face { margin-bottom: clamp(22px, 4dvh, 40px); }
+.portfolio-entry .btn-stone svg g { filter: drop-shadow(0 2px 2px rgba(40,35,47,.11)); }
+.portfolio-entry .btn-label { font-weight: 600; letter-spacing: .09em; color: #344257; }
+.portfolio-entry .salam-stone { margin-bottom: clamp(14px, 2dvh, 22px); }
+
+/* Pigment blooms inside the existing SVG outline. It never obscures the ink. */
+.watercolor-button-bloom {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: translate(-35px, 15px) scale(.08);
+  filter: blur(7px);
+  transition: opacity .2s ease, transform .42s cubic-bezier(.2,.7,.3,1);
+}
+.is-blushing .watercolor-button-bloom { opacity: .9; transform: translate(0,0) scale(1.2); }
+.is-blushing .btn-label { color: #28232f; }
+@media (max-width:560px) {
+  .entry-watercolor { width: calc(100% + 150px); top: calc(50% + 8px); opacity: .76; }
+  .portfolio-entry .face { margin-bottom: 26px; }
+}
+@media (max-height:600px) {
+  .portfolio-entry .face { margin-bottom: 12px; }
+  .portfolio-entry .salam-stone { margin-bottom: 10px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .watercolor-surface::before, .watercolor-button-bloom { transition: none; }
+}

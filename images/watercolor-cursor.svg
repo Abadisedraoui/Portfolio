@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="28" viewBox="0 0 100 86">
+  <defs>
+    <linearGradient id="blue" x2=".8" y2="1"><stop stop-color="#829fbc"/><stop offset=".5" stop-color="#5c7e9e"/><stop offset="1" stop-color="#3c5c7b"/></linearGradient>
+    <linearGradient id="sage" x2=".8" y2="1"><stop stop-color="#9db8ae"/><stop offset=".5" stop-color="#789b90"/><stop offset="1" stop-color="#567d72"/></linearGradient>
+    <linearGradient id="clay" x2=".8" y2="1"><stop stop-color="#d0a399"/><stop offset=".5" stop-color="#bb8376"/><stop offset="1" stop-color="#9e6257"/></linearGradient>
+  </defs>
+  <g stroke="#364355" stroke-width="3" stroke-linejoin="round">
+    <path d="M50 4 Q51 4 53 6 L70 26 Q72 28 70 30 L53 50 Q50 53 47 50 L30 30 Q28 28 30 26 L47 6 Q49 4 50 4Z" fill="url(#blue)"/>
+    <path d="M25 39 Q26 39 28 41 L45 61 Q47 63 45 65 L28 83 Q25 86 22 83 L5 65 Q3 63 5 61 L22 41 Q24 39 25 39Z" fill="url(#sage)"/>
+    <path d="M75 39 Q76 39 78 41 L95 61 Q97 63 95 65 L78 83 Q75 86 72 83 L55 65 Q53 63 55 61 L72 41 Q74 39 75 39Z" fill="url(#clay)"/>
+  </g>
+  <g fill="none" stroke="#f4fafb" stroke-opacity=".85" stroke-width="4" stroke-linecap="round">
+    <path d="M36 27 Q40 20 47 14"/><path d="M11 62 Q15 55 22 49"/><path d="M61 62 Q65 55 72 49"/>
+  </g>
+</svg>
