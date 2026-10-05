@@ -108,6 +108,9 @@ body {
   border-radius: 0;
   background: var(--wc-swatch) center / 100% 100% no-repeat;
   transform: var(--wc-swatch-turn);
+  opacity: .52;
+  mask-image: none;
+  transition: none;
 }
 .work-card.text-card.watercolor-surface.is-washed::before { opacity: .52; }
 .work-card.text-card[data-swatch='1'],

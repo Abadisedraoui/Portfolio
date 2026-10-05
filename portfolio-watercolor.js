@@ -69,9 +69,10 @@
   }, {threshold: .12}) : null;
   function prepareSurface(surface) {
     if (surface.classList.contains('watercolor-surface')) return;
-    if (surface.matches('.work-card.text-card')) surface.dataset.swatch = String(swatchId++ % 6);
+    const isSwatch = surface.matches('.work-card.text-card');
+    if (isSwatch) surface.dataset.swatch = String(swatchId++ % 6);
     surface.classList.add('watercolor-surface');
-    if (motion.matches || !observer) surface.classList.add('is-washed');
+    if (isSwatch || motion.matches || !observer) surface.classList.add('is-washed');
     else observer.observe(surface);
   }
   const surfaceSelector = '.project-intro, .quick-case__intro, .work-card.text-card, .footer, .cookie-consent, .contact-dialog__panel';
