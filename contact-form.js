@@ -64,11 +64,6 @@
           </div>
 
           <h2 class="contact-success__message" id="contact-success-message">Message sent</h2>
-          <span class="contact-success__check" aria-hidden="true">
-            <svg viewBox="0 0 24 24" focusable="false">
-              <path d="M5 12.5 L10 17.5 L19 7"></path>
-            </svg>
-          </span>
         </div>
       </div>
     `;
@@ -175,10 +170,6 @@
     dialog.classList.remove("is-success");
     dialog.setAttribute("aria-labelledby", "contact-dialog-title");
 
-    const panel = dialog.querySelector(".contact-dialog__panel");
-    if (panel) {
-      panel.style.height = "";
-    }
   }
 
   function openDialog(event) {
@@ -211,11 +202,6 @@
   }
 
   function showSuccessState(dialog) {
-    const panel = dialog.querySelector(".contact-dialog__panel");
-    const currentHeight = panel.getBoundingClientRect().height;
-
-    /* Keep the exact same slab dimensions while the form becomes the success state. */
-    panel.style.height = currentHeight + "px";
     dialog.classList.add("is-success");
     dialog.setAttribute("aria-labelledby", "contact-success-message");
 
