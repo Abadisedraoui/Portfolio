@@ -20,23 +20,38 @@ body {
 
 /* Paper rests a little above the page; original navigation stays intact. */
 .header, .project-body .header {
-  background-color: #f8f9fa;
-  background-image: linear-gradient(rgba(250,251,252,.22), rgba(250,251,252,.22)), var(--wc-paper);
+  background-color: #fff;
+  background-image: linear-gradient(rgba(255,255,255,.74), rgba(255,255,255,.74)), var(--wc-paper);
   background-size: auto, 520px 520px;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.92), 0 2px 0 #d5d8dc, 0 6px 16px rgba(40,35,47,.07), 0 0 0 1px rgba(40,35,47,.09);
+  box-shadow:
+    inset 0 2px 0 #fff,
+    inset 0 -1px 0 rgba(40,35,47,.05),
+    0 0 0 1px rgba(59,67,80,.22),
+    0 4px 0 #ccd1d8,
+    0 10px 20px rgba(40,35,47,.13);
 }
 @media (max-width:600px) {
   .nav {
-    background-color: #f8f9fa;
-    background-image: var(--wc-paper);
-    background-size: 520px 520px;
-    box-shadow: 0 2px 0 #d5d8dc, 0 8px 24px rgba(40,35,47,.1);
+    background-color: #fff;
+    background-image: linear-gradient(rgba(255,255,255,.74), rgba(255,255,255,.74)), var(--wc-paper);
+    background-size: auto, 520px 520px;
+    box-shadow: inset 0 2px 0 #fff, 0 0 0 1px rgba(59,67,80,.22), 0 4px 0 #ccd1d8, 0 10px 20px rgba(40,35,47,.13);
   }
 }
 .work-card, .quick-case__summary, .quick-case__visual, .quick-case__clip, .media-card, .exp-card {
   background-color: #f9fafb;
   background-image: linear-gradient(rgba(255,255,255,.45), rgba(255,255,255,.45)), var(--wc-paper);
   background-size: auto, 520px 520px;
+}
+/* Cut-paper cards: a clear edge, a little thickness and a soft cast shadow. */
+.work-card, .quick-case__summary, .exp-card {
+  background-image: linear-gradient(rgba(255,255,255,.64), rgba(255,255,255,.64)), var(--wc-paper);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.95),
+    inset 0 -1px 0 rgba(40,35,47,.04),
+    0 0 0 1px rgba(59,67,80,.18),
+    0 3px 0 #d1d6dd,
+    0 12px 24px rgba(40,35,47,.11);
 }
 .project-intro, .quick-case__intro {
   background-color: #e4e7eb;
@@ -83,7 +98,10 @@ body {
   border-radius: 8px;
   background: transparent;
   box-shadow: none;
-  filter: drop-shadow(0 2px 0 #d0d4d9) drop-shadow(0 10px 20px rgba(40,35,47,.14));
+  filter:
+    drop-shadow(0 0 .65px rgba(59,67,80,.65))
+    drop-shadow(0 4px 0 #c9cfd7)
+    drop-shadow(0 12px 22px rgba(40,35,47,.18));
 }
 .contact-dialog__panel::after, .cookie-consent::after {
   content: '';
@@ -91,9 +109,10 @@ body {
   inset: 0;
   z-index: -2;
   clip-path: var(--wc-edge);
-  background-color: #f5f6f8;
-  background-image: linear-gradient(rgba(246,247,249,.2), rgba(246,247,249,.2)), var(--wc-paper);
+  background-color: #fff;
+  background-image: linear-gradient(rgba(255,255,255,.62), rgba(255,255,255,.62)), var(--wc-paper);
   background-size: auto, 520px 520px;
+  box-shadow: inset 0 2px 0 rgba(255,255,255,.95), inset 0 -1px 0 rgba(40,35,47,.1);
   pointer-events: none;
 }
 .contact-dialog__panel.watercolor-surface::before,
