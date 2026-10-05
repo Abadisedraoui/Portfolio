@@ -4,7 +4,9 @@ Last updated: 6 October 2026. Baseline: `iteration-5` at
 `381f06dc02e69ff17b9f863d1fcc2537a3491455`.
 
 This is a working audit, not a statement of full WCAG conformance.
-Only explicitly approved changes have been implemented.
+Only explicitly approved changes have been implemented, in the
+`accessibility-approved-after-iteration-5` review branch. They are not yet
+published. Items remain unchecked until browser verification is complete.
 
 ## Contrast and visual consistency
 
@@ -52,4 +54,15 @@ Only explicitly approved changes have been implemented.
 - Parsed all 28 JavaScript files/inline scripts without syntax errors.
 - Verified a single main and h1 on all 16 pages and no skipped heading ranks.
 - Tested persistent confirmation and explicit closing using the real functions with mocks; no submission sent to Formspree.
+- Exercised the actual About script with a DOM mock: initial modal focus, Tab/Shift+Tab loop, Escape, preservation/restoration of background inertness, and return focus all passed.
+- Exercised card activation: native button controls, retained focus, stable DOM reading order and disabling controls in the static layout all passed.
+- Exercised mobile menu state, Escape closing and focus restoration with a DOM mock; verified the same handler and markup on all 15 pages with menus.
+- Exercised Enter and Space on all nine responsive gallery controls: the correct three-image group, selected index and focus-restoration opener were supplied to the viewer.
 - Base-color contrast: “Click here” 5.63:1 on `#F3F4F6`; secondary text 6.83:1 on `#E4E7EB`; field boundary 4.42:1 on white and 3.20:1 on `#D5DCE5`. These values do not replace rendered texture checks.
+
+## Remaining verification limits
+
+- The browser cannot access the local preview (`ERR_BLOCKED_BY_CLIENT`), so no rendered visual or browser keyboard check of this review branch has been completed.
+- Production remains at iteration 5. Automatic approval review rejected updating `main` because explicit publication approval is required. Review proposal: https://github.com/Abadisedraoui/Portfolio/pull/1.
+- V2 requires an actual NVDA/VoiceOver session; an accessibility tree or mocked DOM does not substitute for that test.
+- V3 stays pending until the implemented branch is available in a browser and the complete journeys have been run. Cookie notice handling (K4) is still an unresolved finding.
