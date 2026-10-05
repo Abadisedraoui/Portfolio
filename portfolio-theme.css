@@ -1,0 +1,264 @@
+/* Iteration 2: an editorial hierarchy and one quiet mineral material.
+   Loaded after page-specific styles, so Quick Scan and Deep Dive share
+   the same primitives without changing their content or interactions. */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&display=swap');
+
+:root {
+  --portfolio-ink: #28232f;
+  --portfolio-accent: #435670;
+  --portfolio-muted: #535f70;
+  --portfolio-page: #f5f6f7;
+  --portfolio-line: rgba(40, 35, 47, .14);
+  --portfolio-radius: 16px;
+  --portfolio-control-radius: 6px;
+  --portfolio-shadow: 0 5px 18px rgba(40, 35, 47, .045);
+  --portfolio-display: 'Cormorant Garamond', Georgia, serif;
+  --portfolio-stone: url('images/mineral-surface.svg');
+}
+
+body:not(.portfolio-entry) { background: var(--portfolio-page); }
+
+/* Navigation is a quiet frame rather than a large floating container. */
+.header,
+.project-body .header {
+  margin: 24px auto 40px;
+  padding: 8px 0 16px;
+  border: 0;
+  border-bottom: 1px solid var(--portfolio-line);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.header .logo { width: 64px; }
+.nav { gap: 20px; }
+.nav-link {
+  padding: 10px 2px;
+  border-radius: 0;
+  border-bottom: 1px solid transparent;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: var(--portfolio-ink);
+  background: transparent;
+  border-bottom-color: var(--portfolio-ink);
+}
+.nav-link-back,
+.nav-link-back:hover {
+  padding-right: 20px;
+  border-bottom: 0;
+  font-weight: 400;
+  font-style: normal;
+  color: var(--portfolio-accent);
+}
+
+/* Serif for introductions; sans serif for the detail of the work. */
+body:not(.portfolio-entry) .hero h1,
+.project-title-row h1,
+.quick-case__title-row h1,
+.privacy-content h1 {
+  font-family: var(--portfolio-display);
+  font-weight: 600;
+  font-size: clamp(40px, 4.3vw, 60px);
+  line-height: 1.05;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+body:not(.portfolio-entry) .hero h1 { margin-bottom: 28px; }
+.experience > h2,
+.more > h2,
+.responsive-gallery > h2,
+.quick-case__summary h2,
+.quick-case__decisions h2,
+.quick-case__evidence h2,
+.quick-case__outcome h2,
+.case-decisions h2 {
+  font-family: var(--portfolio-display);
+  font-weight: 600;
+  font-size: clamp(30px, 2.8vw, 38px);
+  line-height: 1.15;
+  letter-spacing: -.015em;
+}
+.hero h4,
+.project-intro h4 {
+  font-size: 12px;
+  letter-spacing: .1em;
+  color: var(--portfolio-accent);
+}
+.article-section h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 26px;
+  line-height: 1.25;
+}
+.work-card h3 {
+  font-size: 22px;
+  line-height: 1.25;
+  letter-spacing: -.015em;
+}
+.work-card-category { color: var(--portfolio-accent); }
+.hero p { max-width: 500px; line-height: 1.65; }
+.chulapa-line,
+.click-here-note { color: var(--portfolio-accent); }
+.stat strong {
+  font-family: var(--portfolio-display);
+  font-weight: 600;
+  font-size: 46px;
+  color: var(--portfolio-accent);
+}
+.stat span { font-size: 15px; font-weight: 400; }
+
+/* One material, at one scale. Reading surfaces stay smooth. */
+.project-intro,
+.quick-case__intro,
+.contact-dialog__panel {
+  background-image: var(--portfolio-stone), linear-gradient(145deg, #f0f2f4, #e4e7ea);
+  background-size: 480px 480px, 100% 100%;
+  background-position: center;
+  border: 1px solid var(--portfolio-line);
+  border-radius: var(--portfolio-radius);
+}
+.project-intro,
+.quick-case__intro {
+  padding: clamp(24px, 4vw, 48px);
+  margin: 0 0 40px;
+}
+.quick-case__read-time,
+.quick-case figcaption,
+.case-summary figcaption,
+.quick-case__facts dt,
+.case-facts dt { color: var(--portfolio-muted); }
+.case-summary .media-card__frame { background: transparent; }
+.work-card,
+.exp-card,
+.quick-case__summary,
+.quick-case__visual,
+.quick-case__clip,
+.media-card,
+.device-carousel,
+.case-study-video,
+.article-image {
+  border-radius: var(--portfolio-radius);
+  box-shadow: var(--portfolio-shadow);
+  border: 1px solid var(--portfolio-line);
+}
+.work-card-content { padding: 26px; }
+.quick-case__hero-media img { border-radius: 12px; }
+.hero-image img { border-radius: 12px; }
+.tag {
+  border-radius: 4px;
+  padding: 6px 9px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* The interior actions share a quiet, lightly bevelled stone surface.
+   The entrance retains its more sculptural version of that surface. */
+.button,
+.process-more .button,
+.contact-form__submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 46px;
+  padding: 12px 20px;
+  border: 1px solid rgba(40, 35, 47, .34);
+  border-radius: var(--portfolio-control-radius);
+  background: linear-gradient(145deg, #fafbfc, #e8ebee);
+  color: var(--portfolio-ink);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 2px 3px rgba(40,35,47,.045);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.button:hover,
+.process-more .button:hover,
+.contact-form__submit:hover {
+  background: linear-gradient(145deg, #f4f6f8, #dde2e7);
+  border-color: var(--portfolio-accent);
+  color: var(--portfolio-ink);
+  transform: translateY(-1px);
+}
+.button:active,
+.contact-form__submit:active { transform: translateY(0); }
+.button:focus-visible,
+.contact-form__submit:focus-visible,
+.nav-link:focus-visible {
+  outline: 3px solid #3e6fb3;
+  outline-offset: 4px;
+}
+.cv-buttons { gap: 12px; }
+.contact-form__submit { width: auto; height: auto; min-width: 116px; }
+.contact-form__submit svg { display: none; }
+.contact-form__submit-label {
+  font: inherit;
+  letter-spacing: 0;
+  text-transform: none;
+  color: inherit;
+}
+.contact-dialog__title,
+.contact-success__message { font-family: var(--portfolio-display); }
+.contact-dialog__title { font-size: 38px; }
+.contact-dialog__panel {
+  box-shadow: 0 20px 60px rgba(40,35,47,.19), inset 0 1px 0 rgba(255,255,255,.75);
+}
+.contact-form input,
+.contact-form textarea { border-radius: var(--portfolio-control-radius); background: rgba(255,255,255,.78); }
+
+/* Personal cards keep their fan and colours, with calmer frames. */
+.pokemon-collectible {
+  border-radius: var(--portfolio-radius);
+  padding: 6px;
+  box-shadow: 0 6px 20px rgba(40,35,47,.10);
+}
+.pokemon-card-face { border-radius: 10px; }
+.pokemon-card-photo { border-width: 1px; }
+.pokemon-card-heading h3 { letter-spacing: -.015em; }
+
+.portfolio-entry {
+  background-image: var(--portfolio-stone), linear-gradient(160deg, #f0f2f4, #e4e7ea);
+  background-size: 480px 480px, 100% 100%;
+}
+.portfolio-entry::before,
+.portfolio-entry::after { display: none; }
+.portfolio-entry .btn-stone svg g { filter: drop-shadow(0 2px 2px rgba(40,35,47,.12)); }
+.portfolio-entry .btn-stone svg path[stroke] { stroke-width: 1.1; }
+.portfolio-entry .btn-label { font-weight: 600; letter-spacing: .09em; }
+
+@media (max-width: 900px) {
+  .header,
+  .project-body .header,
+  .main,
+  .project-page { width: calc(100% - 64px); }
+  .main,
+  .project-page { padding-left: 0; padding-right: 0; }
+  .project-intro { margin-left: 0; margin-right: 0; }
+}
+@media (max-width: 600px) {
+  .header,
+  .project-body .header { margin: 16px auto 28px; padding: 4px 0 12px; }
+  .header,
+  .project-body .header,
+  .main,
+  .project-page { width: calc(100% - 32px); }
+  .header .logo { width: 52px; }
+  .nav { border-radius: 12px; right: 0; }
+  .nav-link-back,
+  .nav-link-back:hover { border-right: 0; padding: 0 0 12px; border-bottom: 1px solid var(--portfolio-line); }
+  body:not(.portfolio-entry) .hero h1,
+  .project-title-row h1,
+  .quick-case__title-row h1 { font-size: 40px; }
+  .project-intro,
+  .quick-case__intro { padding: 26px 22px; margin-bottom: 28px; }
+  .quick-case__summary { padding: 24px; }
+  .work-card-content { padding: 22px; }
+  .contact-dialog__title { font-size: 34px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .contact-form__submit { transition: none; }
+  .button:hover,
+  .contact-form__submit:hover { transform: none; }
+}
