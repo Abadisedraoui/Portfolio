@@ -5,6 +5,7 @@
   --wc-swatch-dry: url('images/watercolor-swatch-dry.webp');
   --wc-swatch-wet: url('images/watercolor-swatch-wet.webp');
   --wc-ink: #28232f;
+  --wc-study-edge: polygon(6px 4px, 13% 0, 27% 3px, 46% 1px, 68% 3px, 87% 0, calc(100% - 5px) 3px, 100% 12%, calc(100% - 3px) 31%, 100% 52%, calc(100% - 2px) 73%, 100% 91%, calc(100% - 5px) calc(100% - 3px), 83% 100%, 63% calc(100% - 3px), 42% 100%, 24% calc(100% - 2px), 5px calc(100% - 1px), 0 87%, 3px 68%, 0 47%, 2px 26%, 0 12%);
   --wc-edge: polygon(2px 2px, 17% 0, 34% 1px, 51% 0, 72% 2px, 89% 0, calc(100% - 2px) 2px, 100% 19%, calc(100% - 1px) 43%, 100% 68%, calc(100% - 2px) calc(100% - 2px), 81% 100%, 61% calc(100% - 1px), 42% 100%, 23% calc(100% - 2px), 2px calc(100% - 1px), 0 79%, 1px 54%, 0 27%);
 }
 body {
@@ -71,7 +72,6 @@ body {
 }
 /* White study sheets keep the grid, image sizes and original typography. */
 .work-card:not(.text-card), .exp-card {
-  --wc-study-edge: polygon(6px 4px, 13% 0, 27% 3px, 46% 1px, 68% 3px, 87% 0, calc(100% - 5px) 3px, 100% 12%, calc(100% - 3px) 31%, 100% 52%, calc(100% - 2px) 73%, 100% 91%, calc(100% - 5px) calc(100% - 3px), 83% 100%, 63% calc(100% - 3px), 42% 100%, 24% calc(100% - 2px), 5px calc(100% - 1px), 0 87%, 3px 68%, 0 47%, 2px 26%, 0 12%);
   position: relative;
   isolation: isolate;
   border-radius: 0;
@@ -94,25 +94,42 @@ body {
 .work-card:not(.text-card) .work-card-image {
   clip-path: polygon(6px 4px, 13% 0, 27% 3px, 46% 1px, 68% 3px, 87% 0, calc(100% - 5px) 3px, 100% 12%, calc(100% - 2px) 49%, 100% 82%, 100% 100%, 0 100%, 0 82%, 2px 48%, 0 12%);
 }
-/* Painted swatches have no white container or raised card edge. */
+/* A quiet pigment glaze sits on the same white paper as the study cards. */
 .work-card.text-card {
   --wc-swatch: var(--wc-swatch-dry);
   --wc-swatch-turn: none;
+  position: relative;
+  isolation: isolate;
   border-radius: 0;
   overflow: visible;
   background: transparent;
   box-shadow: none;
+  filter: drop-shadow(0 1px .5px rgba(73,77,83,.13)) drop-shadow(1px 4px 6px rgba(73,77,83,.08));
+}
+.work-card.text-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  clip-path: var(--wc-study-edge);
+  background-color: #fff;
+  background-image: linear-gradient(rgba(255,255,255,.64), rgba(255,255,255,.64)), var(--wc-paper);
+  background-size: auto, 520px 520px;
 }
 .work-card.text-card .work-card-content { padding: 36px; }
 .work-card.text-card.watercolor-surface::before {
+  inset: 5px;
   border-radius: 0;
   background: var(--wc-swatch) center / 100% 100% no-repeat;
   transform: var(--wc-swatch-turn);
-  opacity: .52;
+  opacity: .24;
+  filter: saturate(.15);
+  mix-blend-mode: normal;
   mask-image: none;
   transition: none;
 }
-.work-card.text-card.watercolor-surface.is-washed::before { opacity: .52; }
+.work-card.text-card.watercolor-surface.is-washed::before { opacity: .24; }
 .work-card.text-card[data-swatch='1'],
 .work-card.text-card[data-swatch='3'],
 .work-card.text-card[data-swatch='5'] { --wc-swatch: var(--wc-swatch-wet); }
