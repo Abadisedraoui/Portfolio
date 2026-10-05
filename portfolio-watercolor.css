@@ -273,6 +273,10 @@ body :is(a, button, input, textarea, select, summary, [tabindex]):focus-visible 
 .footer :is(a, button, summary, [tabindex]):focus-visible {
   outline-color: #fff;
 }
+.pokemon-modal :is(button, [tabindex]):focus-visible,
+.lightbox :is(button, [tabindex]):focus-visible {
+  outline-color: #fff;
+}
 .device-carousel-track img:focus-visible { outline-offset: -6px; }
 
 /* Keyboard access to the existing card interaction preserves the reading order. */

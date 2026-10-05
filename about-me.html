@@ -565,7 +565,7 @@
       const control = document.createElement("button");
       control.type = "button";
       control.className = "pokemon-card-front-trigger";
-      control.setAttribute("aria-label", "Bring the " + card.querySelector("h2").textContent.trim() + " card to the front");
+      control.setAttribute("aria-label", "Bring the " + card.querySelector("h2").innerText.replace(/\s+/g, " ").trim() + " card to the front");
       card.appendChild(control);
       card.addEventListener("click", () => {
         if (getComputedStyle(card).position === "static") return;
@@ -676,4 +676,3 @@ window.addEventListener("resize", resizeHeroImage);
   <script src="contact-form.js?v=a11y-approved-20261006"></script>
 </body>
 </html>
-
