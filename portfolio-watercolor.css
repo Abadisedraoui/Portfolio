@@ -2,6 +2,8 @@
 :root {
   --wc-paper: url('images/watercolor-paper.webp');
   --wc-wash: url('images/watercolor-wash.webp');
+  --wc-swatch-dry: url('images/watercolor-swatch-dry.webp');
+  --wc-swatch-wet: url('images/watercolor-swatch-wet.webp');
   --wc-ink: #28232f;
   --wc-edge: polygon(2px 2px, 17% 0, 34% 1px, 51% 0, 72% 2px, 89% 0, calc(100% - 2px) 2px, 100% 19%, calc(100% - 1px) 43%, 100% 68%, calc(100% - 2px) calc(100% - 2px), 81% 100%, 61% calc(100% - 1px), 42% 100%, 23% calc(100% - 2px), 2px calc(100% - 1px), 0 79%, 1px 54%, 0 27%);
 }
@@ -22,16 +24,27 @@ body {
 .header, .project-body .header {
   position: relative;
   z-index: 2;
+  isolation: isolate;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  filter:
+    drop-shadow(0 0 .5px rgba(59,67,80,.48))
+    drop-shadow(1px 2px 0 #d0d5dc)
+    drop-shadow(3px 5px 4px rgba(40,35,47,.18))
+    drop-shadow(8px 13px 18px rgba(40,35,47,.16));
+}
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  clip-path: polygon(5px 3px, 14% 0, 28% 2px, 51% 0, 76% 2px, calc(100% - 6px) 2px, calc(100% - 2px) 8px, 100% 36%, calc(100% - 1px) 69%, calc(100% - 4px) calc(100% - 4px), 79% 100%, 59% calc(100% - 2px), 38% 100%, 19% calc(100% - 1px), 5px calc(100% - 2px), 1px calc(100% - 8px), 0 61%, 2px 29%);
   background-color: #fff;
   background-image: linear-gradient(rgba(255,255,255,.74), rgba(255,255,255,.74)), var(--wc-paper);
   background-size: auto, 520px 520px;
-  box-shadow:
-    inset 0 1px 0 #fff,
-    inset -1px -1px 0 rgba(40,35,47,.06),
-    0 0 0 1px rgba(59,67,80,.22),
-    1px 2px 0 #d0d5dc,
-    3px 5px 4px rgba(40,35,47,.21),
-    8px 13px 18px rgba(40,35,47,.19);
+  box-shadow: inset 0 1px 0 #fff, inset -1px -1px 0 rgba(40,35,47,.06);
 }
 @media (max-width:600px) {
   .nav {
@@ -56,6 +69,55 @@ body {
     0 3px 0 #d1d6dd,
     0 12px 24px rgba(40,35,47,.11);
 }
+/* White study sheets keep the grid, image sizes and original typography. */
+.work-card:not(.text-card) {
+  --wc-study-edge: polygon(6px 4px, 13% 0, 27% 3px, 46% 1px, 68% 3px, 87% 0, calc(100% - 5px) 3px, 100% 12%, calc(100% - 3px) 31%, 100% 52%, calc(100% - 2px) 73%, 100% 91%, calc(100% - 5px) calc(100% - 3px), 83% 100%, 63% calc(100% - 3px), 42% 100%, 24% calc(100% - 2px), 5px calc(100% - 1px), 0 87%, 3px 68%, 0 47%, 2px 26%, 0 12%);
+  position: relative;
+  isolation: isolate;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+  filter: drop-shadow(0 1px .6px rgba(59,67,80,.14)) drop-shadow(2px 6px 10px rgba(40,35,47,.08));
+}
+.work-card:not(.text-card)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  clip-path: var(--wc-study-edge);
+  background-color: #fff;
+  background-image: linear-gradient(rgba(255,255,255,.64), rgba(255,255,255,.64)), var(--wc-paper);
+  background-size: auto, 520px 520px;
+}
+.work-card:not(.text-card) .work-card-image {
+  clip-path: polygon(6px 4px, 13% 0, 27% 3px, 46% 1px, 68% 3px, 87% 0, calc(100% - 5px) 3px, 100% 12%, calc(100% - 2px) 49%, 100% 82%, 100% 100%, 0 100%, 0 82%, 2px 48%, 0 12%);
+}
+/* Painted swatches have no white container or raised card edge. */
+.work-card.text-card {
+  --wc-swatch: var(--wc-swatch-dry);
+  --wc-swatch-turn: none;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  box-shadow: none;
+}
+.work-card.text-card .work-card-content { padding: 36px; }
+.work-card.text-card .tag { background: rgba(135,175,203,.2); }
+.work-card.text-card.watercolor-surface::before {
+  border-radius: 0;
+  background: var(--wc-swatch) center / 100% 100% no-repeat;
+  transform: var(--wc-swatch-turn);
+}
+.work-card.text-card.watercolor-surface.is-washed::before { opacity: .82; }
+.work-card.text-card[data-swatch='1'],
+.work-card.text-card[data-swatch='3'],
+.work-card.text-card[data-swatch='5'] { --wc-swatch: var(--wc-swatch-wet); }
+.work-card.text-card[data-swatch='2'],
+.work-card.text-card[data-swatch='5'] { --wc-swatch-turn: scaleX(-1); }
+.work-card.text-card[data-swatch='3'] { --wc-swatch-turn: scaleY(-1); }
+.work-card.text-card[data-swatch='4'] { --wc-swatch-turn: scale(-1); }
 .project-intro, .quick-case__intro {
   background-color: #e4e7eb;
   background-image: linear-gradient(rgba(214,220,227,.58), rgba(214,220,227,.58)), var(--wc-paper);

@@ -5,6 +5,7 @@
   let paletteIndex = 0;
   let leaving = false;
   let buttonId = 0;
+  let swatchId = 0;
   const ns = 'http://www.w3.org/2000/svg';
   try { paletteIndex = Number(sessionStorage.getItem('za-watercolor-palette')) || 0; } catch (_) {}
 
@@ -68,6 +69,7 @@
   }, {threshold: .12}) : null;
   function prepareSurface(surface) {
     if (surface.classList.contains('watercolor-surface')) return;
+    if (surface.matches('.work-card.text-card')) surface.dataset.swatch = String(swatchId++ % 6);
     surface.classList.add('watercolor-surface');
     if (motion.matches || !observer) surface.classList.add('is-washed');
     else observer.observe(surface);
