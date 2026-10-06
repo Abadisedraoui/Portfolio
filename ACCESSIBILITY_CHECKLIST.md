@@ -1,68 +1,65 @@
-# Accessibility checklist
+# Checklist de accesibilidad
 
-Last updated: 6 October 2026. Baseline: `iteration-5` at
-`381f06dc02e69ff17b9f863d1fcc2537a3491455`.
+Actualizada: 6 de octubre de 2026 (UTC). Cambios aprobados publicados en
+https://zainababadi.com/ mediante la PR 1 y la revisión posterior de foco y
+nombres accesibles. Código: `f9591c144b62c52a6511b272318b5e8bbd045ba7`.
 
-This is a working audit, not a statement of full WCAG conformance.
-Only explicitly approved changes have been implemented, in the
-`accessibility-approved-after-iteration-5` review branch. They are not yet
-published. Items remain unchecked until browser verification is complete.
+Iteration 5 conserva el portfolio anterior completo en la rama `iteration-5`,
+commit `381f06dc02e69ff17b9f863d1fcc2537a3491455`.
 
-## Contrast and visual consistency
+Esta checklist registra correcciones concretas; no certifica conformidad
+completa con WCAG. Las casillas marcadas se refieren al alcance comprobado
+que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3.
 
-- [ ] C1 — “Click here”: `#9A9A9A` to `#52627A`. Implemented; browser verification pending.
-- [ ] C2 — Dates, roles and decision numbers: `#8B96A8` to `#3E4E64`. Implemented; browser verification pending.
-- [ ] C3 — Secondary descriptions, read time and captions: `#66758C` to `#3E4E64`. Implemented; browser verification pending.
-- [ ] C4 — Contact field boundaries: opaque `#6D798A`, keeping the existing 1px border and corners. Implemented; rendered background verification pending.
-- [ ] C5 — Complete contrast review of paper textures, washes, hover and focus states.
+## Contraste y consistencia visual
 
-## Keyboard and dialogs
+- [x] C1 — “Click here” y flecha: `#9A9A9A` → `#52627A`, conservando tipografía e inclinación. Color publicado comprobado; contraste base 5,63:1 sobre `#F3F4F6`.
+- [x] C2 — Fechas, roles y números: `#8B96A8` → `#3E4E64`, en la misma familia azul grisácea. Color comprobado; contraste base 6,83:1 sobre `#E4E7EB`.
+- [x] C3 — Descripciones, tiempo de lectura y captions: `#66758C` → `#3E4E64`. Clases afectadas comprobadas; captions con el tono oscuro existente `#43536B` lo conservan.
+- [x] C4 — Bordes de contacto: `#6D798A` opaco, mismo grosor de 1px y esquinas. En la captura publicada: mínimo 3,89:1 contra el papel adyacente en nombre/email, y 3,53:1 en mensaje.
+- [ ] C5 — Completar contraste de todas las texturas, aguadas y estados hover/focus. Proponer ajustes donde fallen manteniendo la paleta.
 
-- [ ] K1 — About cards dialog: focus entry, containment, background inertness, Escape and focus restoration. Implemented; browser verification pending.
-- [ ] K2 — Bring About cards forward with native button controls, preserving the DOM reading order. Disabled in the static mobile layout. Implemented; browser verification pending.
-- [ ] K3 — Nine responsive gallery images: keyboard activation and return focus. Implemented; browser verification pending.
-- [ ] K4 — Cookie notice modality, background access and dismissal focus. No changes approved or applied.
-- [ ] K5 — All 15 navigation buttons: expanded state, controlled navigation, Escape and return focus. Implemented; browser verification pending.
+## Teclado y ventanas
 
-## Structure and orientation
+- [x] K1 — About: foco inicial en Close, Tab/Shift+Tab dentro del modal, fondo inerte, Escape y devolución a Expand cards. Comprobado en la web.
+- [x] K2 — Tarjetas de About con botones nativos, Enter y Espacio, conservando orden del DOM y foco. Nombres accesibles separados correctamente entre líneas. Desactivadas en el diseño móvil estático; revisión visual móvil pendiente en V1.
+- [x] K3 — Nueve imágenes responsive: Enter/Espacio abren el grupo y posición correctos; Escape devuelve el foco a la imagen. Las nueve comprobadas.
+- [ ] K4 — Cookies: retener el foco dentro si se mantiene como modal y devolverlo a Cookie settings al cerrar. Fallo confirmado: Tab puede salir y Decline deja el foco en body. Cambio pendiente de aprobación.
+- [x] K5 — Estado expandido, relación con navegación, Escape y retorno al botón en los 15 menús. Marcado/handlers revisados y prueba funcional con DOM simulado superada. Interacción real en viewport móvil pendiente en V1/V3.
 
-- [ ] E1 — Skip-to-main link. No changes approved or applied.
-- [ ] E2 — Logical heading levels across 16 pages, preserving their visual styling. Implemented; browser verification pending.
-- [ ] E3 — “All fields are required” in the contact form. Implemented; browser verification pending.
+## Estructura y orientación
 
-## Feedback and motion
+- [ ] E1 — Añadir enlace para saltar al contenido principal, visible al recibir foco. Pendiente de aprobación.
+- [x] E2 — Encabezados lógicos conservando estilos. Las 16 páginas publicadas tienen un h1, un main y ningún salto de nivel.
+- [x] E3 — “All fields are required” en contacto, relacionado mediante aria-describedby. Texto, relación, etiquetas y validación nativa de campos vacíos comprobados.
 
-- [ ] M1 — Contact confirmation stays until explicitly closed. Implemented; mocked success/close test passed with no external message sent.
-- [ ] M2 — Remaining reduced-motion consistency in cookie animation and smooth scrolling. No changes approved or applied.
-- [ ] M3 — Shared visible keyboard focus, blue on light paper and white in the dark footer. Implemented; browser verification pending.
+## Feedback y movimiento
 
-## Content
+- [x] M1 — Confirmación del contacto persistente hasta cierre explícito. Eliminado el cierre automático; prueba de funciones reales con DOM simulado superada, sin enviar mensajes.
+- [ ] M2 — Revisar reduced-motion en animación de cookies y scroll suave. Pendiente de aprobación.
+- [x] M3 — Foco visible de 3px: azul sobre papel, blanco en footer y visores oscuros, interior en imágenes para evitar recortes. Comprobados contacto, About y galerías; revisión exhaustiva de estados pendiente en C5.
 
-- [ ] A1 — Silent videos: review equivalence of the existing captions and surrounding text; propose descriptions only where relevant visual information is missing. No video changes approved or applied.
-- [ ] A2 — Review generic alternative text in image galleries, card illustrations and prototype links. Implemented; browser verification pending. Full data-table/diagram transcriptions are outside this task.
-- [ ] A3 — Human/Robot CV PDFs: inspect tags, reading order, language and links; improve original Canva/Google Docs documents and verify the exported PDFs. No PDF changes approved or applied.
+## Contenido
 
-## Verification and statement
+- [ ] A1 — Revisar equivalencia de los textos de vídeos sin voz. Proponer descripciones donde falte información visual relevante, sin añadir voz ni captions redundantes. Cambios pendientes de aprobación.
+- [x] A2 — Alternativas específicas en galerías, ilustraciones y enlaces a prototipos. Imágenes inspeccionadas y alternativas publicadas comprobadas. Transcripciones completas de gráficos/tablas fuera de esta corrección.
+- [ ] A3 — CV PDF: revisar etiquetas, orden, idioma y enlaces. Mejorar originales en Canva/Google Docs y verificar exportaciones. Pendiente de aprobación y acceso a originales.
 
-- [ ] V1 — Mobile, 320 CSS pixels and 200–400% zoom. Not tested in this environment.
-- [ ] V2 — NVDA/VoiceOver testing. Authorized; no actual screen reader is available in this environment. Browser accessibility-tree review is recorded separately and does not complete this task.
-- [ ] V3 — Full keyboard journeys through navigation, contact, cookies and viewers. Authorized; browser verification pending.
-- [ ] V4 — Accessibility statement based on verified results and remaining limitations. Present the text for approval before publishing.
+## Pruebas y declaración
 
-## Checks completed before publication
+- [ ] V1 — Móvil, 320 CSS px y zoom 200–400%. Pendiente: este entorno no ofrece control de viewport/zoom para esta prueba.
+- [ ] V2 — NVDA/VoiceOver. Autorizado, pendiente: no hay lector de pantalla real disponible. El árbol accesible no sustituye esa sesión.
+- [ ] V3 — Recorridos completos de teclado. Contacto, About, nueve imágenes responsive y un visor nativo de Quick Scan comprobados en escritorio. Quedan K4 y navegación móvil real; mantener pendiente.
+- [ ] V4 — Redactar declaración con resultados y limitaciones verificadas; presentar para aprobación antes de publicar.
 
-- Parsed all 28 JavaScript files/inline scripts without syntax errors.
-- Verified a single main and h1 on all 16 pages and no skipped heading ranks.
-- Tested persistent confirmation and explicit closing using the real functions with mocks; no submission sent to Formspree.
-- Exercised the actual About script with a DOM mock: initial modal focus, Tab/Shift+Tab loop, Escape, preservation/restoration of background inertness, and return focus all passed.
-- Exercised card activation: native button controls, retained focus, stable DOM reading order and disabling controls in the static layout all passed.
-- Exercised mobile menu state, Escape closing and focus restoration with a DOM mock; verified the same handler and markup on all 15 pages with menus.
-- Exercised Enter and Space on all nine responsive gallery controls: the correct three-image group, selected index and focus-restoration opener were supplied to the viewer.
-- Base-color contrast: “Click here” 5.63:1 on `#F3F4F6`; secondary text 6.83:1 on `#E4E7EB`; field boundary 4.42:1 on white and 3.20:1 on `#D5DCE5`. These values do not replace rendered texture checks.
+## Evidencia y límites
 
-## Remaining verification limits
-
-- The browser cannot access the local preview (`ERR_BLOCKED_BY_CLIENT`), so no rendered visual or browser keyboard check of this review branch has been completed.
-- Production remains at iteration 5. Automatic approval review rejected updating `main` because explicit publication approval is required. Review proposal: https://github.com/Abadisedraoui/Portfolio/pull/1.
-- V2 requires an actual NVDA/VoiceOver session; an accessibility tree or mocked DOM does not substitute for that test.
-- V3 stays pending until the implemented branch is available in a browser and the complete journeys have been run. Cookie notice handling (K4) is still an unresolved finding.
+- Revisión de nombres y foco: commit `f9591c144b62c52a6511b272318b5e8bbd045ba7`; despliegue Pages `37391477244`, completado correctamente.
+- Publicación inicial: commit `0b513d9c75dcfe72b37a756cfcb66db0f0084ea2`; despliegue Pages `37390470253`, completado correctamente.
+- Las 16 páginas publicadas revisadas: estilos actualizados, estructura, alternativas de imágenes y marcado de navegación.
+- Contacto: Enter abre; Close recibe foco; Tab/Shift+Tab circulan dentro; Escape devuelve a Email me. Envío vacío activa validación nativa. No se envió ningún mensaje a Formspree.
+- About: Enter/Espacio activan tarjetas manteniendo DOM y foco; modal con fondo inerte, foco contenido y retorno al disparador.
+- Galería responsive: nueve aperturas con grupo/índice correctos y nueve retornos de foco. Visor nativo de Quick Scan: apertura, foco inicial y retorno con Escape.
+- Los 28 scripts analizados sin errores de sintaxis. Pruebas del código con DOM simulado para modal, tarjetas, menú y confirmación superadas.
+- C4 compara el color CSS del borde con píxeles del papel adyacente en una captura de escritorio con textura visible; no demuestra todos los tamaños y estados.
+- No se han cubierto todos los navegadores, dispositivos, tecnologías de asistencia, niveles de zoom o estados visuales. Los pendientes anteriores siguen vigentes.
