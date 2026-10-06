@@ -6,7 +6,7 @@
       <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>Accessibility Across a Product Ecosystem — Quick Case | Zainab Abadi</title>
       <meta name="description" content="A short, visual case study of accessibility audits, screen reader testing and practical guidance across Oxford's product ecosystem." />
-      <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
+      <link rel="stylesheet" href="style.css?v=skip-link-20261006" />
 
   <style>
     .quick-case { padding-bottom: 72px; }
@@ -400,12 +400,13 @@
     }
   </style>
 
-      <script defer src="analytics-consent.js?v=footer-heading-fix-20261006"></script>
+      <script defer src="analytics-consent.js?v=cookie-keyboard-20261006"></script>
       <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
   <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006-r2" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
     <body class="project-body">
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <header class="header">
   <a href="quick-scan.html" class="logo-link" aria-label="Go to Quick Scan home">
@@ -422,7 +423,7 @@
   </nav>
 </header>
 
-    <main class="main project-page quick-case">
+    <main class="main project-page quick-case" id="main-content" tabindex="-1">
 
   <section class="quick-case__intro">
     <div class="quick-case__meta-row">
@@ -560,7 +561,7 @@
       backToTop.classList.toggle("show", window.scrollY > 300);
     });
     backToTop.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     });
   }
 

@@ -2,6 +2,7 @@
   "use strict";
 
   const CONSENT_KEY = "za-analytics-consent";
+  const RESTORE_SETTINGS_FOCUS_KEY = "za-cookie-settings-focus";
   const CONTENTSQUARE_URL = "https://t.contentsquare.net/uxa/a67c74590d182.js";
 
   function loadContentsquare() {
@@ -34,22 +35,29 @@
     window.setTimeout(() => heart.remove(), 2600);
   }
 
-  function closeBannerWithHeart() {
+  function closeBannerWithHeart(returnFocusTarget) {
     const banner = document.querySelector(".cookie-consent");
     if (!banner) return;
 
     const rect = banner.getBoundingClientRect();
+    const restoreFocus = banner.contains(document.activeElement);
     banner.remove();
+    if (restoreFocus && returnFocusTarget && returnFocusTarget.isConnected) {
+      returnFocusTarget.focus({ preventScroll: true });
+    }
     spawnHeartPoof(rect);
   }
 
-  function showBanner() {
+  function showBanner(returnFocusTarget) {
     if (document.querySelector(".cookie-consent")) return;
+
+    const opener = returnFocusTarget ||
+      (document.activeElement !== document.body ? document.activeElement : null) ||
+      document.querySelector('main a[href], main button:not([disabled]), .logo-link');
 
     const banner = document.createElement("section");
     banner.className = "cookie-consent";
     banner.setAttribute("role", "dialog");
-    banner.setAttribute("aria-modal", "true");
     banner.setAttribute("aria-labelledby", "cookie-consent-title");
     banner.innerHTML = `
       <div class="cookie-consent__content">
@@ -64,7 +72,7 @@
       </div>`;
 
     document.body.appendChild(banner);
-    banner.querySelector('[data-consent="accepted"]').focus();
+    banner.querySelector('[data-consent="accepted"]').focus({ preventScroll: true });
 
     banner.addEventListener("click", function (event) {
       const button = event.target.closest("[data-consent]");
@@ -72,12 +80,17 @@
 
       const choice = button.dataset.consent;
       localStorage.setItem(CONSENT_KEY, choice);
-      closeBannerWithHeart();
+      closeBannerWithHeart(opener);
 
       if (choice === "accepted") {
         loadContentsquare();
       } else if (document.querySelector(`script[src="${CONTENTSQUARE_URL}"]`)) {
-        window.setTimeout(() => window.location.reload(), 1400);
+        window.setTimeout(() => {
+          if (opener && opener.matches(".cookie-settings-link") && document.activeElement === opener) {
+            try { sessionStorage.setItem(RESTORE_SETTINGS_FOCUS_KEY, "true"); } catch (_) {}
+          }
+          window.location.reload();
+        }, 1400);
       }
     });
   }
@@ -158,10 +171,19 @@
     settingsButton.textContent = "Cookie settings";
     settingsButton.addEventListener("click", function () {
       localStorage.removeItem(CONSENT_KEY);
-      showBanner();
+      showBanner(settingsButton);
     });
 
     privacyLink.insertAdjacentElement("afterend", settingsButton);
+  }
+
+  function restoreSettingsFocusAfterReload() {
+    try {
+      if (sessionStorage.getItem(RESTORE_SETTINGS_FOCUS_KEY) !== "true") return;
+      sessionStorage.removeItem(RESTORE_SETTINGS_FOCUS_KEY);
+    } catch (_) { return; }
+    const settingsButton = document.querySelector(".cookie-settings-link");
+    if (settingsButton) settingsButton.focus({ preventScroll: true });
   }
 
   /*
@@ -289,6 +311,7 @@
     applyPortfolioEntryIteration5();
     organiseFooterUtilities();
     addSettingsControl();
+    restoreSettingsFocusAfterReload();
     if (!savedChoice) showBanner();
   });
 

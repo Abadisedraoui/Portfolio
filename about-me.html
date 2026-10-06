@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <title>About me | Zainab Abadi</title>
-  <link rel="stylesheet" href="style.css?v=a11y-approved-20261006" />
+  <link rel="stylesheet" href="style.css?v=skip-link-20261006" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap');
 
@@ -43,13 +43,14 @@
     }
   </style>
   <!-- Analytics consent and Contentsquare loader -->
-  <script defer src="analytics-consent.js?v=footer-heading-fix-20261006"></script>
+  <script defer src="analytics-consent.js?v=cookie-keyboard-20261006"></script>
   <link rel="stylesheet" href="contact-form.css?v=contact-refined-20261005" />
   <link rel="stylesheet" href="portfolio-watercolor.css?v=a11y-approved-20261006-r2" />
   <script defer src="portfolio-watercolor.js?v=iteracion-4.5-20261005"></script>
 </head>
 
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- HEADER -->
 <header class="header">
@@ -69,7 +70,7 @@
 </header>
 
 <!-- MAIN CONTENT -->
-<main class="main">
+<main class="main" id="main-content" tabindex="-1">
 
   <!-- INTRO -->
   <section class="hero about-hero">
@@ -502,7 +503,7 @@
     backToTop.addEventListener("click", () => {
       window.scrollTo({
         top: 0,
-        behavior: "smooth"
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
       });
     });
   }
@@ -660,11 +661,11 @@ window.addEventListener("resize", resizeHeroImage);
 
   if (pokemonPrev && pokemonNext && pokemonTrack) {
     pokemonPrev.addEventListener("click", () => {
-      pokemonTrack.scrollBy({ left: -pokemonTrack.clientWidth, behavior: "smooth" });
+      pokemonTrack.scrollBy({ left: -pokemonTrack.clientWidth, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     });
 
     pokemonNext.addEventListener("click", () => {
-      pokemonTrack.scrollBy({ left: pokemonTrack.clientWidth, behavior: "smooth" });
+      pokemonTrack.scrollBy({ left: pokemonTrack.clientWidth, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
     });
   }
 

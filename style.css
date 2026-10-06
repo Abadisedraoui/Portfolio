@@ -1858,3 +1858,41 @@ figcaption {
 /* Heading levels can change without changing the original label hierarchy. */
 .section-label { text-align: left; }
 .walk-section-title { text-align: left; }
+
+/* The navigation bypass is visible only while it has keyboard focus. */
+.skip-link {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 10000;
+  padding: 12px 16px;
+  color: #28232f;
+  background-color: #fff;
+  background-image: var(--wc-paper);
+  background-size: 520px 520px;
+  border: 1px solid #6d798a;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(40,35,47,.12);
+  font: 600 16px/1.5 Arial, Helvetica, sans-serif;
+  text-decoration: underline;
+  transform: translateY(calc(-100% - 24px));
+}
+.skip-link:focus { transform: translateY(0); }
+#main-content { scroll-margin-top: 24px; }
+#main-content:focus { outline: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .pokemon-modal-track,
+  .device-carousel-track { scroll-behavior: auto; }
+
+  .consent-heart-poof__icon {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .consent-heart-poof__spark {
+    display: none;
+    animation: none;
+  }
+}

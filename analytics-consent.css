@@ -204,3 +204,17 @@
     opacity: 0;
   }
 }
+
+/* Keep the farewell heart still when the visitor requests less motion. */
+@media (prefers-reduced-motion: reduce) {
+  .consent-heart-poof__icon {
+    animation: none;
+    transform: none;
+    opacity: 1;
+  }
+
+  .consent-heart-poof__spark {
+    display: none;
+    animation: none;
+  }
+}
