@@ -1,8 +1,8 @@
 # Checklist de accesibilidad
 
-Actualizada: 6 de octubre de 2026 (UTC). Registro de cambios aprobados para
-https://zainababadi.com/. Última revisión publicada previa a K4, E1 y M2:
-`620e1183d09aebfc3a49388359f01bf3f7586818`.
+Actualizada: 6 de octubre de 2026 (UTC). Cambios aprobados publicados en
+https://zainababadi.com/. Revisión K4, E1 y M2:
+`a4f7d3362ae1b6a6ef306f402e5c5f8744e53c1f`.
 
 Iteration 5 conserva el portfolio anterior completo en la rama `iteration-5`,
 commit `381f06dc02e69ff17b9f863d1fcc2537a3491455`.
@@ -24,19 +24,19 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 - [x] K1 — About: foco inicial en Close, Tab/Shift+Tab dentro del modal, fondo inerte, Escape y devolución a Expand cards. Comprobado en la web.
 - [x] K2 — Tarjetas de About con botones nativos, Enter y Espacio, conservando orden del DOM y foco. Nombres accesibles separados correctamente entre líneas. Desactivadas en el diseño móvil estático; revisión visual móvil pendiente en V1.
 - [x] K3 — Nueve imágenes responsive: Enter/Espacio abren el grupo y posición correctos; Escape devuelve el foco a la imagen. Las nueve comprobadas.
-- [x] K4 — Cookies como diálogo no modal: Tab sigue el orden natural y el fondo permanece accesible. Al cerrar desde el banner, el foco vuelve al disparador sin desplazar la página; se conserva al recargar tras retirar un consentimiento previo. Pruebas con DOM simulado superadas; comprobación final publicada pendiente en V3.
+- [x] K4 — Cookies como diálogo no modal: Tab sigue el orden natural y el fondo permanece accesible. Al cerrar desde el banner, el foco vuelve al disparador sin desplazar la página; se conserva al recargar tras retirar un consentimiento previo. Pruebas con DOM simulado superadas. En Quick Scan publicado, comprobados Tab libre, retorno a Cookie settings y conservación del desplazamiento al cerrar con Decline; aceptar y retirada con recarga se probaron con DOM simulado.
 - [x] K5 — Estado expandido, relación con navegación, Escape y retorno al botón en los 15 menús. Marcado/handlers revisados y prueba funcional con DOM simulado superada. Interacción real en viewport móvil pendiente en V1/V3.
 
 ## Estructura y orientación
 
-- [x] E1 — “Skip to main content” en las 15 páginas con navegación repetida; aparece solo con foco de teclado y apunta al main enfocable. La entrada de selección de modo no tiene navegación repetida. Marcado y destino comprobados; recorrido final publicado pendiente en V3.
+- [x] E1 — “Skip to main content” en las 15 páginas con navegación repetida; aparece solo con foco de teclado y apunta al main enfocable. La entrada de selección de modo no tiene navegación repetida. Marcado y destino comprobados en las 15 páginas publicadas. En Quick Scan, primer Tab muestra el enlace, Enter enfoca main y siguiente Tab alcanza Human CV; el enlace vuelve a ocultarse al perder foco.
 - [x] E2 — Encabezados lógicos conservando estilos. Las 16 páginas publicadas tienen un h1, un main y ningún salto de nivel.
 - [x] E3 — “All fields are required” en contacto, relacionado mediante aria-describedby. Texto, relación, etiquetas y validación nativa de campos vacíos comprobados.
 
 ## Feedback y movimiento
 
 - [x] M1 — Confirmación del contacto persistente hasta cierre explícito. Eliminado el cierre automático; prueba de funciones reales con DOM simulado superada, sin enviar mensajes.
-- [x] M2 — Con “reducir movimiento”, los 23 desplazamientos programados pasan a ser inmediatos y el corazón aparece estático, sin puntitos amarillos, hasta su retirada a los 2,6 segundos. Sin esa preferencia, se mantienen el scroll suave y la animación original del corazón. Ramas de scroll probadas y reglas CSS verificadas; no se ha emulado la preferencia del sistema en un navegador real.
+- [x] M2 — Con “reducir movimiento”, los 23 desplazamientos programados pasan a ser inmediatos y el corazón aparece estático, sin puntitos amarillos, hasta su retirada a los 2,6 segundos. Sin esa preferencia, se mantienen el scroll suave y la animación original del corazón. Ramas de scroll probadas y reglas CSS publicadas verificadas en el navegador, incluidas las dos hojas usadas por las distintas páginas. Animación habitual del corazón comprobada; no se ha activado la preferencia del sistema en un dispositivo real.
 - [x] M3 — Foco visible de 3px: azul sobre papel, blanco en footer y visores oscuros, interior en imágenes para evitar recortes. Comprobados contacto, About y galerías; revisión exhaustiva de estados pendiente en C5.
 
 ## Contenido
@@ -49,12 +49,14 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 
 - [ ] V1 — Móvil, 320 CSS px y zoom 200–400%. Pendiente: este entorno no ofrece control de viewport/zoom para esta prueba.
 - [ ] V2 — NVDA/VoiceOver. Autorizado, pendiente: no hay lector de pantalla real disponible. El árbol accesible no sustituye esa sesión.
-- [ ] V3 — Recorridos completos de teclado. Contacto, About, nueve imágenes responsive y un visor nativo de Quick Scan comprobados en escritorio. Quedan la comprobación publicada de K4/E1 y navegación móvil real; mantener pendiente.
+- [ ] V3 — Recorridos completos de teclado. Contacto, About, nueve imágenes responsive y un visor nativo de Quick Scan comprobados en escritorio. Añadidos los recorridos publicados de cookies y del enlace de salto en Quick Scan. Queda navegación móvil real; mantener pendiente.
 - [ ] V4 — Redactar declaración con resultados y limitaciones verificadas; presentar para aprobación antes de publicar.
 
 ## Evidencia y límites
 
 - Revisión posterior de regresiones: los scripts del footer seguían buscando `h4` tras el cambio a encabezados accesibles. Corregidas las dos rutinas para restaurar FIND ME (Email me, LinkedIn, GitHub, Behance) y MORE (Review me, Privacy Policy, Cookie settings). También restaurada la regla del título de la sección adicional del walkthrough y actualizadas las referencias de estilos de tarjetas. Se conservan los niveles accesibles. El fallo de foco K4 se corrige en esta revisión aprobada, manteniendo el banner no modal.
+
+- Publicación K4/E1/M2: commit `a4f7d3362ae1b6a6ef306f402e5c5f8744e53c1f`, despliegue Pages `37441689470`, completado correctamente. Las 16 páginas cargan el script nuevo y las 15 con navegación tienen el enlace de salto. Footer correcto en las 15: FIND ME, LOCATION y MORE; sin desbordamiento horizontal ni imágenes visibles rotas en esta revisión de escritorio.
 
 - K4/E1/M2: pruebas aisladas del código con ambos valores de preferencia de movimiento; ninguna petición de analítica ni envío de contacto durante estas pruebas. El corazón conserva su función y temporizador originales; las reglas de movimiento reducido están en las dos hojas que usan las distintas páginas.
 
