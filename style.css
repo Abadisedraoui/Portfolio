@@ -919,8 +919,8 @@ li {
     transition:.2s ease;
 }
 .experience :is(h4, .section-label) a:hover{
-    color:#3E6FB3;
-    text-decoration-color:#3E6FB3;
+    color:#355F9C;
+    text-decoration-color:#355F9C;
 }
 /* ---------- Description ---------- */
 .company-description{
