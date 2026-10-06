@@ -1,6 +1,6 @@
 # Checklist de accesibilidad
 
-Actualizada: 6 de octubre de 2026 (UTC), tras revisión V1–V3 y C5.
+Actualizada: 6 de octubre de 2026 (UTC), tras aprobación de las V y A1.
 Cambios aprobados publicados en https://zainababadi.com/. Revisión K4, E1 y M2:
 `a4f7d3362ae1b6a6ef306f402e5c5f8744e53c1f`.
 
@@ -48,16 +48,18 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 
 ## Contenido
 
-- [ ] A1 — Revisar equivalencia de los textos de vídeos sin voz. Proponer descripciones donde falte información visual relevante, sin añadir voz ni captions redundantes. Cambios pendientes de aprobación.
+- [x] A1 — Descripciones textuales aprobadas para los vídeos sin voz. Revisadas secuencias de los 10 archivos usados y sus pistas de audio: una no contiene audio y las nueve restantes son silenciosas en el análisis (−91 dB). Añadidas descripciones equivalentes a las 14 apariciones publicadas y a la aparición guardada en el template pausado de Educational Platform, sin reactivar ese bloque. Los captions visibles se conservan exactamente. Cada vídeo tiene nombre y relación con su descripción mediante aria-describedby; las descripciones permanecen en el árbol accesible sin ocupar espacio visual. Comprobación con lector de pantalla real pendiente en V2.
 - [x] A2 — Alternativas específicas en galerías, ilustraciones y enlaces a prototipos. Imágenes inspeccionadas y alternativas publicadas comprobadas. Transcripciones completas de gráficos/tablas fuera de esta corrección.
 - [ ] A3 — CV PDF: revisar etiquetas, orden, idioma y enlaces. Mejorar originales en Canva/Google Docs y verificar exportaciones. Pendiente de aprobación y acceso a originales.
 
 ## Pruebas y declaración
 
-- [ ] V1 — Móvil, 320 CSS px y zoom 200–400%. Autorizada, pendiente de prueba real: este entorno no ofrece control de viewport; el atajo de zoom probado no cambió el tamaño ni la escala observados. No se ha validado el diseño móvil o el reflow a esos tamaños.
-- [ ] V2 — NVDA/VoiceOver. Autorizada, pendiente de sesión con lector de pantalla real. Revisión previa de estructura, nombres y relaciones accesibles realizada en las 16 páginas; etiquetas del contacto y nombre del diálogo About comprobados. El árbol accesible no sustituye esa sesión.
-- [ ] V3 — Recorridos completos de teclado. Escritorio completado en las 16 páginas: orden de Tab, foco visible y llegada a footer/Back to top, o a las dos opciones del index. Los siete vídeos del walkthrough permiten continuar a los siguientes controles y salir al footer; no se observó bloqueo. Contacto y About: foco contenido, Escape y retorno al disparador comprobados de nuevo. Cookies: apertura y cierre comprobados; las pruebas previas de Tab libre y retorno siguen registradas en K4. Nueve imágenes responsive y visor de Quick Scan ya comprobados. Queda menú/navegación en viewport móvil real; mantener V3 pendiente.
-- [ ] V4 — Redactar declaración con resultados y limitaciones verificadas; presentar para aprobación antes de publicar.
+Aprobadas las V con sus límites. La aprobación permite aceptar la revisión previa y publicar una declaración honesta; no convierte una evaluación del código en una prueba de dispositivo o lector de pantalla.
+
+- [ ] V1 — Móvil, 320 CSS px y zoom 200–400%. Revisión de código aceptada con sus límites; pendiente de prueba real: este entorno no ofrece control de viewport; el atajo de zoom probado no cambió el tamaño ni la escala observados. No se ha validado el diseño móvil o el reflow a esos tamaños.
+- [ ] V2 — NVDA/VoiceOver. Revisión previa aceptada con sus límites; pendiente de sesión con lector de pantalla real. Revisión previa de estructura, nombres y relaciones accesibles realizada en las 16 páginas; etiquetas del contacto y nombre del diálogo About comprobados. El árbol accesible no sustituye esa sesión.
+- [ ] V3 — Recorridos completos de teclado. Escritorio completado en las 16 páginas: orden de Tab, foco visible y llegada a footer/Back to top, o a las dos opciones del index. Los siete vídeos del walkthrough permiten continuar a los siguientes controles y salir al footer; no se observó bloqueo. Contacto y About: foco contenido, Escape y retorno al disparador comprobados de nuevo. Cookies: apertura y cierre comprobados; las pruebas previas de Tab libre y retorno siguen registradas en K4. Nueve imágenes responsive y visor de Quick Scan ya comprobados. La usuaria aprueba el recorrido de escritorio y su alcance. Queda menú/navegación en viewport móvil real; mantener V3 pendiente.
+- [x] V4 — Declaración de accesibilidad aprobada con el alcance explicado. Creada en accessibility.html, con enlace Accessibility en los footers, estilo existente y fecha de revisión. Explica mejoras, comprobaciones y pruebas pendientes; no afirma conformidad WCAG completa.
 
 ## Evidencia y límites
 
