@@ -86,7 +86,7 @@
     const footer = document.querySelector(".footer");
     if (!footer) return;
 
-    const moreHeading = Array.from(footer.querySelectorAll("h4")).find((heading) => {
+    const moreHeading = Array.from(footer.querySelectorAll(".section-label, h4")).find((heading) => {
       const label = heading.textContent.trim().toUpperCase();
       return label === "FEEDBACK IS WELCOME" || label === "MORE";
     });

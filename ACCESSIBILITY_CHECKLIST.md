@@ -54,6 +54,8 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 
 ## Evidencia y límites
 
+- Revisión posterior de regresiones: los scripts del footer seguían buscando `h4` tras el cambio a encabezados accesibles. Corregidas las dos rutinas para restaurar FIND ME (Email me, LinkedIn, GitHub, Behance) y MORE (Review me, Privacy Policy, Cookie settings). También restaurada la regla del título de la sección adicional del walkthrough y actualizadas las referencias de estilos de tarjetas. Se conservan los niveles accesibles. El fallo de foco K4 es independiente y sigue pendiente.
+
 - Revisión de nombres y foco: commit `f9591c144b62c52a6511b272318b5e8bbd045ba7`; despliegue Pages `37391477244`, completado correctamente.
 - Publicación inicial: commit `0b513d9c75dcfe72b37a756cfcb66db0f0084ea2`; despliegue Pages `37390470253`, completado correctamente.
 - Las 16 páginas publicadas revisadas: estilos actualizados, estructura, alternativas de imágenes y marcado de navegación.

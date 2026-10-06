@@ -163,7 +163,7 @@
       "  max-width: none !important;",
       "  margin-inline: 0 !important;",
       "}",
-      ".pokemon-modal-card .pokemon-card-heading h3 br {",
+      ".pokemon-modal-card .pokemon-card-heading :is(h2, h3) br {",
       "  display: none;",
       "}",
       "@media (max-width: 600px) {",
@@ -230,7 +230,7 @@
         copyright.textContent = "Vibe Coded ✨ © 2026 by Zainab Abadi.";
       }
 
-      var contactHeading = Array.from(footer.querySelectorAll("h4")).find(function (heading) {
+      var contactHeading = Array.from(footer.querySelectorAll(".section-label, h4")).find(function (heading) {
         return heading.textContent.trim().toUpperCase() === "CONTACT" ||
           heading.textContent.trim().toUpperCase() === "FIND ME";
       });

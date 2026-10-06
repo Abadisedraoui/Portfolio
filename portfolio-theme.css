@@ -215,7 +215,7 @@ body:not(.portfolio-entry) .hero h1 { margin-bottom: 28px; }
 }
 .pokemon-card-face { border-radius: 10px; }
 .pokemon-card-photo { border-width: 1px; }
-.pokemon-card-heading h3 { letter-spacing: -.015em; }
+.pokemon-card-heading :is(h2, h3) { letter-spacing: -.015em; }
 
 .portfolio-entry {
   background-image: var(--portfolio-stone), linear-gradient(160deg, #f0f2f4, #e4e7ea);
@@ -262,4 +262,3 @@ body:not(.portfolio-entry) .hero h1 { margin-bottom: 28px; }
   .button:hover,
   .contact-form__submit:hover { transform: none; }
 }
-
