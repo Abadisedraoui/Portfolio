@@ -36,8 +36,8 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 
 ## Estructura y orientación
 
-- [x] E1 — “Skip to main content” en las 15 páginas con navegación repetida; aparece solo con foco de teclado y apunta al main enfocable. La entrada de selección de modo no tiene navegación repetida. Marcado y destino comprobados en las 15 páginas publicadas. En Quick Scan, primer Tab muestra el enlace, Enter enfoca main y siguiente Tab alcanza Human CV; el enlace vuelve a ocultarse al perder foco.
-- [x] E2 — Encabezados lógicos conservando estilos. Las 16 páginas publicadas tienen un h1, un main y ningún salto de nivel.
+- [x] E1 — “Skip to main content” en las 16 páginas actuales con navegación repetida; aparece solo con foco de teclado y apunta al main enfocable. La entrada de selección de modo no tiene navegación repetida. Marcado y destino comprobados en las 15 páginas iniciales y en la nueva declaración. En Quick Scan, primer Tab muestra el enlace, Enter enfoca main y siguiente Tab alcanza Human CV; el enlace vuelve a ocultarse al perder foco. En la declaración, primer Tab y Enter también enfocan main correctamente.
+- [x] E2 — Encabezados lógicos conservando estilos. Las 16 páginas iniciales y la nueva declaración (17 en total) tienen un h1, un main y ningún salto de nivel.
 - [x] E3 — “All fields are required” en contacto, relacionado mediante aria-describedby. Texto, relación, etiquetas y validación nativa de campos vacíos comprobados.
 
 ## Feedback y movimiento
@@ -62,6 +62,8 @@ Aprobadas las V con sus límites. La aprobación permite aceptar la revisión pr
 - [x] V4 — Declaración de accesibilidad aprobada con el alcance explicado. Creada en accessibility.html, con enlace Accessibility en los footers, estilo existente y fecha de revisión. Explica mejoras, comprobaciones y pruebas pendientes; no afirma conformidad WCAG completa.
 
 ## Evidencia y límites
+
+- A1/V4 aprobadas y publicadas: commit `d2a9010fa52da200b5157bf2c3679e6a63f423e0`, despliegue Pages `37451262308`, build y deploy completados correctamente. Comprobadas las cuatro páginas que muestran los 14 vídeos activos: todos tienen su descripción en el árbol accesible, asociada mediante aria-describedby; los párrafos se recortan a 1 × 1 px y no usan display:none. Los captions originales se compararon y permanecen idénticos. La aparición adicional en el template pausado tiene descripción preparada, sin reactivar el bloque. La declaración https://zainababadi.com/accessibility.html se abrió desde el nuevo enlace del footer; comprobados encabezados, salto al main con teclado y footer. No se observó desbordamiento horizontal en estas cinco páginas al tamaño de escritorio. Esta comprobación del árbol accesible no sustituye una sesión con NVDA/VoiceOver. Captura completa guardada de la declaración.
 
 - Revisión V1–V3/C5, 6 de octubre: navegador de escritorio con viewport de 1.363 × 936 CSS px y DPR 1. No se han cambiado HTML/CSS/JS ni enviado formularios. Se revisaron 16 páginas y 1.256 muestras de texto; se excluyeron 15 enlaces de salto ocultos fuera de pantalla de la medición normal (1.241 restantes). Las imágenes y PDF incrustados requieren su revisión de contenido independiente en A1/A3.
 
