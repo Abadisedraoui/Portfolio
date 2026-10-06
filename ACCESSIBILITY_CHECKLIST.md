@@ -1,8 +1,12 @@
 # Checklist de accesibilidad
 
-Actualizada: 6 de octubre de 2026 (UTC). Cambios aprobados publicados en
-https://zainababadi.com/. Revisión K4, E1 y M2:
+Actualizada: 6 de octubre de 2026 (UTC), tras revisión V1–V3 y C5.
+Cambios aprobados publicados en https://zainababadi.com/. Revisión K4, E1 y M2:
 `a4f7d3362ae1b6a6ef306f402e5c5f8744e53c1f`.
+
+La revisión V1–V3/C5 fue de lectura. Después de la aprobación, C5.1 se ha
+aplicado y comprobado en la web: hover `#355F9C` para los dos enlaces de empresas
+en About. Se conserva el azul normal `#234D8D` y el resto del diseño.
 
 Iteration 5 conserva el portfolio anterior completo en la rama `iteration-5`,
 commit `381f06dc02e69ff17b9f863d1fcc2537a3491455`.
@@ -17,7 +21,10 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 - [x] C2 — Fechas, roles y números: `#8B96A8` → `#3E4E64`, en la misma familia azul grisácea. Color comprobado; contraste base 6,83:1 sobre `#E4E7EB`.
 - [x] C3 — Descripciones, tiempo de lectura y captions: `#66758C` → `#3E4E64`. Clases afectadas comprobadas; captions con el tono oscuro existente `#43536B` lo conservan.
 - [x] C4 — Bordes de contacto: `#6D798A` opaco, mismo grosor de 1px y esquinas. En la captura publicada: mínimo 3,89:1 contra el papel adyacente en nombre/email, y 3,53:1 en mensaje.
-- [ ] C5 — Completar contraste de todas las texturas, aguadas y estados hover/focus. Proponer ajustes donde fallen manteniendo la paleta.
+- [ ] C5 — Revisión de contraste sobre texturas, aguadas y estados hover/focus. Comprobaciones de escritorio realizadas y ajuste C5.1 resuelto; queda ampliar tamaños/estados. No cerrar como conformidad completa.
+  - [x] Colores base: revisadas 1.241 muestras de texto visible en las 16 páginas, componiendo transparencias. Superan el umbral AA correspondiente sobre el color base CSS. Este cálculo no incluye por sí solo texturas o gradientes.
+  - [x] Muestras de papel renderizado: comprobados texto, bordes y foco del contacto; texto y enlaces del banner de cookies; footer y estados representativos de navegación. Las muestras medidas superan sus umbrales. No equivalen a una medición de cada píxel o estado del sitio.
+  - [x] C5.1 — Hover de “Oxford University Press” y “Plytix” en About. Ajuste aprobado, publicado y comprobado: color de texto y subrayado del hover de `#3E6FB3` a `#355F9C`. Sobre la muestra de papel adyacente `#E1E0E5`, el contraste pasa de 3,87:1 a 4,89:1. Estos enlaces de 16px en negrita requieren 4,5:1 (WCAG 1.4.3, AA). El azul normal `#234D8D` mantiene 6,35:1 en esa muestra. Se conservan forma, textura, tipografía, distribución y resto de azules.
 
 ## Teclado y ventanas
 
@@ -47,12 +54,20 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 
 ## Pruebas y declaración
 
-- [ ] V1 — Móvil, 320 CSS px y zoom 200–400%. Pendiente: este entorno no ofrece control de viewport/zoom para esta prueba.
-- [ ] V2 — NVDA/VoiceOver. Autorizado, pendiente: no hay lector de pantalla real disponible. El árbol accesible no sustituye esa sesión.
-- [ ] V3 — Recorridos completos de teclado. Contacto, About, nueve imágenes responsive y un visor nativo de Quick Scan comprobados en escritorio. Añadidos los recorridos publicados de cookies y del enlace de salto en Quick Scan. Queda navegación móvil real; mantener pendiente.
+- [ ] V1 — Móvil, 320 CSS px y zoom 200–400%. Autorizada, pendiente de prueba real: este entorno no ofrece control de viewport; el atajo de zoom probado no cambió el tamaño ni la escala observados. No se ha validado el diseño móvil o el reflow a esos tamaños.
+- [ ] V2 — NVDA/VoiceOver. Autorizada, pendiente de sesión con lector de pantalla real. Revisión previa de estructura, nombres y relaciones accesibles realizada en las 16 páginas; etiquetas del contacto y nombre del diálogo About comprobados. El árbol accesible no sustituye esa sesión.
+- [ ] V3 — Recorridos completos de teclado. Escritorio completado en las 16 páginas: orden de Tab, foco visible y llegada a footer/Back to top, o a las dos opciones del index. Los siete vídeos del walkthrough permiten continuar a los siguientes controles y salir al footer; no se observó bloqueo. Contacto y About: foco contenido, Escape y retorno al disparador comprobados de nuevo. Cookies: apertura y cierre comprobados; las pruebas previas de Tab libre y retorno siguen registradas en K4. Nueve imágenes responsive y visor de Quick Scan ya comprobados. Queda menú/navegación en viewport móvil real; mantener V3 pendiente.
 - [ ] V4 — Redactar declaración con resultados y limitaciones verificadas; presentar para aprobación antes de publicar.
 
 ## Evidencia y límites
+
+- Revisión V1–V3/C5, 6 de octubre: navegador de escritorio con viewport de 1.363 × 936 CSS px y DPR 1. No se han cambiado HTML/CSS/JS ni enviado formularios. Se revisaron 16 páginas y 1.256 muestras de texto; se excluyeron 15 enlaces de salto ocultos fuera de pantalla de la medición normal (1.241 restantes). Las imágenes y PDF incrustados requieren su revisión de contenido independiente en A1/A3.
+
+- C5.1: CSS publicado en commit `3830a916aa6c20ce2ab2add094c52d97f77b7296`; versión del estilo en About actualizada en `493159fba6f78f3457ca8371b3e1cc8d6de291eb` para evitar servir la copia anterior en caché. Despliegue Pages `37448494155`, build y deploy completados correctamente. Comprobados con el cursor los dos enlaces en la web: estado `:hover` activo, texto y subrayado `rgb(53, 95, 156)`; estado normal `rgb(35, 77, 141)`. Captura guardada del estado hover de Plytix. Las proporciones usan la muestra sin letras inmediatamente encima de ambos enlaces registrada en la auditoría; no certifican todas las zonas de papel.
+
+- Contacto con aguada asentada: muestras de contraste de etiquetas 5,15:1 o más, bordes 3,17:1 o más y foco azul 3,65:1 o más. Banner de cookies con aguada asentada: texto 10,12:1, enlace Privacy Policy 5,51:1 y foco 3,36:1 o más en la muestra. Hover de navegación sobre papel más blanco: 4,72:1 o más en las muestras. Estas cifras comparan los colores CSS con píxeles de fondo adyacentes de capturas JPEG; son mediciones representativas, sujetas a la ubicación del muestreo y la compresión.
+
+- Referencias: WCAG 1.4.3 [Contrast (Minimum)](https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html), 4,5:1 para texto normal y 3:1 para texto grande; WCAG 1.4.11 [Non-text Contrast](https://www.w3.org/WAI/WCAG22/understanding/non-text-contrast.html), 3:1 para información visual necesaria de controles y estados.
 
 - Revisión posterior de regresiones: los scripts del footer seguían buscando `h4` tras el cambio a encabezados accesibles. Corregidas las dos rutinas para restaurar FIND ME (Email me, LinkedIn, GitHub, Behance) y MORE (Review me, Privacy Policy, Cookie settings). También restaurada la regla del título de la sección adicional del walkthrough y actualizadas las referencias de estilos de tarjetas. Se conservan los niveles accesibles. El fallo de foco K4 se corrige en esta revisión aprobada, manteniendo el banner no modal.
 
@@ -63,7 +78,7 @@ que se describe. Las pruebas adicionales pendientes se mantienen en C5 y V1–V3
 - Revisión de nombres y foco: commit `f9591c144b62c52a6511b272318b5e8bbd045ba7`; despliegue Pages `37391477244`, completado correctamente.
 - Publicación inicial: commit `0b513d9c75dcfe72b37a756cfcb66db0f0084ea2`; despliegue Pages `37390470253`, completado correctamente.
 - Las 16 páginas publicadas revisadas: estilos actualizados, estructura, alternativas de imágenes y marcado de navegación.
-- Contacto: Enter abre; Close recibe foco; Tab/Shift+Tab circulan dentro; Escape devuelve a Email me. Envío vacío activa validación nativa. No se envió ningún mensaje a Formspree.
+- Contacto: Enter abre; en la revisión actual, tras la apertura el foco inicial llega al campo de nombre. Tab recorre email, mensaje, Send, Privacy Policy, Close y vuelve a nombre; permanece dentro. Escape devuelve a Email me. Envío vacío comprobado en la revisión anterior mediante validación nativa. No se envió ningún mensaje a Formspree.
 - About: Enter/Espacio activan tarjetas manteniendo DOM y foco; modal con fondo inerte, foco contenido y retorno al disparador.
 - Galería responsive: nueve aperturas con grupo/índice correctos y nueve retornos de foco. Visor nativo de Quick Scan: apertura, foco inicial y retorno con Escape.
 - Los 28 scripts analizados sin errores de sintaxis. Pruebas del código con DOM simulado para modal, tarjetas, menú y confirmación superadas.
