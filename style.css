@@ -1912,13 +1912,12 @@ figcaption {
 }
 
 
-/* Iteration 8 — equal-height thumbnail and content panels.
-   Out-of-flow images cannot determine the grid's row heights: the text
-   determines the row height and both rows share it equally. */
+/* Iteration 8 — natural, responsive landscape thumbnails.
+   Keep the 9:5 desktop proportion at every viewport width. The background
+   fills its frame; the transparent PNG remains entirely visible. */
 .selected-work-list > .work-card--with-thumbnail {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 
@@ -1926,40 +1925,22 @@ figcaption {
   position: relative;
   display: block;
   width: 100%;
+  height: auto;
+  aspect-ratio: 9 / 5;
+  flex: 0 0 auto;
   min-width: 0;
   min-height: 0;
-  height: auto;
   overflow: hidden;
   background: #e5eff5 url("thumbnail-background.png") center center / cover no-repeat;
 }
 
 .work-card-image-link.work-card-thumbnail .work-card-image {
   position: absolute;
-  top: 10px;
-  left: 12px;
-  width: calc(100% - 24px);
-  height: calc(100% - 20px);
-  min-height: 0;
+  inset: 0;
   display: block;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
   object-position: center;
   background: transparent;
-}
-
-@media (max-width: 900px) {
-  .work-card-image-link.work-card-thumbnail .work-card-image {
-    top: 9px;
-    left: 10px;
-    width: calc(100% - 20px);
-    height: calc(100% - 18px);
-  }
-}
-
-@media (max-width: 600px) {
-  .work-card-image-link.work-card-thumbnail .work-card-image {
-    top: 8px;
-    left: 9px;
-    width: calc(100% - 18px);
-    height: calc(100% - 16px);
-  }
 }
