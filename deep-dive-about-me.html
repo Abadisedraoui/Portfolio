@@ -41,6 +41,29 @@
       color: #234D8D;
       margin-top: 20px !important;
     }
+
+    /* This note reuses the Writing paper card without its pigment wash. */
+    .experience .work-card.health-break-card {
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      flex: none;
+      margin: 0 0 36px; /* same as the section heading's existing gap */
+    }
+    .experience .work-card.health-break-card h3 {
+      margin-bottom: 4px;
+      color: #234D8D; /* existing Oxford / Plytix link blue */
+    }
+    .experience .work-card.health-break-card .date {
+      min-height: 0;
+      margin: 0 0 12px;
+    }
+    .experience .work-card.health-break-card p:last-child {
+      margin: 0;
+    }
+    .experience .work-card.health-break-card.watercolor-surface::before {
+      display: none; /* no watercolor overlay, keep the existing white paper */
+    }
   </style>
   <!-- Analytics consent and Contentsquare loader -->
   <script defer src="analytics-consent.js?v=cookie-keyboard-20261006"></script>
@@ -195,6 +218,15 @@
   <!-- WORK EXPERIENCE -->
   <section class="experience">
     <h2>Work experience</h2>
+
+    <!-- Full-width paper card: reuse Writing card typography, material and proportions. -->
+    <article class="work-card text-card health-break-card" aria-labelledby="health-break-title">
+      <div class="work-card-content">
+        <h3 id="health-break-title">Health-related career break</h3>
+        <p class="date">Oct 2025 - May 2026</p>
+        <p>I took some time away from full-time work to focus on my health. I'm now back to designing and exploring new opportunities.</p>
+      </div>
+    </article>
 
     <div class="columns">
 
