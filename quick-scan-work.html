@@ -47,7 +47,7 @@
 
     .exp-cards {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 32px;
     }
 
@@ -88,35 +88,6 @@
     .exp-card .impact {
       color: #28232f;
       margin: 0;
-    }
-
-    /* Reuse the Deep Dive health-break card, type hierarchy and paper surface. */
-    .experience .work-card.health-break-card {
-      width: 100%;
-      height: auto;
-      min-height: 0;
-      flex: none;
-      margin: 0 0 32px; /* matches the existing Experience highlights grid gap */
-    }
-    .experience .work-card.health-break-card h3 {
-      margin: 0 0 8px;
-      color: #28232f;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      line-height: 1.2;
-    }
-    .experience .work-card.health-break-card .date {
-      min-height: 0;
-      margin: 0 0 12px;
-      font-weight: 700;
-    }
-    .experience .work-card.health-break-card p:last-child {
-      margin: 0;
-      color: #28232f;
-    }
-    .experience .work-card.health-break-card.watercolor-surface::before {
-      display: none;
     }
 
     .tag-wcag { background: #CFE8E0; }
@@ -233,16 +204,13 @@
   <section class="experience">
     <h2>Experience highlights</h2>
 
-    <!-- Same health-break paper card as Deep Dive, without the pigment wash. -->
-    <article class="work-card text-card health-break-card" aria-labelledby="health-break-title">
-      <div class="work-card-content">
-        <h3 id="health-break-title">Health-related career break</h3>
-        <p class="date">Oct 2025 - May 2026</p>
-        <p>I took some time away from full-time work to focus on my health. I'm now back to designing and exploring new opportunities.</p>
-      </div>
-    </article>
-
     <div class="exp-cards">
+      <!-- Match the existing Quick Scan experience cards exactly. -->
+      <article class="exp-card health-break-card" aria-labelledby="health-break-title">
+        <h3 class="section-label" id="health-break-title">Health-related career break</h3>
+        <p class="role-label">Oct 2025 – May 2026</p>
+        <p class="impact">I took some time away from full-time work to focus on my health. I'm now back to designing and exploring new opportunities.</p>
+      </article>
       <div class="exp-card">
         <h3 class="section-label"><a href="https://oxfordpremium.oupe.es/" target="_blank" rel="noopener noreferrer">Oxford University Press</a><span class="click-here-note" aria-hidden="true">click here!</span></h3>
         <p class="role-label">UX/UI Designer · Jan 2023 – Oct 2025</p>
